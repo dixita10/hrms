@@ -1,3 +1,4 @@
+import { countBy } from 'lodash'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Home from './views/home1/Home'
@@ -7,6 +8,18 @@ import Login from './views/pages/login/Login'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
 const home1 = React.lazy(() => import('./views/home1/Home'))
+const sidebar = React.lazy(() => import('./views/sidebar/Admin'))
+const attendance = React.lazy(() => import('./views/attendance/Attendance'))
+const department = React.lazy(() => import('./views/department/Department'))
+const state = React.lazy(() => import('./views/state/State'))
+const city = React.lazy(() => import('./views/city/City'))
+const country = React.lazy(() => import('./views/country/Country'))
+const Project = React.lazy(() => import('./views/project/Project'))
+const role = React.lazy(() => import('./views/role/Role'))
+const salary = React.lazy(() => import('./views/salary/Salary'))
+const technology = React.lazy(() => import('./views/technology/Technology'))
+const user = React.lazy(() => import('./views/user/User'))
+
 // const AllEndUsers = React.lazy(() => import('./views/users/AllEndUser'))
 // const AllSP = React.lazy(() => import('./views/users/AllServiceProviders'))
 
@@ -43,6 +56,21 @@ const Routes = [
   // <PrivateRoute path='/dashboard' component={Dashboard} name='Dashboard' />,
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/home', name: 'Home', component: home1 },
+  { path: '/admin', name: 'Admin', component: sidebar },
+  { path: '/attendance', name: 'Attendance', component: attendance },
+  { path: '/department', name: 'Department', component: department },
+  { path: '/state', name: "State", component: state },
+  { path: '/city', name: 'City', component: city },
+  { path: "/country", name: 'Country', component: country },
+  { path: "/project", name: 'Project', component: Project },
+  { path: "/role", name: 'Role', component: role },
+  { path: "/salary", name: 'Salary', component: salary },
+  { path: "/technology", name: 'Technology', component: technology },
+  { path: "/user", name: 'User', component: user },
+  
+
+
+
 
   // { path: '/users', name: 'users', component: AllEndUsers, exact: true },
   // { path: '/users/all-enduser', name: 'All EndUsers', component: AllEndUsers },

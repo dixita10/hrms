@@ -1,9 +1,11 @@
 import React from 'react'
-import { FaUserAlt, FaCarSide } from 'react-icons/fa'
-import { FiUsers } from 'react-icons/fi'
+import { FaUserAlt, FaCarSide, FaRegCalendarAlt, FaUsers, FaUserCircle, FaRupeeSign, FaBuilding } from 'react-icons/fa'
 import { MdDashboard, MdBorderColor, MdPayment } from 'react-icons/md'
-import { BsChatSquareTextFill } from 'react-icons/bs'
 import { CNavGroup, CNavItem, } from '@coreui/react'
+import { RiAdminLine } from "react-icons/ri";
+import { GiWorld } from "react-icons/gi";
+import { AiOutlineProject } from "react-icons/ai";
+import { DiTechcrunch } from "react-icons/di";
 
 const _nav = [
 
@@ -13,19 +15,81 @@ const _nav = [
     to: '/dashboard',
     icon: <MdDashboard className='nav-icon' />,
   },
-  {
-    component: CNavItem,
-    name: 'Home',
-    to: '/home',
-    icon: <MdBorderColor className="nav-icon" />,
-  }
-
   // {
   //   component: CNavItem,
-  //   name: 'Booking',
-  //   to: '/booking',
+  //   name: 'Home',
+  //   to: '/home',
   //   icon: <MdBorderColor className="nav-icon" />,
   // },
+  {
+    component: CNavItem,
+    name: 'Admin',
+    to: '/admin',
+    icon: <RiAdminLine className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'Attendance',
+    to: '/attendance',
+    icon: <FaRegCalendarAlt className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'Department',
+    to: '/department',
+    icon: <FaBuilding className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'Country',
+    to: '/country',
+    icon: <GiWorld className="nav-icon" />
+  },
+
+  {
+    component: CNavItem,
+    name: 'State',
+    to: '/state',
+    icon: <GiWorld className="nav-icon" />
+  },
+  {
+    component: CNavItem,
+    name: 'City',
+    to: '/city',
+    icon: <GiWorld className="nav-icon" />
+  },
+
+
+  {
+    component: CNavItem,
+    name: 'Project',
+    to: '/project',
+    icon: <AiOutlineProject className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Role',
+    to: '/role',
+    icon: <FaUserCircle className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Salary',
+    to: '/salary',
+    icon: <FaRupeeSign className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Technology',
+    to: '/technology',
+    icon: <DiTechcrunch className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'User',
+    to: '/user',
+    icon: <FaUsers className="nav-icon" />,
+  },
 
   // {
   //   component: CNavGroup,

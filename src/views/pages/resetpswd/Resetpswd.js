@@ -17,16 +17,17 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import loginimg from '../../../assets/images/login.png'
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+function resetpswd() {
 
   var history = useHistory();
 
   const [data, setData] = useState({
     email: '',
-    password: ''
+    password: '',
+    confirmpassword: '',
   })
 
   const handleChange = (e) => {
@@ -40,13 +41,14 @@ const Login = () => {
     var passData = {
       email: data.email,
       password: data.password,
+      confirmpassword: data.confirmpassword,
       // login_as: "admin"
     }
 
 
     axios({
       method: 'POST',
-      url: "http://localhost:1010/auth/login",
+      url: "http://localhost:1010/auth/resetpassword",
       data: passData,
       headers: {
         "Content-Type": "application/json",
@@ -55,44 +57,14 @@ const Login = () => {
     })
       .then((response) => {
         if (response.status === 200) {
-          toast.success(response.data.message)
+          // toast.success(response.data.message)
           history.push("/dashboard");
-          localStorage.setItem('token', (response.data.token))
         }
       })
       .catch((error) => {
         console.log(error);
       })
   }
-
-  // let initialValues = { email: "", password: "", }
-  // const [isValue, setIsValue] = useState(initialValues);
-
-  //   axios.post("http://52.66.201.113/auth/login", data)
-  //     .then(response => {
-  //       console.log(response)
-  //       if (response.data.status === true) {
-  //         toast.success(response.data.message)
-  //       }
-  //       const { token } = response.data.data
-  //       console.log(token)
-  //       localStorage.setItem("admin_token", token)
-  //       history("/dashboard");
-
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //       if (error.response.data.status === false) {
-  //         toast.error(error.response.data.message);
-  //       }
-  //     })
-
-  // }
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setIsValue({ ...isValue, [name]: value })
-  //   console.log(isValue);
-  // }
 
 
 
@@ -105,7 +77,7 @@ const Login = () => {
               <CCard className="p-4">
                 <CCardBody>
                   <CForm>
-                    <h1>Login</h1>
+                    <h1>Reset Password</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -119,11 +91,9 @@ const Login = () => {
                         value={data.email}
                         onChange={handleChange}
                       />
-
                     </CInputGroup>
-
                     <div className="pwdcontainer">
-                      <CInputGroup className="mb-4">
+                      <CInputGroup className="mb-3">
                         <CInputGroupText>
                           <CIcon icon={cilLockLocked} />
                         </CInputGroupText>
@@ -135,18 +105,30 @@ const Login = () => {
                           value={data.password.trim()}
                           onChange={handleChange}
                         />
+                      </CInputGroup>
 
+                      <CInputGroup className="mb-4">
+                        <CInputGroupText>
+                          <CIcon icon={cilLockLocked} />
+                        </CInputGroupText>
+                        <CFormInput
+                          // type={isRevealPwd ? "text" : "password"}
+                          type='password'
+                          placeholder="enter confirmpassword"
+                          name='confirmpassword'
+                          value={data.confirmpassword.trim()}
+                          onChange={handleChange}
+                        />
                       </CInputGroup>
                     </div>
+
                     <CRow>
                       <CCol xs={6}>
                         <CButton style={{ background: '#3C4B64' }} className="px-4" onClick={handleSubmit}>
                           Login
                         </CButton>
                       </CCol>
-                      <Link to="/register">
-                        Register Now!
-                      </Link>
+                     
                       {/* <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
                           Forgot password?
@@ -179,4 +161,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default resetpswd

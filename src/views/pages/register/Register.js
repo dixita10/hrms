@@ -12,53 +12,70 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
-import { useHistory, Link } from 'react-router-dom';
+import {
+  cilLockLocked, cilUser, cilPhone
+} from '@coreui/icons'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
-import { ToastContainer, toast } from "react-toastify";
-
-
+import { toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+
+  var history = useHistory();
+
   const [data, setData] = useState({
-    adminname: '',
+    admin_name: '',
     email: '',
     contact: '',
-    username: "",
-    pswd: '',
+    user_name: '',
+    password: '',
   })
-
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    // toast.success('successful', { autoClose: 3000 })
 
     var passData = {
-      admin_name: data.adminname,
+      admin_name: data.admin_name,
       email: data.email,
       contact: data.contact,
-      user_name: data.username,
-      password: data.pswd
-
+      user_name: data.user_name,
+      password: data.password
     }
     axios({
       method: 'POST',
-      url: "http://43.207.210.210:3000/auth/register",
+      url: "http://localhost:1010/auth/register",
       data: passData,
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     })
-    .then((res)=>{
-      console.log(res);
-    })
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success(response.data.message)
+          history.push("/login");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response.status === false) {
+        //   toast.error(error.response.data.message.contact)
+        // }
+        // if (error.response.status === false) {
+        //   toast.error(error.response.data.message.email)
+        // }
+        // if (error.response.data.status === 500) {
+        //   toast.error("phone no dublicated")
+        // }
+        // toast.warning(error.response.data.message);
+      })
   }
   // console.log("data", data);
-
-
 
   // const navigate = useNavigate();
   // let history = useHistory();
@@ -169,26 +186,26 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Adminname" autoComplete="adminname" name="adminname"
-                      // value={isValue.name}
+                    <CFormInput placeholder="Adminname" autoComplete="adminname" name="admin_name"
+                      value={data.admin_name}
                       onChange={handleChange} />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>@</CInputGroupText>
                     <CFormInput placeholder="Email" autoComplete="email" name="email"
-                      // // value={isValue.email}
+                      value={data.email}
                       onChange={handleChange} />
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
-                      <CIcon icon={cilLockLocked} />
+                      <CIcon icon={cilPhone} />
                     </CInputGroupText>
                     <CFormInput
                       type="text"
                       placeholder="Contact"
                       autoComplete="contact"
                       name="contact"
-                      // // value={isValue.phno}
+                      value={data.contact}
                       onChange={handleChange}
                     />
                   </CInputGroup>
@@ -196,8 +213,8 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Username" autoComplete="username" name="username"
-                      // value={isValue.name}
+                    <CFormInput placeholder="Username" autoComplete="username" name="user_name"
+                      value={data.user_name}
                       onChange={handleChange} />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
@@ -207,9 +224,9 @@ const Register = () => {
                     <CFormInput
                       type="password"
                       placeholder="Password"
-                      autoComplete="new-password"
-                      name="pswd"
-                      // // value={isValue.password}
+                      autoComplete="password"
+                      name="password"
+                      value={data.password}
                       onChange={handleChange}
                     />
                   </CInputGroup>
@@ -226,8 +243,6 @@ const Register = () => {
         </CRow>
 
       </CContainer>
-
-      <ToastContainer autoClose={2000} />
     </div >
   )
 }

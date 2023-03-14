@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiUserMinus } from 'react-icons/fi'
+import { FiUserMinus, FiLock } from 'react-icons/fi'
 import {
   CAvatar,
   CBadge,
@@ -46,6 +46,10 @@ const AppHeaderDropdown = () => {
         <CDropdownItem href="/login " onClick={handleLogout}>
           <FiUserMinus className="me-2" />
           Logout
+        </CDropdownItem>
+        <CDropdownItem href="/resetpswd " onClick={handleLogout}>
+          <FiLock className="me-2" />
+          Reset Password
         </CDropdownItem>
         profile
       </CDropdownMenu>
