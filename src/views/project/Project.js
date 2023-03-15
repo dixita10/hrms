@@ -25,9 +25,8 @@ const Project = () => {
 
   // console.log(data);
   return (
-    <div className='table-responsive'>
-      <table className='table table-bordered border' border="1">
-        <thead>
+    <div>
+      <table className='responstable'>
           <tr>
             <th>user_id</th>
             <th>pro_name</th>
@@ -37,10 +36,8 @@ const Project = () => {
             <th>description</th>
             <th>tec_id</th>
           </tr>
-        </thead>
         {
           data.map((data) =>
-            <tbody>
               <tr>
                 <td>{data.user_id}</td>
                 <td>{data.pro_name}</td>
@@ -51,7 +48,6 @@ const Project = () => {
                 <td>{data.tec_id}</td>
 
               </tr>
-            </tbody>
           )
         }
       </table>

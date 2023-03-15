@@ -19,6 +19,7 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 const Admin = React.lazy(() => import('./views/sidebar/Admin'))
 const Attendance = React.lazy(() => import('./views/attendance/Attendance'))
+// const Attendance = React.lazy(() => import('./views/attendance/Attendance/:id'))
 const Department = React.lazy(() => import('./views/department/Department'))
 const State = React.lazy(() => import('./views/state/State'))
 const City = React.lazy(() => import('./views/city/City'))
@@ -29,14 +30,14 @@ const Salary = React.lazy(() => import('./views/salary/Salary'))
 const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
 
-
-
 // Pages
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
+
+const Singleattendance = React.lazy(()=> import('./views/attendance/Singleattendance'))
 
 class App extends Component {
   render() {
@@ -57,6 +58,7 @@ class App extends Component {
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
             <Route exact path="/admin" name="Admin" render={(props) => <Admin {...props} />} />
             <Route exact path="/attendance" name="Attendance" render={(props) => <Attendance {...props} />} />
+            {/* <Route exact path="/attendance/:id" name="Attendance" render={(props) => <Attendance {...props} />}/> */}
             <Route exact path="/department" name="Department" render={(props) => <Department {...props} />} />
             <Route exact path="/state" name="State" render={(props) => <State {...props} />} />
             <Route exact path="/city" name="City" render={(props) => <City {...props} />} />
@@ -66,7 +68,7 @@ class App extends Component {
             <Route exact path="/salary" name="Salary" render={(props) => <Salary {...props} />} />
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
-
+            <Route exact path="/Singleattendance" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
 
           </Switch>
         </React.Suspense>

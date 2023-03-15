@@ -19,6 +19,8 @@ const role = React.lazy(() => import('./views/role/Role'))
 const salary = React.lazy(() => import('./views/salary/Salary'))
 const technology = React.lazy(() => import('./views/technology/Technology'))
 const user = React.lazy(() => import('./views/user/User'))
+const Singleattendance = React.lazy(()=> import('./views/attendance/Singleattendance'))
+
 
 // const AllEndUsers = React.lazy(() => import('./views/users/AllEndUser'))
 // const AllSP = React.lazy(() => import('./views/users/AllServiceProviders'))
@@ -58,6 +60,7 @@ const Routes = [
   { path: '/home', name: 'Home', component: home1 },
   { path: '/admin', name: 'Admin', component: sidebar },
   { path: '/attendance', name: 'Attendance', component: attendance },
+  // { path: '/attendance/:id', name: 'Attendance', component: attendance },
   { path: '/department', name: 'Department', component: department },
   { path: '/state', name: "State", component: state },
   { path: '/city', name: 'City', component: city },
@@ -67,7 +70,9 @@ const Routes = [
   { path: "/salary", name: 'Salary', component: salary },
   { path: "/technology", name: 'Technology', component: technology },
   { path: "/user", name: 'User', component: user },
-  
+  {path:'/Singleattendance' , name:"Singleattendance" , component: Singleattendance},
+
+
 
 
 

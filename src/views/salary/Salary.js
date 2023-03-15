@@ -26,24 +26,20 @@ const Salary = () => {
 
   // console.log(data);
   return (
-    <div className='table-responsive'>
-      <table className='table table-bordered border' border="1">
-        <thead>
+    <div>
+      <table className='responstable'>
           <tr>
             <th>user_id</th>
             <th>salary</th>
             <th>bank_detail</th>
           </tr>
-        </thead>
         {
           data.map((data) =>
-            <tbody>
               <tr>
                 <td>{data.user_id}</td>
                 <td>{data.salary}</td>
                 <td>{data.bank_detail}</td>
               </tr>
-            </tbody>
           )
         }
       </table>

@@ -26,22 +26,18 @@ function Department() {
 
     const [data, setdata] = useState([])
     return (
-        <div className='table-responsive'>
-            <table className='table table-bordered border' border="1">
-                <thead>
+        <div>
+            <table className='responstable'>
                     <tr>
                         <th>dep_name</th>
                         <th>description</th>
                     </tr>
-                </thead>
                 {
                     data.map((data) =>
-                        <tbody>
                             <tr>
                                 <td>{data.dep_name}</td>
                                 <td>{data.description}</td>
                             </tr>
-                        </tbody>
                     )
                 }
             </table>

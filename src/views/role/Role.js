@@ -26,20 +26,16 @@ const Role = () => {
 
   // console.log(data);
   return (
-    <div className='table-responsive'>
-      <table className='table table-bordered border' border="1">
-        <thead>
+    <div>
+      <table className='responstable'>
           <tr>
             <th>role_name</th>
           </tr>
-        </thead>
         {
           data.map((data) =>
-            <tbody>
               <tr>
                 <td>{data.role_name}</td>
               </tr>
-            </tbody>
           )
         }
       </table>

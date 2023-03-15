@@ -25,22 +25,18 @@ const State = () => {
 
     const [data, setdata] = useState([])
     return (
-        <div className='table-responsive'>
-            <table className='table table-bordered border' border="1">
-                <thead>
+        <div>
+            <table className='responstable'>
                     <tr>
                         <th>state_name</th>
                         <th>country_id</th>
                     </tr>
-                </thead>
                 {
                     data.map((data) =>
-                        <tbody>
                             <tr>
                                 <td>{data.state_name}</td>
                                 <td>{data.country_id}</td>
                             </tr>
-                        </tbody>
                     )
                 }
             </table>

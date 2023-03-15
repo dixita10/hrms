@@ -27,22 +27,18 @@ const Technology = () => {
 
   // console.log(data);
   return (
-    <div className='table-responsive'>
-      <table className='table table-bordered border' border="1">
-        <thead>
+    <div>
+      <table className='responstable'>
           <tr>
             <th>tec_name</th>
             <th>dep_id</th>
           </tr>
-        </thead>
         {
           data.map((data) =>
-            <tbody>
               <tr>
                 <td>{data.tec_name}</td>
                 <td>{data.dep_id}</td>
               </tr>
-            </tbody>
           )
         }
       </table>

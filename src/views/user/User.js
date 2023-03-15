@@ -26,41 +26,37 @@ const User = () => {
 
   // console.log(data);
   return (
-    <div className='table-responsive'>
-      <table className='table table-bordered border' border="1">
-        <thead>
-          <tr>
-            <th>user_id</th>
-            <th>name</th>
-            <th>email</th>
-            <th>username</th>
-            <th>password</th>
-            <th>city_id</th>
-            <th>address</th>
-            <th>birth_date</th>
-            <th>age</th>
-            <th>gender</th>
-            <th>role_id</th>
-          </tr>
-        </thead>
+    <div>
+      <table className='responstable'>
+        <tr>
+          <th>user_id</th>
+          <th>name</th>
+          <th>email</th>
+          <th>username</th>
+          <th>password</th>
+          <th>city_id</th>
+          <th>address</th>
+          <th>birth_date</th>
+          <th>age</th>
+          <th>gender</th>
+          <th>role_id</th>
+        </tr>
         {
           data.map((data) =>
-            <tbody>
-              <tr>
-                <td>{data.user_id}</td>
-                <td>{data.name}</td>
-                <td>{data.email}</td>
-                <td>{data.username}</td>
-                <td>{data.password}</td>
-                <td>{data.city_id}</td>
-                <td>{data.address}</td>
-                <td>{data.birth_date}</td>
-                <td>{data.age}</td>
-                <td>{data.gender}</td>
-                <td>{data.role_id}</td>
+            <tr>
+              <td>{data.user_id}</td>
+              <td>{data.name}</td>
+              <td>{data.email}</td>
+              <td>{data.username}</td>
+              <td>{data.password}</td>
+              <td>{data.city_id}</td>
+              <td>{data.address}</td>
+              <td>{data.birth_date}</td>
+              <td>{data.age}</td>
+              <td>{data.gender}</td>
+              <td>{data.role_id}</td>
 
-              </tr>
-            </tbody>
+            </tr>
           )
         }
       </table>

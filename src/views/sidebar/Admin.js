@@ -49,27 +49,23 @@ function Admin() {
     return (
         <div>
             <div className='table-responsive'>
-                <table className='table table-bordered border' border="1">
-                    <thead>
-                        <tr>
-                            <th>Admin_name</th>
-                            <th>Email</th>
-                            <th>Contact</th>
-                            <th>User_name</th>
-                            <th>Password</th><br />
-                        </tr>
-                    </thead>
+                <table className='responstable'>
+                    <tr>
+                        <th>Admin_name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>User_name</th>
+                        <th>Password</th><br />
+                    </tr>
                     {
                         data.map((data, index) =>
-                            <tbody>
-                                <tr key={index}>
-                                    <td>{data.admin_name}</td>
-                                    <td>{data.email}</td>
-                                    <td>{data.contact}</td>
-                                    <td>{data.user_name}</td>
-                                    <td>{data.password}</td>
-                                </tr>
-                            </tbody>
+                            <tr key={index} style={{ fontSize: '15px' }}>
+                                <td>{data.admin_name}</td>
+                                <td>{data.email}</td>
+                                <td>{data.contact}</td>
+                                <td>{data.user_name}</td>
+                                <td >{data.password}</td>
+                            </tr>
                         )
                     }
                 </table>
@@ -78,7 +74,7 @@ function Admin() {
                 previousLabel="< previous"
                 nextLabel="next >"
                 breakLabel="..."
-                pageCount={25}
+                pageCount={20}
                 pageRangeDisplayed={5}
                 marginPagesDisplayed={3}
                 onPageChange={handlePageClick}
