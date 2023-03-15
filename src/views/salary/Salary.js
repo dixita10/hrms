@@ -8,7 +8,7 @@ const Salary = () => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:1010/salary/findallsalary',
+      url: `${process.env.REACT_APP_URL}/salary/findallsalary`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -28,18 +28,18 @@ const Salary = () => {
   return (
     <div>
       <table className='responstable'>
-          <tr>
-            <th>user_id</th>
-            <th>salary</th>
-            <th>bank_detail</th>
-          </tr>
+        <tr>
+          <th>user_id</th>
+          <th>salary</th>
+          <th>bank_detail</th>
+        </tr>
         {
           data.map((data) =>
-              <tr>
-                <td>{data.user_id}</td>
-                <td>{data.salary}</td>
-                <td>{data.bank_detail}</td>
-              </tr>
+            <tr>
+              <td>{data.user_id}</td>
+              <td>{data.salary}</td>
+              <td>{data.bank_detail}</td>
+            </tr>
           )
         }
       </table>

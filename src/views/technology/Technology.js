@@ -8,7 +8,7 @@ const Technology = () => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:1010/technology/findalltechnology',
+      url: `${process.env.REACT_APP_URL}/technology/findalltechnology`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -21,7 +21,7 @@ const Technology = () => {
       })
 
   }, [])
- 
+
 
   const [data, setdata] = useState([])
 
@@ -29,16 +29,16 @@ const Technology = () => {
   return (
     <div>
       <table className='responstable'>
-          <tr>
-            <th>tec_name</th>
-            <th>dep_id</th>
-          </tr>
+        <tr>
+          <th>tec_name</th>
+          <th>dep_id</th>
+        </tr>
         {
           data.map((data) =>
-              <tr>
-                <td>{data.tec_name}</td>
-                <td>{data.dep_id}</td>
-              </tr>
+            <tr>
+              <td>{data.tec_name}</td>
+              <td>{data.dep_id}</td>
+            </tr>
           )
         }
       </table>

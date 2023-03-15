@@ -70,7 +70,7 @@ const Routes = [
   { path: "/salary", name: 'Salary', component: salary },
   { path: "/technology", name: 'Technology', component: technology },
   { path: "/user", name: 'User', component: user },
-  {path:'/Singleattendance' , name:"Singleattendance" , component: Singleattendance},
+  {path:'/Singleattendance/:id' , name:"Singleattendance" , component: Singleattendance},
 
 
 

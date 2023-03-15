@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 const User = () => {
   useEffect(() => {
@@ -7,7 +8,7 @@ const User = () => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:1010/user/findalluser',
+      url: `${process.env.REACT_APP_URL}/user/findalluser`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -51,7 +52,7 @@ const User = () => {
               <td>{data.password}</td>
               <td>{data.city_id}</td>
               <td>{data.address}</td>
-              <td>{data.birth_date}</td>
+              <td>{moment(data.birth_date).format("LLL")}</td>
               <td>{data.age}</td>
               <td>{data.gender}</td>
               <td>{data.role_id}</td>

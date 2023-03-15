@@ -7,7 +7,7 @@ function Department() {
 
         axios({
             method: 'GET',
-            url: 'http://localhost:1010/department/findalldepartment',
+            url: `${process.env.REACT_APP_URL}/department/findalldepartment`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -18,7 +18,7 @@ function Department() {
                 // console.log("response", response);
                 setdata(response.data.data)
             })
-            .catch((error)=>{
+            .catch((error) => {
                 console.log(error);
             })
 
@@ -28,16 +28,16 @@ function Department() {
     return (
         <div>
             <table className='responstable'>
-                    <tr>
-                        <th>dep_name</th>
-                        <th>description</th>
-                    </tr>
+                <tr>
+                    <th>dep_name</th>
+                    <th>description</th>
+                </tr>
                 {
                     data.map((data) =>
-                            <tr>
-                                <td>{data.dep_name}</td>
-                                <td>{data.description}</td>
-                            </tr>
+                        <tr>
+                            <td>{data.dep_name}</td>
+                            <td>{data.description}</td>
+                        </tr>
                     )
                 }
             </table>

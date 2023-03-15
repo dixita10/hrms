@@ -68,7 +68,7 @@ class App extends Component {
             <Route exact path="/salary" name="Salary" render={(props) => <Salary {...props} />} />
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
-            <Route exact path="/Singleattendance" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
+            <Route exact path="/Singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
 
           </Switch>
         </React.Suspense>

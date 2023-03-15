@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory, Link } from "react-router-dom";
+import moment from "moment";
 
 function Attendance() {
-
 
     const handleClick = () => {
 
@@ -11,7 +11,7 @@ function Attendance() {
 
         axios({
             method: 'GET',
-            url: 'http://localhost:1010/attendance/findallattendance',
+            url: `${process.env.REACT_APP_URL}/attendance/findallattendance`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -31,6 +31,7 @@ function Attendance() {
         handleClick()
     }, [])
 
+
     const [data, setdata] = useState([])
     // console.log(data);
     return (
@@ -47,16 +48,11 @@ function Attendance() {
                     data.map((data) =>
                         <tr>
                             <td>{data.user_id}</td>
-                            <td>{data.intime}</td>
-                            <td>{data.outtime}</td>
+                            <td>{moment(data.intime).format("LLL")}</td>
+                            <td>{moment(data.outtime).format("LLL")}</td>
                             <td>{data.remark}</td>
-                            {/* <td>
-                                    <button onClick={handleClick(data.user_id)}>
-                                        view
-                                    </button>
-                                </td> */}
-                            {/* <td><Link to={`/Singleattendance/${data.user_id}`}><button>view</button></Link></td> */}
-                            <td><Link to={'/Singleattendance'}><button type="button" className="btn btn-outline-secondary">view</button></Link></td>
+                            <td><Link to={`/Singleattendance/${data.user_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td>
+                            {/* <td><Link to={'/Singleattendance'}><button type="button" className="btn btn-outline-secondary">view</button></Link></td> */}
 
                         </tr>
                     )

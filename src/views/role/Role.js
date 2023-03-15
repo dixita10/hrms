@@ -7,7 +7,7 @@ const Role = () => {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:1010/role/findallrole',
+      url: `${process.env.REACT_APP_URL}/role/findallrole`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -20,7 +20,7 @@ const Role = () => {
       })
 
   }, [])
- 
+
 
   const [data, setdata] = useState([])
 
@@ -28,14 +28,14 @@ const Role = () => {
   return (
     <div>
       <table className='responstable'>
-          <tr>
-            <th>role_name</th>
-          </tr>
+        <tr>
+          <th>role_name</th>
+        </tr>
         {
           data.map((data) =>
-              <tr>
-                <td>{data.role_name}</td>
-              </tr>
+            <tr>
+              <td>{data.role_name}</td>
+            </tr>
           )
         }
       </table>

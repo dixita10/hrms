@@ -7,15 +7,15 @@ function Admin() {
     const [data, setdata] = useState([])
     // const [pageCount, setPageCount] =  useState()
 
-    const fetchComments = async (currentPage) => {
-        const res = await fetch(
-            'http://localhost:1010/admin/findalladmin'
-        );
-        const data = await res.json();
-        const total = res.headers.get('x-total-count');
-        console.log(total);
-        return data;
-    }
+    // const fetchComments = async (currentPage) => {
+    //     const res = await fetch(
+    //         'http://localhost:1010/admin/findalladmin'
+    //     );
+    //     const data = await res.json();
+    //     const total = res.headers.get('x-total-count');
+    //     console.log(total);
+    //     return data;
+    // }
 
     const handlePageClick = async (data) => {
         console.log(data.selected);
@@ -29,7 +29,7 @@ function Admin() {
 
         axios({
             method: 'GET',
-            url: 'http://localhost:1010/admin/findalladmin',
+            url: `${process.env.REACT_APP_URL}/admin/findalladmin`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

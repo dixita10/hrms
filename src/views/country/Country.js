@@ -8,7 +8,7 @@ const Country = () => {
 
         axios({
             method: 'GET',
-            url: 'http://localhost:1010/country/findallcountry',
+            url: `${process.env.REACT_APP_URL}/country/findallcountry`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -21,31 +21,31 @@ const Country = () => {
             })
 
     }, [])
-   
+
 
     const [data, setdata] = useState([])
     return (
         <div>
             <table className='responstable'>
-                    <tr>
-                        <th>country_name</th>
-                    </tr>
+                <tr>
+                    <th>country_name</th>
+                </tr>
                 {
                     data.map((data) =>
-                            <tr>
-                                <td>{data.country_name}</td>
-                            </tr>
+                        <tr>
+                            <td>{data.country_name}</td>
+                        </tr>
                     )
                 }
             </table>
         </div>
     )
 
-  return (
-    <div>
+    return (
+        <div>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Country

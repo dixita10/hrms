@@ -8,7 +8,7 @@ const City = () => {
 
         axios({
             method: 'GET',
-            url: 'http://localhost:1010/city/findallcity',
+            url: `${process.env.REACT_APP_URL}/city/findallcity`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
