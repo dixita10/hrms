@@ -40,11 +40,16 @@ const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
 
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
+const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
+const Adddepartment = React.lazy(() => import('./views/department/Adddepartment'))
+
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
 const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
+const Editdepartment = React.lazy(() => import('./views/department/Editdepartment'))
+
 
 
 
@@ -80,11 +85,15 @@ class App extends Component {
 
             <Route exact path="/Singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
             <Route exact path="/singleuser/:id" name="Singleuser" render={(props) => <Singleuser {...props} />} />
+            <Route exact path="/singledepartment/:id" name="Singledepartment" render={(props) => <Singledepartment {...props} />} />
+
 
             <Route exact path='/addattandance' name="Addattandance" render={(props) => <Addattandance {...props} />} />
-            <Route exact path='/editattandance/:id' name="Editattandance" render={(props) => <Editattandance {...props} />} />
-            <Route exact path='/aditadmin' name="Editadmin" render={(props) => <Editadmin {...props} />} />
+            <Route exact path='/adddepartment' name="Adddepartment" render={(props) => <Adddepartment {...props} />} />
 
+            <Route exact path='/editattandance/:id' name="Editattandance" render={(props) => <Editattandance {...props} />} />
+            <Route exact path='/editadmin/:id' name="Editadmin" render={(props) => <Editadmin {...props} />} />
+            <Route exact path='/editdepartment/:id' name="Editdepartment" render={(props) => <Editdepartment {...props} />} />
 
 
 

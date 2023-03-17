@@ -18,11 +18,17 @@ import CIcon from '@coreui/icons-react'
 import {
     cilLockLocked, cilUser, cilPhone
 } from '@coreui/icons'
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 import { identity } from 'lodash'
 
 const Editadmin = () => {
+
+    var history = useHistory()
+
+    const { id } = useParams()
+    // console.log(id);
 
     const [data, setData] = useState({
         admin_name: '',
@@ -51,7 +57,7 @@ const Editadmin = () => {
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/admin/updateadmin/2`,
+            url: `${process.env.REACT_APP_URL}/admin/updateadmin/${id}`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -62,16 +68,22 @@ const Editadmin = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // toast.success(response.data.message)
-                    // history.push("/attendance")
+                    // history.push("/admin")
                     console.log(response);
                 }
             })
-        // .catch((error) => {
-        //     console.log(error);
-        //     toast.error(error.response.data.message)
-        // })
+            .catch((error) => {
+                console.log(error);
+                // if (error.response.status === false) {
+                //     toast.error(error.response.data.message.email);
+                // }
+                // if (error.response.status === false) {
+                //     toast.error(error.response.data.message.contact);
+                // }
+                toast.error(error.response.data.message)
+            })
     }
-console.log(data);
+    // console.log(data);
 
     return (
         <div>

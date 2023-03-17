@@ -49,7 +49,7 @@ function Attendance() {
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <Link to={'/addattandance'}>
-                    <button class="btn btn-outline-dark" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+                    <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
             </div>
             <table className='responstable'>

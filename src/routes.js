@@ -22,11 +22,14 @@ const user = React.lazy(() => import('./views/user/User'))
 
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
+const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
+const Adddepartment = React.lazy(() => import('./views/department/Adddepartment'))
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
 const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
+const Editdepartment = React.lazy(() => import('./views/department/Editdepartment'))
 
 
 
@@ -82,7 +85,13 @@ const Routes = [
   { path: '/singleuser/:id', name: 'Singleuser', component: Singleuser },
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
-  { path: '/editadmin', name: 'Editadmin', component: Editadmin }
+  { path: '/editadmin/:id', name: 'Editadmin', component: Editadmin },
+  { path: '/adddepartment', name: 'Adddepartment', component: Adddepartment },
+  { path: '/singledepartment/:id', name: 'Singledepartment', component: Singledepartment },
+  { path: '/editdepartment/:id', name: 'Editdepartment', component: Editdepartment }
+
+
+
 
 
 

@@ -35,6 +35,8 @@ const Login = () => {
 
   }
   const handleSubmit = (e) => {
+    var token = localStorage.getItem('token')
+
     e.preventDefault();
 
     var passData = {
@@ -50,6 +52,7 @@ const Login = () => {
       data: passData,
       headers: {
         "Content-Type": "application/json",
+        Authorization: token,
         Accept: "application/json",
       },
     })

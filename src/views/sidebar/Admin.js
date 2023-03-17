@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Admin() {
 
     const [data, setdata] = useState([])
     const [pageCount, setPageCount] = useState(1)
+    
     // console.log(pageCount);
     // const [count, setcount] = useState()
     const pageSize = 1;
 
-    useEffect(() => {
+    const getrecord = () => {
         var token = localStorage.getItem('token')
         axios({
             method: 'GET',
@@ -23,13 +25,20 @@ function Admin() {
             },
         })
             .then((response) => {
-                console.log("response", response);
-                setdata(response.data.data)
-
+                // console.log("response", response);
+                if (response.status === 200) {
+                    setdata(response.data.data)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
             })
 
+    }
+    useEffect(() => {
+        getrecord()
     }, [pageCount])
-    console.log(data);
+
     // const fetchComments = async (currentPage) => {
 
     //     var token = localStorage.getItem('token')
@@ -56,7 +65,42 @@ function Admin() {
         // let currentPage = data.selected + 1
     }
 
-    // console.log(data);
+    const handleDelete = (admin_id) => {
+
+        var passData = {
+            admin_name: data.admin_name,
+            email: data.email,
+            contact: data.contact,
+            user_name: data.user_name,
+            password: data.password,
+        }
+        //   console.log(admin_id);
+        var token = localStorage.getItem('token')
+        axios({
+            method: 'DElETE',
+            url: `${process.env.REACT_APP_URL}/admin/deleteadmin/${admin_id}`,
+            data: passData,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                console.log(response.data);
+                if (response.status === 200) {
+                    getrecord()
+                    toast.success(response.data.message)
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error(error.response.data.message)
+            })
+
+    }
+
 
     return (
         <div>
@@ -79,7 +123,10 @@ function Admin() {
                                 <td>{data.contact}</td>
                                 <td>{data.user_name}</td>
                                 <td>{data.password}</td>
-                                <td><Link to={'/editadmin'}><button className='btn btn-outline-primary'>Edit</button></Link></td>
+                                <td>
+                                    <Link to={`/editadmin/${data.admin_id}`}><button className='btn btn-outline-primary mx-3 m-md-3'>Edit</button></Link>
+                                    <button className='btn btn-outline-danger' onClick={() => handleDelete(data.admin_id)}>Delete</button>
+                                </td>
                             </tr>
                         )
                     }
@@ -104,7 +151,7 @@ function Admin() {
                 breakLinkClassName={'page-link'}
                 activeClassName={'active'}
             />
-
+            <ToastContainer autoClose={2000} />
         </div>
     )
 }

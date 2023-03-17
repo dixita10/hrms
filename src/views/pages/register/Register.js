@@ -17,7 +17,7 @@ import {
 } from '@coreui/icons'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
-import { toast, ToastContainer} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
@@ -32,12 +32,14 @@ const Register = () => {
     password: '',
   })
 
+
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
+
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    // toast.success('successful', { autoClose: 3000 })
 
     var passData = {
       admin_name: data.admin_name,
@@ -60,10 +62,14 @@ const Register = () => {
         if (response.status === 200) {
           toast.success(response.data.message)
           history.push("/login");
+          console.log(response);
         }
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === false) {
+          toast.error(error.response.data.message);
+        }
         // if (error.response.status === false) {
         //   toast.error(error.response.data.message.contact)
         // }
@@ -73,15 +79,15 @@ const Register = () => {
         // if (error.response.data.status === 500) {
         //   toast.error("phone no dublicated")
         // }
-        // toast.warning(error.response.data.message);
       })
+
   }
   // console.log("data", data);
 
   // const navigate = useNavigate();
   // let history = useHistory();
 
-  // const initialValues = {
+  // const initialvalues = {
   //   name: "",
   //   email: "",
   //   phno: "",

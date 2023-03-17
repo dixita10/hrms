@@ -56,7 +56,7 @@
 .responstable td {
     display: block;
     word-wrap: break-word;
-    max-width: 7em;
+    max-width: 1rem;
 }
 
 .responstable td:first-child {
