@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 const User = () => {
   useEffect(() => {
@@ -30,7 +31,6 @@ const User = () => {
     <div>
       <table className='responstable'>
         <tr>
-          <th>user_id</th>
           <th>name</th>
           <th>email</th>
           <th>username</th>
@@ -41,11 +41,11 @@ const User = () => {
           <th>age</th>
           <th>gender</th>
           <th>role_id</th>
+          <th>action</th>
         </tr>
         {
           data.map((data) =>
             <tr>
-              <td>{data.user_id}</td>
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.username}</td>
@@ -56,6 +56,7 @@ const User = () => {
               <td>{data.age}</td>
               <td>{data.gender}</td>
               <td>{data.role_id}</td>
+              <td><Link to={`/singleuser/${data.user_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td>
 
             </tr>
           )

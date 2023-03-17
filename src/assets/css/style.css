@@ -24,6 +24,7 @@
     background-color: #4d6a8d;
     color: #fff;
     padding: 1em;
+    text-transform: capitalize;
 }
 
 .responstable th:first-child {
@@ -84,6 +85,26 @@
     }
 }
 
+.HiPlusSm{
+    position: relative;
+    top: -2px!important;
+    left: 3px!important;
+}
+.datepicker{
+    width: 100%;
+    border-radius: 15px;
+}
+.react-datetime-picker__inputGroup{
+padding: 6px 10px !important;
+}    
+
+.react-datetime-picker__wrapper{
+    display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+        border-radius: 5px;
+    border: thin solid #ced4da !important;
+}
 
 /* home register */
 .home_form label{

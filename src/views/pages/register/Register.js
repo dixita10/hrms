@@ -46,6 +46,7 @@ const Register = () => {
       user_name: data.user_name,
       password: data.password
     }
+
     axios({
       method: 'POST',
       url: "http://localhost:1010/auth/register",
@@ -243,6 +244,8 @@ const Register = () => {
         </CRow>
 
       </CContainer>
+      <ToastContainer autoClose={2000} />
+
     </div >
   )
 }

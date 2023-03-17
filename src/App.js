@@ -5,6 +5,7 @@ import './scss/style.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
+// import Addattandance from './views/attendance/Addattandance';
 // import Department from './views/department/Department';
 
 const loading = (
@@ -37,7 +38,15 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
 
-const Singleattendance = React.lazy(()=> import('./views/attendance/Singleattendance'))
+const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
+const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
+
+const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
+
+const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
+const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
+
+
 
 class App extends Component {
   render() {
@@ -68,7 +77,16 @@ class App extends Component {
             <Route exact path="/salary" name="Salary" render={(props) => <Salary {...props} />} />
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
+
             <Route exact path="/Singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
+            <Route exact path="/singleuser/:id" name="Singleuser" render={(props) => <Singleuser {...props} />} />
+
+            <Route exact path='/addattandance' name="Addattandance" render={(props) => <Addattandance {...props} />} />
+            <Route exact path='/editattandance/:id' name="Editattandance" render={(props) => <Editattandance {...props} />} />
+            <Route exact path='/aditadmin' name="Editadmin" render={(props) => <Editadmin {...props} />} />
+
+
+
 
           </Switch>
         </React.Suspense>

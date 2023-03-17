@@ -19,7 +19,15 @@ const role = React.lazy(() => import('./views/role/Role'))
 const salary = React.lazy(() => import('./views/salary/Salary'))
 const technology = React.lazy(() => import('./views/technology/Technology'))
 const user = React.lazy(() => import('./views/user/User'))
-const Singleattendance = React.lazy(()=> import('./views/attendance/Singleattendance'))
+
+const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
+const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
+
+const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
+
+const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
+const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
+
 
 
 // const AllEndUsers = React.lazy(() => import('./views/users/AllEndUser'))
@@ -70,7 +78,11 @@ const Routes = [
   { path: "/salary", name: 'Salary', component: salary },
   { path: "/technology", name: 'Technology', component: technology },
   { path: "/user", name: 'User', component: user },
-  {path:'/Singleattendance/:id' , name:"Singleattendance" , component: Singleattendance},
+  { path: '/Singleattendance/:id', name: "Singleattendance", component: Singleattendance },
+  { path: '/singleuser/:id', name: 'Singleuser', component: Singleuser },
+  { path: '/addattandance', name: 'Addattandance', component: Addattandance },
+  { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
+  { path: '/editadmin', name: 'Editadmin', component: Editadmin }
 
 
 
