@@ -51,7 +51,7 @@ const Register = () => {
 
     axios({
       method: 'POST',
-      url: "http://localhost:1010/auth/register",
+      url: `${process.env.REACT_APP_URL}/auth/register`,
       data: passData,
       headers: {
         "Content-Type": "application/json",

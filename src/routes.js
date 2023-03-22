@@ -23,13 +23,27 @@ const user = React.lazy(() => import('./views/user/User'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
 const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
+const Singlecountry = React.lazy(() => import('./views/country/Singlecountry'))
+const Singlestate = React.lazy(() => import('./views/state/Singlestate'))
+const Singlecity = React.lazy(() => import('./views/city/Singlecity'))
+const Singleproject = React.lazy(() => import('./views/project/Singleproject'))
+
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
 const Adddepartment = React.lazy(() => import('./views/department/Adddepartment'))
+const Addcountry = React.lazy(() => import('./views/country/Addcountry'))
+const Addstate = React.lazy(() => import('./views/state/Addstate'))
+const Addcity = React.lazy(() => import('./views/city/Addcity'))
+const Addproject = React.lazy(() => import('./views/project/Addproject'))
+
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
 const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
 const Editdepartment = React.lazy(() => import('./views/department/Editdepartment'))
+const Editcountry = React.lazy(() => import('./views/country/Editcountry'))
+const Editstate = React.lazy(() => import('./views/state/Editstate'))
+const Editcity = React.lazy(() => import('./views/city/Editcity'))
+const Editproject = React.lazy(() => import('./views/project/Editproject'))
 
 
 
@@ -71,7 +85,6 @@ const Routes = [
   { path: '/home', name: 'Home', component: home1 },
   { path: '/admin', name: 'Admin', component: sidebar },
   { path: '/attendance', name: 'Attendance', component: attendance },
-  // { path: '/attendance/:id', name: 'Attendance', component: attendance },
   { path: '/department', name: 'Department', component: department },
   { path: '/state', name: "State", component: state },
   { path: '/city', name: 'City', component: city },
@@ -81,19 +94,31 @@ const Routes = [
   { path: "/salary", name: 'Salary', component: salary },
   { path: "/technology", name: 'Technology', component: technology },
   { path: "/user", name: 'User', component: user },
-  { path: '/Singleattendance/:id', name: "Singleattendance", component: Singleattendance },
-  { path: '/singleuser/:id', name: 'Singleuser', component: Singleuser },
+
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
+  { path: '/adddepartment', name: 'Adddepartment', component: Adddepartment },
+  { path: '/addcountry', name: 'Addcountry', component: Addcountry },
+  { path: '/addstate', name: 'Addstate', component: Addstate },
+  { path: '/addcity', name: 'Addcity', component: Addcity },
+  { path: '/addproject', name: 'Addproject', component: Addproject },
+
+
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
   { path: '/editadmin/:id', name: 'Editadmin', component: Editadmin },
-  { path: '/adddepartment', name: 'Adddepartment', component: Adddepartment },
+  { path: '/editdepartment/:id', name: 'Editdepartment', component: Editdepartment },
+  { path: '/editcountry/:id', name: 'Editcountry', component: Editcountry },
+  { path: '/editstate/:id', name: 'Editstate', component: Editstate },
+  { path: '/editcity/:id', name: 'Editcity', component: Editcity },
+  { path: '/editproject/:id', name: 'Editproject', component: Editproject },
+
+
+  { path: '/Singleattendance/:id', name: "Singleattendance", component: Singleattendance },
+  { path: '/singleuser/:id', name: 'Singleuser', component: Singleuser },
   { path: '/singledepartment/:id', name: 'Singledepartment', component: Singledepartment },
-  { path: '/editdepartment/:id', name: 'Editdepartment', component: Editdepartment }
-
-
-
-
-
+  { path: '/singlecountry/:id', name: 'Singlecountry', component: Singlecountry },
+  { path: '/singlestate/:id', name: 'Singlestate', component: Singlestate },
+  { path: '/singlecity/:id', name: 'Singlecity', component: Singlecity },
+  { path: '/singleproject/:id', name: 'Singleproject', component: Singleproject },
 
 
 

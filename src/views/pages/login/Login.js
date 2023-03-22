@@ -48,7 +48,7 @@ const Login = () => {
 
     axios({
       method: 'POST',
-      url: "http://localhost:1010/auth/login",
+      url: `${process.env.REACT_APP_URL}/auth/login`,
       data: passData,
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,10 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        if (error.response.status === false) {
+          toast.error(error.response.data.message);
+        }
       })
   }
 

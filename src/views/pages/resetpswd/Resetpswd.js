@@ -48,7 +48,7 @@ function resetpswd() {
 
     axios({
       method: 'POST',
-      url: "http://localhost:1010/auth/resetpassword",
+      url: `${process.env.REACT_APP_URL}/auth/resetpassword`,
       data: passData,
       headers: {
         "Content-Type": "application/json",
@@ -128,7 +128,7 @@ function resetpswd() {
                           Login
                         </CButton>
                       </CCol>
-                     
+
                       {/* <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
                           Forgot password?

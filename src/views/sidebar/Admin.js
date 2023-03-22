@@ -111,7 +111,7 @@ function Admin() {
                         <th>Email</th>
                         <th>Contact</th>
                         <th>User_name</th>
-                        <th>Password</th>
+                        {/* <th>Password</th> */}
                         <th>Action</th><br />
 
                     </tr>
@@ -122,7 +122,7 @@ function Admin() {
                                 <td>{data.email}</td>
                                 <td>{data.contact}</td>
                                 <td>{data.user_name}</td>
-                                <td>{data.password}</td>
+                                {/* <td>{data.password}</td> */}
                                 <td>
                                     <Link to={`/editadmin/${data.admin_id}`}><button className='btn btn-outline-primary mx-3 m-md-3'>Edit</button></Link>
                                     <button className='btn btn-outline-danger' onClick={() => handleDelete(data.admin_id)}>Delete</button>

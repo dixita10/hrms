@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import {
     CButton,
     CCard,
@@ -20,20 +20,15 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-import { identity } from 'lodash'
 
 
-const Editattandance = () => {
-    const { id } = useParams();
-    // console.log(id);
+const Addcity = () => {
 
     var history = useHistory();
 
     const [data, setData] = useState({
-        user_id: '',
-        intime: '',
-        outtime: '',
-        remark: '',
+        city_name: '',
+        state_id: '',
     })
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
@@ -45,15 +40,13 @@ const Editattandance = () => {
         var token = localStorage.getItem('token')
 
         var passData = {
-            user_id: data.user_id,
-            intime: data.intime,
-            outtime: data.outtime,
-            remark: data.remark,
+            city_name: data.city_name,
+            state_id: data.state_id,
         }
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/attendance/updateattendance/${id}`,
+            url: `${process.env.REACT_APP_URL}/city/addcity`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -64,15 +57,16 @@ const Editattandance = () => {
             .then((response) => {
                 if (response.status === 200) {
                     toast.success(response.data.message)
-                    history.push("/attendance")
-                    console.log(response);
+                    history.push("/city")
+                    // console.log(response);
                 }
             })
-        .catch((error) => {
-            // console.log(error);
-            toast.error(error.response.data.message)
-        })
+            .catch((error) => {
+                console.log(error);
+                toast.error(error.response.data.message)
+            })
     }
+
 
     return (
         <div>
@@ -84,39 +78,26 @@ const Editattandance = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Edit Attendance</h3><br />
+                                        <h3 className='text-center'>Add City</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
-                                                value={data.user_id}
+                                            <CFormInput placeholder="city_name" autoComplete="city_name" name="city_name"
+                                                value={data.city_name}
                                                 onChange={handleChange} />
-                                        </CInputGroup>
-
-                                        <CInputGroup className="mb-3">
-                                            <CInputGroupText>
-                                                <BiTimeFive />
-                                            </CInputGroupText>
-                                            <CFormInput type="datetime-local" placeholder='intime' autoComplete='intime' name='intime' value={data.intime} onChange={handleChange} />
-                                        </CInputGroup>
-                                        <CInputGroup className="mb-3">
-                                            <CInputGroupText>
-                                                <BiTimeFive />
-                                            </CInputGroupText>
-                                            <CFormInput type="datetime-local" placeholder='outtime' autoComplete='outtime' name='outtime' value={data.outtime} onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <BiCommentCheck />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="remark" autoComplete="remark" name="remark"
-                                                value={data.remark}
+                                            <CFormInput placeholder="state_id" autoComplete="state_id" name="state_id"
+                                                value={data.state_id}
                                                 onChange={handleChange} />
                                         </CInputGroup>
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Add Attendance</CButton>
+                                            <CButton color="success" type='submit'>Add City</CButton>
                                         </div>
 
 
@@ -136,4 +117,4 @@ const Editattandance = () => {
     )
 }
 
-export default Editattandance
+export default Addcity

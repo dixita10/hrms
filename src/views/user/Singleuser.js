@@ -34,7 +34,6 @@ const singleuser = () => {
                     <th>name</th>
                     <th>email</th>
                     <th>username</th>
-                    <th>password</th>
                     <th>city_id</th>
                     <th>address</th>
                     <th>birth_date</th>
@@ -48,7 +47,6 @@ const singleuser = () => {
                             <td>{data.name}</td>
                             <td>{data.email}</td>
                             <td>{data.username}</td>
-                            <td>{data.password}</td>
                             <td>{data.city_id}</td>
                             <td>{data.address}</td>
                             <td>{moment(data.birth_date).format("LLL")}</td>

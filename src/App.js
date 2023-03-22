@@ -41,14 +41,29 @@ const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
 const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
+const Singlecountry = React.lazy(() => import('./views/country/Singlecountry'))
+const Singlestate = React.lazy(() => import('./views/state/Singlestate'))
+const Singlecity = React.lazy(() => import('./views/city/Singlecity'))
+const Singleproject = React.lazy(() => import('./views/project/Singleproject'))
+
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
 const Adddepartment = React.lazy(() => import('./views/department/Adddepartment'))
+const Addcountry = React.lazy(() => import('./views/country/Addcountry'))
+const Addstate = React.lazy(() => import('./views/state/Addstate'))
+const Addcity = React.lazy(() => import('./views/city/Addcity'))
+const Addproject = React.lazy(() => import('./views/project/Addproject'))
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
 const Editadmin = React.lazy(() => import('./views/sidebar/Editadmin'))
 const Editdepartment = React.lazy(() => import('./views/department/Editdepartment'))
+const Editcountry = React.lazy(() => import('./views/country/Editcountry'))
+const Editstate = React.lazy(() => import('./views/state/Editstate'))
+const Editcity = React.lazy(() => import('./views/city/Editcity'))
+const Editproject = React.lazy(() => import('./views/project/Editproject'))
+
+
 
 
 
@@ -86,14 +101,31 @@ class App extends Component {
             <Route exact path="/Singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
             <Route exact path="/singleuser/:id" name="Singleuser" render={(props) => <Singleuser {...props} />} />
             <Route exact path="/singledepartment/:id" name="Singledepartment" render={(props) => <Singledepartment {...props} />} />
+            <Route exact path="/singlecountry/:id " name="Singlecountry" render={(props) => <Singlecountry {...props} />} />
+            <Route exact path="/singlestate/:id " name="Singlestate" render={(props) => <Singlestate {...props} />} />
+            <Route exact path="/singlecity/:id " name="Singlecity" render={(props) => <Singlecity {...props} />} />
+            <Route exact path="/singleproject/:id " name="Singleproject" render={(props) => <Singleproject {...props} />} />
+
 
 
             <Route exact path='/addattandance' name="Addattandance" render={(props) => <Addattandance {...props} />} />
             <Route exact path='/adddepartment' name="Adddepartment" render={(props) => <Adddepartment {...props} />} />
+            <Route exact path='/addcountry' name="Addcountry" render={(props) => <Addcountry {...props} />} />
+            <Route exact path='/addstate' name="Addstate" render={(props) => <Addstate {...props} />} />
+            <Route exact path='/addcity' name="Addcity" render={(props) => <Addcity {...props} />} />
+            <Route exact path='/addproject' name="Addproject" render={(props) => <Addproject {...props} />} />
+
+
 
             <Route exact path='/editattandance/:id' name="Editattandance" render={(props) => <Editattandance {...props} />} />
             <Route exact path='/editadmin/:id' name="Editadmin" render={(props) => <Editadmin {...props} />} />
             <Route exact path='/editdepartment/:id' name="Editdepartment" render={(props) => <Editdepartment {...props} />} />
+            <Route exact path='/editcountry/:id' name="Editcountry" render={(props) => <Editcountry {...props} />} />
+            <Route exact path='/editstate/:id' name="Editstate" render={(props) => <Editstate {...props} />} />
+            <Route exact path='/editcity/:id' name="Editcity" render={(props) => <Editcity {...props} />} />
+            <Route exact path='/editproject/:id' name="Editproject" render={(props) => <Editproject {...props} />} />
+
+
 
 
 

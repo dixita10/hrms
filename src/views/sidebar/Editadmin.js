@@ -23,8 +23,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 import { identity } from 'lodash'
 
-const Editadmin = () => {
-
+const Editadmin = (props) => {
+    console.log("props", props.match.params.id);
     var history = useHistory()
 
     const { id } = useParams()
@@ -40,7 +40,6 @@ const Editadmin = () => {
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
-
     }
 
     const handleSubmit = (e) => {
@@ -67,13 +66,13 @@ const Editadmin = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    // toast.success(response.data.message)
-                    // history.push("/admin")
-                    console.log(response);
+                    toast.success(response.data.message)
+                    history.push("/admin")
+                    // console.log(response);
                 }
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 // if (error.response.status === false) {
                 //     toast.error(error.response.data.message.email);
                 // }
@@ -95,13 +94,13 @@ const Editadmin = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Edit Attendance</h3><br />
+                                        <h3 className='text-center'>Edit Admin</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="admin_name" autoComplete="admin_name" name="admin_name"
-                                                value={data.admin_name}
+                                                defaultValue={data.admin_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
@@ -128,20 +127,10 @@ const Editadmin = () => {
                                                 value={data.user_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
-                                        <CInputGroup className="mb-3">
-                                            <CInputGroupText>
-                                                <CIcon icon={cilUser} />
-                                            </CInputGroupText>
-                                            <CFormInput placeholder="password" autoComplete="password" name="password"
-                                                value={data.password}
-                                                onChange={handleChange} />
-                                        </CInputGroup>
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Edit Attendance</CButton>
+                                            <CButton color="success" type='submit'>Edit Admin</CButton>
                                         </div>
-
-
 
                                     </CForm>
                                 </CCardBody>
