@@ -41,6 +41,7 @@ const City = () => {
         setPageCount(data.selected + 1)
         // let currentPage = data.selected + 1
     }
+    
 
     const handleDelete = (city_id) => {
 

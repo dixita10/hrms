@@ -23,8 +23,8 @@ const _nav = [
   // },
   {
     component: CNavItem,
-    name: 'Admin',
-    to: '/admin',
+    name: 'Profile',
+    to: '/profile',
     icon: <RiAdminLine className='nav-icon' />
   },
   {

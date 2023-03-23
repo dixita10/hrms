@@ -8,7 +8,7 @@ import Login from './views/pages/login/Login'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
 const home1 = React.lazy(() => import('./views/home1/Home'))
-const sidebar = React.lazy(() => import('./views/sidebar/Admin'))
+const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const attendance = React.lazy(() => import('./views/attendance/Attendance'))
 const department = React.lazy(() => import('./views/department/Department'))
 const state = React.lazy(() => import('./views/state/State'))
@@ -20,6 +20,7 @@ const salary = React.lazy(() => import('./views/salary/Salary'))
 const technology = React.lazy(() => import('./views/technology/Technology'))
 const user = React.lazy(() => import('./views/user/User'))
 
+const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
 const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
@@ -83,7 +84,7 @@ const Routes = [
   // <PrivateRoute path='/dashboard' component={Dashboard} name='Dashboard' />,
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/home', name: 'Home', component: home1 },
-  { path: '/admin', name: 'Admin', component: sidebar },
+  { path: '/profile', name: 'Profile', component: Profile },
   { path: '/attendance', name: 'Attendance', component: attendance },
   { path: '/department', name: 'Department', component: department },
   { path: '/state', name: "State", component: state },
@@ -112,13 +113,15 @@ const Routes = [
   { path: '/editproject/:id', name: 'Editproject', component: Editproject },
 
 
-  { path: '/Singleattendance/:id', name: "Singleattendance", component: Singleattendance },
+  { path: '/singleattendance/:id', name: "Singleattendance", component: Singleattendance },
   { path: '/singleuser/:id', name: 'Singleuser', component: Singleuser },
   { path: '/singledepartment/:id', name: 'Singledepartment', component: Singledepartment },
   { path: '/singlecountry/:id', name: 'Singlecountry', component: Singlecountry },
   { path: '/singlestate/:id', name: 'Singlestate', component: Singlestate },
   { path: '/singlecity/:id', name: 'Singlecity', component: Singlecity },
   { path: '/singleproject/:id', name: 'Singleproject', component: Singleproject },
+  { path: '/singleadmin/:id', name: 'Singleadmin', component: Singleadmin },
+
 
 
 

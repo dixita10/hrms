@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import moment from 'moment';
+import { MdEdit, MdDeleteForever } from "react-icons/md";
 
-const Singleattendance = () => {
 
+const singleadmin = () => {
     const { id } = useParams();
-    // console.log(id);
-
-    // const [data, setData] = useState({
-    //     user_id: user_id,
-    //     intime: '',
-    //     outtime: '',
-    //     remark: ''
-    // })
 
     const [data, setData] = useState([])
 
@@ -22,7 +14,7 @@ const Singleattendance = () => {
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/attendance/findoneattendance/${id}`,
+            url: `${process.env.REACT_APP_URL}/admin/findoneadmin/${id}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -30,42 +22,37 @@ const Singleattendance = () => {
             },
         })
             .then((response) => {
-                // console.log("response", response);
+                // console.log("response", response.data);
                 setData(response.data)
             })
-            .catch((error) =>{
-                console.log(error);
-            })
     }, [])
-
 
     return (
         <div>
             <table className='responstable'>
                 <tr>
-                    <th>user_id</th>
-                    <th>intime</th>
-                    <th>outtime</th>
-                    <th>remark</th>
+                    <th>admin_name</th>
+                    <th>email</th>
+                    <th>contact</th>
                     <th>user_name</th>
-                    <th>user_email</th>
+                    <th>city_id</th>
+                    <th>address</th>
                 </tr>
                 {
                     data.map((data) =>
                         <tr>
-                            <td>{data.user_id}</td>
-                            <td>{moment(data.intime).format("LLL")}</td>
-                            <td>{moment(data.outtime).format("LLL")}</td>
-                            <td>{data.remark}</td>
+                            <td>{data.admin_name}</td>
+                            <td>{data.email}</td>
+                            <td>{data.contact}</td>
                             <td>{data.user_name}</td>
-                            <td>{data.user_email}</td>
+                            <td>{data.city_id}</td>
+                            <td>{data.address}</td>
                         </tr>
                     )
                 }
             </table>
         </div>
     )
-
 }
 
-export default Singleattendance
+export default singleadmin

@@ -18,7 +18,7 @@ const loading = (
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
-const Admin = React.lazy(() => import('./views/sidebar/Admin'))
+const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const Attendance = React.lazy(() => import('./views/attendance/Attendance'))
 // const Attendance = React.lazy(() => import('./views/attendance/Attendance/:id'))
 const Department = React.lazy(() => import('./views/department/Department'))
@@ -38,6 +38,7 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
 
+const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
 const Singledepartment = React.lazy(() => import('./views/department/Singledepartment'))
@@ -85,7 +86,7 @@ class App extends Component {
             <Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
             <Route exact path="/resetpswd" name="Reset Password" render={(props) => <Resetpswd {...props} />} />
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
-            <Route exact path="/admin" name="Admin" render={(props) => <Admin {...props} />} />
+            <Route exact path="/profile" name="Profile" render={(props) => <Profile {...props} />} />
             <Route exact path="/attendance" name="Attendance" render={(props) => <Attendance {...props} />} />
             {/* <Route exact path="/attendance/:id" name="Attendance" render={(props) => <Attendance {...props} />}/> */}
             <Route exact path="/department" name="Department" render={(props) => <Department {...props} />} />
@@ -98,13 +99,15 @@ class App extends Component {
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
 
-            <Route exact path="/Singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
+            <Route exact path="/singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
             <Route exact path="/singleuser/:id" name="Singleuser" render={(props) => <Singleuser {...props} />} />
             <Route exact path="/singledepartment/:id" name="Singledepartment" render={(props) => <Singledepartment {...props} />} />
             <Route exact path="/singlecountry/:id " name="Singlecountry" render={(props) => <Singlecountry {...props} />} />
             <Route exact path="/singlestate/:id " name="Singlestate" render={(props) => <Singlestate {...props} />} />
             <Route exact path="/singlecity/:id " name="Singlecity" render={(props) => <Singlecity {...props} />} />
             <Route exact path="/singleproject/:id " name="Singleproject" render={(props) => <Singleproject {...props} />} />
+            <Route exact path="/singleadmin/:id " name="Singleadmin" render={(props) => <Singleadmin {...props} />} />
+
 
 
 

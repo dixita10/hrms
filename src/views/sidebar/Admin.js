@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+import { MdEdit, MdDeleteForever } from "react-icons/md";
+
 
 function Admin() {
 
+    const history = useHistory()
+
     const [data, setdata] = useState([])
+    // const [todosPerPage, settodosPerPage] = useState(5)
     const [pageCount, setPageCount] = useState(1)
-    
+
+    // const numOfTotalPages = Math.ceil(data.length / pageCount);
+    // const pages = [...Array[numOfTotalPages + 1].keys()].slice(1);
+
+    // const indexOflastdata = pageCount * todosPerPage;
+    // const indexOffirstdata = indexOflastdata - todosPerPage;
+
+    // const visibledata = data.slice(indexOffirstdata, indexOflastdata)
+
+
     // console.log(pageCount);
     // const [count, setcount] = useState()
-    const pageSize = 1;
 
     const getrecord = () => {
         var token = localStorage.getItem('token')
@@ -25,7 +39,7 @@ function Admin() {
             },
         })
             .then((response) => {
-                // console.log("response", response);
+                // console.log("response", response.data.data);
                 if (response.status === 200) {
                     setdata(response.data.data)
                 }
@@ -87,7 +101,7 @@ function Admin() {
             },
         })
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.status === 200) {
                     getrecord()
                     toast.success(response.data.message)
@@ -100,10 +114,84 @@ function Admin() {
             })
 
     }
+    const handleupdate = (admin_id) => {
+
+        history.push(`/editadmin/${admin_id}`)
+
+        // console.log(data.filter(data => data.admin_id === id));
+        // const update = data.filter(data => data.id === id)
+        // console.log(update)
+
+    }
 
 
     return (
         <div>
+            <div className='admin_profile'>
+                <div className='admin_div'>
+                    <div className='row'>
+                        <div className='col-md-9'>
+                            <h6>PERSONAL INFO</h6>
+                        </div>
+                        <div className='col-md-3'>
+                            <p style={{ fontSize: '24px' }}>
+                                <Link to={`/singleadmin/${data.admin_id}`}>
+                                    <FaEye style={{ marginRight: '25px', color: 'gray' }} />
+                                </Link>
+                                <MdEdit onClick={() => handleupdate(data.admin_id)} style={{ marginRight: '20px', color: '#0d6efd' }} />
+                                <MdDeleteForever onClick={() => handleDelete(data.admin_id)} style={{ color: 'red' }} />
+
+                            </p>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-md-3 admin'>
+                            <p style={{ fontWeight: 500 }}>Admin_name</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.admin_name}</p>)
+                            }
+                        </div>
+                        <div className='col-md-3'>
+                            <p>Email</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.email}</p>)
+                            }
+                        </div>
+                        <div className='col-md-3'>
+                            <p>Contact</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.contact}</p>)
+                            }
+                        </div>
+                        <div className='col-md-3'>
+                            <p>User_name</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.user_name}</p>)
+                            }
+                        </div>
+                        <div className='col-md-3'>
+                            <p>City_id</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.city_id}</p>)
+                            }
+                        </div>
+                        <div className='col-md-3'>
+                            <p>Address</p>
+                            {
+                                data.map((data) =>
+                                    <p>{data.address}</p>)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div className='table-responsive'>
                 <table className='responstable'>
                     <tr>
@@ -111,6 +199,8 @@ function Admin() {
                         <th>Email</th>
                         <th>Contact</th>
                         <th>User_name</th>
+                        <th>city_id</th>
+                        <th>address</th>
                         {/* <th>Password</th> */}
                         <th>Action</th><br />
 
@@ -122,16 +212,29 @@ function Admin() {
                                 <td>{data.email}</td>
                                 <td>{data.contact}</td>
                                 <td>{data.user_name}</td>
-                                {/* <td>{data.password}</td> */}
-                                <td>
-                                    <Link to={`/editadmin/${data.admin_id}`}><button className='btn btn-outline-primary mx-3 m-md-3'>Edit</button></Link>
-                                    <button className='btn btn-outline-danger' onClick={() => handleDelete(data.admin_id)}>Delete</button>
+                                <td>{data.city_id}</td>
+                                <td>{data.address}</td>
+                                <td style={{ fontSize: '24px' }}>
+                                    <Link to={`/singleadmin/${data.admin_id}`}>
+                                        <FaEye style={{ marginRight: '25px', color: 'gray' }} />
+                                    </Link>
+                                    <MdEdit onClick={() => handleupdate(data.admin_id)} style={{ marginRight: '20px', color: '#0d6efd' }} />
+                                    <MdDeleteForever onClick={() => handleDelete(data.admin_id)} style={{ color: 'red' }} />
+
                                 </td>
                             </tr>
                         )
                     }
                 </table>
             </div>
+            {/* <span>prev</span>
+            <p>
+                {pages.map((page) => (
+                    <span key={page}> {`${page} |`}</span>
+                ))}
+            </p>
+            <span>next</span> */}
+
             <ReactPaginate
                 previousLabel="< previous"
                 nextLabel="next >"

@@ -4,6 +4,10 @@ import { useHistory, Link } from "react-router-dom";
 import moment from "moment";
 import { HiPlusSm } from "react-icons/hi";
 import ReactPaginate from 'react-paginate';
+import { MdDeleteForever } from "react-icons/md";
+import { toast, ToastContainer } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+
 
 function Attendance() {
 
@@ -30,6 +34,9 @@ function Attendance() {
                 // history.push(`/attendance/${id}`);
                 setdata(response.data.data)
             })
+            .catch((error) => {
+                console.log(error);
+            })
 
     }
     const handlePageClick = async (data) => {
@@ -44,13 +51,51 @@ function Attendance() {
     }, [pageCount])
 
 
-    // console.log(data);
+    const handleDelete = (admin_id) => {
+
+        var passData = {
+            user_id: data.user_id,
+            intime: data.intime,
+            outtime: data.outtime,
+            remark: data.remark,
+            user_name: data.user_name,
+            user_email: data.user_email,
+        }
+
+        //   console.log(admin_id);
+        var token = localStorage.getItem('token')
+        axios({
+            method: 'DElETE',
+            url: `${process.env.REACT_APP_URL}/attendance/deleteattendance/${admin_id}`,
+            data: passData,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                // console.log(response.data);
+                if (response.status === 200) {
+                    handleClick()
+                    toast.success(response.data.message)
+                }
+
+            })
+        // .catch((error) => {
+        //     console.log(error);
+        //     toast.error(error.response.data.message)
+        // })
+
+    }
+    const handleclock = (id) => {
+        console.log(id);
+    }
+    // console.log(data[0]?.user_id);
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <Link to={'/addattandance'}>
-                    <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
-                </Link>
+                <button class="btn btn-primary" type="button" onClick={() => handleclock(data[0]?.user_id)}>clock-in</button>
             </div>
             <table className='responstable'>
                 <tr>
@@ -58,6 +103,8 @@ function Attendance() {
                     <th>intime</th>
                     <th>outtime</th>
                     <th>remark</th>
+                    <th>user_name</th>
+                    <th>user_email</th>
                     <th>action</th>
                 </tr>
                 {
@@ -67,9 +114,15 @@ function Attendance() {
                             <td>{moment(data.intime).format("LLL")}</td>
                             <td>{moment(data.outtime).format("LLL")}</td>
                             <td>{data.remark}</td>
-                            <td>
-                                <Link to={`/Singleattendance/${data.user_id}`}><button type="button" className="btn btn-outline-secondary mx-3">view</button></Link>
-                                <Link to={`/editattandance/${data.user_id}`}><button type="button" className="btn btn-outline-primary">edit</button></Link>
+                            <td>{data.user_name}</td>
+                            <td>{data.user_email}</td>
+                            <td style={{ fontSize: '24px' }}>
+                                <Link to={`/singleattendance/${data.attendance_id}`}>
+                                    <FaEye style={{ marginRight: '25px', color: 'gray' }} />
+                                </Link>
+                                <MdDeleteForever onClick={() => handleDelete(data.attendance_id)} style={{ color: 'red' }} />
+
+                                {/* <Link to={`/editattandance/${data.user_id}`}><button type="button" className="btn btn-outline-primary">edit</button></Link> */}
 
                             </td>
 
@@ -98,6 +151,7 @@ function Attendance() {
                 breakLinkClassName={'page-link'}
                 activeClassName={'active'}
             />
+            <ToastContainer autoClose={2000} />
 
         </div>
     )
