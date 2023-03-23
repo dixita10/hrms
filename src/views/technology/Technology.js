@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { HiPlusSm } from "react-icons/hi";
 import ReactPaginate from 'react-paginate';
-import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+import { MdEdit, MdDeleteForever } from "react-icons/md";
+
 
 
 const Technology = () => {
@@ -40,19 +44,66 @@ const Technology = () => {
     // let currentPage = data.selected + 1
   }
 
+  const handleDelete = (tec_id) => {
+
+    var passData = {
+      tec_name: data.tec_name,
+      dep_id: data.dep_id,
+      dep_name: data.dep_name,
+
+    }
+    var token = localStorage.getItem('token')
+    axios({
+      method: 'DElETE',
+      url: `${process.env.REACT_APP_URL}/technology/deletetechnology/${tec_id}`,
+      data: passData,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log(response.data);
+        if (response.status === 200) {
+          getTechnology()
+          toast.success(response.data.message)
+        }
+
+      })
+      .catch((error) => {
+        // console.log(error);
+        toast.error(error.response.data.message)
+      })
+  }
+
   // console.log(data);
   return (
     <div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <Link to={'/addtech'}>
+          <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+        </Link>
+      </div>
       <table className='responstable'>
         <tr>
           <th>tec_name</th>
           <th>dep_id</th>
+          <th>dep_name</th>
+          <th>action</th>
         </tr>
         {
           data.map((data) =>
             <tr>
               <td>{data.tec_name}</td>
               <td>{data.dep_id}</td>
+              <td>{data.dep_name}</td>
+              <td style={{ fontSize: '24px' }}>
+                <Link to={`/singletech/${data.tec_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                <Link to={`/edittech/${data.tec_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                <MdDeleteForever onClick={() => handleDelete(data.tec_id)} style={{ color: 'red' }} />
+                {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}
+              </td>
             </tr>
           )
         }

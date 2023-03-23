@@ -28,6 +28,12 @@ const Singlecountry = React.lazy(() => import('./views/country/Singlecountry'))
 const Singlestate = React.lazy(() => import('./views/state/Singlestate'))
 const Singlecity = React.lazy(() => import('./views/city/Singlecity'))
 const Singleproject = React.lazy(() => import('./views/project/Singleproject'))
+const Singlerole = React.lazy(() => import('./views/role/Singlerole'))
+const Singlesalary = React.lazy(() => import('./views/salary/Singlesalary'))
+const Singletech = React.lazy(() => import('./views/technology/Singletech'))
+
+
+
 
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
@@ -36,6 +42,11 @@ const Addcountry = React.lazy(() => import('./views/country/Addcountry'))
 const Addstate = React.lazy(() => import('./views/state/Addstate'))
 const Addcity = React.lazy(() => import('./views/city/Addcity'))
 const Addproject = React.lazy(() => import('./views/project/Addproject'))
+const Addrole = React.lazy(() => import('./views/role/Addrole'))
+const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
+const Addtech = React.lazy(() => import('./views/technology/Addtech'))
+
+
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -45,6 +56,10 @@ const Editcountry = React.lazy(() => import('./views/country/Editcountry'))
 const Editstate = React.lazy(() => import('./views/state/Editstate'))
 const Editcity = React.lazy(() => import('./views/city/Editcity'))
 const Editproject = React.lazy(() => import('./views/project/Editproject'))
+const Editrole = React.lazy(() => import('./views/role/Editrole'))
+const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
+const Edittech = React.lazy(() => import('./views/technology/Edittech'))
+
 
 
 
@@ -102,6 +117,9 @@ const Routes = [
   { path: '/addstate', name: 'Addstate', component: Addstate },
   { path: '/addcity', name: 'Addcity', component: Addcity },
   { path: '/addproject', name: 'Addproject', component: Addproject },
+  { path: '/addrole', name: 'Addrole', component: Addrole },
+  { path: '/addsalary', name: 'Addsalary', component: Addsalary },
+  { path: '/addtech', name: 'Addtech', component: Addtech },
 
 
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
@@ -111,6 +129,9 @@ const Routes = [
   { path: '/editstate/:id', name: 'Editstate', component: Editstate },
   { path: '/editcity/:id', name: 'Editcity', component: Editcity },
   { path: '/editproject/:id', name: 'Editproject', component: Editproject },
+  { path: '/editrole/:id', name: 'Editrole', component: Editrole },
+  { path: '/editsalary/:id', name: 'Editsalary', component: Editsalary },
+  { path: '/edittech/:id', name: 'Edittech', component: Edittech },
 
 
   { path: '/singleattendance/:id', name: "Singleattendance", component: Singleattendance },
@@ -121,6 +142,9 @@ const Routes = [
   { path: '/singlecity/:id', name: 'Singlecity', component: Singlecity },
   { path: '/singleproject/:id', name: 'Singleproject', component: Singleproject },
   { path: '/singleadmin/:id', name: 'Singleadmin', component: Singleadmin },
+  { path: '/singlerole/:id', name: 'Singlerole', component: Singlerole },
+  { path: '/singlesalary/:id', name: 'Singlesalary', component: Singlesalary },
+  { path: '/singletech/:id', name: 'Singletech', component: Singletech },
 
 
 

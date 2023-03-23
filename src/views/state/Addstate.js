@@ -20,14 +20,20 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 const Addstate = () => {
+  const options = [
+    'one', 'two', 'three'
+  ];
+  const defaultOption = options[0];
 
   var history = useHistory();
 
   const [data, setData] = useState({
     state_name: '',
-    country_id: '',
+    country_name: '',
   })
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -40,7 +46,7 @@ const Addstate = () => {
 
     var passData = {
       state_name: data.state_name,
-      country_id: data.country_id,
+      country_name: data.country_name,
     }
 
     axios({
@@ -91,10 +97,14 @@ const Addstate = () => {
                       <CInputGroupText>
                         <BiCommentCheck />
                       </CInputGroupText>
-                      <CFormInput placeholder="country_id" autoComplete="country_id" name="country_id"
-                        value={data.country_id}
+                      <CFormInput placeholder="country_name" autoComplete="country_name" name="country_name"
+                        value={data.country_name}
                         onChange={handleChange} />
                     </CInputGroup>
+                    <CInputGroup className="mb-4">
+                      <Dropdown options={options} value={defaultOption} placeholder="Select an option" />
+                    </CInputGroup>
+
 
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Add State</CButton>

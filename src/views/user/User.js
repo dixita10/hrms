@@ -53,6 +53,10 @@ const User = () => {
           <th>age</th>
           <th>gender</th>
           <th>role_id</th>
+          <th>contact</th>
+          <th>image</th>
+          <th>city_name</th>
+          <th>role_name</th>
           <th>action</th>
         </tr>
         {
@@ -67,6 +71,11 @@ const User = () => {
               <td>{data.age}</td>
               <td>{data.gender}</td>
               <td>{data.role_id}</td>
+              <td>{data.contact}</td>
+              <td>{data.image}</td>
+              <td>{data.city_name}</td>
+              <td>{data.role_name}</td>
+
               <td><Link to={`/singleuser/${data.user_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td>
 
             </tr>

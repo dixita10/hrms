@@ -46,6 +46,10 @@ const Singlecountry = React.lazy(() => import('./views/country/Singlecountry'))
 const Singlestate = React.lazy(() => import('./views/state/Singlestate'))
 const Singlecity = React.lazy(() => import('./views/city/Singlecity'))
 const Singleproject = React.lazy(() => import('./views/project/Singleproject'))
+const Singlerole = React.lazy(() => import('./views/role/Singlerole'))
+const Singlesalary = React.lazy(() => import('./views/salary/Singlesalary'))
+const Singletech = React.lazy(() => import('./views/technology/Singletech'))
+
 
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
@@ -54,6 +58,10 @@ const Addcountry = React.lazy(() => import('./views/country/Addcountry'))
 const Addstate = React.lazy(() => import('./views/state/Addstate'))
 const Addcity = React.lazy(() => import('./views/city/Addcity'))
 const Addproject = React.lazy(() => import('./views/project/Addproject'))
+const Addrole = React.lazy(() => import('./views/role/Addrole'))
+const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
+const Addtech = React.lazy(() => import('./views/technology/Addtech'))
+
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -63,7 +71,9 @@ const Editcountry = React.lazy(() => import('./views/country/Editcountry'))
 const Editstate = React.lazy(() => import('./views/state/Editstate'))
 const Editcity = React.lazy(() => import('./views/city/Editcity'))
 const Editproject = React.lazy(() => import('./views/project/Editproject'))
-
+const Editrole = React.lazy(() => import('./views/role/Editrole'))
+const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
+const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 
 
 
@@ -107,6 +117,9 @@ class App extends Component {
             <Route exact path="/singlecity/:id " name="Singlecity" render={(props) => <Singlecity {...props} />} />
             <Route exact path="/singleproject/:id " name="Singleproject" render={(props) => <Singleproject {...props} />} />
             <Route exact path="/singleadmin/:id " name="Singleadmin" render={(props) => <Singleadmin {...props} />} />
+            <Route exact path="/singlerole/:id " name="Singlerole" render={(props) => <Singlerole {...props} />} />
+            <Route exact path="/singlesalary/:id " name="Singlesalary" render={(props) => <Singlesalary {...props} />} />
+            <Route exact path="/singletech/:id " name="Singletech" render={(props) => <Singletech {...props} />} />
 
 
 
@@ -117,6 +130,9 @@ class App extends Component {
             <Route exact path='/addstate' name="Addstate" render={(props) => <Addstate {...props} />} />
             <Route exact path='/addcity' name="Addcity" render={(props) => <Addcity {...props} />} />
             <Route exact path='/addproject' name="Addproject" render={(props) => <Addproject {...props} />} />
+            <Route exact path='/addrole' name="Addrole" render={(props) => <Addrole {...props} />} />
+            <Route exact path='/addsalary' name="Addsalary" render={(props) => <Addsalary {...props} />} />
+            <Route exact path='/addtech' name="Addtech" render={(props) => <Addtech {...props} />} />
 
 
 
@@ -127,6 +143,9 @@ class App extends Component {
             <Route exact path='/editstate/:id' name="Editstate" render={(props) => <Editstate {...props} />} />
             <Route exact path='/editcity/:id' name="Editcity" render={(props) => <Editcity {...props} />} />
             <Route exact path='/editproject/:id' name="Editproject" render={(props) => <Editproject {...props} />} />
+            <Route exact path='/editrole/:id' name="Editrole" render={(props) => <Editrole {...props} />} />
+            <Route exact path='/editsalary/:id' name="Editsalary" render={(props) => <Editsalary {...props} />} />
+            <Route exact path='/edittech/:id' name="Edittech" render={(props) => <Edittech {...props} />} />
 
 
 

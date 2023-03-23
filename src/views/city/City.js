@@ -41,7 +41,7 @@ const City = () => {
         setPageCount(data.selected + 1)
         // let currentPage = data.selected + 1
     }
-    
+
 
     const handleDelete = (city_id) => {
 
@@ -86,6 +86,7 @@ const City = () => {
                     <tr>
                         <th>city_name</th>
                         <th>state_id</th>
+                        <th>state_name</th>
                         <th>Action</th>
                     </tr>
                     {
@@ -93,6 +94,7 @@ const City = () => {
                             <tr>
                                 <td>{data.city_name}</td>
                                 <td>{data.state_id}</td>
+                                <td>{data.state_name}</td>
                                 <td style={{ fontSize: '24px' }}>
                                     <Link to={`/singlecity/${data.city_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
                                     <Link to={`/editcity/${data.city_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>

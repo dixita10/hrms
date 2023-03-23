@@ -127,7 +127,7 @@ function Admin() {
 
     return (
         <div>
-            <div className='admin_profile'>
+            {/* <div className='admin_profile text-center'>
                 <div className='admin_div'>
                     <div className='row'>
                         <div className='col-md-9'>
@@ -189,7 +189,7 @@ function Admin() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             <div className='table-responsive'>
@@ -201,7 +201,6 @@ function Admin() {
                         <th>User_name</th>
                         <th>city_id</th>
                         <th>address</th>
-                        {/* <th>Password</th> */}
                         <th>Action</th><br />
 
                     </tr>
@@ -234,7 +233,7 @@ function Admin() {
                 ))}
             </p>
             <span>next</span> */}
-
+             <br/>
             <ReactPaginate
                 previousLabel="< previous"
                 nextLabel="next >"

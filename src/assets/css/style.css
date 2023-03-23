@@ -106,7 +106,7 @@ padding: 6px 10px !important;
     border: thin solid #ced4da !important;
 }
 
-.admin_profile{
+.admin_profile ,.role_single{
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.17);
     background-color: white;
     border-radius: 1px;
@@ -114,6 +114,10 @@ padding: 6px 10px !important;
 .admin_div .row{
 border-bottom: 1px solid #E4E6E4;
     padding: 10px;
+}
+.role_single p{
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 

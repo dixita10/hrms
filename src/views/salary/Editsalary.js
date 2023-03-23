@@ -20,16 +20,15 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Editadmin = () => {
 
-    const [data1, setdata1] = useState([])
-    // console.log(data1[0].admin_name);
-    const get = () => {
+const Editsalary = () => {
+
+    const getsalary = () => {
 
         var token = localStorage.getItem('token')
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/admin/findoneadmin/${id}`,
+            url: `${process.env.REACT_APP_URL}/salary/findonesalary/${id}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -39,7 +38,7 @@ const Editadmin = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // console.log("response", response);
-                    setdata1(response.data[0])
+                    setdata(response.data[0])
                 }
             })
             .catch((error) => {
@@ -49,7 +48,7 @@ const Editadmin = () => {
     }
 
     useEffect(() => {
-        get()
+        getsalary()
     }, [])
 
 
@@ -57,21 +56,12 @@ const Editadmin = () => {
     var history = useHistory()
 
     const { id } = useParams()
-    // console.log(id);
+    // console.log(id)
 
-
-
-    // const [data, setData] = useState({
-    //     admin_name: '',
-    //     email: "",
-    //     contact: '',
-    //     user_name: '',
-    // })
-
-    // const [data, setdata] = useState([])
+    const [data, setdata] = useState([])
 
     const handleChange = (e) => {
-        setdata1({ ...data1, [e.target.name]: e.target.value })
+        setdata({ ...data, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = (e) => {
@@ -79,17 +69,15 @@ const Editadmin = () => {
         var token = localStorage.getItem('token')
 
         var passData = {
-            admin_name: data1.admin_name,
-            email: data1.email,
-            contact: data1.contact,
-            user_name: data1.user_name,
-            city_id: data1.city_id,
-            address: data1.address
+            user_id: data.user_id,
+            salary: data.salary,
+            bank_detail: data.bank_detail,
+            username: data.username,
         }
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/admin/updateadmin/${id}`,
+            url: `${process.env.REACT_APP_URL}/salary/updatesalary/${id}`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -100,8 +88,8 @@ const Editadmin = () => {
             .then((response) => {
                 if (response.status === 200) {
                     toast.success(response.data.message)
-                    history.push("/admin")
-                    console.log(response);
+                    history.push("/salary")
+                    // console.log(response);
                 }
             })
             .catch((error) => {
@@ -115,14 +103,11 @@ const Editadmin = () => {
                 toast.error(error.response.data.message)
             })
     }
-    // console.log(data);
+
+
 
     return (
         <div>
-            {/* <form>
-                <input type='text' defaultValue={data.admin_name} />
-                <button>updata</button>
-            </form> */}
             <div className="bg-light d-flex flex-row align-items-center">
                 <CContainer>
                     <CRow className="justify-content-center">
@@ -131,60 +116,46 @@ const Editadmin = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Edit Admin</h3><br />
+                                        <h3 className='text-center'>Add Salary</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="admin_name" autoComplete="admin_name" name="admin_name"
-                                                value={data1?.admin_name}
+                                            <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
+                                                value={data?.user_id}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="email" autoComplete="email" name="email"
-                                                value={data1?.email}
+                                            <CFormInput placeholder="salary" autoComplete="salary" name="salary"
+                                                value={data?.salary}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="contact" autoComplete="contact" name="contact"
-                                                value={data1?.contact}
+                                            <CFormInput placeholder="bank_detail" autoComplete="bank_detail" name="bank_detail"
+                                                value={data?.bank_detail}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="user_name" autoComplete="user_name" name="user_name"
-                                                value={data1?.user_name}
-                                                onChange={handleChange} />
-                                        </CInputGroup>
-                                        <CInputGroup className="mb-3">
-                                            <CInputGroupText>
-                                                <CIcon icon={cilUser} />
-                                            </CInputGroupText>
-                                            <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
-                                                value={data1?.city_id}
-                                                onChange={handleChange} />
-                                        </CInputGroup>
-                                        <CInputGroup className="mb-3">
-                                            <CInputGroupText>
-                                                <CIcon icon={cilUser} />
-                                            </CInputGroupText>
-                                            <CFormInput placeholder="address" autoComplete="address" name="address"
-                                                value={data1?.address}
+                                            <CFormInput placeholder="username" autoComplete="username" name="username"
+                                                value={data?.username}
                                                 onChange={handleChange} />
                                         </CInputGroup>
 
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Edit Admin</CButton>
+                                            <CButton color="success" type='submit'>Add Salary</CButton>
                                         </div>
+
+
 
                                     </CForm>
                                 </CCardBody>
@@ -201,4 +172,4 @@ const Editadmin = () => {
     )
 }
 
-export default Editadmin
+export default Editsalary
