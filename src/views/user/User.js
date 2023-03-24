@@ -41,7 +41,7 @@ const User = () => {
 
   // console.log(data);
   return (
-    <div>
+    <div className='table-responsive'>
       <table className='responstable'>
         <tr>
           <th>name</th>

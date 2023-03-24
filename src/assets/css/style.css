@@ -119,6 +119,9 @@ border-bottom: 1px solid #E4E6E4;
     text-transform: uppercase;
     font-weight: 800;
 }
+.select select{
+    width: 100%!important;
+}
 
 
 /* home register */

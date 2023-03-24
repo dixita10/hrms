@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
     CButton,
@@ -24,15 +24,37 @@ import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
 const Addsalary = () => {
 
+
+    const [username, setUsername] = useState([])
+
+    const Username = () => {
+
+        var token = localStorage.getItem('token')
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/user/findalluser`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                // console.log(response.data.data);
+                setUsername(response.data.data)
+            })
+
+    }
+    // console.log(country);
+
+    useEffect(() => {
+        Username()
+    }, [])
+
     var history = useHistory();
 
-    const [data, setData] = useState({
-        role_name: '',
-        salary: '',
-        bank_detail: '',
-        username: '',
-
-    })
+    const [data, setData] = useState([])
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
 
@@ -46,8 +68,10 @@ const Addsalary = () => {
             user_id: data.user_id,
             salary: data.salary,
             bank_detail: data.bank_detail,
-            username: data.username,
+            // username: username.username,
         }
+
+        console.log(passData);
 
         axios({
             method: 'POST',
@@ -83,14 +107,14 @@ const Addsalary = () => {
 
                                     <CForm onSubmit={handleSubmit} >
                                         <h3 className='text-center'>Add Salary</h3><br />
-                                        <CInputGroup className="mb-3">
+                                        {/* <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
                                                 value={data.user_id}
                                                 onChange={handleChange} />
-                                        </CInputGroup>
+                                        </CInputGroup> */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
@@ -111,9 +135,15 @@ const Addsalary = () => {
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="username" autoComplete="username" name="username"
-                                                value={data.username}
-                                                onChange={handleChange} />
+                                            <select className="form-select" aria-label="Default select example" value={username.user_id} name="user_id" onChange={handleChange}>
+                                                <option selected>choose  Username</option>
+                                                {username.map((username, index) => {
+                                                    return (
+                                                        <option key={index} value={username.user_id}>{username.username}</option>
+                                                    )
+                                                })
+                                                }
+                                            </select>
                                         </CInputGroup>
 
 

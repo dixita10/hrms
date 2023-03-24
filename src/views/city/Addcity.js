@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
     CButton,
@@ -20,16 +20,44 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { GiWorld } from "react-icons/gi";
 
 
 const Addcity = () => {
 
+    const [state, setState] = useState([])
+
+    // const handlecountry = (e) => {
+    //     setCountry({ ...state, [e.target.name]: e.target.value })
+    // }
+
+    const State = () => {
+
+        var token = localStorage.getItem('token')
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/state/findallstate`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                setState(response.data.data)
+            })
+
+    }
+    // console.log(state);
+
+    useEffect(() => {
+        State()
+    }, [])
+
     var history = useHistory();
 
-    const [data, setData] = useState({
-        city_name: '',
-        state_id: '',
-    })
+    const [data, setData] = useState([])
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
 
@@ -43,7 +71,7 @@ const Addcity = () => {
             city_name: data.city_name,
             state_id: data.state_id,
         }
-
+        console.log(passData);
         axios({
             method: 'POST',
             url: `${process.env.REACT_APP_URL}/city/addcity`,
@@ -58,7 +86,7 @@ const Addcity = () => {
                 if (response.status === 200) {
                     toast.success(response.data.message)
                     history.push("/city")
-                    // console.log(response);
+                    console.log(response);
                 }
             })
             .catch((error) => {
@@ -81,7 +109,7 @@ const Addcity = () => {
                                         <h3 className='text-center'>Add City</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <GiWorld />
                                             </CInputGroupText>
                                             <CFormInput placeholder="city_name" autoComplete="city_name" name="city_name"
                                                 value={data.city_name}
@@ -89,12 +117,26 @@ const Addcity = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
+                                                <GiWorld />
+                                            </CInputGroupText>
+                                            <select className="form-select" aria-label="Default select example" value={state.state_id} onChange={handleChange} name="state_id">
+                                                <option selected>choose State name</option>
+                                                {state.map((state, index) => {
+                                                    return (
+                                                        <option key={index} value={state.state_id}>{state.state_name}</option>
+                                                    )
+                                                })
+                                                }
+                                            </select>
+                                        </CInputGroup>
+                                        {/* <CInputGroup className="mb-4">
+                                            <CInputGroupText>
                                                 <BiCommentCheck />
                                             </CInputGroupText>
                                             <CFormInput placeholder="state_id" autoComplete="state_id" name="state_id"
                                                 value={data.state_id}
                                                 onChange={handleChange} />
-                                        </CInputGroup>
+                                        </CInputGroup> */}
 
                                         <div className="d-grid">
                                             <CButton color="success" type='submit'>Add City</CButton>

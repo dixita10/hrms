@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
     CButton,
@@ -24,14 +24,35 @@ import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
 const Addtech = () => {
 
+    const [department, setDepartment] = useState([])
+
+    const Department = () => {
+
+        var token = localStorage.getItem('token')
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/department/findalldepartment`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                // console.log(response.data.data);
+                setDepartment(response.data.data)
+            })
+
+    }
+
+    useEffect(() => {
+        Department()
+    }, [])
+
     var history = useHistory();
 
-    const [data, setData] = useState({
-        tec_name: '',
-        dep_id: '',
-        dep_name: '',
-
-    })
+    const [data, setData] = useState([])
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
 
@@ -44,8 +65,10 @@ const Addtech = () => {
         var passData = {
             tec_name: data.tec_name,
             dep_id: data.dep_id,
-            dep_name: data.dep_name,
+            // dep_name: data.dep_name,
         }
+
+        console.log(passData);
 
         axios({
             method: 'POST',
@@ -91,21 +114,30 @@ const Addtech = () => {
                                                 value={data.tec_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
-                                        <CInputGroup className="mb-3">
+                                        {/* <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="dep_id" autoComplete="dep_id" name="dep_id"
                                                 value={data.dep_id}
                                                 onChange={handleChange} />
-                                        </CInputGroup>
+                                        </CInputGroup> */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="dep_name" autoComplete="dep_name" name="dep_name"
+                                            <select className="form-select" aria-label="Default select example" value={department.dep_id} name="dep_id" onChange={handleChange} >
+                                                <option selected>choose department name</option>
+                                                {department.map((department, index) => {
+                                                    return (
+                                                        <option key={index} value={department.dep_id}>{department.dep_name}</option>
+                                                    )
+                                                })
+                                                }
+                                            </select>
+                                            {/* <CFormInput placeholder="dep_name" autoComplete="dep_name" name="dep_name"
                                                 value={data.dep_name}
-                                                onChange={handleChange} />
+                                                onChange={handleChange} /> */}
                                         </CInputGroup>
 
 
