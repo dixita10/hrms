@@ -33,9 +33,6 @@ const Singlesalary = React.lazy(() => import('./views/salary/Singlesalary'))
 const Singletech = React.lazy(() => import('./views/technology/Singletech'))
 
 
-
-
-
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
 const Adddepartment = React.lazy(() => import('./views/department/Adddepartment'))
 const Addcountry = React.lazy(() => import('./views/country/Addcountry'))
@@ -45,7 +42,7 @@ const Addproject = React.lazy(() => import('./views/project/Addproject'))
 const Addrole = React.lazy(() => import('./views/role/Addrole'))
 const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
 const Addtech = React.lazy(() => import('./views/technology/Addtech'))
-
+const Adduser = React.lazy(() => import('./views/user/Adduser'))
 
 
 
@@ -59,6 +56,7 @@ const Editproject = React.lazy(() => import('./views/project/Editproject'))
 const Editrole = React.lazy(() => import('./views/role/Editrole'))
 const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
 const Edittech = React.lazy(() => import('./views/technology/Edittech'))
+const Edituser = React.lazy(() => import('./views/user/Edituser'))
 
 
 
@@ -120,6 +118,7 @@ const Routes = [
   { path: '/addrole', name: 'Addrole', component: Addrole },
   { path: '/addsalary', name: 'Addsalary', component: Addsalary },
   { path: '/addtech', name: 'Addtech', component: Addtech },
+  { path: '/adduser', name: 'Adduser', component: Adduser },
 
 
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
@@ -132,6 +131,7 @@ const Routes = [
   { path: '/editrole/:id', name: 'Editrole', component: Editrole },
   { path: '/editsalary/:id', name: 'Editsalary', component: Editsalary },
   { path: '/edittech/:id', name: 'Edittech', component: Edittech },
+  { path: '/edituser/:id', name: 'Edituser', component: Edituser },
 
 
   { path: '/singleattendance/:id', name: "Singleattendance", component: Singleattendance },

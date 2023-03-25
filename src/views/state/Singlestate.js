@@ -46,8 +46,6 @@ const Singlestate = () => {
               <td>{data.state_name}</td>
               <td>{data.country_id}</td>
               <td>{data.country_name}</td>
-
-
             </tr>
           )
         }

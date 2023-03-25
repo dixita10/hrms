@@ -14,6 +14,9 @@ const City = () => {
     const [data, setdata] = useState([])
     const [pageCount, setPageCount] = useState(1)
 
+    const [filterval, setFilterval] = useState('')
+    const [searchapidata, setSearchapidata] = useState([])
+
     const getCity = () => {
         var token = localStorage.getItem('token')
 
@@ -29,6 +32,7 @@ const City = () => {
             .then((response) => {
                 // console.log("response", response);
                 setdata(response.data.data)
+                setSearchapidata(response.data.data)
             })
     }
 
@@ -41,7 +45,6 @@ const City = () => {
         setPageCount(data.selected + 1)
         // let currentPage = data.selected + 1
     }
-
 
     const handleDelete = (city_id) => {
 
@@ -74,11 +77,31 @@ const City = () => {
             })
     }
 
+
+
+    const handleFilter = (e) => {
+        if (e.target.value == '') {
+            setdata(searchapidata)
+        }
+        else {
+            const filterResult = searchapidata.filter(item => item.city_name.toLowerCase().includes(e.target.value.toLowerCase()))
+                setdata(filterResult)
+            // if (filterResult.length > 0) {
+            //     setdata(filterResult)
+            // }
+            // else {
+            //     setdata([{ "name": "No Data" }])
+            // }
+        }
+        setFilterval(e.target.value)
+    }
+
     return (
         <div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                <input type='search' placeholder='search' value={filterval} onInput={(e) => handleFilter(e)} style={{ padding: '5px 10px', borderRadius: '5px' }} />
                 <Link to={'/addcity'}>
-                    <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+                    <button className="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
             </div>
             <div className='table-responsive'>

@@ -61,7 +61,7 @@ const Addproject = React.lazy(() => import('./views/project/Addproject'))
 const Addrole = React.lazy(() => import('./views/role/Addrole'))
 const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
 const Addtech = React.lazy(() => import('./views/technology/Addtech'))
-
+const Adduser = React.lazy(() => import('./views/user/Adduser'))
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -74,6 +74,7 @@ const Editproject = React.lazy(() => import('./views/project/Editproject'))
 const Editrole = React.lazy(() => import('./views/role/Editrole'))
 const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
 const Edittech = React.lazy(() => import('./views/technology/Edittech'))
+const Edituser = React.lazy(() => import('./views/user/Edituser'))
 
 
 
@@ -133,6 +134,7 @@ class App extends Component {
             <Route exact path='/addrole' name="Addrole" render={(props) => <Addrole {...props} />} />
             <Route exact path='/addsalary' name="Addsalary" render={(props) => <Addsalary {...props} />} />
             <Route exact path='/addtech' name="Addtech" render={(props) => <Addtech {...props} />} />
+            <Route exact path='/adduser' name="Adduser" render={(props) => <Adduser {...props} />} />
 
 
 
@@ -146,6 +148,7 @@ class App extends Component {
             <Route exact path='/editrole/:id' name="Editrole" render={(props) => <Editrole {...props} />} />
             <Route exact path='/editsalary/:id' name="Editsalary" render={(props) => <Editsalary {...props} />} />
             <Route exact path='/edittech/:id' name="Edittech" render={(props) => <Edittech {...props} />} />
+            <Route exact path='/edituser/:id' name="Edituser" render={(props) => <Edituser {...props} />} />
 
 
 

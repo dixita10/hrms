@@ -70,6 +70,7 @@ const Addcity = () => {
         var passData = {
             city_name: data.city_name,
             state_id: data.state_id,
+            // state_name: data.state_name,
         }
         console.log(passData);
         axios({

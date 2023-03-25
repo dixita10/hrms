@@ -4,6 +4,10 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate';
 import { toast, ToastContainer } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+import { MdEdit, MdDeleteForever } from "react-icons/md";
+import { HiPlusSm } from "react-icons/hi";
+
 
 const User = () => {
 
@@ -39,9 +43,59 @@ const User = () => {
     // let currentPage = data.selected + 1
   }
 
+
+  const handleDelete = (user_id) => {
+
+    var passData = {
+      name: data.role_name,
+      email: data.email,
+      username: data.username,
+      password: data.password,
+      city_id: data.city_id,
+      address: data.address,
+      birth_date: data.birth_date,
+      age: data.age,
+      gender: data.gender,
+      user_id: data.role_id,
+      contact: data.contact,
+      image: data.image,
+    }
+
+    var token = localStorage.getItem('token')
+    axios({
+      method: 'DElETE',
+      url: `${process.env.REACT_APP_URL}/user/deleteuser/${user_id}`,
+      data: passData,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log(response.data);
+        if (response.status === 200) {
+          getUser()
+          toast.success(response.data.message)
+        }
+
+      })
+      .catch((error) => {
+        // console.log(error);
+        toast.error(error.response.data.message)
+      })
+  }
+
+
+
   // console.log(data);
   return (
     <div className='table-responsive'>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <Link to={'/adduser'}>
+          <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+        </Link>
+      </div>
       <table className='responstable'>
         <tr>
           <th>name</th>
@@ -67,7 +121,7 @@ const User = () => {
               <td>{data.username}</td>
               <td>{data.city_id}</td>
               <td>{data.address}</td>
-              <td>{moment(data.birth_date).format("LLL")}</td>
+              <td>{moment(data.birth_date).format("MMMM Do YYYY")}</td>
               <td>{data.age}</td>
               <td>{data.gender}</td>
               <td>{data.role_id}</td>
@@ -75,8 +129,14 @@ const User = () => {
               <td>{data.image}</td>
               <td>{data.city_name}</td>
               <td>{data.role_name}</td>
+              <td style={{ fontSize: '24px', textAlign: 'left' }}>
+                <Link to={`/singleuser/${data.user_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                <Link to={`/edituser/${data.user_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                <MdDeleteForever onClick={() => handleDelete(data.user_id)} style={{ color: 'red' }} />
+                {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}
+              </td>
 
-              <td><Link to={`/singleuser/${data.user_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td>
+              {/* <td><Link to={`/singleuser/${data.user_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td> */}
 
             </tr>
           )

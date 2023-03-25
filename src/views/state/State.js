@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
-
+import { useParams } from "react-router-dom";
 
 const State = () => {
 
@@ -73,11 +73,37 @@ const State = () => {
             })
     }
 
+    const { id } = useParams();
+
+
+    const handlesearch = () => {
+
+        // console.log(e.target.value);
+
+        var token = localStorage.getItem('token')
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/state/findallstate?page=${pageCount}&limit=5&q=${country_name}`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                console.log("response", response);
+                // setdata(response.data.data)
+            })
+
+    }
+
 
 
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handlesearch} />
                 <Link to={'/addstate'}>
                     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
