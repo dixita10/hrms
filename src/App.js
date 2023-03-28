@@ -37,6 +37,8 @@ const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
+const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
+
 
 const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
@@ -77,7 +79,9 @@ const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
 
 
+// user side ....
 
+const Loggeduser = React.lazy(() => import('./userside/userlogin/Loggeduser'))
 
 
 class App extends Component {
@@ -94,6 +98,8 @@ class App extends Component {
               render={(props) => <Register {...props} />}
             />
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
+            <Route exact path='/loginuser' name="Loginuser" render={(props) => <Loginuser {...props} />} />
+
             <Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
             <Route exact path="/resetpswd" name="Reset Password" render={(props) => <Resetpswd {...props} />} />
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
@@ -151,6 +157,9 @@ class App extends Component {
             <Route exact path='/edituser/:id' name="Edituser" render={(props) => <Edituser {...props} />} />
 
 
+            {/* userside ... */}
+
+            <Route exact path='/loggeduser' name="Loggeduser" render={(props) => <Loggeduser {...props} />} />
 
 
 

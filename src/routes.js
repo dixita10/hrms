@@ -59,6 +59,12 @@ const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
 
 
+// userlogin side ...
+
+const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
+const Loggeduser = React.lazy(() => import('./userside/userlogin/Loggeduser'))
+
+
 
 
 // const AllEndUsers = React.lazy(() => import('./views/users/AllEndUser'))
@@ -146,7 +152,11 @@ const Routes = [
   { path: '/singlesalary/:id', name: 'Singlesalary', component: Singlesalary },
   { path: '/singletech/:id', name: 'Singletech', component: Singletech },
 
+  // user side ...
 
+
+  { path: '/loginuser', name: 'Loginuser', component: Loginuser },
+  { path: '/loggeduser', name: 'Loggeduser', component: Loggeduser }
 
 
 

@@ -77,10 +77,35 @@ const Technology = () => {
       })
   }
 
-  // console.log(data);
+  const handleSearch = (e) => {
+
+    var token = localStorage.getItem('token')
+    var tec_name = e.target.value
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/technology/findalltechnology/?page=1&limit=3&q=${tec_name}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log("response", response);
+        setdata(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
+
+
   return (
     <div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
         <Link to={'/addtech'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>
@@ -89,7 +114,7 @@ const Technology = () => {
         <tr>
           <th>tec_name</th>
           <th>dep_id</th>
-          <th>dep_name</th>
+          <th>department name</th>
           <th>action</th>
         </tr>
         {

@@ -86,12 +86,36 @@ const User = () => {
       })
   }
 
+  const handleSearch = (e) => {
+
+    var token = localStorage.getItem('token')
+    var username = e.target.value
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/user/findalluser/?page=1&limit=3&q=${username}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log("response", response);
+        setdata(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
 
 
-  // console.log(data);
+
   return (
     <div className='table-responsive'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
         <Link to={'/adduser'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>

@@ -73,18 +73,18 @@ const State = () => {
             })
     }
 
-    const { id } = useParams();
+    // const { id } = useParams();
+    console.log(data);
 
 
-    const handlesearch = () => {
-
-        // console.log(e.target.value);
+    const handleSearch = (e) => {
 
         var token = localStorage.getItem('token')
+        var state_name = e.target.value
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/state/findallstate?page=${pageCount}&limit=5&q=${country_name}`,
+            url: `${process.env.REACT_APP_URL}/state/findallstate?page=${pageCount}&limit=5&q=${state_name}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -92,18 +92,19 @@ const State = () => {
             },
         })
             .then((response) => {
-                console.log("response", response);
-                // setdata(response.data.data)
+                // console.log("response", response);
+                setdata(response.data.data)
+            })
+            .catch((error) => {
+                console.log(error);
             })
 
     }
 
-
-
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handlesearch} />
+                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
                 <Link to={'/addstate'}>
                     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>

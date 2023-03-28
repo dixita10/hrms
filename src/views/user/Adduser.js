@@ -18,30 +18,70 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-dropdown/style.css';
 import { GiWorld } from "react-icons/gi";
 
-
 const Adduser = () => {
 
+  const [city, setCity] = useState([])
+  const [role, setRole] = useState([])
+
+  const City = () => {
+
+    var token = localStorage.getItem('token')
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/city/findallcity`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        setCity(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
 
 
-  var history = useHistory();
 
-  const [data, setData] = useState({
-    name: '',
-    email: '',
-    username: '',
-    password: '',
-    city_id: '',
-    address: '',
-    birth_date: '',
-    age: '',
-    gender: '',
-    role_id: '',
-    contact: '',
-    image: '',
+  const Role = () => {
+    var token = localStorage.getItem('token')
 
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/role/findallrole`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log(response.data);
+        setRole(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+  useEffect(() => {
+    City();
+    Role()
+  }, [])
+
+  const [data, setData] = useState([])
+
+  const [data1, setData1] = useState({
+    female: 'female',
+    male: 'male'
   })
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
+    setData1({ ...data, [e.target.name]: e.target.value })
 
   }
 
@@ -50,7 +90,7 @@ const Adduser = () => {
     var token = localStorage.getItem('token')
 
     var passData = {
-      name: data.role_name,
+      name: data.name,
       email: data.email,
       username: data.username,
       password: data.password,
@@ -135,9 +175,18 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
+                      <select className="form-select" aria-label="Default select example" value={city.city_id} onChange={handleChange} name="city_id">
+                        <option selected>choose City name</option>
+                        {city.map((city, index) => {
+                          return (
+                            <option key={index} value={city.city_id}>{city.city_name}</option>
+                          )
+                        })
+                        }
+                      </select>
+                      {/* <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
                         value={data.city_id}
-                        onChange={handleChange} />
+                        onChange={handleChange} /> */}
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -151,7 +200,7 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date" 
+                      <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}
                         onChange={handleChange} />
                     </CInputGroup>
@@ -167,6 +216,17 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
+                      {/* <RadioGroup labelText='Basic Usage' id='basicGroup' name='basic' onChange={handleChange}>
+                        <Radio
+                          id='radio1'
+                          labelText='Option one label'
+                          value={data1.female} />
+
+                        <Radio
+                          id='radio2'
+                          labelText='Option two label is really long and can wrap to multiple lines lorem ipsum dolar sit amet is really long and can wrap to multiple lines'
+                          value={data1.male} />
+                      </RadioGroup> */}
                       <CFormInput placeholder="gender" autoComplete="gender" name="gender"
                         value={data.gender}
                         onChange={handleChange} />
@@ -175,9 +235,21 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="role_id" autoComplete="role_id" name="role_id"
+
+                      <select className="form-select" aria-label="Default select example" value={role.role_id} onChange={handleChange} name="role_id">
+                        <option selected>choose Role name</option>
+                        {role.map((role, index) => {
+                          return (
+                            <option key={index} value={role.role_id}>{role.role_name}</option>
+                          )
+                        })
+                        }
+                      </select>
+
+                      {/* <CFormInput placeholder="role_id" autoComplete="role_id" name="role_id"
                         value={data.role_id}
-                        onChange={handleChange} />
+                        onChange={handleChange} /> */}
+
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>

@@ -78,11 +78,34 @@ const Salary = () => {
       })
   }
 
+  const handleSearch = (e) => {
 
-  console.log(data);
+    var token = localStorage.getItem('token')
+    var salary = e.target.value
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/salary/findallsalary/?page=1&limit=3&q=${salary}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log("response", response);
+        setdata(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
+
   return (
     <div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
         <Link to={'/addsalary'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>

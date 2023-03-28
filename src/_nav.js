@@ -91,60 +91,60 @@ const _nav = [
     icon: <FaUsers className="nav-icon" />,
   },
 
-  // {
-  //   component: CNavGroup,
-  //   name: 'Payment',
-  //   to: '/payment',
-  //   icon: <MdPayment className="nav-icon" />,
-  //   items: [
-  //     {
-  //       component: CNavItem,
-  //       name: 'User Payment', 
-  //       to: '/payment/user-payment',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Service Provider Payment',
-  //       to: '/payment/serviceprovider-payment',
-  //     },
-  //   ],
-  // },
-  // {
-  //   component: CNavItem,
-  //   name: 'Cars',
-  //   to: '/cars',
-  //   icon: <FaCarSide className="nav-icon" />
-  // },
-  // {
-  //   component: CNavGroup,
-  //   name: 'Users',
-  //   to: '/users',
-  //   icon: <FiUsers className="nav-icon" />,
-  //   items: [
-  //     {
-  //       component: CNavItem,
-  //       name: 'All EndUsers',
-  //       to: '/users/all-enduser',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'All service provider',
-  //       to: '/users/all-serviceprovider',
-  //     },
-  //   ],
-  // },
-  // {
-  //   component: CNavItem,
-  //   name: 'Complain',
-  //   to: '/complain',
-  //   icon: <BsChatSquareTextFill className="nav-icon" />
-  // },
-  // {
-  //   component: CNavItem,
-  //   name: "Report",
-  //   to: "/report",
-  //   icon: <BsChatSquareTextFill className="nav-icon" />,
-  // },
+//     {
+//     component: CNavGroup,
+//     name: 'Payment',
+//     to: '/payment',
+//     icon: <MdPayment className="nav-icon" />,
+//     items: [
+//       {
+//         component: CNavItem,
+//         name: 'User Payment', 
+//         to: '/payment/user-payment',
+//       },
+//       {
+//         component: CNavItem,
+//         name: 'Service Provider Payment',
+//         to: '/payment/serviceprovider-payment',
+//       },
+//     ],
+//   },
+//   {
+//     component: CNavItem,
+//     name: 'Cars',
+//     to: '/cars',
+//     icon: <FaCarSide className="nav-icon" />
+//   },
+//   {
+//     component: CNavGroup,
+//     name: 'Users',
+//     to: '/users',
+//     icon: <FiUsers className="nav-icon" />,
+//     items: [
+//       {
+//         component: CNavItem,
+//         name: 'All EndUsers',
+//         to: '/users/all-enduser',
+//       },
+//       {
+//         component: CNavItem,
+//         name: 'All service provider',
+//         to: '/users/all-serviceprovider',
+//       },
+//     ],
+//   },
+//   {
+//     component: CNavItem,
+//     name: 'Complain',
+//     to: '/complain',
+//     icon: <BsChatSquareTextFill className="nav-icon" />
+//   },
+//   {
+//     component: CNavItem,
+//     name: "Report",
+//     to: "/report",
+//     icon: <BsChatSquareTextFill className="nav-icon" />,
+//   }
 
 
 

@@ -70,9 +70,37 @@ const Country = () => {
             })
     }
 
+
+    const handleSearch = (e) => {
+
+        var token = localStorage.getItem('token')
+        var country_name = e.target.value
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/country/findallcountry/?page=1&limit=3&q=${country_name}`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                // console.log("response", response);
+                setdata(response.data.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+    }
+
+
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
+
                 <Link to={'/addcountry'}>
                     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
