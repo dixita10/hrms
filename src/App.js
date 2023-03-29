@@ -18,7 +18,7 @@ const loading = (
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
-const Profile = React.lazy(() => import('./views/sidebar/Admin'))
+// const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const Attendance = React.lazy(() => import('./views/attendance/Attendance'))
 // const Attendance = React.lazy(() => import('./views/attendance/Attendance/:id'))
 const Department = React.lazy(() => import('./views/department/Department'))
@@ -32,8 +32,8 @@ const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
 
 // Pages
-const Login = React.lazy(() => import('./views/pages/login/Login'))
-const Register = React.lazy(() => import('./views/pages/register/Register'))
+// const Login = React.lazy(() => import('./views/pages/login/Login'))
+// const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
@@ -81,7 +81,7 @@ const Edituser = React.lazy(() => import('./views/user/Edituser'))
 
 // user side ....
 
-const Loggeduser = React.lazy(() => import('./userside/userlogin/Loggeduser'))
+const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
 
 
 class App extends Component {
@@ -90,20 +90,20 @@ class App extends Component {
       <BrowserRouter>
         <React.Suspense fallback={loading}>
           <Switch>
-            <Route exact path="/login" name="Login Page" render={(props) => <Login {...props} />} />
-            <Route
+            {/* <Route exact path="/login" name="Login Page" render={(props) => <Login {...props} />} /> */}
+            {/* <Route
               exact
               path="/register"
               name="Register Page"
               render={(props) => <Register {...props} />}
-            />
+            /> */}
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
-            <Route exact path='/loginuser' name="Loginuser" render={(props) => <Loginuser {...props} />} />
+            <Route exact path='/login' name="Loginuser" render={(props) => <Loginuser {...props} />} />
 
             <Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
             <Route exact path="/resetpswd" name="Reset Password" render={(props) => <Resetpswd {...props} />} />
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
-            <Route exact path="/profile" name="Profile" render={(props) => <Profile {...props} />} />
+            {/* <Route exact path="/profile" name="Profile" render={(props) => <Profile {...props} />} /> */}
             <Route exact path="/attendance" name="Attendance" render={(props) => <Attendance {...props} />} />
             {/* <Route exact path="/attendance/:id" name="Attendance" render={(props) => <Attendance {...props} />}/> */}
             <Route exact path="/department" name="Department" render={(props) => <Department {...props} />} />
@@ -159,7 +159,7 @@ class App extends Component {
 
             {/* userside ... */}
 
-            <Route exact path='/loggeduser' name="Loggeduser" render={(props) => <Loggeduser {...props} />} />
+            <Route exact path='/loggeduser' name="Profile" render={(props) => <Profile {...props} />} />
 
 
 

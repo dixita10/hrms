@@ -74,7 +74,7 @@ const Edituser = () => {
       name: data.role_name,
       email: data.email,
       username: data.username,
-      password: data.password,
+      // password: data.password,
       city_id: data.city_id,
       address: data.address,
       birth_date: data.birth_date,
@@ -151,14 +151,14 @@ const Edituser = () => {
                         value={data.username}
                         onChange={handleChange} />
                     </CInputGroup>
-                    <CInputGroup className="mb-3">
+                    {/* <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
                       <CFormInput placeholder="password" autoComplete="password" name="password"
                         value={data.password}
                         onChange={handleChange} />
-                    </CInputGroup>
+                    </CInputGroup> */}
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <GiWorld />

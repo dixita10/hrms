@@ -38,6 +38,7 @@ const Loginuser = () => {
         var passData = {
             email: data.email,
             password: data.password,
+            // login_as: "admin"
         }
 
 
@@ -52,11 +53,14 @@ const Loginuser = () => {
         })
             .then((response) => {
                 var token = response.data.token
+                var role_id = response.data.roleResults[0].role_id
 
                 if (response.status === 200) {
+                    // console.log(response.data.roleResults[0].role_id);
                     toast.success(response.data.message)
                     localStorage.setItem('token', token)
-                    history.push("/loggeduser");
+                    localStorage.setItem('roleid', role_id)
+                    history.push("/dashboard");
                 }
             })
             .catch((error) => {
@@ -79,53 +83,6 @@ const Loginuser = () => {
 
 
     return (
-        // <div>
-        //     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
-        //         <CContainer>
-        //             <CRow className="justify-content-center"  >
-        //                 <CCol md={8} style={{ width: '50rem' }}>
-        //                     <CCard className="p-4">
-        //                         <CCardBody>
-        //                             <CForm onSubmit={handleSubmit} >
-        //                                 <h1> User Login</h1>
-        //                                 <p className="text-medium-emphasis">Create your account</p>
-        //                                 <CInputGroup className="mb-3">
-        //                                     <CInputGroupText>@</CInputGroupText>
-        //                                     <CFormInput placeholder="Email" autoComplete="email" name="email"
-        //                                         value={data.email}
-        //                                         onChange={handleChange} />
-        //                                 </CInputGroup>
-        //                                 <CInputGroup className="mb-3">
-        //                                     <CInputGroupText>
-        //                                         <CIcon icon={cilLockLocked} />
-        //                                     </CInputGroupText>
-        //                                     <CFormInput
-        //                                         type="password"
-        //                                         placeholder="Password"
-        //                                         autoComplete="password"
-        //                                         name="password"
-        //                                         value={data.password}
-        //                                         onChange={handleChange}
-        //                                     />
-        //                                 </CInputGroup>
-
-        //                                 <div className="d-grid">
-        //                                     <CButton color="success" type='submit'>Create Account</CButton>
-        //                                 </div>
-        //                             </CForm>
-        //                             {/* <Link to="/loggeruser">Login</Link> */}
-        //                         </CCardBody>
-
-        //                     </CCard>
-        //                 </CCol>
-        //             </CRow>
-
-        //         </CContainer>
-        //         <ToastContainer autoClose={2000} />
-
-        //     </div >
-        // </div>
-
         <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
             <CContainer>
                 <CRow className="justify-content-center loginform"  >
@@ -134,8 +91,8 @@ const Loginuser = () => {
                             <CCard className="p-4">
                                 <CCardBody>
                                     <CForm onSubmit={handleSubmit} >
-                                        <h1 style={{ color: '#3C4B64' }}> User Login</h1>
-                                        <p className="text-medium-emphasis" >Sign In to your account</p>
+                                        <h1>Login</h1>
+                                        <p className="text-medium-emphasis">Sign In to your account</p><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
@@ -166,13 +123,10 @@ const Loginuser = () => {
                                                 />
 
                                             </CInputGroup>
-                                        </div>
+                                        </div> <br />
                                         <CRow>
-                                            {/* <div className="d-grid">
-                                                <CButton color="success" ></CButton>
-                                            </div> */}
-                                            <CCol xs={12} style={{ textAlign: 'center' }}>
-                                                <CButton style={{ background: '#3C4B64' }} className="px-4" type='submit' >
+                                            <CCol xs={12} >
+                                                <CButton style={{ background: '#3C4B64' }} className="px-4" type='submit'  >
                                                     Login
                                                 </CButton>
                                             </CCol>

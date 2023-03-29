@@ -47,10 +47,10 @@ const AppHeaderDropdown = () => {
           <FiUserMinus className="me-2" />
           Logout
         </CDropdownItem>
-        <CDropdownItem href="/resetpswd " onClick={handleLogout}>
+        {/* <CDropdownItem href="/resetpswd " onClick={handleLogout}>
           <FiLock className="me-2" />
           Reset Password
-        </CDropdownItem>
+        </CDropdownItem> */}
         profile
       </CDropdownMenu>
     </CDropdown>

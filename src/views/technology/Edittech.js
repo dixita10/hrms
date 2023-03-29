@@ -22,11 +22,15 @@ import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 const Edittech = () => {
 
+  const [data, setData] = useState([])
+
 
   // console.log(data1[0].admin_name);
-  const get = () => {
+
+  const Gettechnology = () => {
 
     var token = localStorage.getItem('token')
+
     axios({
       method: 'GET',
       url: `${process.env.REACT_APP_URL}/technology/findonetechnology/${id}`,
@@ -37,8 +41,8 @@ const Edittech = () => {
       },
     })
       .then((response) => {
+        // console.log("response", response.data[0]);
         if (response.status === 200) {
-          // console.log("response", response);
           setData(response.data[0])
         }
       })
@@ -49,7 +53,7 @@ const Edittech = () => {
   }
 
   useEffect(() => {
-    get()
+    Gettechnology()
   }, [])
 
 
@@ -59,13 +63,13 @@ const Edittech = () => {
 
   var history = useHistory();
 
-  const [data, setData] = useState([])
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     var token = localStorage.getItem('token')
 
     var passData = {
@@ -87,7 +91,7 @@ const Edittech = () => {
         if (response.status === 200) {
           toast.success(response.data.message)
           history.push("/technology")
-          console.log(response);
+          // console.log(response);
         }
       })
       .catch((error) => {

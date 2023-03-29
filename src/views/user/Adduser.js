@@ -17,11 +17,15 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-dropdown/style.css';
 import { GiWorld } from "react-icons/gi";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Adduser = () => {
 
   const [city, setCity] = useState([])
   const [role, setRole] = useState([])
+
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const City = () => {
 
@@ -200,9 +204,14 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
+                      <DatePicker
+                        selected={selectedDate}
+                        onChange={date => setSelectedDate(date)}
+                        dateFormat="yyyy-MM-dd"
+                      />
+                      {/* <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}
-                        onChange={handleChange} />
+                        onChange={handleChange} /> */}
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -263,7 +272,7 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="image" autoComplete="image" name="image"
+                      <CFormInput placeholder="image" autoComplete="image" name="image" type='file'
                         value={data.image}
                         onChange={handleChange} />
                     </CInputGroup>

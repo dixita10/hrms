@@ -35,16 +35,15 @@ const Login = () => {
 
   }
   const handleSubmit = (e) => {
-    var token = localStorage.getItem('token')
 
     e.preventDefault();
 
     var passData = {
       email: data.email,
       password: data.password,
-      // login_as: "admin"
+      login_as: "admin"
     }
-
+    var token = localStorage.getItem('token')
 
     axios({
       method: 'POST',
@@ -57,18 +56,19 @@ const Login = () => {
       },
     })
       .then((response) => {
-        if (response.status === 200) {
-          toast.success(response.data.message)
-          history.push("/dashboard");
-          localStorage.setItem('token', (response.data.token))
-        }
+        console.log(response);
+        // if (response.status === 200) {
+        //   toast.success(response.data.message)
+        //   // history.push("/dashboard");
+        //   // localStorage.setItem('token', (response.data.token))
+        // }
       })
-      .catch((error) => {
-        // console.log(error);
-        if (error.response.status === false) {
-          toast.error(error.response.data.message);
-        }
-      })
+      // .catch((error) => {
+      //   // console.log(error);
+      //   if (error.response.status === false) {
+      //     toast.error(error.response.data.message);
+      //   }
+      // })
   }
 
   // let initialValues = { email: "", password: "", }

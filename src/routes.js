@@ -8,7 +8,7 @@ import Login from './views/pages/login/Login'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
 const home1 = React.lazy(() => import('./views/home1/Home'))
-const Profile = React.lazy(() => import('./views/sidebar/Admin'))
+// const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const attendance = React.lazy(() => import('./views/attendance/Attendance'))
 const department = React.lazy(() => import('./views/department/Department'))
 const state = React.lazy(() => import('./views/state/State'))
@@ -62,7 +62,7 @@ const Edituser = React.lazy(() => import('./views/user/Edituser'))
 // userlogin side ...
 
 const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
-const Loggeduser = React.lazy(() => import('./userside/userlogin/Loggeduser'))
+const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
 
 
 
@@ -98,12 +98,12 @@ const login = React.lazy(() => import('./views/pages/login/Login'))
 // }
 
 const Routes = [
-  { path: '/login', name: 'login', component: login },
+  // { path: '/login', name: 'login', component: login },
   // { path: '/http://localhost:3000/login', exact: true, name: 'login', component: login },
   // <PrivateRoute path='/dashboard' component={Dashboard} name='Dashboard' />,
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/home', name: 'Home', component: home1 },
-  { path: '/profile', name: 'Profile', component: Profile },
+  // { path: '/profile', name: 'Profile', component: Profile },
   { path: '/attendance', name: 'Attendance', component: attendance },
   { path: '/department', name: 'Department', component: department },
   { path: '/state', name: "State", component: state },
@@ -155,8 +155,8 @@ const Routes = [
   // user side ...
 
 
-  { path: '/loginuser', name: 'Loginuser', component: Loginuser },
-  { path: '/loggeduser', name: 'Loggeduser', component: Loggeduser }
+  { path: '/login', name: 'Loginuser', component: Loginuser },
+  { path: '/loggeduser', name: 'Profile', component: Profile }
 
 
 
