@@ -18,7 +18,7 @@ const Singleattendance = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -33,7 +33,7 @@ const Singleattendance = () => {
                 // console.log("response", response);
                 setData(response.data)
             })
-            .catch((error) =>{
+            .catch((error) => {
                 console.log(error);
             })
     }, [])

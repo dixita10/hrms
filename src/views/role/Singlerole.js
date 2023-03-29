@@ -10,7 +10,7 @@ const Singlerole = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',

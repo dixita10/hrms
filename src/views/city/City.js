@@ -18,7 +18,7 @@ const City = () => {
     // const [searchapidata, setSearchapidata] = useState([])
 
     const getCity = () => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -52,7 +52,7 @@ const City = () => {
             city_name: data.city_name,
             state_id: data.state_id,
         }
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/city/deletecity/${city_id}`,
@@ -91,7 +91,7 @@ const City = () => {
 
     const handleSearch = (e) => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         var city_name = e.target.value
 
         axios({

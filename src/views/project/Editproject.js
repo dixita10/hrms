@@ -24,6 +24,38 @@ import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
 const Editproject = () => {
 
+
+  const getproject = () => {
+
+    var token = `Bearer ${localStorage.getItem('token')}`
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/project/findoneproject/${id}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          // console.log("response", response);
+          setData(response.data[0])
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
+
+  useEffect(() => {
+    getproject()
+  }, [])
+
+
+  const { id } = useParams()
+
   var history = useHistory();
 
   const [data, setData] = useState({
@@ -42,7 +74,7 @@ const Editproject = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       user_id: data.user_id,

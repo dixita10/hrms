@@ -14,7 +14,7 @@ const Salary = () => {
   const [pageCount, setPageCount] = useState(1)
 
   const getSalary = () => {
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -53,7 +53,7 @@ const Salary = () => {
       username: data.username,
 
     }
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/salary/deletesalary/${salary_id}`,
@@ -80,7 +80,7 @@ const Salary = () => {
 
   const handleSearch = (e) => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     var salary = e.target.value
 
     axios({

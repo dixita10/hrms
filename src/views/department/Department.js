@@ -14,7 +14,7 @@ function Department() {
     const [pageCount, setPageCount] = useState(1)
 
     const handleClick = () => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -45,7 +45,7 @@ function Department() {
             dep_name: data.dep_name,
             description: data.description,
         }
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/department/deletedepartment/${dep_id}`,
@@ -77,7 +77,7 @@ function Department() {
 
     const handleSearch = (e) => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         var dep_name = e.target.value
 
         axios({

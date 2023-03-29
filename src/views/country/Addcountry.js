@@ -34,7 +34,7 @@ const Addcountry = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
             country_name: data.country_name,

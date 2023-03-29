@@ -1,13 +1,13 @@
 import { countBy } from 'lodash'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Home from './views/home1/Home'
 import Login from './views/pages/login/Login'
 
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+const Home = React.lazy(() => import('./views/home/Home'))
 
-const home1 = React.lazy(() => import('./views/home1/Home'))
+
 // const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const attendance = React.lazy(() => import('./views/attendance/Attendance'))
 const department = React.lazy(() => import('./views/department/Department'))
@@ -101,8 +101,9 @@ const Routes = [
   // { path: '/login', name: 'login', component: login },
   // { path: '/http://localhost:3000/login', exact: true, name: 'login', component: login },
   // <PrivateRoute path='/dashboard' component={Dashboard} name='Dashboard' />,
+  { path: '/home', name: 'Home', component: Home },
+
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/home', name: 'Home', component: home1 },
   // { path: '/profile', name: 'Profile', component: Profile },
   { path: '/attendance', name: 'Attendance', component: attendance },
   { path: '/department', name: 'Department', component: department },

@@ -15,7 +15,7 @@ const Technology = () => {
   const [pageCount, setPageCount] = useState(1)
 
   const getTechnology = () => {
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -49,10 +49,10 @@ const Technology = () => {
     var passData = {
       tec_name: data.tec_name,
       dep_id: data.dep_id,
-      dep_name: data.dep_name,
+      department_name: data.department_name,
 
     }
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/technology/deletetechnology/${tec_id}`,
@@ -79,7 +79,7 @@ const Technology = () => {
 
   const handleSearch = (e) => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     var tec_name = e.target.value
 
     axios({
@@ -122,7 +122,7 @@ const Technology = () => {
             <tr>
               <td>{data.tec_name}</td>
               <td>{data.dep_id}</td>
-              <td>{data.dep_name}</td>
+              <td>{data.department_name}</td>
               <td style={{ fontSize: '24px' }}>
                 <Link to={`/singletech/${data.tec_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
                 <Link to={`/edittech/${data.tec_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>

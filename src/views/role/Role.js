@@ -14,7 +14,7 @@ const Role = () => {
   const [pageCount, setPageCount] = useState(1)
 
   const getRole = () => {
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -47,7 +47,7 @@ const Role = () => {
     var passData = {
       role_name: data.role_name,
     }
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/role/deleterole/${role_id}`,
@@ -74,7 +74,7 @@ const Role = () => {
 
   const handleSearch = (e) => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     var role_name = e.target.value
 
     axios({

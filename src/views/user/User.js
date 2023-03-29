@@ -15,7 +15,7 @@ const User = () => {
   const [pageCount, setPageCount] = useState(1)
 
   const getUser = () => {
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -61,7 +61,7 @@ const User = () => {
       image: data.image,
     }
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/user/deleteuser/${user_id}`,
@@ -88,7 +88,7 @@ const User = () => {
 
   const handleSearch = (e) => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     var username = e.target.value
 
     axios({

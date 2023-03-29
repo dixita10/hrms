@@ -8,8 +8,8 @@ import { AiOutlineProject } from "react-icons/ai";
 import { DiTechcrunch } from "react-icons/di";
 
 
-var roleid = localStorage.getItem("roleid")
-// console.log(roleid);
+var role_id = localStorage.getItem("role_id")
+// console.log(role_id);
 
 const nav1 = [
   {
@@ -102,7 +102,7 @@ const nav = [
 
 ]
 
-const _nav = roleid === "21" ? nav : nav1
+const _nav = role_id === "3" ? nav : nav1
 
 // console.log(_nav);
 

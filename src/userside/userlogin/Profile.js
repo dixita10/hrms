@@ -19,7 +19,7 @@ const Loggeduser = () => {
             },
         })
             .then((response) => {
-                // console.log("response", response.data.user);
+                console.log("response", response.data.user);
                 if (response.status === 200) {
                     setdata(response.data.user)
                 }

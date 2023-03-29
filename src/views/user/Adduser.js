@@ -208,6 +208,7 @@ const Adduser = () => {
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         dateFormat="yyyy-MM-dd"
+                        placeholder="birth date"
                       />
                       {/* <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}

@@ -8,8 +8,7 @@ const Singleproject = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    var token = localStorage.getItem('token')
-
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'GET',
       url: `${process.env.REACT_APP_URL}/project/findoneproject/${id}`,

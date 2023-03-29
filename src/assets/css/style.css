@@ -1,3 +1,31 @@
+/* home page */
+ .Home .header{
+    background-color: black;
+        min-height: 6rem;
+ }
+.iconhome img {
+    margin-bottom: 20px;
+}
+ .homeiconpart span {
+    font-weight: 500;
+    font-size: 17px;
+ }
+.container{
+    padding: 0!important;
+}
+.homeiconpart .col-md-3{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.homeiconpart .boxcard{
+    min-width: 60px;
+        box-shadow: none;
+        background: #fcfcfc;
+        border-radius: 10px;
+        margin: 15px;
+}
+
+
 /* @import "compass/css3"; */
 
 .responstable {

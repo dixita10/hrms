@@ -25,7 +25,7 @@ const Editsalary = () => {
 
     const getsalary = () => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'GET',
             url: `${process.env.REACT_APP_URL}/salary/findonesalary/${id}`,
@@ -66,7 +66,7 @@ const Editsalary = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
             user_id: data.user_id,
@@ -116,7 +116,7 @@ const Editsalary = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Add Salary</h3><br />
+                                        <h3 className='text-center'>Edit Salary</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
@@ -152,7 +152,7 @@ const Editsalary = () => {
 
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Add Salary</CButton>
+                                            <CButton color="success" type='submit'>Edit Salary</CButton>
                                         </div>
 
 

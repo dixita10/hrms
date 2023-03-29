@@ -10,7 +10,7 @@ const singleuser = () => {
     console.log(id);
 
     useEffect(() => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',

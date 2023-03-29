@@ -48,7 +48,7 @@ function resetpswd() {
 
     axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_URL}/auth/resetpassword`,
+      url: `${process.env.REACT_APP_URL}/userlogin/userresetpassword`,
       data: passData,
       headers: {
         "Content-Type": "application/json",

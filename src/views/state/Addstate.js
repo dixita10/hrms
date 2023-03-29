@@ -25,7 +25,7 @@ const Addstate = () => {
 
   const Countrie = () => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -59,7 +59,7 @@ const Addstate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       state_name: data.state_name,

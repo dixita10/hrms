@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import {
   CButton,
@@ -23,6 +23,35 @@ import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
 const Editcity = () => {
 
+
+  const getstate = () => {
+
+    var token = `Bearer ${localStorage.getItem('token')}`
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/city/findonecity/${id}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          // console.log("response", response);
+          setData(response.data[0])
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  }
+
+  useEffect(() => {
+    getstate()
+  }, [])
+
   const { id } = useParams();
   // console.log(id);
 
@@ -38,7 +67,7 @@ const Editcity = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       city_name: data.city_name,

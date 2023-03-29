@@ -35,7 +35,7 @@ const Adddepartment = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
             dep_name: data.dep_name,

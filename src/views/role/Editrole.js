@@ -24,7 +24,7 @@ const Editrole = () => {
 
     const getrole = () => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'GET',
             url: `${process.env.REACT_APP_URL}/role/findonerole/${id}`,
@@ -65,7 +65,7 @@ const Editrole = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
             role_name: data.role_name,
@@ -112,7 +112,7 @@ const Editrole = () => {
                                     <CCardBody className="p-4">
 
                                         <CForm onSubmit={handleSubmit} >
-                                            <h3 className='text-center'>Add Role</h3><br />
+                                            <h3 className='text-center'>Edit Role</h3><br />
                                             <CInputGroup className="mb-3">
                                                 <CInputGroupText>
                                                     <CIcon icon={cilUser} />
@@ -124,7 +124,7 @@ const Editrole = () => {
 
 
                                             <div className="d-grid">
-                                                <CButton color="success" type='submit'>Add Role</CButton>
+                                                <CButton color="success" type='submit'>Edit Role</CButton>
                                             </div>
 
 

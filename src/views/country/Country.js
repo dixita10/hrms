@@ -13,7 +13,7 @@ const Country = () => {
     const [pageCount, setPageCount] = useState(1)
 
     const getcountry = () => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -45,7 +45,7 @@ const Country = () => {
         var passData = {
             country_name: data.country_name,
         }
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/country/deletecountry/${country_id}`,
@@ -73,7 +73,7 @@ const Country = () => {
 
     const handleSearch = (e) => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         var country_name = e.target.value
 
         axios({

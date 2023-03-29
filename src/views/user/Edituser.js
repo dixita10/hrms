@@ -27,7 +27,7 @@ const Edituser = () => {
 
   const getUser = () => {
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'GET',
       url: `${process.env.REACT_APP_URL}/user/findoneuser/${id}`,
@@ -68,7 +68,7 @@ const Edituser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       name: data.role_name,

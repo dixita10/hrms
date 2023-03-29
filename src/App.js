@@ -17,7 +17,9 @@ const loading = (
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+const Home = React.lazy(() => import('./views/home/Home'))
 
+// const Home11 = React.lazy(() => import('./views/Home11'))
 // const Profile = React.lazy(() => import('./views/sidebar/Admin'))
 const Attendance = React.lazy(() => import('./views/attendance/Attendance'))
 // const Attendance = React.lazy(() => import('./views/attendance/Attendance/:id'))
@@ -97,6 +99,8 @@ class App extends Component {
               name="Register Page"
               render={(props) => <Register {...props} />}
             /> */}
+
+            <Route exact path="/home" name="Home" render={(props) => <Home {...props} /> }/>
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
             <Route exact path='/login' name="Loginuser" render={(props) => <Loginuser {...props} />} />
 

@@ -38,7 +38,7 @@ const Addattandance = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       user_id: data.user_id,

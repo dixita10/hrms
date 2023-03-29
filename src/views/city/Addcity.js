@@ -33,7 +33,7 @@ const Addcity = () => {
 
     const State = () => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -65,7 +65,7 @@ const Addcity = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
             city_name: data.city_name,

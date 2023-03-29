@@ -17,7 +17,7 @@ function Attendance() {
 
     const handleClick = () => {
 
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
@@ -63,7 +63,7 @@ function Attendance() {
         }
 
         //   console.log(admin_id);
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/attendance/deleteattendance/${admin_id}`,

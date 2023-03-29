@@ -12,7 +12,7 @@ const Project = () => {
   const [pageCount, setPageCount] = useState(1)
 
   const getProject = () => {
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
@@ -50,7 +50,7 @@ const Project = () => {
       description: data.description,
       tec_id: data.tec_id,
     }
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/project/deleteproject/${pro_id}`,

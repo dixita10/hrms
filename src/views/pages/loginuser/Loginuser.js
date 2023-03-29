@@ -59,7 +59,7 @@ const Loginuser = () => {
                     // console.log(response.data.roleResults[0].role_id);
                     toast.success(response.data.message)
                     localStorage.setItem('token', token)
-                    localStorage.setItem('roleid', role_id)
+                    localStorage.setItem('role_id', role_id)
                     history.push("/dashboard");
                 }
             })

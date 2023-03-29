@@ -18,7 +18,7 @@ const Singlecountry = () => {
     // const [item , setitem] = useState()
 
     useEffect(() => {
-        var token = localStorage.getItem('token')
+        var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
