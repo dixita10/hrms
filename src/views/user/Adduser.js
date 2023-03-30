@@ -78,14 +78,14 @@ const Adduser = () => {
 
   const [data, setData] = useState([])
 
-  const [data1, setData1] = useState({
-    female: 'female',
-    male: 'male'
-  })
+  // const [data1, setData1] = useState({
+  //   female: 'female',
+  //   male: 'male'
+  // })
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
-    setData1({ ...data, [e.target.name]: e.target.value })
+    // setData1({ ...data, [e.target.name]: e.target.value })
 
   }
 

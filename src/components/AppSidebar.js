@@ -8,9 +8,11 @@ import { AppSidebarNav } from './AppSidebarNav'
 
 import { logoNegative } from 'src/assets/brand/logo-negative'
 import { sygnet } from 'src/assets/brand/sygnet'
-import logo from '../assets/images/logo.png'
+// import logo from '../assets/images/logo.png'
+import logo from '../assets/images/HRMS-Logo.webp'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
+import { Link } from 'react-router-dom'
 
 // sidebar nav config
 import navigation from '../_nav'
@@ -32,7 +34,9 @@ const AppSidebar = () => {
       <CSidebarBrand className="d-none d-md-flex" to="/">
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} /> */}
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
-        <img src={logo} className='logo-img' alt='logo' style={{ height: '3rem' }} />
+        <Link to='/home'>
+          <img src={logo} className='logo-img' alt='logo' style={{ height: '45px' }} />
+        </Link>
 
 
       </CSidebarBrand>

@@ -27,7 +27,6 @@ const User = () => {
       },
     })
       .then((response) => {
-        // console.log("response", response);
         setdata(response.data.data)
       })
   }
@@ -91,6 +90,7 @@ const User = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
     var username = e.target.value
 
+
     axios({
       method: 'GET',
       url: `${process.env.REACT_APP_URL}/user/findalluser/?page=1&limit=3&q=${username}`,
@@ -101,8 +101,10 @@ const User = () => {
       },
     })
       .then((response) => {
-        // console.log("response", response);
-        setdata(response.data.data)
+
+        if (response.status === 200) {
+          setdata(response.data.data)
+        }
       })
       .catch((error) => {
         console.log(error);

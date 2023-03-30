@@ -100,7 +100,7 @@ class App extends Component {
               render={(props) => <Register {...props} />}
             /> */}
 
-            <Route exact path="/home" name="Home" render={(props) => <Home {...props} /> }/>
+            <Route exact path="/home" name="Home" render={(props) => <Home {...props} />} />
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
             <Route exact path='/login' name="Loginuser" render={(props) => <Loginuser {...props} />} />
 
