@@ -67,6 +67,60 @@ a{
     left: 30px;
 }
 
+.clock-in-btn {
+    background-color: #0093FF;
+    color: white;
+    padding: 0px 32px;
+        border-radius: 2px;
+}
+
+.web-clock-in-btn {
+    background-color: red;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 2px;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+    .Clock-in-text{
+        margin-left: -47px!important;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    /* .web-clock-out-btn{
+        position: relative;
+        bottom: 30px;
+    } */
+ .clock-buttons-container {
+     position: relative;
+ }
+
+ .web-clock-out-btn {
+        background-color: rgb(228, 88, 37);
+        color: white;
+     position: absolute;
+     top: 38px;
+     left: 0;
+     font-size: 13px;
+     font-weight: 500;
+        padding: 14px 10px;
+ }
+ .dropdown-menu.show{
+    margin-top: 35px;
+ }
+/* .clockbtn:hover{
+    background-color: #d9534f;
+} */
+/* .clockbtn::before {
+    content: "Click in";
+} */
+
+/* .clockbtn:hover::before {
+    content: "web clock out";
+} */
+
+
+
 
 
 

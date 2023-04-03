@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import homeheader from '../../assets/images/HRMS-Logo.webp'
 import profile from '../../assets/images/profile.svg'
 import attendance from '../../assets/images/attendance.svg'
@@ -29,9 +29,15 @@ import {
 import { FaAngleDown } from "react-icons/fa";
 import profile1 from './../../assets/images/avatars/profile.png'
 // import {  } from "react-icons/io";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const Home = () => {
+
+
+
 
     const handleLogout = () => {
         localStorage.removeItem("token")
@@ -39,6 +45,94 @@ const Home = () => {
 
     const [data, setData] = useState([])
     const [data1, setData1] = useState(null)
+    const [isClockedIn, setIsClockedIn] = useState()
+
+    const [startTime, setStartTime] = useState(
+        parseInt(localStorage.getItem("startTime")) || null
+    );
+    const [elapsedTime, setElapsedTime] = useState(
+        parseInt(localStorage.getItem("elapsedTime")) || 0
+    );
+    const [isHovering, setIsHovering] = useState(false);
+    const [isCheckedIn, setIsCheckedIn] = useState(false);
+    useEffect(() => {
+        let intervalId;
+        if (startTime !== null) {
+            intervalId = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                setElapsedTime(elapsed);
+                localStorage.setItem("elapsedTime", elapsed.toString());
+            }, 1000);
+        }
+        return () => clearInterval(intervalId);
+    }, [startTime]);
+
+
+
+    const startStopTimer = (e) => {
+        e.preventDefault()
+        var token = `Bearer ${localStorage.getItem('token')}`
+
+        var passData = {
+            remark: '',
+        }
+        if (startTime === null) {
+            setStartTime(Date.now());
+            localStorage.setItem("startTime", Date.now().toString());
+            setIsCheckedIn(true);
+            // setStartTime(true)
+
+        } else {
+            const elapsed = Date.now() - startTime;
+            setElapsedTime(elapsed);
+            setStartTime(null);
+            localStorage.removeItem("startTime");
+            localStorage.removeItem("elapsedTime");
+            // setStartTime(false)
+            setIsCheckedIn(false);
+
+        }
+        axios({
+            method: 'POST',
+            url: `${process.env.REACT_APP_URL}/attendance/addattendance`,
+            data: passData,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                // console.log(response);
+                if (response.status === 200) {
+                    toast.success(response.data.message, {
+                        position: 'top-left'
+                    })
+                }
+            })
+            .catch((error) => {
+                // console.log(error);
+                toast.error(error.response.data.message)
+            })
+    };
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+    };
+
+    const formatTime = (time) => {
+        const seconds = Math.floor((time / 1000) % 60).toString().padStart(2, "0");
+        const minutes = Math.floor((time / (1000 * 60)) % 60)
+            .toString()
+            .padStart(2, "0");
+        const hours = Math.floor(time / (1000 * 60 * 60))
+            .toString()
+            .padStart(2, "0");
+        return `${hours}:${minutes}:${seconds}`;
+    };
 
     const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
     const currentDate = new Date().toLocaleDateString('en-US', options).toUpperCase();
@@ -46,7 +140,7 @@ const Home = () => {
     const username = () => {
 
         var username = localStorage.getItem("username")
-        console.log(username);
+        // console.log(username);
         setData1(username)
     }
 
@@ -79,9 +173,43 @@ const Home = () => {
         }
     }
 
+    // const handleclock = (e) => {
+    // e.preventDefault()
+    // var token = `Bearer ${localStorage.getItem('token')}`
+
+    // var passData = {
+    //     remark: '',
+    // }
+
+
+    // axios({
+    //     method: 'POST',
+    //     url: `${process.env.REACT_APP_URL}/attendance/addattendance`,
+    //     data: passData,
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: token,
+    //         Accept: "application/json",
+    //     },
+    // })
+    //     .then((response) => {
+    //         // console.log(response);
+    //         if (response.status === 200) {
+    //             toast.success(response.data.message)
+    //         }
+    //     })
+    // .catch((error) => {
+    //     // console.log(error);
+    //     toast.error(error.response.data.message)
+    // })
+    // }
+
     useEffect(() => {
         username()
     }, [])
+
+
+
 
 
     return (
@@ -111,10 +239,54 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='col-3 clock_out d-flex' style={{ marginLeft: '-30px' }}>
-                        <div>
-                            <p style={{ color: 'white', marginTop: "10px", fontWeight: 500, fontSize: '14px' }}>{currentDate}</p>
-                            <button type="button" class="btn btn-primary" style={{ marginTop: '-5px', fontSize: "14px", padding: '7px' }}>WEB CLOCK-OUT</button>
+                        <div className="clock-buttons-container">
+                            <p style={{
+                                color: 'white', marginTop: "11px", marginBottom: "6px", fontWeight: 500, fontSize: '14px'
+                            }}>{currentDate}</p>
+                            {/* <button
+                                className={isClockedIn ? "clock-in-btn" : "web-clock-in-btn"}
+                                onClick={startStopTimer}
+                                onMouseOver={handleMouseOver}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <span className={isClockedIn ? "Clock-in-text" : ""}>
+                                    {isClockedIn ? "CLOCKED IN" : "WEB CLOCK-IN"}
+                                </span>
+                                <br />
+                                {isClockedIn ? ` ${formatTime(elapsedTime)}` : ""}
+                                {isHovering && isClockedIn && (
+                                    <button className="web-clock-out-btn" onClick={startStopTimer}>
+                                        WEB CLOCK-OUT
+                                    </button>
+                                )}
+                            </button> */}
+                            {/* <div>
+                                <button
+                                    className={startTime === null ? "web-clock-in-btn" : "clock-in-btn"}
+                                    onClick={startStopTimer}
+                                    onMouseOver={handleMouseOver}
+                                    onMouseLeave={handleMouseLeave}
+                                >
+                                    <span className={startTime === null ? "" : "Clock-in-text"}>
+                                        {startTime === null ? "WEB CLOCK-IN" : isCheckedIn ? "CLOCKED IN" : "CLOCKED OUT"}
+                                    </span>
+                                    <br /> {startTime === null ? "" : ` ${formatTime(elapsedTime)}`}
+                                </button>
+                                {isHovering && isCheckedIn && (
+                                    <button className="web-clock-out-btn" onClick={startStopTimer}>
+                                        WEB CLOCK-OUT
+                                    </button>
+                                )}
+                            </div> */}
+                            <button onClick={startStopTimer} className={startTime === null ? "web-clock-in-btn" : "clock-in-btn"}>
+                                <span className={startTime === null ? "" : "Clock-in-text"}>
+                                    {startTime === null ? "Web clock-in" : "Clock in"}
+                                </span>
+                                <br />{startTime === null ? "" : ` ${formatTime(elapsedTime)}`}
+                            </button>
+
                         </div>
+
                         <IoNotificationsSharp style={{ color: 'white' }} className='notificationhome' />
                         <CDropdown variant="nav-item" className='settinghome'>
                             <CDropdownToggle placement="bottom-end" className="py-0" caret={false} style={{ color: 'white', fontSize: '30px' }}>
@@ -122,11 +294,11 @@ const Home = () => {
                             </CDropdownToggle>
                             <CDropdownMenu className="pt-0" placement="bottom-end">
 
-                                <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
-                                {/* <CDropdownItem href="#">
-          <CIcon icon={cilUser} className="me-2" />
-          Profile
-        </CDropdownItem> */}
+                                {/* <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader> */}
+                                <CDropdownItem href="/login " onClick={handleLogout}>
+                                    <FiUserMinus className="me-2" />
+                                    File Manager
+                                </CDropdownItem>
                                 <CDropdownItem href="/login " onClick={handleLogout}>
                                     <FiUserMinus className="me-2" />
                                     Logout
@@ -141,7 +313,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <div className='container' style={{ marginTop: "6%" }}>
                 <div className='row homeiconpart'>
                     <div className='col col-md-3 px-4'>
@@ -243,7 +414,9 @@ const Home = () => {
                     <div className='col col-md-3 px-4'></div>
                 </div>
             </div>
-        </div>
+            <ToastContainer autoClose={2000}
+            />
+        </div >
     )
 }
 
