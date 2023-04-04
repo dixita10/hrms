@@ -112,8 +112,6 @@ const User = () => {
 
   }
 
-
-
   return (
     <div className='table-responsive'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

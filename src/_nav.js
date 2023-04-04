@@ -24,6 +24,12 @@ const nav1 = [
     to: '/loggeduser',
     icon: <RiAdminLine className='nav-icon' />
   },
+  {
+    component: CNavItem,
+    name: 'Attendance',
+    to: '/userattendance',
+    icon: <FaRegCalendarAlt className='nav-icon' />
+  },
 
 ]
 const nav = [

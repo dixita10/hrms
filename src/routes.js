@@ -2,6 +2,7 @@ import { countBy } from 'lodash'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Login from './views/pages/login/Login'
+import Attandance from './views/userattendance/UserAttendance'
 
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -19,6 +20,10 @@ const role = React.lazy(() => import('./views/role/Role'))
 const salary = React.lazy(() => import('./views/salary/Salary'))
 const technology = React.lazy(() => import('./views/technology/Technology'))
 const user = React.lazy(() => import('./views/user/User'))
+const UserAttendance = React.lazy(() => import('./views/userattendance/UserAttendance'))
+
+
+
 
 const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
@@ -115,6 +120,7 @@ const Routes = [
   { path: "/salary", name: 'Salary', component: salary },
   { path: "/technology", name: 'Technology', component: technology },
   { path: "/user", name: 'User', component: user },
+  { path: "/userattendance", name: 'UserAttendance', component: UserAttendance },
 
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
   { path: '/adddepartment', name: 'Adddepartment', component: Adddepartment },

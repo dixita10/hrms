@@ -24,6 +24,8 @@ const Loginuser = () => {
 
     var history = useHistory();
 
+    const [user, setUser] = useState([])
+
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -59,8 +61,32 @@ const Loginuser = () => {
                     // console.log(response.data.roleResults[0].role_id);
                     toast.success(response.data.message)
                     localStorage.setItem('token', token)
-                    localStorage.setItem('role_id', role_id)
-                    history.push("/dashboard");
+
+                    var token = `Bearer ${localStorage.getItem('token')}`
+
+                    axios({
+                        method: 'GET',
+                        url: `${process.env.REACT_APP_URL}/userlogin/loggedUser`,
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: token,
+                            Accept: "application/json",
+                        },
+                    })
+                        .then((response) => {
+                            var username = response.data.user.username
+                            var user_id = response.data.user.user_id
+                            // console.log();
+                            if (response.status === 200) {
+                                localStorage.setItem('username', username)
+                                localStorage.setItem('role_id', role_id)
+                                setUser(response.data.user.username)
+                                localStorage.setItem('user_id', user_id)
+                                history.push("/home");
+                            }
+
+                        })
+
                 }
             })
             .catch((error) => {

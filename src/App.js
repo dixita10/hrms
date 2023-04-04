@@ -32,6 +32,9 @@ const Role = React.lazy(() => import('./views/role/Role'))
 const Salary = React.lazy(() => import('./views/salary/Salary'))
 const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
+const UserAttendance = React.lazy(() => import('./views/userattendance/UserAttendance'))
+
+
 
 // Pages
 // const Login = React.lazy(() => import('./views/pages/login/Login'))
@@ -119,6 +122,11 @@ class App extends Component {
             <Route exact path="/salary" name="Salary" render={(props) => <Salary {...props} />} />
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
+
+            {/* //user attendance */}
+            <Route exact path="/userattendance" name="UserAttendance" render={(props) => <UserAttendance {...props} />} />
+
+
 
             <Route exact path="/singleattendance/:id" name="Singleattendance" render={(props) => <Singleattendance {...props} />} />
             <Route exact path="/singleuser/:id" name="Singleuser" render={(props) => <Singleuser {...props} />} />

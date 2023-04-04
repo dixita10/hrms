@@ -35,8 +35,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const Home = () => {
-
-
+    var role_id = localStorage.getItem("role_id")
 
 
     const handleLogout = () => {
@@ -115,13 +114,13 @@ const Home = () => {
                 toast.error(error.response.data.message)
             })
     };
-    const handleMouseOver = () => {
-        setIsHovering(true);
-    };
+    // const handleMouseOver = () => {
+    //     setIsHovering(true);
+    // };
 
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-    };
+    // const handleMouseLeave = () => {
+    //     setIsHovering(false);
+    // };
 
     const formatTime = (time) => {
         const seconds = Math.floor((time / 1000) % 60).toString().padStart(2, "0");
@@ -313,107 +312,147 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='container' style={{ marginTop: "6%" }}>
-                <div className='row homeiconpart'>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/loggeduser'>
-                            <div className='iconhome'>
-                                <img src={profile} alt="profileicon" style={{ width: '70px' }} />
+            {role_id === "3" ? (
+                <div>
+                    <div className='container' style={{ marginTop: "6%" }}>
+                        <div className='row homeiconpart'>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/loggeduser'>
+                                    <div className='iconhome'>
+                                        <img src={profile} alt="profileicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p>Profile</p>
+                                </Link>
                             </div>
-                            <p>Profile</p>
-                        </Link>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/attendance'>
+                                    <div className='iconhome'>
+                                        <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Attendance</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/department'>
+                                    <div className='iconhome'>
+                                        <img src={department} alt="departmenticon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Department</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/country'>
+                                    <div className='iconhome'>
+                                        <img src={country} alt="countryicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Country</p>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/attendance'>
-                            <div className='iconhome'>
-                                <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
+                    <div className='container'>
+                        <div className='row homeiconpart'>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/state'>
+                                    <div className='iconhome'>
+                                        <img src={state} alt="stateicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >State</p>
+                                </Link>
                             </div>
-                            <p >Attendance</p>
-                        </Link>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/city'>
+                                    <div className='iconhome'>
+                                        <img src={city} alt="cityicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >City</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/project'>
+                                    <div className='iconhome'>
+                                        <img src={project} alt="projecticon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Project</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/role'>
+                                    <div className='iconhome'>
+                                        <img src={role} alt="roleicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Role</p>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/department'>
-                            <div className='iconhome'>
-                                <img src={department} alt="departmenticon" style={{ width: '70px' }} />
+                    <div className='container'>
+                        <div className='row homeiconpart '>
+                            <div className='col col-md-3 px-5' >
+                                <Link to='/salary'>
+                                    <div className='iconhome'>
+                                        <img src={salary} alt="salaryicon" style={{ width: '75px' }} />
+                                    </div>
+                                    <p >Salary</p>
+                                </Link>
                             </div>
-                            <p >Department</p>
-                        </Link>
+                            <div className='col col-md-3 px-5' >
+                                <Link to='/technology'>
+                                    <div className='iconhome'>
+                                        <img src={technology} alt="technologyicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Technology</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-5' >
+                                <Link to='/user'>
+                                    <div className='iconhome'>
+                                        <img src={users} alt="usersicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Users</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'></div>
+                        </div>
                     </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/country'>
-                            <div className='iconhome'>
-                                <img src={country} alt="countryicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >Country</p>
-                        </Link>
+                </div>) :
+                <div className='container' style={{ marginTop: "6%" }}>
+                    <div className='row homeiconpart'>
+                        <div className='col col-md-6 px-4'>
+                            <Link to='/loggeduser'>
+                                <div className='iconhome'>
+                                    <img src={profile} alt="profileicon" style={{ width: '70px' }} />
+                                </div>
+                                <p>Profile</p>
+                            </Link>
+                        </div>
+                        <div className='col col-md-6 px-4'>
+                            <Link to='/userattendance'>
+                                <div className='iconhome'>
+                                    <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
+                                </div>
+                                <p >Attendance</p>
+                            </Link>
+                        </div>
+                        {/* <div className='col col-md-3 px-4'>
+                            <Link to='/department'>
+                                <div className='iconhome'>
+                                    <img src={department} alt="departmenticon" style={{ width: '70px' }} />
+                                </div>
+                                <p >Department</p>
+                            </Link>
+                        </div> */}
+                        {/* <div className='col col-md-3 px-4'>
+                            <Link to='/country'>
+                                <div className='iconhome'>
+                                    <img src={country} alt="countryicon" style={{ width: '70px' }} />
+                                </div>
+                                <p >Country</p>
+                            </Link>
+                        </div> */}
                     </div>
                 </div>
-            </div>
-            <div className='container'>
-                <div className='row homeiconpart'>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/state'>
-                            <div className='iconhome'>
-                                <img src={state} alt="stateicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >State</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/city'>
-                            <div className='iconhome'>
-                                <img src={city} alt="cityicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >City</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/project'>
-                            <div className='iconhome'>
-                                <img src={project} alt="projecticon" style={{ width: '70px' }} />
-                            </div>
-                            <p >Project</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-4'>
-                        <Link to='/role'>
-                            <div className='iconhome'>
-                                <img src={role} alt="roleicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >Role</p>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <div className='container'>
-                <div className='row homeiconpart '>
-                    <div className='col col-md-3 px-5' >
-                        <Link to='/salary'>
-                            <div className='iconhome'>
-                                <img src={salary} alt="salaryicon" style={{ width: '75px' }} />
-                            </div>
-                            <p >Salary</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-5' >
-                        <Link to='/technology'>
-                            <div className='iconhome'>
-                                <img src={technology} alt="technologyicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >Technology</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-5' >
-                        <Link to='/user'>
-                            <div className='iconhome'>
-                                <img src={users} alt="usersicon" style={{ width: '70px' }} />
-                            </div>
-                            <p >Users</p>
-                        </Link>
-                    </div>
-                    <div className='col col-md-3 px-4'></div>
-                </div>
-            </div>
+            }
             <ToastContainer autoClose={2000}
             />
         </div >
