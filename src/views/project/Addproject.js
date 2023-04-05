@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
@@ -20,8 +20,8 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-import Datetime from 'react-datetime';
-import "react-datetime/css/react-datetime.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 const Addproject = () => {
@@ -77,7 +77,48 @@ const Addproject = () => {
         toast.error(error.response.data.message)
       })
   }
+  const [user, setUser] = useState([])
 
+  const userid = () => {
+    var token = `Bearer ${localStorage.getItem('token')}`
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/user/findalluser`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        setUser(response.data.data)
+      })
+  }
+  const [tech, setTech] = useState([])
+
+  const techid = () => {
+    var token = `Bearer ${localStorage.getItem('token')}`
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/technology/findalltechnology`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log("response", response);
+        setTech(response.data.data)
+      })
+  }
+
+  useEffect(() => {
+    userid(),
+      techid()
+  }, [])
 
   return (
     <div>
@@ -89,15 +130,21 @@ const Addproject = () => {
                 <CCardBody className="p-4">
 
                   <CForm onSubmit={handleSubmit} >
-                    <h3 className='text-center'>Add Country</h3><br />
-                    <Datetime />
+                    <h3 className='text-center'>Add Project</h3><br />
+                    {/* <Datetime /> */}
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
-                        value={data.user_id}
-                        onChange={handleChange} />
+                      <select className="form-select" aria-label="Default select example" value={user.user_id} onChange={handleChange} name="user_id">
+                        <option selected>choose user name</option>
+                        {user.map((user, index) => {
+                          return (
+                            <option key={index} value={user.user_id}>{user.username}</option>
+                          )
+                        })
+                        }
+                      </select>
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -111,7 +158,7 @@ const Addproject = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput type='datetime-local' placeholder="start_date" autoComplete="start_date" name="start_date"
+                      <CFormInput type='date' placeholder="start_date" autoComplete="start_date" name="start_date"
                         value={data.start_date}
                         onChange={handleChange} />
                     </CInputGroup>
@@ -119,7 +166,7 @@ const Addproject = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput type='datetime-local' placeholder="end_date" autoComplete="end_date" name="end_date"
+                      <CFormInput type='date' placeholder="end_date" autoComplete="end_date" name="end_date"
                         value={data.end_date}
                         onChange={handleChange} />
                     </CInputGroup>
@@ -127,9 +174,15 @@ const Addproject = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="status" autoComplete="status" name="status"
+                      {/* <CFormInput placeholder="status" autoComplete="status"  /> */}
+                      <select className="form-select" aria-label="Default select example" name="status"
                         value={data.status}
-                        onChange={handleChange} />
+                        onChange={handleChange}>
+                        <option selected>Select Status</option>
+                        <option>in_progress</option>
+                        <option>on_hold</option>
+                        <option>completed</option>
+                      </select>
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -143,13 +196,19 @@ const Addproject = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="tec_id" autoComplete="tec_id" name="tec_id"
-                        value={data.tec_id}
-                        onChange={handleChange} />
+                      <select className="form-select" aria-label="Default select example" value={tech.tec_id} onChange={handleChange} name="tec_id">
+                        <option selected>Choose Technology Name</option>
+                        {tech.map((tech, index) => {
+                          return (
+                            <option key={index} value={tech.tec_id}>{tech.tec_name}</option>
+                          )
+                        })
+                        }
+                      </select>
                     </CInputGroup>
 
                     <div className="d-grid">
-                      <CButton color="success" type='submit'>Add Country</CButton>
+                      <CButton color="success" type='submit'>Add Project</CButton>
                     </div>
 
                   </CForm>

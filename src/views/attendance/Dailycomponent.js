@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Dailycomponent = () => {
 
     const [data, setData] = useState([])
 
-    useEffect(() => {
+    const [currentDate, setCurrentDate] = useState(moment().toDate());
 
+    const handleDateChange = (date) => {
+        setCurrentDate(date);
+    };
+
+    const handlePreviousClick = () => {
+        const newDate = moment(currentDate).subtract(1, 'days').toDate();
+        setCurrentDate(newDate);
+    };
+
+    const handleNextClick = () => {
+        const newDate = moment(currentDate).add(1, 'days').toDate();
+        setCurrentDate(newDate);
+    };
+    var username = localStorage.getItem("username")
+
+    const Dailyatten = () => {
         var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/attendance/finddailyattendancebyuseridandintime`,
+            url: `${process.env.REACT_APP_URL}/attendance/dailyattendance`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -28,24 +46,32 @@ const Dailycomponent = () => {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+
+    useEffect(() => {
+        Dailyatten();
     }, [])
 
     return (
         <div>
-            <table >
+            <div>
+                <button onClick={handlePreviousClick}>Previous</button>
+                <DatePicker selected={currentDate} onChange={handleDateChange} />
+                <button onClick={handleNextClick}>Next</button>
+            </div>
+            <table className='responstable'>
                 <tr>
-                    <th>user_id</th>
+                    <th>name</th>
                     <th>intime</th>
                     <th>outtime</th>
-                    <th>remark</th>
                 </tr>
                 {
                     data.map((data) =>
                         <tr>
-                            <td>{data.user_id}</td>
-                            <td>{moment(data.intime).format("LLL")}</td>
-                            <td>{moment(data.outtime).format("LLL")}</td>
-                            <td>{data.remark}</td>
+                            <td>{username}</td>
+                            <td>{data.intime}</td>
+                            <td>{data.outtime}</td>
                         </tr>
                     )
                 }

@@ -6,13 +6,23 @@ import ReactPaginate from 'react-paginate';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
-
+import Pagination from '../attendance/Pagination';
 
 
 const City = () => {
 
     const [data, setdata] = useState([])
-    const [pageCount, setPageCount] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    function handlePageChange(pageNumber) {
+        setCurrentPage(pageNumber);
+    }
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const visibleItems = data.slice(startIndex, endIndex);
 
     // const [filterval, setFilterval] = useState('')
     // const [searchapidata, setSearchapidata] = useState([])
@@ -22,7 +32,7 @@ const City = () => {
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/city/findallcity?page=${pageCount}&limit=5`,
+            url: `${process.env.REACT_APP_URL}/city/findallcity`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -38,13 +48,9 @@ const City = () => {
 
     useEffect(() => {
         getCity()
-    }, [pageCount])
+    }, [])
 
-    const handlePageClick = async (data) => {
-        // console.log(data.selected);
-        setPageCount(data.selected + 1)
-        // let currentPage = data.selected + 1
-    }
+
 
     const handleDelete = (city_id) => {
 
@@ -118,25 +124,25 @@ const City = () => {
     return (
         <div>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
+                <input type='search' placeholder='Search City Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
                 {/* <input type='search' placeholder='search' value={filterval} onInput={(e) => handleFilter(e)} style={{ padding: '5px 10px', borderRadius: '5px' }} /> */}
                 <Link to={'/addcity'}>
                     <button className="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
-            </div>
+            </div><br />
             <div className='table-responsive'>
                 <table className='responstable'>
                     <tr>
                         <th>city_name</th>
-                        <th>state_id</th>
+                        {/* <th>state_id</th> */}
                         <th>state_name</th>
                         <th>Action</th>
                     </tr>
                     {
-                        data.map((data) =>
+                        visibleItems.map((data) =>
                             <tr>
                                 <td>{data.city_name}</td>
-                                <td>{data.state_id}</td>
+                                {/* <td>{data.state_id}</td> */}
                                 <td>{data.state_name}</td>
                                 <td style={{ fontSize: '24px' }}>
                                     <Link to={`/singlecity/${data.city_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
@@ -148,24 +154,10 @@ const City = () => {
                     }
                 </table>
             </div>
-            <ReactPaginate
-                previousLabel="< previous"
-                nextLabel="next >"
-                breakLabel="..."
-                pageCount={10}
-                pageRangeDisplayed={4}
-                marginPagesDisplayed={3}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination justify-content-center'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                previousClassName={'page-item'}
-                previousLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                activeClassName={'active'}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
             />
             <ToastContainer autoClose={2000} />
         </div>

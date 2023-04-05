@@ -1,5 +1,6 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import {
     CButton,
@@ -17,18 +18,17 @@ import CIcon from '@coreui/icons-react'
 import {
     cilLockLocked, cilUser, cilPhone
 } from '@coreui/icons'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
+const Editbankdetail = () => {
 
-const Editsalary = () => {
-
-    const getsalary = () => {
+    const getbankdetail = () => {
 
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/salary/findonesalary/${id}`,
+            url: `${process.env.REACT_APP_URL}/bankdetail/findonebankdetail/${id}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -38,7 +38,7 @@ const Editsalary = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // console.log("response", response);
-                    setdata(response.data[0])
+                    setData(response.data[0])
                 }
             })
             .catch((error) => {
@@ -48,35 +48,47 @@ const Editsalary = () => {
     }
 
     useEffect(() => {
-        getsalary()
+        getbankdetail()
     }, [])
 
 
-    var history = useHistory()
+    const { id } = useParams();
+    console.log(id);
 
-    const { id } = useParams()
-    // console.log(id)
+    var history = useHistory();
 
-    const [data, setdata] = useState([])
+    const [data, setData] = useState({
+        user_id: '',
+        bank_name: '',
+        acc_no: '',
+        branch_name: '',
+        city_id: '',
+        ifsc_code: '',
+        acc_type: '',
+    })
 
     const handleChange = (e) => {
-        setdata({ ...data, [e.target.name]: e.target.value })
+        setData({ ...data, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         var token = `Bearer ${localStorage.getItem('token')}`
+
         var passData = {
             user_id: data.user_id,
-            salary: data.salary,
-            bank_detail: data.bank_detail,
-            // username: data.username,
+            bank_name: data.bank_name,
+            acc_no: data.acc_no,
+            branch_name: data.branch_name,
+            city_id: data.city_id,
+            ifsc_code: data.ifsc_code,
+            acc_type: data.acc_type,
         }
+
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/salary/updatesalary/${id}`,
+            url: `${process.env.REACT_APP_URL}/bankdetail/updatebankdetail/${id}`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -87,14 +99,16 @@ const Editsalary = () => {
             .then((response) => {
                 if (response.status === 200) {
                     toast.success(response.data.message)
-                    history.push("/salary")
+                    history.push("/bankdetail")
                     console.log(response);
                 }
             })
             .catch((error) => {
+                console.log(error);
                 toast.error(error.response.data.message)
             })
     }
+
 
 
 
@@ -108,43 +122,66 @@ const Editsalary = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Edit Salary</h3><br />
+                                        <h3 className='text-center'>Edit Bank Details</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
-                                                value={data?.user_id}
+                                                value={data.user_id}
+                                                onChange={handleChange} />
+                                        </CInputGroup>
+                                        <CInputGroup className="mb-3">
+                                            <CInputGroupText>
+                                                <BiCommentCheck />
+                                            </CInputGroupText>
+                                            <CFormInput placeholder="bank_name" autoComplete="bank_name" name="bank_name"
+                                                value={data.bank_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="salary" autoComplete="salary" name="salary"
-                                                value={data?.salary}
+                                            <CFormInput placeholder="acc_no" autoComplete="acc_no" name="acc_no"
+                                                value={data.acc_no}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="bank_detail" autoComplete="bank_detail" name="bank_detail"
-                                                value={data?.bank_detail}
+                                            <CFormInput placeholder="branch_name" autoComplete="branch_name" name="branch_name"
+                                                value={data.branch_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
-                                        {/* <CInputGroup className="mb-3">
+                                        <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="username" autoComplete="username" name="username"
-                                                value={data?.username}
+                                            <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
+                                                value={data.city_id}
                                                 onChange={handleChange} />
-                                        </CInputGroup> */}
-
+                                        </CInputGroup>
+                                        <CInputGroup className="mb-3">
+                                            <CInputGroupText>
+                                                <CIcon icon={cilUser} />
+                                            </CInputGroupText>
+                                            <CFormInput placeholder="ifsc_code" autoComplete="ifsc_code" name="ifsc_code"
+                                                value={data.ifsc_code}
+                                                onChange={handleChange} />
+                                        </CInputGroup>
+                                        <CInputGroup className="mb-4">
+                                            <CInputGroupText>
+                                                <CIcon icon={cilUser} />
+                                            </CInputGroupText>
+                                            <CFormInput placeholder="acc_type" autoComplete="acc_type" name="acc_type"
+                                                value={data.acc_type}
+                                                onChange={handleChange} />
+                                        </CInputGroup>
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Edit Salary</CButton>
+                                            <CButton color="success" type='submit'>Edit Bank Details</CButton>
                                         </div>
 
 
@@ -164,4 +201,4 @@ const Editsalary = () => {
     )
 }
 
-export default Editsalary
+export default Editbankdetail

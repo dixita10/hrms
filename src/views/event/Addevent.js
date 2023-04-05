@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import {
     CButton,
     CCard,
@@ -21,51 +21,22 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 
-const Editdepartment = () => {
 
-    const getdepartment = () => {
+const Addevent = () => {
 
-        var token = `Bearer ${localStorage.getItem('token')}`
-        axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_URL}/department/findonedepartment/${id}`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-                Accept: "application/json",
-            },
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    // console.log("response", response);
-                    setData(response.data[0])
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-
-    }
-
-    useEffect(() => {
-        getdepartment()
-    }, [])
-
-
-
-
-
-    const { id } = useParams();
-    // console.log(id);
 
     var history = useHistory();
 
     const [data, setData] = useState({
-        dep_name: '',
+        event_tittle: '',
+        start_date: '',
+        end_date: '',
         description: '',
+
     })
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
+
     }
 
     const handleSubmit = (e) => {
@@ -73,13 +44,16 @@ const Editdepartment = () => {
         var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
-            dep_name: data.dep_name,
+            event_tittle: data.event_tittle,
+            start_date: data.start_date,
+            end_date: data.end_date,
             description: data.description,
+
         }
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/department/updatedepartment/${id}`,
+            url: `${process.env.REACT_APP_URL}/event/addevent`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +64,7 @@ const Editdepartment = () => {
             .then((response) => {
                 if (response.status === 200) {
                     toast.success(response.data.message)
-                    history.push("/department")
+                    history.push("/event")
                     // console.log(response);
                 }
             })
@@ -99,8 +73,6 @@ const Editdepartment = () => {
                 toast.error(error.response.data.message)
             })
     }
-
-
     return (
         <div>
             <div className="bg-light d-flex flex-row align-items-center">
@@ -111,18 +83,34 @@ const Editdepartment = () => {
                                 <CCardBody className="p-4">
 
                                     <CForm onSubmit={handleSubmit} >
-                                        <h3 className='text-center'>Edit Department</h3><br />
+                                        <h3 className='text-center'>Add Event</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="dep_name" autoComplete="dep_name" name="dep_name"
-                                                value={data.dep_name}
+                                            <CFormInput placeholder="event_tittle" autoComplete="event_tittle" name="event_tittle"
+                                                value={data.event_tittle}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <BiCommentCheck />
+                                            </CInputGroupText>
+                                            <CFormInput type="date" placeholder="start_date" autoComplete="start_date" name="start_date"
+                                                value={data.start_date}
+                                                onChange={handleChange} />
+                                        </CInputGroup>
+                                        <CInputGroup className="mb-3">
+                                            <CInputGroupText>
+                                                <CIcon icon={cilUser} />
+                                            </CInputGroupText>
+                                            <CFormInput type="date" placeholder="end_date" autoComplete="end_date" name="end_date"
+                                                value={data.end_date}
+                                                onChange={handleChange} />
+                                        </CInputGroup>
+                                        <CInputGroup className="mb-3">
+                                            <CInputGroupText>
+                                                <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="description" autoComplete="description" name="description"
                                                 value={data.description}
@@ -130,7 +118,7 @@ const Editdepartment = () => {
                                         </CInputGroup>
 
                                         <div className="d-grid">
-                                            <CButton color="success" type='submit'>Edit Department</CButton>
+                                            <CButton color="success" type='submit'>Add Event</CButton>
                                         </div>
 
 
@@ -150,4 +138,4 @@ const Editdepartment = () => {
     )
 }
 
-export default Editdepartment
+export default Addevent

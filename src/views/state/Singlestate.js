@@ -38,14 +38,14 @@ const Singlestate = () => {
         <tr>
           <th>state_name</th>
           <th>country_id</th>
-          <th>country_name</th>
+          {/* <th>country_name</th> */}
         </tr>
         {
           data.map((data) =>
             <tr>
               <td>{data.state_name}</td>
               <td>{data.country_id}</td>
-              <td>{data.country_name}</td>
+              {/* <td>{data.country_name}</td>   */}
             </tr>
           )
         }

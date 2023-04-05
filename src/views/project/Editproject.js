@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import {
   CButton,
@@ -121,7 +121,7 @@ const Editproject = () => {
 
                   <CForm onSubmit={handleSubmit} >
                     <h3 className='text-center'>Edit Project</h3><br />
-                    <Datetime />
+                    {/* <Datetime /> */}
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />

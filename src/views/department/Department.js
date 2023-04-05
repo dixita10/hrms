@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { HiPlusSm } from "react-icons/hi";
-import ReactPaginate from 'react-paginate';
+import Pagination from '../attendance/Pagination'
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
@@ -11,14 +11,23 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 function Department() {
 
     const [data, setdata] = useState([])
-    const [pageCount, setPageCount] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5; // number of items to display per page
+
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    function handlePageChange(pageNumber) {
+        setCurrentPage(pageNumber);
+    }
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const visibleItems = data.slice(startIndex, endIndex);
 
     const handleClick = () => {
         var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/department/findalldepartment?page=${pageCount}&limit=5`,
+            url: `${process.env.REACT_APP_URL}/department/findalldepartment`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -34,11 +43,6 @@ function Department() {
             })
     }
 
-    const handlePageClick = async (data) => {
-        // console.log(data.selected);
-        setPageCount(data.selected + 1)
-        // let currentPage = data.selected + 1
-    }
     const handleDelete = (dep_id) => {
 
         var passData = {
@@ -72,7 +76,7 @@ function Department() {
 
     useEffect(() => {
         handleClick()
-    }, [pageCount])
+    }, [])
 
 
     const handleSearch = (e) => {
@@ -103,11 +107,11 @@ function Department() {
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
+                <input type='search' placeholder='Search Department Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
                 <Link to={'/adddepartment'}>
                     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
-            </div>
+            </div><br />
             <div className='table-responsive'>
                 <table className='responstable'>
                     <tr>
@@ -116,7 +120,7 @@ function Department() {
                         <th>Action</th>
                     </tr>
                     {
-                        data.map((data) =>
+                        visibleItems.map((data) =>
                             <tr>
                                 <td>{data.dep_name}</td>
                                 <td>{data.description}</td>
@@ -131,24 +135,10 @@ function Department() {
                     }
                 </table>
             </div>
-            <ReactPaginate
-                previousLabel="< previous"
-                nextLabel="next >"
-                breakLabel="..."
-                pageCount={15}
-                pageRangeDisplayed={4}
-                marginPagesDisplayed={3}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination justify-content-center'}
-                pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
-                previousClassName={'page-item'}
-                previousLinkClassName={'page-link'}
-                nextClassName={'page-item'}
-                nextLinkClassName={'page-link'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
-                activeClassName={'active'}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
             />
             <ToastContainer autoClose={2000} />
         </div>

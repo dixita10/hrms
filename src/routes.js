@@ -2,7 +2,7 @@ import { countBy } from 'lodash'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Login from './views/pages/login/Login'
-import Attandance from './views/userattendance/UserAttendance'
+// import Attandance from './views/userattendance/UserAttendance'
 
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -10,17 +10,18 @@ const Home = React.lazy(() => import('./views/home/Home'))
 
 
 // const Profile = React.lazy(() => import('./views/sidebar/Admin'))
-const attendance = React.lazy(() => import('./views/attendance/Attendance'))
-const department = React.lazy(() => import('./views/department/Department'))
-const state = React.lazy(() => import('./views/state/State'))
-const city = React.lazy(() => import('./views/city/City'))
-const country = React.lazy(() => import('./views/country/Country'))
+const Attendance = React.lazy(() => import('./views/attendance/Attendance'))
+const Department = React.lazy(() => import('./views/department/Department'))
+const State = React.lazy(() => import('./views/state/State'))
+const City = React.lazy(() => import('./views/city/City'))
+const Country = React.lazy(() => import('./views/country/Country'))
 const Project = React.lazy(() => import('./views/project/Project'))
-const role = React.lazy(() => import('./views/role/Role'))
-const salary = React.lazy(() => import('./views/salary/Salary'))
-const technology = React.lazy(() => import('./views/technology/Technology'))
-const user = React.lazy(() => import('./views/user/User'))
-const UserAttendance = React.lazy(() => import('./views/userattendance/UserAttendance'))
+const Role = React.lazy(() => import('./views/role/Role'))
+const Salary = React.lazy(() => import('./views/salary/Salary'))
+const Technology = React.lazy(() => import('./views/technology/Technology'))
+const User = React.lazy(() => import('./views/user/User'))
+const Event = React.lazy(() => import('./views/event/Event'))
+const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 
 
 
@@ -48,7 +49,8 @@ const Addrole = React.lazy(() => import('./views/role/Addrole'))
 const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
 const Addtech = React.lazy(() => import('./views/technology/Addtech'))
 const Adduser = React.lazy(() => import('./views/user/Adduser'))
-
+const Addevent = React.lazy(() => import('./views/event/Addevent'))
+const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -62,6 +64,8 @@ const Editrole = React.lazy(() => import('./views/role/Editrole'))
 const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
 const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
+const Editevent = React.lazy(() => import('./views/event/Editevent'))
+const Editbankdetail = React.lazy(() => import('./views/bankdetails/Editbankdetail'))
 
 
 // userlogin side ...
@@ -110,17 +114,20 @@ const Routes = [
 
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   // { path: '/profile', name: 'Profile', component: Profile },
-  { path: '/attendance', name: 'Attendance', component: attendance },
-  { path: '/department', name: 'Department', component: department },
-  { path: '/state', name: "State", component: state },
-  { path: '/city', name: 'City', component: city },
-  { path: "/country", name: 'Country', component: country },
+  { path: '/attendance', name: 'Attendance', component: Attendance },
+  { path: '/department', name: 'Department', component: Department },
+  { path: '/state', name: "State", component: State },
+  { path: '/city', name: 'City', component: City },
+  { path: "/country", name: 'Country', component: Country },
   { path: "/project", name: 'Project', component: Project },
-  { path: "/role", name: 'Role', component: role },
-  { path: "/salary", name: 'Salary', component: salary },
-  { path: "/technology", name: 'Technology', component: technology },
-  { path: "/user", name: 'User', component: user },
-  { path: "/userattendance", name: 'UserAttendance', component: UserAttendance },
+  { path: "/role", name: 'Role', component: Role },
+  { path: "/salary", name: 'Salary', component: Salary },
+  { path: "/technology", name: 'Technology', component: Technology },
+  { path: "/user", name: 'User', component: User },
+  { path: "/event", name: 'Event', component: Event },
+  { path: "/bankdetail", name: 'Bankdetail', component: Bankdetail },
+
+
 
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
   { path: '/adddepartment', name: 'Adddepartment', component: Adddepartment },
@@ -132,6 +139,9 @@ const Routes = [
   { path: '/addsalary', name: 'Addsalary', component: Addsalary },
   { path: '/addtech', name: 'Addtech', component: Addtech },
   { path: '/adduser', name: 'Adduser', component: Adduser },
+  { path: '/addevent', name: 'Addevent', component: Addevent },
+  { path: '/addbankdetail', name: 'Addbankdetail', component: Addbankdetail },
+
 
 
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
@@ -145,6 +155,9 @@ const Routes = [
   { path: '/editsalary/:id', name: 'Editsalary', component: Editsalary },
   { path: '/edittech/:id', name: 'Edittech', component: Edittech },
   { path: '/edituser/:id', name: 'Edituser', component: Edituser },
+  { path: '/editevent/:id', name: 'Editevent', component: Editevent },
+  { path: '/editbankdetail/:id', name: 'Editbankdetail', component: Editbankdetail },
+
 
 
   { path: '/singleattendance/:id', name: "Singleattendance", component: Singleattendance },

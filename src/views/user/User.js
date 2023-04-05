@@ -7,19 +7,29 @@ import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 import { HiPlusSm } from "react-icons/hi";
+import Pagination from '../attendance/Pagination';
 
 
 const User = () => {
 
   const [data, setdata] = useState([])
-  const [pageCount, setPageCount] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleItems = data.slice(startIndex, endIndex);
 
   const getUser = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_URL}/user/findalluser?page=${pageCount}&limit=5`,
+      url: `${process.env.REACT_APP_URL}/user/findalluser`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -33,15 +43,7 @@ const User = () => {
 
   useEffect(() => {
     getUser()
-  }, [pageCount])
-
-
-  const handlePageClick = async (data) => {
-    // console.log(data.selected);
-    setPageCount(data.selected + 1)
-    // let currentPage = data.selected + 1
-  }
-
+  }, [])
 
   const handleDelete = (user_id) => {
 
@@ -115,22 +117,22 @@ const User = () => {
   return (
     <div className='table-responsive'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
+        <input type='search' placeholder='Search User Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
         <Link to={'/adduser'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>
-      </div>
+      </div><br />
       <table className='responstable'>
         <tr>
           <th>name</th>
           <th>email</th>
           <th>username</th>
-          <th>city_id</th>
+          {/* <th>city_id</th> */}
           <th>address</th>
           <th>birth_date</th>
           <th>age</th>
           <th>gender</th>
-          <th>role_id</th>
+          {/* <th>role_id</th> */}
           <th>contact</th>
           <th>image</th>
           <th>city_name</th>
@@ -138,17 +140,17 @@ const User = () => {
           <th>action</th>
         </tr>
         {
-          data.map((data) =>
+          visibleItems.map((data) =>
             <tr>
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.username}</td>
-              <td>{data.city_id}</td>
+              {/* <td>{data.city_id}</td> */}
               <td>{data.address}</td>
               <td>{moment(data.birth_date).format("MMMM Do YYYY")}</td>
               <td>{data.age}</td>
               <td>{data.gender}</td>
-              <td>{data.role_id}</td>
+              {/* <td>{data.role_id}</td> */}
               <td>{data.contact}</td>
               <td>{data.image}</td>
               <td>{data.city_name}</td>
@@ -166,24 +168,10 @@ const User = () => {
           )
         }
       </table>
-      <ReactPaginate
-        previousLabel="< previous"
-        nextLabel="next >"
-        breakLabel="..."
-        pageCount={10}
-        pageRangeDisplayed={4}
-        marginPagesDisplayed={3}
-        onPageChange={handlePageClick}
-        containerClassName={'pagination justify-content-center'}
-        pageClassName={'page-item'}
-        pageLinkClassName={'page-link'}
-        previousClassName={'page-item'}
-        previousLinkClassName={'page-link'}
-        nextClassName={'page-item'}
-        nextLinkClassName={'page-link'}
-        breakClassName={'page-item'}
-        breakLinkClassName={'page-link'}
-        activeClassName={'active'}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
       />
       <ToastContainer autoClose={2000} />
     </div>

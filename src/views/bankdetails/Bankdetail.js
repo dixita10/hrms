@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import ReactPaginate from 'react-paginate';
-import { Link } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { Link } from 'react-router-dom'
 import { HiPlusSm } from "react-icons/hi";
+import Pagination from '../attendance/Pagination'
+import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
-import Pagination from '../attendance/Pagination';
 
-const Country = () => {
+
+const Bankdetail = () => {
 
     const [data, setdata] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5; // number of items to display per page
+    const itemsPerPage = 5;
 
     const totalPages = Math.ceil(data.length / itemsPerPage);
     function handlePageChange(pageNumber) {
@@ -22,12 +22,13 @@ const Country = () => {
     const endIndex = startIndex + itemsPerPage;
     const visibleItems = data.slice(startIndex, endIndex);
 
-    const getcountry = () => {
-        var token = `Bearer ${localStorage.getItem('token')}`
 
+    var token = `Bearer ${localStorage.getItem('token')}`
+
+    const handleClick = () => {
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/country/findallcountry`,
+            url: `${process.env.REACT_APP_URL}/bankdetail/findallbankdetail`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -35,24 +36,30 @@ const Country = () => {
             },
         })
             .then((response) => {
-                // console.log("response", response);
+                console.log("response", response);
                 setdata(response.data.data)
+            })
+            .catch((error) => {
+                console.log(error);
             })
     }
 
-    useEffect(() => {
-        getcountry()
-    }, [])
 
-    const handleDelete = (country_id) => {
+    const handleDelete = (bank_id) => {
 
         var passData = {
-            country_name: data.country_name,
+            user_id: data.user_id,
+            bank_name: data.bank_name,
+            acc_no: data.acc_no,
+            branch_name: data.branch_name,
+            city_id: data.city_id,
+            ifsc_code: data.ifsc_code,
+            acc_type: data.acc_type,
         }
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
-            url: `${process.env.REACT_APP_URL}/country/deletecountry/${country_id}`,
+            url: `${process.env.REACT_APP_URL}/bankdetail/deletebankdetail/${bank_id}`,
             data: passData,
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +70,7 @@ const Country = () => {
             .then((response) => {
                 // console.log(response.data);
                 if (response.status === 200) {
-                    getcountry()
+                    handleClick()
                     toast.success(response.data.message)
                 }
 
@@ -74,56 +81,45 @@ const Country = () => {
             })
     }
 
-
-    const handleSearch = (e) => {
-
-        var token = `Bearer ${localStorage.getItem('token')}`
-        var country_name = e.target.value
-
-        axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_URL}/country/findallcountry/?page=1&limit=3&q=${country_name}`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-                Accept: "application/json",
-            },
-        })
-            .then((response) => {
-                // console.log("response", response);
-                setdata(response.data.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-
-    }
+    useEffect(() => {
+        handleClick()
+    }, [])
 
 
     return (
         <div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type='search' placeholder='Search Country Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
-
-                <Link to={'/addcountry'}>
+                <Link to={'/addbankdetail'}>
                     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
             </div><br />
             <div className='table-responsive'>
                 <table className='responstable'>
                     <tr>
-                        <th>country_name</th>
-                        <th>action</th>
+                        <th>name</th>
+                        <th>bank_name</th>
+                        <th>acc_no</th>
+                        <th>branch_name</th>
+                        <th>city_id</th>
+                        <th>ifsc_code</th>
+                        <th>acc_type</th>
+                        <th>Action</th>
                     </tr>
                     {
                         visibleItems.map((data) =>
                             <tr>
-                                <td>{data.country_name}</td>
+                                <td>{data.name}</td>
+                                <td>{data.bank_name}</td>
+                                <td>{data.acc_no}</td>
+                                <td>{data.branch_name}</td>
+                                <td>{data.city_name}</td>
+                                <td>{data.ifsc_code}</td>
+                                <td>{data.acc_type}</td>
                                 <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/singlecountry/${data.country_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
-                                    <Link to={`/editcountry/${data.country_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
-                                    <MdDeleteForever onClick={() => handleDelete(data.country_id)} style={{ color: 'red' }} />
-                                    {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}
+                                    {/* <Link to={`/singledepartment/${data.bank_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
+                                    <Link to={`/editbankdetail/${data.bank_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                                    <MdDeleteForever onClick={() => handleDelete(data.bank_id)} style={{ color: 'red' }} />
+                                    {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.bank_id)}>Delete</button> */}
                                 </td>
                             </tr>
                         )
@@ -137,8 +133,7 @@ const Country = () => {
             />
             <ToastContainer autoClose={2000} />
         </div>
-
     )
 }
 
-export default Country
+export default Bankdetail

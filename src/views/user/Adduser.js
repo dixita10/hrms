@@ -22,10 +22,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const Adduser = () => {
 
+  var history = useHistory();
+
   const [city, setCity] = useState([])
   const [role, setRole] = useState([])
+  const [department, setDepartment] = useState([])
 
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const City = () => {
 
@@ -49,8 +51,6 @@ const Adduser = () => {
 
   }
 
-
-
   const Role = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
 
@@ -71,17 +71,37 @@ const Adduser = () => {
         console.log(error);
       })
   }
+
+  const Department = () => {
+    var token = `Bearer ${localStorage.getItem('token')}`
+
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_URL}/department/findalldepartment`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        // console.log(response.data);
+        setDepartment(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+
   useEffect(() => {
     City();
-    Role()
+    Role();
+    Department()
   }, [])
 
   const [data, setData] = useState([])
 
-  // const [data1, setData1] = useState({
-  //   female: 'female',
-  //   male: 'male'
-  // })
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -104,6 +124,7 @@ const Adduser = () => {
       age: data.age,
       gender: data.gender,
       role_id: data.role_id,
+      dep_id: data.dep_id,
       contact: data.contact,
       image: data.image,
     }
@@ -119,16 +140,17 @@ const Adduser = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
-          console.log(response.data);
+          // setData(response.data)
           toast.success(response.data.message)
-          // history.push("/user")
+          history.push("/user")
         }
       })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.response.data.message)
-      })
+    // .catch((error) => {
+    //   console.log(error);
+    //   toast.error(error.response.data.message)
+    // })
   }
 
 
@@ -204,15 +226,15 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <DatePicker
+                      {/* <DatePicker
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
                         dateFormat="yyyy-MM-dd"
                         placeholder="birth date"
-                      />
-                      {/* <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
+                      /> */}
+                      <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}
-                        onChange={handleChange} /> */}
+                        onChange={handleChange} dateFormat="yyyy-MM-dd" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -255,11 +277,20 @@ const Adduser = () => {
                         })
                         }
                       </select>
-
-                      {/* <CFormInput placeholder="role_id" autoComplete="role_id" name="role_id"
-                        value={data.role_id}
-                        onChange={handleChange} /> */}
-
+                    </CInputGroup>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <GiWorld />
+                      </CInputGroupText>
+                      <select className="form-select" aria-label="Default select example" value={department.dep_id} onChange={handleChange} name="dep_id">
+                        <option selected>choose Department name</option>
+                        {department.map((department, index) => {
+                          return (
+                            <option key={index} value={department.dep_id}>{department.dep_name}</option>
+                          )
+                        })
+                        }
+                      </select>
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -278,12 +309,9 @@ const Adduser = () => {
                         onChange={handleChange} />
                     </CInputGroup>
 
-
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Add User</CButton>
                     </div>
-
-
 
                   </CForm>
                 </CCardBody>

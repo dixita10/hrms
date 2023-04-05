@@ -70,7 +70,8 @@ const Edittech = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    var token = localStorage.getItem('token')
+    var token = `Bearer ${localStorage.getItem('token')}`
+
 
     var passData = {
       tec_name: data.tec_name,

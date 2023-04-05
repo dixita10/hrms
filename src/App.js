@@ -32,8 +32,8 @@ const Role = React.lazy(() => import('./views/role/Role'))
 const Salary = React.lazy(() => import('./views/salary/Salary'))
 const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
-const UserAttendance = React.lazy(() => import('./views/userattendance/UserAttendance'))
-
+const Event = React.lazy(() => import('./views/event/Event'))
+const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 
 
 // Pages
@@ -69,6 +69,9 @@ const Addrole = React.lazy(() => import('./views/role/Addrole'))
 const Addsalary = React.lazy(() => import('./views/salary/Addsalary'))
 const Addtech = React.lazy(() => import('./views/technology/Addtech'))
 const Adduser = React.lazy(() => import('./views/user/Adduser'))
+const Addevent = React.lazy(() => import('./views/event/Addevent'))
+const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
+
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -82,6 +85,8 @@ const Editrole = React.lazy(() => import('./views/role/Editrole'))
 const Editsalary = React.lazy(() => import('./views/salary/Editsalary'))
 const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
+const Editevent = React.lazy(() => import('./views/event/Editevent'))
+const Editbankdetail = React.lazy(() => import('./views/bankdetails/Editbankdetail'))
 
 
 // user side ....
@@ -122,9 +127,12 @@ class App extends Component {
             <Route exact path="/salary" name="Salary" render={(props) => <Salary {...props} />} />
             <Route exact path="/technology" name="Technology" render={(props) => <Technology {...props} />} />
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
+            <Route exact path="/event" name="Event" render={(props) => <Event {...props} />} />
+            <Route exact path="/bankdetail" name="Bankdetail" render={(props) => <Bankdetail {...props} />} />
+
+
 
             {/* //user attendance */}
-            <Route exact path="/userattendance" name="UserAttendance" render={(props) => <UserAttendance {...props} />} />
 
 
 
@@ -153,6 +161,9 @@ class App extends Component {
             <Route exact path='/addsalary' name="Addsalary" render={(props) => <Addsalary {...props} />} />
             <Route exact path='/addtech' name="Addtech" render={(props) => <Addtech {...props} />} />
             <Route exact path='/adduser' name="Adduser" render={(props) => <Adduser {...props} />} />
+            <Route exact path='/addevent' name="Addevent" render={(props) => <Addevent {...props} />} />
+            <Route exact path='/addbankdetail' name="Addbankdetail" render={(props) => <Addbankdetail {...props} />} />
+
 
 
 
@@ -167,6 +178,10 @@ class App extends Component {
             <Route exact path='/editsalary/:id' name="Editsalary" render={(props) => <Editsalary {...props} />} />
             <Route exact path='/edittech/:id' name="Edittech" render={(props) => <Edittech {...props} />} />
             <Route exact path='/edituser/:id' name="Edituser" render={(props) => <Edituser {...props} />} />
+            <Route exact path='/editevent/:id' name="Editevent" render={(props) => <Editevent {...props} />} />
+            <Route exact path='/editbankdetail/:id' name="Editbankdetail" render={(props) => <Editbankdetail {...props} />} />
+
+
 
 
             {/* userside ... */}

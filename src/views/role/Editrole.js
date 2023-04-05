@@ -89,13 +89,6 @@ const Editrole = () => {
                 }
             })
             .catch((error) => {
-                // console.log(error);
-                // if (error.response.status === false) {
-                //     toast.error(error.response.data.message.email);
-                // }
-                // if (error.response.status === false) {
-                //     toast.error(error.response.data.message.contact);
-                // }
                 toast.error(error.response.data.message)
             })
     }

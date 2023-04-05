@@ -6,20 +6,29 @@ import ReactPaginate from 'react-paginate';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
-
+import Pagination from '../attendance/Pagination';
 
 
 const Technology = () => {
 
   const [data, setdata] = useState([])
-  const [pageCount, setPageCount] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleItems = data.slice(startIndex, endIndex);
 
   const getTechnology = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
 
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_URL}/technology/findalltechnology?page=${pageCount}&limit=5`,
+      url: `${process.env.REACT_APP_URL}/technology/findalltechnology`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -34,15 +43,7 @@ const Technology = () => {
 
   useEffect(() => {
     getTechnology()
-  }, [pageCount])
-
-
-
-  const handlePageClick = async (data) => {
-    // console.log(data.selected);
-    setPageCount(data.selected + 1)
-    // let currentPage = data.selected + 1
-  }
+  }, [])
 
   const handleDelete = (tec_id) => {
 
@@ -105,24 +106,24 @@ const Technology = () => {
   return (
     <div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <input type='search' placeholder='search' style={{ padding: '5px 10px', borderRadius: '5px' }} onChange={handleSearch} />
+        <input type='search' placeholder='Search Technology Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
         <Link to={'/addtech'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>
-      </div>
+      </div><br />
       <table className='responstable'>
         <tr>
-          <th>tec_name</th>
-          <th>dep_id</th>
+          <th>technology name</th>
+          {/* <th>dep_id</th> */}
           <th>department name</th>
           <th>action</th>
         </tr>
         {
-          data.map((data) =>
+          visibleItems.map((data) =>
             <tr>
               <td>{data.tec_name}</td>
-              <td>{data.dep_id}</td>
-              <td>{data.department_name}</td>
+              {/* <td>{data.dep_id}</td> */}
+              <td>{data.dep_name}</td>
               <td style={{ fontSize: '24px' }}>
                 <Link to={`/singletech/${data.tec_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
                 <Link to={`/edittech/${data.tec_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
@@ -133,24 +134,10 @@ const Technology = () => {
           )
         }
       </table>
-      <ReactPaginate
-        previousLabel="< previous"
-        nextLabel="next >"
-        breakLabel="..."
-        pageCount={10}
-        pageRangeDisplayed={4}
-        marginPagesDisplayed={3}
-        onPageChange={handlePageClick}
-        containerClassName={'pagination justify-content-center'}
-        pageClassName={'page-item'}
-        pageLinkClassName={'page-link'}
-        previousClassName={'page-item'}
-        previousLinkClassName={'page-link'}
-        nextClassName={'page-item'}
-        nextLinkClassName={'page-link'}
-        breakClassName={'page-item'}
-        breakLinkClassName={'page-link'}
-        activeClassName={'active'}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
       />
       <ToastContainer autoClose={2000} />
     </div>

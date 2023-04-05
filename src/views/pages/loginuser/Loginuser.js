@@ -30,6 +30,12 @@ const Loginuser = () => {
         email: '',
         password: ''
     })
+
+    const [errors, setErrors] = useState({
+        email: '',
+        password: '',
+    });
+
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
 
@@ -42,7 +48,6 @@ const Loginuser = () => {
             password: data.password,
             // login_as: "admin"
         }
-
 
         axios({
             method: 'POST',
@@ -84,14 +89,12 @@ const Loginuser = () => {
                                 localStorage.setItem('user_id', user_id)
                                 history.push("/home");
                             }
-
                         })
-
                 }
             })
             .catch((error) => {
                 console.log(error);
-                if (error.response?.status === false) {
+                if (error.response?.status === 401) {
                     toast.error(error.response.data.message);
                 }
                 // if (error.response.status === false) {
@@ -104,6 +107,19 @@ const Loginuser = () => {
                 //   toast.error("phone no dublicated")
                 // }
             })
+
+        const newErrors = {};
+        if (!data.email) {
+            newErrors.email = 'Email is required';
+        }
+        if (!data.password) {
+            newErrors.password = 'Password is required';
+        }
+        setErrors(newErrors);
+        // submit data if there are no errors
+        if (Object.keys(newErrors).length === 0) {
+            // submit data to server or perform any other action
+        }
 
     }
 
@@ -131,9 +147,8 @@ const Loginuser = () => {
                                                 value={data.email}
                                                 onChange={handleChange}
                                             />
-
                                         </CInputGroup>
-
+                                        {errors.email && <div className="error">{errors.email}</div>}<br />
                                         <div className="pwdcontainer">
                                             <CInputGroup className="mb-4">
                                                 <CInputGroupText>
@@ -147,8 +162,8 @@ const Loginuser = () => {
                                                     value={data.password}
                                                     onChange={handleChange}
                                                 />
-
                                             </CInputGroup>
+                                            {errors.password && <div className="error">{errors.password}</div>}
                                         </div> <br />
                                         <CRow>
                                             <CCol xs={12} >

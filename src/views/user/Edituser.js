@@ -98,7 +98,7 @@ const Edituser = () => {
       .then((response) => {
         if (response.status === 200) {
           toast.success(response.data.message)
-          history.push("/role")
+          history.push("/user")
           // console.log(response);
         }
       })

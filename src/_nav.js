@@ -1,12 +1,12 @@
 import React from 'react'
 import { FaUserAlt, FaCarSide, FaRegCalendarAlt, FaUsers, FaUserCircle, FaRupeeSign, FaBuilding } from 'react-icons/fa'
-import { MdDashboard, MdBorderColor, MdPayment } from 'react-icons/md'
+import { MdDashboard, MdBorderColor, MdPayment, MdEventAvailable } from 'react-icons/md'
 import { CNavGroup, CNavItem, } from '@coreui/react'
 import { RiAdminLine } from "react-icons/ri";
 import { GiWorld } from "react-icons/gi";
 import { AiOutlineProject } from "react-icons/ai";
 import { DiTechcrunch } from "react-icons/di";
-
+import { BsBank } from "react-icons/bs";
 
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
@@ -27,8 +27,14 @@ const nav1 = [
   {
     component: CNavItem,
     name: 'Attendance',
-    to: '/userattendance',
+    to: '/attendance',
     icon: <FaRegCalendarAlt className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'Salary',
+    to: '/salary',
+    icon: <FaRupeeSign className="nav-icon" />,
   },
 
 ]
@@ -104,6 +110,18 @@ const nav = [
     name: 'User',
     to: '/user',
     icon: <FaUsers className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Event',
+    to: '/event',
+    icon: <MdEventAvailable className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Bankdetail',
+    to: '/bankdetail',
+    icon: <BsBank className="nav-icon" />,
   }
 
 ]
