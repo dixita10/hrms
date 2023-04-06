@@ -13,6 +13,7 @@ import project from '../../assets/images/project.svg'
 import technology from '../../assets/images/technology.svg'
 import event from '../../assets/images/event.svg'
 import bank from '../../assets/images/bank.svg'
+import compny from '../../assets/images/company.svg'
 
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -34,7 +35,6 @@ import profile1 from './../../assets/images/avatars/profile.png'
 // import {  } from "react-icons/io";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
 
 
 const Home = () => {
@@ -320,6 +320,14 @@ const Home = () => {
                     <div className='container' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
+                                <Link to='/companyprofile'>
+                                    <div className='iconhome'>
+                                        <img src={compny} alt="profileicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p>Company Profile</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
                                 <Link to='/loggeduser'>
                                     <div className='iconhome'>
                                         <img src={profile} alt="profileicon" style={{ width: '70px' }} />
@@ -343,6 +351,11 @@ const Home = () => {
                                     <p >Department</p>
                                 </Link>
                             </div>
+
+                        </div>
+                    </div>
+                    <div className='container'>
+                        <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/country'>
                                     <div className='iconhome'>
@@ -351,10 +364,6 @@ const Home = () => {
                                     <p >Country</p>
                                 </Link>
                             </div>
-                        </div>
-                    </div>
-                    <div className='container'>
-                        <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/state'>
                                     <div className='iconhome'>
@@ -379,6 +388,11 @@ const Home = () => {
                                     <p >Project</p>
                                 </Link>
                             </div>
+
+                        </div>
+                    </div>
+                    <div className='container'>
+                        <div className='row homeiconpart '>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/role'>
                                     <div className='iconhome'>
@@ -387,10 +401,6 @@ const Home = () => {
                                     <p >Role</p>
                                 </Link>
                             </div>
-                        </div>
-                    </div>
-                    <div className='container'>
-                        <div className='row homeiconpart '>
                             <div className='col col-md-3 px-4' >
                                 <Link to='/salary'>
                                     <div className='iconhome'>
@@ -415,7 +425,12 @@ const Home = () => {
                                     <p >Users</p>
                                 </Link>
                             </div>
-                            <div className='col col-md-3 px-4'>
+
+                        </div>
+                    </div>
+                    <div className='container'>
+                        <div className='row homeiconpart '>
+                            <div className='col col-md-6 px-4'>
                                 <Link to='/event'>
                                     <div className='iconhome'>
                                         <img src={event} alt="usersicon" style={{ width: '70px' }} />
@@ -423,11 +438,7 @@ const Home = () => {
                                     <p >Events</p>
                                 </Link>
                             </div>
-                        </div>
-                    </div>
-                    <div className='container'>
-                        <div className='row homeiconpart '>
-                            <div className='col col-md-12 px-4' >
+                            <div className='col col-md-6 px-4' >
                                 <Link to='/bankdetail'>
                                     <div className='iconhome'>
                                         <img src={bank} alt="salaryicon" style={{ width: '75px' }} />
@@ -465,11 +476,19 @@ const Home = () => {
                 <div className='container' style={{ marginTop: "6%" }}>
                     <div className='row homeiconpart'>
                         <div className='col col-md-3 px-4'>
+                            <Link to='/companyprofile'>
+                                <div className='iconhome'>
+                                    <img src={compny} alt="profileicon" style={{ width: '70px' }} />
+                                </div>
+                                <p>Company Profile</p>
+                            </Link>
+                        </div>
+                        <div className='col col-md-3 px-4'>
                             <Link to='/loggeduser'>
                                 <div className='iconhome'>
                                     <img src={profile} alt="profileicon" style={{ width: '70px' }} />
                                 </div>
-                                <p>Profile</p>
+                                <p>My Profile</p>
                             </Link>
                         </div>
                         <div className='col col-md-3 px-4'>
@@ -488,14 +507,6 @@ const Home = () => {
                                 <p >Salary</p>
                             </Link>
                         </div>
-                        {/* <div className='col col-md-3 px-4'>
-                            <Link to='/country'>
-                                <div className='iconhome'>
-                                    <img src={country} alt="countryicon" style={{ width: '70px' }} />
-                                </div>
-                                <p >Country</p>
-                            </Link>
-                        </div> */}
                     </div>
                 </div>
             }

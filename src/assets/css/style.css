@@ -195,6 +195,27 @@ th {
     cursor: not-allowed;
 }
 
+.react-datepicker-wrapper {
+    display: inline-block;
+    padding: 5px;
+    border: 0;
+    width: 19%!important;
+    
+}
+.datedaily{
+justify-content: flex-end;
+    display: flex;
+}
+.datepick{
+    padding: 5px 10%;
+}
+.btndaily{
+    margin-right: 15px;
+    font-size: 18px;
+}
+.btn-link{
+    text-decoration: none;
+}
 /* @import "compass/css3"; */
 
 .responstable {

@@ -55,7 +55,7 @@ const Editsalary = () => {
     var history = useHistory()
 
     const { id } = useParams()
-    // console.log(id)
+    console.log(id)
 
     const [data, setdata] = useState([])
 
@@ -68,12 +68,13 @@ const Editsalary = () => {
 
         var token = `Bearer ${localStorage.getItem('token')}`
         var passData = {
+            salary_id: id,
             user_id: data.user_id,
             salary: data.salary,
             bank_detail: data.bank_detail,
             // username: data.username,
         }
-
+        console.log(passData);
         axios({
             method: 'POST',
             url: `${process.env.REACT_APP_URL}/salary/updatesalary/${id}`,
@@ -109,14 +110,14 @@ const Editsalary = () => {
 
                                     <CForm onSubmit={handleSubmit} >
                                         <h3 className='text-center'>Edit Salary</h3><br />
-                                        <CInputGroup className="mb-3">
+                                        {/* <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
                                             </CInputGroupText>
                                             <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
                                                 value={data?.user_id}
                                                 onChange={handleChange} />
-                                        </CInputGroup>
+                                        </CInputGroup> */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />

@@ -22,6 +22,7 @@ const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
 const Event = React.lazy(() => import('./views/event/Event'))
 const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
+const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 
 
 
@@ -51,6 +52,8 @@ const Addtech = React.lazy(() => import('./views/technology/Addtech'))
 const Adduser = React.lazy(() => import('./views/user/Adduser'))
 const Addevent = React.lazy(() => import('./views/event/Addevent'))
 const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
+const Addcompanyprofile = React.lazy(() => import('./views/compnyprofile/Addcompanyprofile'))
+
 
 
 const Editattandance = React.lazy(() => import('./views/attendance/Editattandance'))
@@ -66,6 +69,7 @@ const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
 const Editevent = React.lazy(() => import('./views/event/Editevent'))
 const Editbankdetail = React.lazy(() => import('./views/bankdetails/Editbankdetail'))
+const Editcompanyprofile = React.lazy(() => import('./views/compnyprofile/Editacompanyprofile'))
 
 
 // userlogin side ...
@@ -126,7 +130,7 @@ const Routes = [
   { path: "/user", name: 'User', component: User },
   { path: "/event", name: 'Event', component: Event },
   { path: "/bankdetail", name: 'Bankdetail', component: Bankdetail },
-
+  { path: "/companyprofile", name: 'Companyprofile', component: Companyprofile },
 
 
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
@@ -141,7 +145,7 @@ const Routes = [
   { path: '/adduser', name: 'Adduser', component: Adduser },
   { path: '/addevent', name: 'Addevent', component: Addevent },
   { path: '/addbankdetail', name: 'Addbankdetail', component: Addbankdetail },
-
+  { path: '/addcompanyprofile', name: 'Addcompanyprofile', component: Addcompanyprofile },
 
 
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
@@ -157,6 +161,8 @@ const Routes = [
   { path: '/edituser/:id', name: 'Edituser', component: Edituser },
   { path: '/editevent/:id', name: 'Editevent', component: Editevent },
   { path: '/editbankdetail/:id', name: 'Editbankdetail', component: Editbankdetail },
+  { path: '/editcompanyprofile/:id', name: 'Editcompanyprofile', component: Editcompanyprofile },
+
 
 
 

@@ -34,6 +34,7 @@ const Technology = React.lazy(() => import('./views/technology/Technology'))
 const User = React.lazy(() => import('./views/user/User'))
 const Event = React.lazy(() => import('./views/event/Event'))
 const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
+const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 
 
 // Pages
@@ -71,6 +72,7 @@ const Addtech = React.lazy(() => import('./views/technology/Addtech'))
 const Adduser = React.lazy(() => import('./views/user/Adduser'))
 const Addevent = React.lazy(() => import('./views/event/Addevent'))
 const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
+const Addcompanyprofile = React.lazy(() => import('./views/compnyprofile/Addcompanyprofile'))
 
 
 
@@ -87,7 +89,7 @@ const Edittech = React.lazy(() => import('./views/technology/Edittech'))
 const Edituser = React.lazy(() => import('./views/user/Edituser'))
 const Editevent = React.lazy(() => import('./views/event/Editevent'))
 const Editbankdetail = React.lazy(() => import('./views/bankdetails/Editbankdetail'))
-
+const Editcompanyprofile = React.lazy(() => import('./views/compnyprofile/Editacompanyprofile'))
 
 // user side ....
 
@@ -129,6 +131,8 @@ class App extends Component {
             <Route exact path="/user" name="User" render={(props) => <User {...props} />} />
             <Route exact path="/event" name="Event" render={(props) => <Event {...props} />} />
             <Route exact path="/bankdetail" name="Bankdetail" render={(props) => <Bankdetail {...props} />} />
+            <Route exact path="/companyprofile" name="Companyprofile" render={(props) => <Companyprofile {...props} />} />
+
 
 
 
@@ -163,6 +167,8 @@ class App extends Component {
             <Route exact path='/adduser' name="Adduser" render={(props) => <Adduser {...props} />} />
             <Route exact path='/addevent' name="Addevent" render={(props) => <Addevent {...props} />} />
             <Route exact path='/addbankdetail' name="Addbankdetail" render={(props) => <Addbankdetail {...props} />} />
+            <Route exact path='/addcompanyprofile' name="Addcompanyprofile" render={(props) => <Addcompanyprofile {...props} />} />
+
 
 
 
@@ -180,7 +186,7 @@ class App extends Component {
             <Route exact path='/edituser/:id' name="Edituser" render={(props) => <Edituser {...props} />} />
             <Route exact path='/editevent/:id' name="Editevent" render={(props) => <Editevent {...props} />} />
             <Route exact path='/editbankdetail/:id' name="Editbankdetail" render={(props) => <Editbankdetail {...props} />} />
-
+            <Route exact path='/editcompanyprofile/:id' name="Editcompanyprofile" render={(props) => <Editcompanyprofile {...props} />} />
 
 
 

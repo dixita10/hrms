@@ -45,11 +45,13 @@ const UserAttendanceComponents = () => {
     const handleSearch = (e) => {
         // console.log(e.target.value);
         var token = `Bearer ${localStorage.getItem('token')}`
-        var user_id = e.target.value
+        var username = e.target.value
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/attendance/findbyuserid/${user_id}`,
+            url: `${process.env.REACT_APP_URL}/attendance/findallattendance?q=${username}`,
+            // url: `${process.env.REACT_APP_URL}/state/findallstate?page=1&limit=5&q=${state_name}`,
+
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -69,24 +71,22 @@ const UserAttendanceComponents = () => {
         <div>
             <div>
                 <div class="d-flex justify-content-end">
-                    <input type='search' placeholder='Search User Id' style={{ padding: '5px 10px', borderRadius: '5px', width: '35%' }} onChange={handleSearch} />
+                    <input type='search' placeholder='Search User Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '35%' }} onChange={handleSearch} />
                 </div><br />
                 <table className='responstable'>
                     <tr>
                         {/* <th>user_id</th> */}
-                        <th>user_name</th>
+                        <th>user name</th>
                         <th>intime</th>
                         <th>outtime</th>
-                        {/* <th>remark</th> */}
                     </tr>
                     {
                         visibleItems.map((data) =>
                             <tr>
                                 {/* <td>{data.user_id}</td> */}
-                                <td>{data.user_name}</td>
+                                <td>{data.username}</td>
                                 <td>{moment(data.intime).format("LLL")}</td>
                                 <td>{moment(data.outtime).format("LLL")}</td>
-                                {/* <td>{data.remark}</td> */}
                             </tr>
                         )
                     }

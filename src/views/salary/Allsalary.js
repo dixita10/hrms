@@ -134,7 +134,6 @@ const Allsalary = () => {
                                 <Link to={`/singlesalary/${data.salary_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
                                 <Link to={`/editsalary/${data.salary_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                                 <MdDeleteForever onClick={() => handleDelete(data.salary_id)} style={{ color: 'red' }} />
-                                {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}
                             </td>
                         </tr>
                     )

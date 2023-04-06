@@ -7,22 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Dailycomponent = () => {
 
     const [data, setData] = useState([])
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
-    const [currentDate, setCurrentDate] = useState(moment().toDate());
-
-    const handleDateChange = (date) => {
-        setCurrentDate(date);
-    };
-
-    const handlePreviousClick = () => {
-        const newDate = moment(currentDate).subtract(1, 'days').toDate();
-        setCurrentDate(newDate);
-    };
-
-    const handleNextClick = () => {
-        const newDate = moment(currentDate).add(1, 'days').toDate();
-        setCurrentDate(newDate);
-    };
     var username = localStorage.getItem("username")
 
     const Dailyatten = () => {
@@ -48,18 +34,60 @@ const Dailycomponent = () => {
             })
     }
 
-
     useEffect(() => {
         Dailyatten();
     }, [])
 
+    const handleSearch = (date) => {
+        var token = `Bearer ${localStorage.getItem('token')}`
+        // var date = e.target.value
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/attendance/dailyattendance?date=${date}`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                console.log("response", response.data.attendance);
+                if (response.status === 200) {
+                    setData(response.data.attendance)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const handlePrevious = () => {
+        const previousDate = new Date(selectedDate);
+        previousDate.setDate(selectedDate.getDate() - 1);
+        setSelectedDate(previousDate);
+        handleSearch(previousDate.toISOString().split('T')[0]);
+    };
+
+    const handleNext = () => {
+        const nextDate = new Date(selectedDate);
+        nextDate.setDate(selectedDate.getDate() + 1);
+        setSelectedDate(nextDate);
+        handleSearch(nextDate.toISOString().split('T')[0]);
+    };
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+        handleSearch(date.toISOString().split('T')[0]);
+    }
+
     return (
         <div>
-            <div>
-                <button onClick={handlePreviousClick}>Previous</button>
-                <DatePicker selected={currentDate} onChange={handleDateChange} />
-                <button onClick={handleNextClick}>Next</button>
-            </div>
+            <div className='datedaily'>
+                <button className="btn btn-link btndaily" onClick={handlePrevious}>Previous ... </button>
+                <DatePicker selected={selectedDate} onChange={handleDateChange} style={{ padding: '5px' }} className='datepick' />
+                <button className="btn btn-link btndaily" onClick={handleNext}>... Next</button>
+            </div><br />
             <table className='responstable'>
                 <tr>
                     <th>name</th>

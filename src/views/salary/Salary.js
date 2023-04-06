@@ -16,13 +16,13 @@ const Salary = () => {
 
 
 
-  
+
 
   return (
 
     <div>
       {role_id === "3" ? (<Tabs
-        defaultActiveKey="Employe Salary"
+        defaultActiveKey="Salary"
         transition={false}
         id="noanim-tab-example"
         className="mb-3"
@@ -35,7 +35,7 @@ const Salary = () => {
         </Tab>
 
       </Tabs>) : <Tabs
-          defaultActiveKey="Employe Salary"
+        defaultActiveKey="Salary"
         transition={false}
         id="noanim-tab-example"
         className="mb-3"
@@ -46,12 +46,12 @@ const Salary = () => {
       </Tabs>}
     </div>
     // <div>
-      // <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      //   <input type='search' placeholder='Search User Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
-      //   <Link to={'/addsalary'}>
-      //     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
-      //   </Link>
-      // </div><br />
+    // <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    //   <input type='search' placeholder='Search User Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
+    //   <Link to={'/addsalary'}>
+    //     <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+    //   </Link>
+    // </div><br />
     // <table className='responstable'>
     //   <tr>
     //     {/* <th>user_id</th> */}

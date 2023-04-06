@@ -43,12 +43,12 @@ const Loggeduser = () => {
                     <th>name</th>
                     <th>email</th>
                     <th>username</th>
-                    <th>city_id</th>
+                    {/* <th>city_id</th> */}
                     <th>address</th>
                     <th>birth_date</th>
                     <th>age</th>
                     <th>gender</th>
-                    <th>role_id</th>
+                    {/* <th>role_id</th> */}
                     <th>contact</th>
                     <th>image</th>
                 </tr>
@@ -56,12 +56,12 @@ const Loggeduser = () => {
                     <td>{data.name}</td>
                     <td>{data.email}</td>
                     <td>{data.username}</td>
-                    <td>{data.city_id}</td>
+                    {/* <td>{data.city_id}</td> */}
                     <td>{data.address}</td>
                     <td>{data.birth_date}</td>
                     <td>{data.age}</td>
                     <td>{data.gender}</td>
-                    <td>{data.role_id}</td>
+                    {/* <td>{data.role_id}</td> */}
                     <td>{data.contact}</td>
                     <td>{data.image}</td>
                 </tr>

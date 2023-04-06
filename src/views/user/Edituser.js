@@ -71,7 +71,7 @@ const Edituser = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
-      name: data.role_name,
+      name: data.name,
       email: data.email,
       username: data.username,
       // password: data.password,
@@ -151,22 +151,6 @@ const Edituser = () => {
                         value={data.username}
                         onChange={handleChange} />
                     </CInputGroup>
-                    {/* <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <GiWorld />
-                      </CInputGroupText>
-                      <CFormInput placeholder="password" autoComplete="password" name="password"
-                        value={data.password}
-                        onChange={handleChange} />
-                    </CInputGroup> */}
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <GiWorld />
-                      </CInputGroupText>
-                      <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
-                        value={data.city_id}
-                        onChange={handleChange} />
-                    </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <GiWorld />
@@ -203,14 +187,6 @@ const Edituser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="role_id" autoComplete="role_id" name="role_id"
-                        value={data.role_id}
-                        onChange={handleChange} />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <GiWorld />
-                      </CInputGroupText>
                       <CFormInput placeholder="contact" autoComplete="contact" name="contact"
                         value={data.contact}
                         onChange={handleChange} />
@@ -223,8 +199,6 @@ const Edituser = () => {
                         value={data.image}
                         onChange={handleChange} />
                     </CInputGroup>
-
-
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Edit User</CButton>
                     </div>

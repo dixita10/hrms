@@ -7,6 +7,7 @@ import { GiWorld } from "react-icons/gi";
 import { AiOutlineProject } from "react-icons/ai";
 import { DiTechcrunch } from "react-icons/di";
 import { BsBank } from "react-icons/bs";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
@@ -20,7 +21,13 @@ const nav1 = [
   },
   {
     component: CNavItem,
-    name: 'Profile',
+    name: 'Company Profile',
+    to: '/companyprofile',
+    icon: <HiOutlineBuildingOffice2 className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'My Profile',
     to: '/loggeduser',
     icon: <RiAdminLine className='nav-icon' />
   },
@@ -47,7 +54,13 @@ const nav = [
   },
   {
     component: CNavItem,
-    name: 'Profile',
+    name: 'Comapany Profile',
+    to: '/companyprofile',
+    icon: <HiOutlineBuildingOffice2 className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'My Profile',
     to: '/loggeduser',
     icon: <RiAdminLine className='nav-icon' />
   },
