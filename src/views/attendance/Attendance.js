@@ -5,7 +5,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Dailycomponent from './Dailycomponent';
 import Monthlycomponent from './Monthlycomponent';
 import UserAttendanceComponents from './UserAttendanceComponents';
-
+import UserMonthallattendance from './UserMonthallattendance';
 
 function Attendance() {
 
@@ -14,21 +14,23 @@ function Attendance() {
     return (
         <div>
             {role_id === "3" ? (<Tabs
-                defaultActiveKey="Daily Log"
+                defaultActiveKey="My Daily Log"
                 transition={false}
                 id="noanim-tab-example"
                 className="mb-3"
             >
-                <Tab eventKey="Daily Log" title="Daily Log"><br />
+                <Tab eventKey="My Daily Log" title="My Daily Log"><br />
                     <Dailycomponent />
                 </Tab>
-                <Tab eventKey="monthly log" title="Monthly log"><br />
+                <Tab eventKey="My MonthLy log" title="My Monthly log"><br />
                     <Monthlycomponent />
                 </Tab>
-                <Tab eventKey="user attendance" title="User Attendance"><br />
+                <Tab eventKey="Employe Daily Log" title="Employe Daily Log"><br />
                     <UserAttendanceComponents />
                 </Tab>
-
+                {/* <Tab eventKey="Employe MonthLy Log" title="Employe MonthLy Log"><br />
+                    <UserMonthallattendance />
+                </Tab> */}
             </Tabs>) : <Tabs
                 defaultActiveKey="Daily Log"
                 transition={false}
@@ -38,7 +40,7 @@ function Attendance() {
                 <Tab eventKey="Daily Log" title="Daily Log"><br />
                     <Dailycomponent />
                 </Tab>
-                <Tab eventKey="monthly log" title="Monthly log"><br />
+                <Tab eventKey="MonthLy log" title="Monthly log"><br />
                     <Monthlycomponent />
                 </Tab>
             </Tabs>}

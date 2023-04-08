@@ -46,20 +46,21 @@ const Project = () => {
 
   const handleDelete = (pro_id) => {
 
-    var passData = {
-      user_id: data.user_id,
-      pro_name: data.pro_name,
-      start_date: data.start_date,
-      end_date: data.end_date,
-      status: data.status,
-      description: data.description,
-      tec_id: data.tec_id,
-    }
+    // var passData = {
+    //   user_id: data.user_id,
+    //   pro_name: data.pro_name,
+    //   start_date: data.start_date,
+    //   end_date: data.end_date,
+    //   status: data.status,
+    //   description: data.description,
+    //   tec_id: data.tec_id,
+    // }
+    
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/project/deleteproject/${pro_id}`,
-      data: passData,
+      // data: passData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

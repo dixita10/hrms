@@ -47,20 +47,19 @@ const Bankdetail = () => {
 
     const handleDelete = (bank_id) => {
 
-        var passData = {
-            user_id: data.user_id,
-            bank_name: data.bank_name,
-            acc_no: data.acc_no,
-            branch_name: data.branch_name,
-            city_id: data.city_id,
-            ifsc_code: data.ifsc_code,
-            acc_type: data.acc_type,
-        }
+        // var passData = {
+        //     user_id: data.user_id,
+        //     bank_name: data.bank_name,
+        //     acc_no: data.acc_no,
+        //     branch_name: data.branch_name,
+        //     city_id: data.city_id,
+        //     ifsc_code: data.ifsc_code,
+        //     acc_type: data.acc_type,
+        // }
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/bankdetail/deletebankdetail/${bank_id}`,
-            data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

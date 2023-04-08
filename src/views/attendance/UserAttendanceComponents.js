@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import Pagination from './Pagination'
+import { Link } from 'react-router-dom'
 
 const UserAttendanceComponents = () => {
 
@@ -50,8 +51,6 @@ const UserAttendanceComponents = () => {
         axios({
             method: 'GET',
             url: `${process.env.REACT_APP_URL}/attendance/findallattendance?q=${username}`,
-            // url: `${process.env.REACT_APP_URL}/state/findallstate?page=1&limit=5&q=${state_name}`,
-
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -79,6 +78,7 @@ const UserAttendanceComponents = () => {
                         <th>user name</th>
                         <th>intime</th>
                         <th>outtime</th>
+                        <th>Action</th>
                     </tr>
                     {
                         visibleItems.map((data) =>
@@ -87,6 +87,12 @@ const UserAttendanceComponents = () => {
                                 <td>{data.username}</td>
                                 <td>{moment(data.intime).format("LLL")}</td>
                                 <td>{moment(data.outtime).format("LLL")}</td>
+                                <td>
+                                    <Link to={`/monthlyattendance/${data.user_id}`}>
+                                        <button type="button" class="btn btn-outline-secondary">View Report</button>
+                                    </Link>
+
+                                </td>
                             </tr>
                         )
                     }

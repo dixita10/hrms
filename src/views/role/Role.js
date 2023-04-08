@@ -48,14 +48,11 @@ const Role = () => {
 
   const handleDelete = (role_id) => {
 
-    var passData = {
-      role_name: data.role_name,
-    }
+    
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/role/deleterole/${role_id}`,
-      data: passData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

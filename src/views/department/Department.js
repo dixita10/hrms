@@ -45,15 +45,10 @@ function Department() {
 
     const handleDelete = (dep_id) => {
 
-        var passData = {
-            dep_name: data.dep_name,
-            description: data.description,
-        }
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/department/deletedepartment/${dep_id}`,
-            data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

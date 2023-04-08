@@ -46,15 +46,11 @@ const Event = () => {
   }, [])
 
   const handleDelete = (event_id) => {
-
-    var passData = {
-      country_name: data.country_name,
-    }
+    
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/event/deleteevent/${event_id}`,
-      data: passData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

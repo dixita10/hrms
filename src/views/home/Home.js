@@ -14,6 +14,8 @@ import technology from '../../assets/images/technology.svg'
 import event from '../../assets/images/event.svg'
 import bank from '../../assets/images/bank.svg'
 import compny from '../../assets/images/company.svg'
+import leave from "../../assets/images/leave.svg"
+
 
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -332,7 +334,7 @@ const Home = () => {
                                     <div className='iconhome'>
                                         <img src={profile} alt="profileicon" style={{ width: '70px' }} />
                                     </div>
-                                    <p>Profile</p>
+                                    <p>My Profile</p>
                                 </Link>
                             </div>
                             <div className='col col-md-3 px-4'>
@@ -430,7 +432,7 @@ const Home = () => {
                     </div>
                     <div className='container'>
                         <div className='row homeiconpart '>
-                            <div className='col col-md-6 px-4'>
+                            <div className='col col-md-4 px-4'>
                                 <Link to='/event'>
                                     <div className='iconhome'>
                                         <img src={event} alt="usersicon" style={{ width: '70px' }} />
@@ -438,7 +440,7 @@ const Home = () => {
                                     <p >Events</p>
                                 </Link>
                             </div>
-                            <div className='col col-md-6 px-4' >
+                            <div className='col col-md-4 px-4' >
                                 <Link to='/bankdetail'>
                                     <div className='iconhome'>
                                         <img src={bank} alt="salaryicon" style={{ width: '75px' }} />
@@ -446,14 +448,14 @@ const Home = () => {
                                     <p >Bank Detail</p>
                                 </Link>
                             </div>
-                            {/* <div className='col col-md-3 px-4' >
-                                <Link to='/technology'>
+                            <div className='col col-md-4 px-4' >
+                                <Link to='/Leave'>
                                     <div className='iconhome'>
-                                        <img src={technology} alt="technologyicon" style={{ width: '70px' }} />
+                                        <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
                                     </div>
-                                    <p >Technology</p>
+                                    <p >Leave</p>
                                 </Link>
-                            </div> */}
+                            </div>
                             {/* <div className='col col-md-3 px-4' >
                                 <Link to='/user'>
                                     <div className='iconhome'>
@@ -473,39 +475,70 @@ const Home = () => {
                         </div>
                     </div>
                 </div>) :
-                <div className='container' style={{ marginTop: "6%" }}>
-                    <div className='row homeiconpart'>
-                        <div className='col col-md-3 px-4'>
-                            <Link to='/companyprofile'>
-                                <div className='iconhome'>
-                                    <img src={compny} alt="profileicon" style={{ width: '70px' }} />
-                                </div>
-                                <p>Company Profile</p>
-                            </Link>
+                <div>
+                    <div className='container' style={{ marginTop: "6%" }}>
+                        <div className='row homeiconpart'>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/companyprofile'>
+                                    <div className='iconhome'>
+                                        <img src={compny} alt="profileicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p>Company Profile</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/loggeduser'>
+                                    <div className='iconhome'>
+                                        <img src={profile} alt="profileicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p>My Profile</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/attendance'>
+                                    <div className='iconhome'>
+                                        <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Attendance</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-3 px-4' >
+                                <Link to='/salary'>
+                                    <div className='iconhome'>
+                                        <img src={salary} alt="salaryicon" style={{ width: '75px' }} />
+                                    </div>
+                                    <p >Salary</p>
+                                </Link>
+                            </div>
                         </div>
-                        <div className='col col-md-3 px-4'>
-                            <Link to='/loggeduser'>
-                                <div className='iconhome'>
-                                    <img src={profile} alt="profileicon" style={{ width: '70px' }} />
-                                </div>
-                                <p>My Profile</p>
-                            </Link>
-                        </div>
-                        <div className='col col-md-3 px-4'>
-                            <Link to='/attendance'>
-                                <div className='iconhome'>
-                                    <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
-                                </div>
-                                <p >Attendance</p>
-                            </Link>
-                        </div>
-                        <div className='col col-md-3 px-4' >
-                            <Link to='/salary'>
-                                <div className='iconhome'>
-                                    <img src={salary} alt="salaryicon" style={{ width: '75px' }} />
-                                </div>
-                                <p >Salary</p>
-                            </Link>
+                    </div>
+                    <div className='container'>
+                        <div className='row homeiconpart '>
+
+                            <div className='col col-md-12 px-4' >
+                                <Link to='/Leave'>
+                                    <div className='iconhome'>
+                                        <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Leave</p>
+                                </Link>
+                            </div>
+                            {/* <div className='col col-md-3 px-4' >
+                                <Link to='/user'>
+                                    <div className='iconhome'>
+                                        <img src={users} alt="usersicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Users</p>
+                                </Link>
+                            </div> */}
+                            {/* <div className='col col-md-3 px-4'>
+                                <Link to='/event'>
+                                    <div className='iconhome'>
+                                        <img src={event} alt="usersicon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Events</p>
+                                </Link>
+                            </div> */}
                         </div>
                     </div>
                 </div>

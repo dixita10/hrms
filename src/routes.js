@@ -23,10 +23,11 @@ const User = React.lazy(() => import('./views/user/User'))
 const Event = React.lazy(() => import('./views/event/Event'))
 const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
+const Leave = React.lazy(() => import('./views/leave/Leave'))
 
 
 
-
+const UserMonthallattendance = React.lazy(() => import('./views/attendance/UserMonthallattendance'))
 const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
 const Singleattendance = React.lazy(() => import('./views/attendance/Singleattendance'))
 const Singleuser = React.lazy(() => import('./views/user/Singleuser'))
@@ -53,6 +54,7 @@ const Adduser = React.lazy(() => import('./views/user/Adduser'))
 const Addevent = React.lazy(() => import('./views/event/Addevent'))
 const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
 const Addcompanyprofile = React.lazy(() => import('./views/compnyprofile/Addcompanyprofile'))
+const Addleave = React.lazy(() => import('./views/leave/Addleave'))
 
 
 
@@ -131,6 +133,8 @@ const Routes = [
   { path: "/event", name: 'Event', component: Event },
   { path: "/bankdetail", name: 'Bankdetail', component: Bankdetail },
   { path: "/companyprofile", name: 'Companyprofile', component: Companyprofile },
+  { path: '/leave', name: 'Leave', component: Leave },
+
 
 
   { path: '/addattandance', name: 'Addattandance', component: Addattandance },
@@ -146,6 +150,9 @@ const Routes = [
   { path: '/addevent', name: 'Addevent', component: Addevent },
   { path: '/addbankdetail', name: 'Addbankdetail', component: Addbankdetail },
   { path: '/addcompanyprofile', name: 'Addcompanyprofile', component: Addcompanyprofile },
+  { path: '/addleave', name: 'Addleave', component: Addleave },
+
+
 
 
   { path: '/editattandance/:id', name: 'Editattandance', component: Editattandance },
@@ -177,6 +184,8 @@ const Routes = [
   { path: '/singlerole/:id', name: 'Singlerole', component: Singlerole },
   { path: '/singlesalary/:id', name: 'Singlesalary', component: Singlesalary },
   { path: '/singletech/:id', name: 'Singletech', component: Singletech },
+  { path: '/monthlyattendance/:id', name: 'UserMonthallattendance', component: UserMonthallattendance },
+
 
   // user side ...
 

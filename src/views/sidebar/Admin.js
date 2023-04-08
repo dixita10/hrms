@@ -81,19 +81,19 @@ function Admin() {
 
     const handleDelete = (admin_id) => {
 
-        var passData = {
-            admin_name: data.admin_name,
-            email: data.email,
-            contact: data.contact,
-            user_name: data.user_name,
-            password: data.password,
-        }
+        // var passData = {
+        //     admin_name: data.admin_name,
+        //     email: data.email,
+        //     contact: data.contact,
+        //     user_name: data.user_name,
+        //     password: data.password,
+        // }
         //   console.log(admin_id);
         var token = localStorage.getItem('token')
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/admin/deleteadmin/${admin_id}`,
-            data: passData,
+            // data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

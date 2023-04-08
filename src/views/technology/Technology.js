@@ -47,17 +47,11 @@ const Technology = () => {
 
   const handleDelete = (tec_id) => {
 
-    var passData = {
-      tec_name: data.tec_name,
-      dep_id: data.dep_id,
-      department_name: data.department_name,
-
-    }
+    
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/technology/deletetechnology/${tec_id}`,
-      data: passData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

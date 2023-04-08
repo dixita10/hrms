@@ -35,7 +35,7 @@ const User = React.lazy(() => import('./views/user/User'))
 const Event = React.lazy(() => import('./views/event/Event'))
 const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
-
+const Leave = React.lazy(() => import('./views/leave/Leave'))
 
 // Pages
 // const Login = React.lazy(() => import('./views/pages/login/Login'))
@@ -57,7 +57,7 @@ const Singleproject = React.lazy(() => import('./views/project/Singleproject'))
 const Singlerole = React.lazy(() => import('./views/role/Singlerole'))
 const Singlesalary = React.lazy(() => import('./views/salary/Singlesalary'))
 const Singletech = React.lazy(() => import('./views/technology/Singletech'))
-
+const UserMonthallattendance = React.lazy(() => import('./views/attendance/UserMonthallattendance'))
 
 
 const Addattandance = React.lazy(() => import('./views/attendance/Addattandance'))
@@ -73,6 +73,7 @@ const Adduser = React.lazy(() => import('./views/user/Adduser'))
 const Addevent = React.lazy(() => import('./views/event/Addevent'))
 const Addbankdetail = React.lazy(() => import('./views/bankdetails/Addbankdetail'))
 const Addcompanyprofile = React.lazy(() => import('./views/compnyprofile/Addcompanyprofile'))
+const Addleave = React.lazy(() => import('./views/leave/Addleave'))
 
 
 
@@ -132,11 +133,7 @@ class App extends Component {
             <Route exact path="/event" name="Event" render={(props) => <Event {...props} />} />
             <Route exact path="/bankdetail" name="Bankdetail" render={(props) => <Bankdetail {...props} />} />
             <Route exact path="/companyprofile" name="Companyprofile" render={(props) => <Companyprofile {...props} />} />
-
-
-
-
-            {/* //user attendance */}
+            <Route exact path="/leave" name="Leave" render={(props) => <Leave {...props} />} />
 
 
 
@@ -151,7 +148,7 @@ class App extends Component {
             <Route exact path="/singlerole/:id " name="Singlerole" render={(props) => <Singlerole {...props} />} />
             <Route exact path="/singlesalary/:id " name="Singlesalary" render={(props) => <Singlesalary {...props} />} />
             <Route exact path="/singletech/:id " name="Singletech" render={(props) => <Singletech {...props} />} />
-
+            <Route exact path="/monthlyattendance/:id" name="UserMonthallattendance" render={(props) => <UserMonthallattendance />} />
 
 
 
@@ -168,7 +165,7 @@ class App extends Component {
             <Route exact path='/addevent' name="Addevent" render={(props) => <Addevent {...props} />} />
             <Route exact path='/addbankdetail' name="Addbankdetail" render={(props) => <Addbankdetail {...props} />} />
             <Route exact path='/addcompanyprofile' name="Addcompanyprofile" render={(props) => <Addcompanyprofile {...props} />} />
-
+            <Route exact path='/addleave' name="Addleave" render={(props) => <Addleave {...props} />} />
 
 
 

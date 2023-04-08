@@ -48,18 +48,11 @@ const Allsalary = () => {
 
     const handleDelete = (salary_id) => {
 
-        var passData = {
-            user_id: data.user_id,
-            salary: data.salary,
-            bank_detail: data.bank_detail,
-            username: data.username,
-
-        }
+       
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/salary/deletesalary/${salary_id}`,
-            data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

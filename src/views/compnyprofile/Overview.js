@@ -44,22 +44,21 @@ const Overview = () => {
 
         var token = `Bearer ${localStorage.getItem('token')}`
 
-        var passData = {
-            compnay_name: data.compnay_name,
-            domain_name: data.domain_name,
-            website: data.website,
-            city_id: data.city_id,
-            address: data.address,
-            company_policy: data.company_policy,
-            moonlight_policy: data.moonlight_policy,
-            tour_policy: data.tour_policy,
-            yearlyleave_policy: data.yearlyleave_policy,
-        }
+        // var passData = {
+        //     compnay_name: data.compnay_name,
+        //     domain_name: data.domain_name,
+        //     website: data.website,
+        //     city_id: data.city_id,
+        //     address: data.address,
+        //     company_policy: data.company_policy,
+        //     moonlight_policy: data.moonlight_policy,
+        //     tour_policy: data.tour_policy,
+        //     yearlyleave_policy: data.yearlyleave_policy,
+        // }
 
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/companyprofile/deletecompnayprofile/${compnay_id}`,
-            data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

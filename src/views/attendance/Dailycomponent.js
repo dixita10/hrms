@@ -86,6 +86,13 @@ const Dailycomponent = () => {
             <div className='datedaily'>
                 <button className="btn btn-link btndaily" onClick={handlePrevious}>Previous ... </button>
                 <DatePicker selected={selectedDate} onChange={handleDateChange} style={{ padding: '5px' }} className='datepick' />
+                {/* <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    dateFormat="MM/yyyy"
+                    showMonthYearPicker
+                    className='datepick'
+                /> */}
                 <button className="btn btn-link btndaily" onClick={handleNext}>... Next</button>
             </div><br />
             <table className='responstable'>

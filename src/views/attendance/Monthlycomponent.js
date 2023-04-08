@@ -16,6 +16,7 @@ const Monthlycomponent = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const visibleItems = data.slice(startIndex, endIndex);
+
     useEffect(() => {
 
         var user_id = localStorage.getItem("user_id")
@@ -24,7 +25,7 @@ const Monthlycomponent = () => {
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/attendance/usermonthlyreport/${user_id}`,
+            url: `${process.env.REACT_APP_URL}/attendance/usermonthlyreport/${user_id}?year=2023&month=4`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -56,8 +57,8 @@ const Monthlycomponent = () => {
                     visibleItems.map((data) =>
                         <tr>
                             <td>{data.date}</td>
-                            <td>{moment(data.first_checkin).format("HH:mm:ss")}</td>
-                            <td>{moment(data.last_checkout).format("HH:mm:ss")}</td>
+                            <td>{data.first_checkin}</td>
+                            <td>{data.last_checkout}</td>
                             <td>{data.time_diff}</td>
                             <td>{data.status}</td>
                         </tr>

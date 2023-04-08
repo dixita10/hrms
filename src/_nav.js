@@ -8,6 +8,7 @@ import { AiOutlineProject } from "react-icons/ai";
 import { DiTechcrunch } from "react-icons/di";
 import { BsBank } from "react-icons/bs";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { GiCleaver } from "react-icons/gi";
 
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
@@ -43,6 +44,12 @@ const nav1 = [
     to: '/salary',
     icon: <FaRupeeSign className="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'Leave',
+    to: '/leave',
+    icon: <GiCleaver className="nav-icon" />,
+  }
 
 ]
 const nav = [
@@ -135,6 +142,12 @@ const nav = [
     name: 'Bankdetail',
     to: '/bankdetail',
     icon: <BsBank className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Leave',
+    to: '/leave',
+    icon: <GiCleaver className="nav-icon" />,
   }
 
 ]

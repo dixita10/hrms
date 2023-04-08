@@ -47,15 +47,14 @@ const State = () => {
 
     const handleDelete = (dep_id) => {
 
-        var passData = {
-            state_name: data.state_name,
-            country_id: data.country_id,
-        }
+        // var passData = {
+        //     state_name: data.state_name,
+        //     country_id: data.country_id,
+        // }
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
             url: `${process.env.REACT_APP_URL}/state/deletestate/${dep_id}`,
-            data: passData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

@@ -47,26 +47,10 @@ const User = () => {
 
   const handleDelete = (user_id) => {
 
-    var passData = {
-      name: data.role_name,
-      email: data.email,
-      username: data.username,
-      password: data.password,
-      city_id: data.city_id,
-      address: data.address,
-      birth_date: data.birth_date,
-      age: data.age,
-      gender: data.gender,
-      user_id: data.role_id,
-      contact: data.contact,
-      image: data.image,
-    }
-
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
       url: `${process.env.REACT_APP_URL}/user/deleteuser/${user_id}`,
-      data: passData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
