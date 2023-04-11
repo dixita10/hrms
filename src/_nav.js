@@ -49,6 +49,24 @@ const nav1 = [
     name: 'Leave',
     to: '/leave',
     icon: <GiCleaver className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Project',
+    to: '/project',
+    icon: <AiOutlineProject className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Event',
+    to: '/event',
+    icon: <MdEventAvailable className="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Bankdetail',
+    to: '/bankdetail',
+    icon: <BsBank className="nav-icon" />,
   }
 
 ]

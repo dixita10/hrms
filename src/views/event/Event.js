@@ -11,6 +11,8 @@ import Pagination from '../attendance/Pagination';
 
 const Event = () => {
 
+  var role_id = localStorage.getItem('role_id')
+
   const [data, setdata] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // number of items to display per page
@@ -46,7 +48,7 @@ const Event = () => {
   }, [])
 
   const handleDelete = (event_id) => {
-    
+
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
@@ -73,12 +75,12 @@ const Event = () => {
 
   return (
     <div>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      {role_id === "3" ? (<div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <Link to={'/addevent'}>
           <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>
-      </div><br />
-      <div className='table-responsive'>
+      </div>) : ""}<br />
+      {role_id === "3" ? (<div className='table-responsive'>
         <table className='responstable'>
           <tr>
             <th>event_tittle</th>
@@ -103,7 +105,28 @@ const Event = () => {
             )
           }
         </table>
-      </div>
+      </div>) : <table className='responstable'>
+        <tr>
+          <th>event_tittle</th>
+          <th>start_date</th>
+          <th>end_date</th>
+          <th>description</th>
+        </tr>
+        {
+          visibleItems.map((data) =>
+            <tr>
+              <td>{data.event_tittle}</td>
+              <td>{data.start_date}</td>
+              <td>{data.end_date}</td>
+              <td>{data.description}</td>
+              {/* <td style={{ fontSize: '24px' }}>
+                <Link to={`/editevent/${data.event_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                <MdDeleteForever onClick={() => handleDelete(data.event_id)} style={{ color: 'red' }} />
+              </td> */}
+            </tr>
+          )
+        }
+      </table>}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

@@ -166,7 +166,43 @@ const Allleave = () => {
                             <td>{data.status}</td>
                             <td>{data.name}</td>
                             <td style={{ fontSize: '24px' }}>
+
+
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-danger"
+                                    style={{ margin: '5px' }}
+                                    onClick={() => handlereject(data.leave_id)}
+                                >
+                                    Reject
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-success"
+                                    style={{ margin: '5px' }}
+                                    onClick={() => handleapprove(data.leave_id)}
+                                >
+                                    Approve
+                                </button>
+                                <button
+                                    className="btn btn-outline-danger mx-2"
+                                    onClick={() => handleDelete(data.leave_id)}
+                                >
+                                    Delete
+                                </button>
+
+
+                            </td>
+                            {/* <td style={{ fontSize: '24px' }}>
                                 {data.status === "pending" ? (
+                                    <button
+                                        className="btn btn-outline-danger mx-2"
+                                        onClick={() => handleDelete(data.leave_id)}
+                                    >
+                                        Delete
+                                    </button>
+                                ) : (
+
                                     <>
                                         <button
                                             type="button"
@@ -185,15 +221,8 @@ const Allleave = () => {
                                             Approve
                                         </button>
                                     </>
-                                ) : (
-                                    <button
-                                        className="btn btn-outline-danger mx-2"
-                                        onClick={() => handleDelete(data.leave_id)}
-                                    >
-                                        Delete
-                                    </button>
                                 )}
-                            </td>
+                            </td> */}
                         </tr>
                     )
                 }

@@ -68,6 +68,7 @@ const Addproject = () => {
       .then((response) => {
         if (response.status === 200) {
           toast.success(response.data.message)
+          // localStorage.setItem('successMessage', response.data.message);
           history.push("/project")
           // console.log(response);
         }
@@ -77,6 +78,7 @@ const Addproject = () => {
         toast.error(error.response.data.message)
       })
   }
+
   const [user, setUser] = useState([])
 
   const userid = () => {
@@ -118,6 +120,11 @@ const Addproject = () => {
   useEffect(() => {
     userid(),
       techid()
+    // const successMessage = localStorage.getItem('successMessage');
+    // if (successMessage) {
+    //   toast.success(successMessage);
+    //   localStorage.removeItem('successMessage');
+    // }
   }, [])
 
   return (
@@ -218,9 +225,8 @@ const Addproject = () => {
             </CCol>
           </CRow>
 
-          <ToastContainer autoClose={2000} />
+          <ToastContainer autoClose={5000} />
         </CContainer>
-
       </div >
     </div>
   )

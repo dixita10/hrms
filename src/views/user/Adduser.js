@@ -193,7 +193,7 @@ const Adduser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="password" autoComplete="password" name="password"
+                      <CFormInput placeholder="password" autoComplete="password" name="password" type='password'
                         value={data.password}
                         onChange={handleChange} />
                     </CInputGroup>

@@ -37,9 +37,16 @@ import profile1 from './../../assets/images/avatars/profile.png'
 // import {  } from "react-icons/io";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+// import { IoNotificationsSharp } from 'react-icons/io5';
+import { HiOutlineMail, HiOutlineMailOpen } from "react-icons/hi";
+import Profile from "../../assets/images/profile.svg"
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+
+    const [notifications, setNotifications] = useState([]);
+    const [showNotifications, setShowNotifications] = useState(false);
+
     var role_id = localStorage.getItem("role_id")
 
 
@@ -213,13 +220,233 @@ const Home = () => {
     }, [])
 
 
+    const handleNotification = () => {
+        // e.preventDefault();
+        var token = `Bearer ${localStorage.getItem('token')}`
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/notification/findallnotification`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log("response", response.data.data);
+                    // const updatedNotifications = response.data.data.map(notification => ({
+                    //     ...notification,
+                    //     seen: false,
+                    // }));
+                    setNotifications(response.data.data)
+                    // localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
+
+    // const handleNotificationClick = (not_id) => {
+    //     const updatedNotifications = notifications.map((notification) => {
+    //         if (notification.not_id === not_id) {
+    //             return {
+    //                 ...notification,
+    //                 seen: true,
+    //             };
+    //         }
+    //         return notification;
+    //     });
+    //     setShowNotifications(!showNotifications);
+    //     localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+
+    //     // Remove the clicked notification from local storage
+    //     const storedNotifications = JSON.parse(localStorage.getItem('notifications'));
+    //     const filteredNotifications = storedNotifications.filter((notification) => notification.not_id !== not_id);
+    //     localStorage.setItem('notifications', JSON.stringify(filteredNotifications));
+
+    //     setNotifications(updatedNotifications);
+    // };
+
+    // const deleteNotification = (not_id) => {
+    //     const updatedNotifications = notifications.filter((notification) => notification.not_id !== not_id);
+    //     setNotifications(updatedNotifications);
+
+    //     // Update the notifications in local storage
+    //     localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+    // };
+
+    useEffect(() => {
+        handleNotification()
+    }, [])
+
+
+    const NotificationBox = ({ notifications }) => {
+        const history = useHistory();
+
+        const handleNotificationClick = (notifications) => {
+            switch (notifications.type) {
+                case 'leave':
+                    history.push('/leave');
+                    break;
+                case 'project':
+                    history.push('/project');
+                    break;
+                case 'event':
+                    history.push('/event');
+                    break;
+                default:
+                    break;
+            }
+        };
+
+        return (
+            <div className='notificationBox'>
+                <ul>
+                    <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+                    {notifications.map((notification) => (
+                        <li
+                            key={notification.not_id}
+                            onClick={() => handleNotificationClick(notification)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <li>{notification.type}</li>
+                            <div className='d-flex'>
+                                <img src={Profile} style={{ width: '20px', margin: '0 8px' }} />
+                                <li style={{ fontSize: '13px' }}>{notification.message}</li>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                <button type="button" class="btn btn-primary NOTIFICATIONBTN">SEE ALL NOTIFICATIONS</button>
+            </div>
+        );
+    };
+
+
+    // const NotificationBox = ({ notifications }) => {
+
+    //     const history = useHistory();
+
+    //     const handleNotificationClick = (notifications) => {
+    //         if (notifications.type === 'leave') {
+    //             history.push('/leave');
+    //         } else {
+    //             history.push('/project');
+    //         }
+    //     };
+
+
+
+    //     return (
+    //         <div className='notificationBox'>
+    //             <ul>
+    //                 <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+    //                 {notifications.map((notification) => (
+    //                     <li key={notification.not_id} onClick={() => handleNotificationClick(notification)}
+    //                         style={{
+    //                             cursor: 'pointer',
+    //                         }}>
+    //                         <li>{notification.type}</li>
+    //                         <div className='d-flex'>
+    //                             <img src={Profile} style={{ width: '20px', margin: "0 8px" }} />
+    //                             <li style={{ fontSize: '13px' }}> {notification.message}</li>
+    //                         </div>
+    //                     </li>
+    //                 ))}
+    //             </ul>
+    //         </div>
+    //     );
+    // };
+
+
+    // function NotificationBox() {
+    //     // Retrieve the notifications from local storage when the component mounts
+    //     const [notifications, setNotifications] = useState(
+    //         JSON.parse(localStorage.getItem('notifications')) || []
+    //     );
+
+    //     return (
+    //         <div className="notificationBox">
+    //             <ul>
+    //                 <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+    //                 {notifications.map((notification) => (
+    //                     <li
+    //                         key={notification.not_id}
+    // style={{
+    //     color: notification.seen ? 'red' : 'blue',
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     marginBottom: '8px',
+    //     cursor: 'pointer',
+    // }}
+    //                         onClick={() => handleNotificationClick(notification.not_id)}
+    //                     >
+    //                         <div style={{ display: 'flex' }}>
+    //                             {notification.seen ? <HiOutlineMailOpen style={{ marginRight: '8px' }} /> : <HiOutlineMail style={{ marginRight: '8px' }} />}
+    //                             {/* <span style={{ fontSize: '12px' }}>{notification.type}</span><br /> */}
+    //                             <span style={{ fontSize: '13px' }}>{notification.message}</span>
+    //                         </div>
+    //                     </li>
+    //                 ))}
+    //             </ul>
+    //         </div>
+    //     );
+    // }
+
+
+    // const handleNotificationClick = (not_id) => {
+    //     const updatedNotifications = notifications.map(notification => {
+    //         if (notification.not_id === not_id) {
+    //             return {
+    //                 ...notification,
+    //                 seen: true,
+    //             };
+    //         }
+    //         return notification;
+    //     });
+    //     setNotifications(updatedNotifications);
+    //     setShowNotifications(!showNotifications);
+
+    //     // deleteNotification(not_id);
+    // };
+
+    // const deleteNotification = (not_id) => {
+    //     const updatedNotifications = notifications.filter(notification => notification.not_id !== not_id);
+    //     setNotifications(updatedNotifications);
+    // };
+
+
+    // function NotificationBox({ notifications }) {
+    //     return (
+    // <div className='notificationBox'>
+    //     <ul>
+    //         <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+    //         {notifications.map((notification) => (
+    //             <li key={notification.not_id} style={{
+    //                 color: notification.seen ? 'red' : 'blue',
+    //             }} onClick={() => handleNotificationClick(notification.not_id)}>
+    //                 <li>{notification.type}</li>
+    //                 <div className='d-flex'>
+    //                     <img src={Profile} style={{ width: '20px', margin: "0 8px" }} />
+    //                     <li style={{ fontSize: '13px' }}> {notification.message}</li>
+    //                 </div>
+    //             </li>
+    //         ))}
+    //     </ul>
+    // </div>
+    //     );
+    // }
 
 
 
     return (
         <div>
             <div className='Homeheader'>
-                <div className=' d-flex'>
+                <div className=' d-md-flex'>
                     <div className='col-2 homeimg'>
                         <img src={homeheader} alt="homeheader" style={{ width: '140px', marginLeft: '5%' }} />
                     </div>
@@ -290,8 +517,53 @@ const Home = () => {
                             </button>
 
                         </div>
+                        {/* <>
+                            <IoNotificationsSharp
+                                onClick={() => setShowNotifications(!showNotifications)}
+                                style={{ color: 'white' }}
+                                className={notifications.some((notification) => !notification.seen) ? 'notificationhome active' : 'notificationhome'}
+                            />
+                            {showNotifications && (
+                                <div className="notificationBox">
+                                    <ul>
+                                        <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+                                        {notifications.map((notification) => (
+                                            <li
+                                                key={notification.not_id}
+                                                style={{
+                                                    color: notification.seen ? 'red' : 'blue',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    marginBottom: '8px',
+                                                    cursor: 'pointer',
+                                                }}
+                                                onClick={() => handleNotificationClick(notification.not_id)}
+                                            >
+                                                <div style={{ display: 'flex' }}>
+                                                    {notification.seen ? (
+                                                        <HiOutlineMailOpen style={{ marginRight: '8px' }} />
+                                                    ) : (
+                                                        <HiOutlineMail style={{ marginRight: '8px' }} />
+                                                    )}
+                                                    <span style={{ fontSize: '13px' }}>{notification.message}</span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </> */}
+                        {/* <IoNotificationsSharp onClick={handleNotification} style={{ color: 'white' }} className='notificationhome' />
+                        <NotificationBox notifications={notifications} /> */}
+                        <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white' }} className={notifications.some(notification => !notification.seen) ? 'notificationhome active' : 'notificationhome'} />
+                        {showNotifications && (
+                            <NotificationBox notifications={notifications} />
+                        )}
+                        {/* <IoNotificationsSharp onClick={handleNotificationClick} style={{ color: 'white' }} className={notifications.some(notification => !notification.seen) ? 'notificationhome active' : 'notificationhome'} />
+                        {showNotifications && (
+                            <NotificationBox notifications={notifications} />
+                        )} */}
 
-                        <IoNotificationsSharp style={{ color: 'white' }} className='notificationhome' />
                         <CDropdown variant="nav-item" className='settinghome'>
                             <CDropdownToggle placement="bottom-end" className="py-0" caret={false} style={{ color: 'white', fontSize: '30px' }}>
                                 <FaAngleDown style={{ color: 'white', fontSize: '30px', position: 'relative', top: '6px' }} />
@@ -515,7 +787,7 @@ const Home = () => {
                     <div className='container'>
                         <div className='row homeiconpart '>
 
-                            <div className='col col-md-12 px-4' >
+                            <div className='col col-md-3 px-4' >
                                 <Link to='/Leave'>
                                     <div className='iconhome'>
                                         <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
@@ -523,22 +795,30 @@ const Home = () => {
                                     <p >Leave</p>
                                 </Link>
                             </div>
-                            {/* <div className='col col-md-3 px-4' >
-                                <Link to='/user'>
+                            <div className='col col-md-3 px-4'>
+                                <Link to='/project'>
                                     <div className='iconhome'>
-                                        <img src={users} alt="usersicon" style={{ width: '70px' }} />
+                                        <img src={project} alt="projecticon" style={{ width: '70px' }} />
                                     </div>
-                                    <p >Users</p>
+                                    <p >Project</p>
                                 </Link>
-                            </div> */}
-                            {/* <div className='col col-md-3 px-4'>
+                            </div>
+                            <div className='col col-md-3 px-4'>
                                 <Link to='/event'>
                                     <div className='iconhome'>
                                         <img src={event} alt="usersicon" style={{ width: '70px' }} />
                                     </div>
                                     <p >Events</p>
                                 </Link>
-                            </div> */}
+                            </div>
+                            <div className='col col-md-3 px-4' >
+                                <Link to='/bankdetail'>
+                                    <div className='iconhome'>
+                                        <img src={bank} alt="salaryicon" style={{ width: '75px' }} />
+                                    </div>
+                                    <p >Bank Detail</p>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
