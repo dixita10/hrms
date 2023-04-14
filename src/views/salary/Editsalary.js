@@ -19,7 +19,8 @@ import {
 } from '@coreui/icons'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { BiTimeFive, BiCommentCheck, BiRupee } from "react-icons/bi";
+import { BsBank2 } from "react-icons/bs";
 
 const Editsalary = () => {
 
@@ -120,7 +121,7 @@ const Editsalary = () => {
                                         </CInputGroup> */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BiRupee />
                                             </CInputGroupText>
                                             <CFormInput placeholder="salary" autoComplete="salary" name="salary"
                                                 value={data?.salary}
@@ -128,7 +129,7 @@ const Editsalary = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsBank2 />
                                             </CInputGroupText>
                                             <CFormInput placeholder="bank_detail" autoComplete="bank_detail" name="bank_detail"
                                                 value={data?.bank_detail}

@@ -8,7 +8,8 @@ import { AiOutlineProject } from "react-icons/ai";
 import { DiTechcrunch } from "react-icons/di";
 import { BsBank } from "react-icons/bs";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
-import { GiCleaver } from "react-icons/gi";
+import { GiCleaver, GiModernCity } from "react-icons/gi";
+import { TiWorldOutline } from "react-icons/ti";
 
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
@@ -111,13 +112,13 @@ const nav = [
     component: CNavItem,
     name: 'State',
     to: '/state',
-    icon: <GiWorld className="nav-icon" />
+    icon: <TiWorldOutline className="nav-icon" />
   },
   {
     component: CNavItem,
     name: 'City',
     to: '/city',
-    icon: <GiWorld className="nav-icon" />
+    icon: <GiModernCity className="nav-icon" />
   },
   {
     component: CNavItem,

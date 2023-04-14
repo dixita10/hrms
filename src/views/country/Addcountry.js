@@ -20,6 +20,7 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { GiWorld } from "react-icons/gi";
 
 const Addcountry = () => {
 
@@ -78,7 +79,7 @@ const Addcountry = () => {
                                         <h3 className='text-center'>Add Country</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <GiWorld />
                                             </CInputGroupText>
                                             <CFormInput placeholder="country_name" autoComplete="country_name" name="country_name"
                                                 value={data.country_name}

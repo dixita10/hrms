@@ -19,13 +19,16 @@ import {
   cilLockLocked, cilUser, cilPhone
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
-import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { AiOutlineProject } from "react-icons/ai";
+import { SlCalender } from "react-icons/sl";
+import { GrStatusGood } from "react-icons/gr";
+import { DiTechcrunch } from "react-icons/di";
+import { TbFileDescription } from "react-icons/tb";
 
 
 const Addproject = () => {
-
 
   var history = useHistory();
 
@@ -155,7 +158,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <AiOutlineProject />
                       </CInputGroupText>
                       <CFormInput placeholder="pro_name" autoComplete="pro_name" name="pro_name"
                         value={data.pro_name}
@@ -163,7 +166,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='date' placeholder="start_date" autoComplete="start_date" name="start_date"
                         value={data.start_date}
@@ -171,7 +174,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='date' placeholder="end_date" autoComplete="end_date" name="end_date"
                         value={data.end_date}
@@ -179,7 +182,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <GrStatusGood />
                       </CInputGroupText>
                       {/* <CFormInput placeholder="status" autoComplete="status"  /> */}
                       <select className="form-select" aria-label="Default select example" name="status"
@@ -193,7 +196,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <TbFileDescription />
                       </CInputGroupText>
                       <CFormInput placeholder="description" autoComplete="description" name="description"
                         value={data.description}
@@ -201,7 +204,7 @@ const Addproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <DiTechcrunch />
                       </CInputGroupText>
                       <select className="form-select" aria-label="Default select example" value={tech.tec_id} onChange={handleChange} name="tec_id">
                         <option selected>Choose Technology Name</option>

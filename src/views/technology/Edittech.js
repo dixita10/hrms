@@ -20,6 +20,9 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { DiTechcrunch } from "react-icons/di";
+import { BsBuildingCheck } from "react-icons/bs";
+
 const Edittech = () => {
 
   const [data, setData] = useState([])
@@ -117,7 +120,7 @@ const Edittech = () => {
                     <h3 className='text-center'>Edit Technology</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <DiTechcrunch />
                       </CInputGroupText>
                       <CFormInput placeholder="tec_name" autoComplete="tec_name" name="tec_name"
                         value={data.tec_name}
@@ -125,7 +128,7 @@ const Edittech = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <BiCommentCheck />
+                        <BsBuildingCheck />
                       </CInputGroupText>
                       <CFormInput placeholder="dep_id" autoComplete="dep_id" name="dep_id"
                         value={data.dep_id}

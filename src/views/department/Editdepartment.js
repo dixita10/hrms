@@ -20,6 +20,9 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { TbFileDescription } from "react-icons/tb";
+import { BsBuildingCheck } from "react-icons/bs";
+
 
 const Editdepartment = () => {
 
@@ -114,7 +117,7 @@ const Editdepartment = () => {
                                         <h3 className='text-center'>Edit Department</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsBuildingCheck />
                                             </CInputGroupText>
                                             <CFormInput placeholder="dep_name" autoComplete="dep_name" name="dep_name"
                                                 value={data.dep_name}

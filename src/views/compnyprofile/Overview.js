@@ -40,7 +40,7 @@ const Overview = () => {
         getOverview()
     }, [])
 
-    const handleDelete = (compnay_id) => {
+    const handleDelete = (company_id) => {
 
         var token = `Bearer ${localStorage.getItem('token')}`
 
@@ -58,7 +58,7 @@ const Overview = () => {
 
         axios({
             method: 'DElETE',
-            url: `${process.env.REACT_APP_URL}/companyprofile/deletecompnayprofile/${compnay_id}`,
+            url: `${process.env.REACT_APP_URL}/companyprofile/deletecompnayprofile/${company_id}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -95,7 +95,7 @@ const Overview = () => {
             ) : null}<br />
             <table className='responstable'>
                 <tr>
-                    <th>compnay_name</th>
+                    <th>company_name</th>
                     <th>domain_name</th>
                     <th>website</th>
                     {role_id === "3" ? (
@@ -105,13 +105,13 @@ const Overview = () => {
                 {
                     data.map((data) =>
                         <tr>
-                            <td>{data.compnay_name}</td>
+                            <td>{data.company_name}</td>
                             <td>{data.domain_name}</td>
                             <td>{data.website}</td>
                             {role_id === "3" ? (
                                 <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/editcompanyprofile/${data.compnay_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
-                                    <MdDeleteForever onClick={() => handleDelete(data.compnay_id)} style={{ color: 'red' }} />
+                                    <Link to={`/editcompanyprofile/${data.company_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                                    <MdDeleteForever onClick={() => handleDelete(data.company_id)} style={{ color: 'red' }} />
                                 </td>
                             ) : null}
 

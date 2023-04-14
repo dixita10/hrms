@@ -16,10 +16,21 @@ import {
 } from '@coreui/react'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-dropdown/style.css';
-import { GiWorld } from "react-icons/gi";
+import { GiWorld, GiModernCity } from "react-icons/gi";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { MdDriveFileRenameOutline, MdOutlineAlternateEmail, MdPassword, MdOutlinePhoneInTalk } from "react-icons/md";
+import { BiUser } from "react-icons/bi";
+import { SlCalender } from "react-icons/sl";
+import { FaRegAddressCard } from "react-icons/fa";
+import { AiOutlineFileImage } from "react-icons/ai";
+import { GrUserManager } from "react-icons/gr";
+import { BsPersonBoundingBox, BsBuildingGear } from "react-icons/bs";
 
+import CIcon from '@coreui/icons-react'
+import {
+  cilLockLocked, cilUser, cilPhone
+} from '@coreui/icons'
 const Adduser = () => {
 
   var history = useHistory();
@@ -102,37 +113,52 @@ const Adduser = () => {
 
   const [data, setData] = useState([])
 
-
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
     // setData1({ ...data, [e.target.name]: e.target.value })
-
   }
+  const [image, setImage] = useState([])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     var token = `Bearer ${localStorage.getItem('token')}`
 
-    var passData = {
-      name: data.name,
-      email: data.email,
-      username: data.username,
-      password: data.password,
-      city_id: data.city_id,
-      address: data.address,
-      birth_date: data.birth_date,
-      age: data.age,
-      gender: data.gender,
-      role_id: data.role_id,
-      dep_id: data.dep_id,
-      contact: data.contact,
-      image: data.image,
-    }
+    let formData = new FormData();
+
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("username", data.username);
+    formData.append("password", data.password);
+    formData.append("city_id", data.city_id);
+    formData.append("address", data.address);
+    formData.append("birth_date", data.birth_date);
+    formData.append("age", data.age);
+    formData.append("gender", data.gender);
+    formData.append("role_id", data.role_id);
+    formData.append("dep_id", data.dep_id);
+    formData.append("contact", data.contact);
+    formData.append("image", image);
+
+    // var passData = {
+    //   name: data.name,
+    //   email: data.email,
+    //   username: data.username,
+    //   city_id: data.city_id,
+    //   address: data.address,
+    //   birth_date: data.birth_date,
+    //   age: data.age,
+    //   gender: data.gender,
+    //   role_id: data.role_id,
+    //   contact: data.contact,
+    //   image: image,
+    // }
+
 
     axios({
       method: 'POST',
       url: `${process.env.REACT_APP_URL}/user/adduser`,
-      data: passData,
+      // data: passData,
+      data: formData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -140,17 +166,16 @@ const Adduser = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           // setData(response.data)
           toast.success(response.data.message)
           history.push("/user")
         }
       })
-    // .catch((error) => {
-    //   console.log(error);
-    //   toast.error(error.response.data.message)
-    // })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.message)
+      })
   }
 
 
@@ -167,7 +192,7 @@ const Adduser = () => {
                     <h3 className='text-center'>Add User</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdDriveFileRenameOutline />
                       </CInputGroupText>
                       <CFormInput placeholder="name" autoComplete="name" name="name"
                         value={data.name}
@@ -175,7 +200,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdOutlineAlternateEmail />
                       </CInputGroupText>
                       <CFormInput placeholder="email" autoComplete="email" name="email"
                         value={data.email}
@@ -183,7 +208,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <BiUser />
                       </CInputGroupText>
                       <CFormInput placeholder="username" autoComplete="username" name="username"
                         value={data.username}
@@ -191,7 +216,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdPassword />
                       </CInputGroupText>
                       <CFormInput placeholder="password" autoComplete="password" name="password" type='password'
                         value={data.password}
@@ -199,7 +224,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <GiModernCity />
                       </CInputGroupText>
                       <select className="form-select" aria-label="Default select example" value={city.city_id} onChange={handleChange} name="city_id">
                         <option selected>choose City name</option>
@@ -216,7 +241,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <FaRegAddressCard />
                       </CInputGroupText>
                       <CFormInput placeholder="address" autoComplete="address" name="address"
                         value={data.address}
@@ -224,21 +249,16 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <SlCalender />
                       </CInputGroupText>
-                      {/* <DatePicker
-                        selected={selectedDate}
-                        onChange={date => setSelectedDate(date)}
-                        dateFormat="yyyy-MM-dd"
-                        placeholder="birth date"
-                      /> */}
+
                       <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}
                         onChange={handleChange} dateFormat="yyyy-MM-dd" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <GrUserManager />
                       </CInputGroupText>
                       <CFormInput placeholder="age" autoComplete="age" name="age"
                         value={data.age}
@@ -246,7 +266,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <BsPersonBoundingBox />
                       </CInputGroupText>
                       {/* <RadioGroup labelText='Basic Usage' id='basicGroup' name='basic' onChange={handleChange}>
                         <Radio
@@ -265,7 +285,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <CIcon icon={cilUser} />
                       </CInputGroupText>
 
                       <select className="form-select" aria-label="Default select example" value={role.role_id} onChange={handleChange} name="role_id">
@@ -280,7 +300,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <BsBuildingGear />
                       </CInputGroupText>
                       <select className="form-select" aria-label="Default select example" value={department.dep_id} onChange={handleChange} name="dep_id">
                         <option selected>choose Department name</option>
@@ -294,7 +314,7 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdOutlinePhoneInTalk />
                       </CInputGroupText>
                       <CFormInput placeholder="contact" autoComplete="contact" name="contact"
                         value={data.contact}
@@ -302,13 +322,14 @@ const Adduser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <AiOutlineFileImage />
                       </CInputGroupText>
                       <CFormInput placeholder="image" autoComplete="image" name="image" type='file'
-                        value={data.image}
-                        onChange={handleChange} />
+                        value={image.image}
+                        onChange={(event) => {
+                          setImage(event.target?.files[0])
+                        }} />
                     </CInputGroup>
-
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Add User</CButton>
                     </div>

@@ -19,7 +19,11 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-
+import { BsBuildingCheck, BsCloudMoon } from "react-icons/bs";
+import { CgWebsite } from "react-icons/cg";
+import { FaCity, FaRegAddressCard, FaRegCalendarAlt } from "react-icons/fa";
+import { MdOutlinePolicy, MdShareLocation } from "react-icons/md";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 const Editcompanyprofile = () => {
 
@@ -58,7 +62,7 @@ const Editcompanyprofile = () => {
     var history = useHistory();
 
     const [data, setData] = useState({
-        compnay_name: '',
+        company_name: '',
         domain_name: '',
         website: '',
         city_id: '',
@@ -79,7 +83,7 @@ const Editcompanyprofile = () => {
         var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
-            compnay_name: data.compnay_name,
+            company_name: data.company_name,
             domain_name: data.domain_name,
             website: data.website,
             city_id: data.city_id,
@@ -128,10 +132,10 @@ const Editcompanyprofile = () => {
                                         <h3 className='text-center'>Edit Company Profile</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsBuildingCheck />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="compnay_name" autoComplete="compnay_name" name="compnay_name"
-                                                value={data.compnay_name}
+                                            <CFormInput placeholder="company_name" autoComplete="company_name" name="company_name"
+                                                value={data.company_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
@@ -144,7 +148,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <CgWebsite />
                                             </CInputGroupText>
                                             <CFormInput placeholder="website" autoComplete="website" name="website"
                                                 value={data.website}
@@ -152,7 +156,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <HiOutlineBuildingOffice2 />
                                             </CInputGroupText>
                                             <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
                                                 value={data.city_id}
@@ -160,7 +164,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <FaRegAddressCard />
                                             </CInputGroupText>
                                             <CFormInput placeholder="address" autoComplete="address" name="address"
                                                 value={data.address}
@@ -168,7 +172,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdOutlinePolicy />
                                             </CInputGroupText>
                                             <CFormInput placeholder="company_policy" autoComplete="company_policy" name="company_policy"
                                                 value={data.company_policy}
@@ -176,7 +180,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsCloudMoon />
                                             </CInputGroupText>
                                             <CFormInput placeholder="moonlight_policy" autoComplete="moonlight_policy" name="moonlight_policy"
                                                 value={data.moonlight_policy}
@@ -184,7 +188,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdShareLocation />
                                             </CInputGroupText>
                                             <CFormInput placeholder="tour_policy" autoComplete="tour_policy" name="tour_policy"
                                                 value={data.tour_policy}
@@ -192,7 +196,7 @@ const Editcompanyprofile = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <FaRegCalendarAlt />
                                             </CInputGroupText>
                                             <CFormInput placeholder="yearlyleave_policy" autoComplete="yearlyleave_policy" name="yearlyleave_policy"
                                                 value={data.yearlyleave_policy}

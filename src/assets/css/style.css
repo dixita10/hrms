@@ -215,6 +215,11 @@ justify-content: flex-end;
 }
 .btn-link{
     text-decoration: none;
+    color: black;
+    text-align: left;
+}
+.btn-link:hover{
+    color: black;
 }
 .myprofile{
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.17);
@@ -234,7 +239,7 @@ justify-content: flex-end;
         right: 8%;
         border-radius: 1px;
         background-color: #FFFFFF;
-        padding: 10px;
+        /* padding: 10px; */
 }
 /* .notificationBox::before{
 content: "";
@@ -259,18 +264,43 @@ content: "";
 }
 
 .NOTIFICATIONBTN{
-    margin: 0 50px;
+margin: 10px 48px;
+    padding: 10px 33px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 2px;
 }
 
+ ul .notificationget{
+  list-style: none;
+}
 
-
-
-
-
-/* .app {
+.notificationcss{
+        position: relative;
+            display: block;
+            min-height: 50px;
+            background-color: #FFFFFF;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #C7D7E6;
+}
+.notificationheading{
     position: relative;
-} */
-
+        display: block;
+        min-height: 40px;
+        background-color: #FFFFFF;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #C7D7E6;
+}
+.seenicon:hover{
+    color: #0093FF!important;
+    cursor: pointer;
+}
+.deleteicon:hover{
+    color: red!important;
+    cursor: pointer;
+}
 .notification-popup {
     position: absolute;
     top: 100px;
@@ -279,6 +309,92 @@ content: "";
     color: blue;
     /* add other styles here */
 }
+
+.icon-container {
+    /* position: relative; */
+    /* bottom: 0; */
+    /* left: 42%; */
+    margin: 10px;
+    justify-content: flex-end!important;
+}
+.delicon {
+    fill: rgb(104, 101, 101);
+    cursor: pointer;
+    /* justify-content: flex-end; */
+}
+.notification-count {
+    height: 20px;
+    line-height: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    border: 2px solid #fff;
+    padding: 0 2px;
+    position: relative;
+    top: 15px;
+    right: -18px;
+    background: #ff002a;
+    color: white;
+    border-radius: 4px;
+    transform: scale(1.1);
+    display: none;
+}
+.seen_icon{
+    fill: rgb(104, 101, 101);
+    margin: 0 10px;
+    /* justify-content: flex-end!important; */
+}
+
+.notification-list {
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 1px; */
+    /* max-height: 80vh; */
+    /* overflow-y: auto; */
+}
+.notification-count.show {
+    display: block;
+}
+
+
+.modal-content {
+width: 500px;
+    padding: 20px 0 0 0 ;
+    background: rgb(255, 255, 255);
+    display: block;
+    min-height: 290px;
+    position: absolute;
+    top: 32%;
+    left: 41%;
+}
+
+.modelbox{
+    display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+}
+.modelbtnn{
+    display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+}
+/* .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+} */
+
+
+
+
+
+
+
 
 /* @import "compass/css3"; */
 

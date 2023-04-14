@@ -15,7 +15,8 @@ import event from '../../assets/images/event.svg'
 import bank from '../../assets/images/bank.svg'
 import compny from '../../assets/images/company.svg'
 import leave from "../../assets/images/leave.svg"
-
+import notification from "../../assets/images/notification.svg"
+import Notificationprofile from "../../assets/images/notificationprofile.svg"
 
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -49,7 +50,6 @@ const Home = () => {
 
     var role_id = localStorage.getItem("role_id")
 
-
     const handleLogout = () => {
         localStorage.removeItem("token")
     }
@@ -61,11 +61,14 @@ const Home = () => {
     const [startTime, setStartTime] = useState(
         parseInt(localStorage.getItem("startTime")) || null
     );
+
     const [elapsedTime, setElapsedTime] = useState(
         parseInt(localStorage.getItem("elapsedTime")) || 0
     );
+
     const [isHovering, setIsHovering] = useState(false);
     const [isCheckedIn, setIsCheckedIn] = useState(false);
+
     useEffect(() => {
         let intervalId;
         if (startTime !== null) {
@@ -77,8 +80,6 @@ const Home = () => {
         }
         return () => clearInterval(intervalId);
     }, [startTime]);
-
-
 
     const startStopTimer = (e) => {
         e.preventDefault()
@@ -221,12 +222,11 @@ const Home = () => {
 
 
     const handleNotification = () => {
-        // e.preventDefault();
         var token = `Bearer ${localStorage.getItem('token')}`
 
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/notification/findallnotification`,
+            url: `${process.env.REACT_APP_URL}/notification/unreadnotification`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -235,12 +235,12 @@ const Home = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    console.log("response", response.data.data);
+                    console.log("response", response.data.notification);
                     // const updatedNotifications = response.data.data.map(notification => ({
                     //     ...notification,
                     //     seen: false,
                     // }));
-                    setNotifications(response.data.data)
+                    setNotifications(response.data.notification)
                     // localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
                 }
             })
@@ -284,6 +284,36 @@ const Home = () => {
     }, [])
 
 
+    const handleread = (not_id) => {
+        // console.log(not_id);
+        var token = `Bearer ${localStorage.getItem('token')}`
+
+        var passData = {
+            not_id: ''
+        }
+
+        axios({
+            method: 'POST',
+            url: `${process.env.REACT_APP_URL}/notification/updatenotification/${not_id}`,
+            data: passData,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                console.log(response.data.data);
+                if (response.status === 200) {
+                    toast.success(response.data.message)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error(error.response.data.message)
+            })
+    }
+
     const NotificationBox = ({ notifications }) => {
         const history = useHistory();
 
@@ -305,27 +335,59 @@ const Home = () => {
 
         return (
             <div className='notificationBox'>
-                <ul>
-                    <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
+                <ul >
+                    <p style={{ fontSize: '16px', fontWeight: 600, padding: '10px 0 0 15px' }}>Notifications</p>
                     {notifications.map((notification) => (
                         <li
                             key={notification.not_id}
                             onClick={() => handleNotificationClick(notification)}
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: 'pointer', backgroundColor: '#EFFBFF' }}
                         >
-                            <li>{notification.type}</li>
-                            <div className='d-flex'>
-                                <img src={Profile} style={{ width: '20px', margin: '0 8px' }} />
-                                <li style={{ fontSize: '13px' }}>{notification.message}</li>
+                            {/* <li>{notification.type}</li> */}
+                            <div >
+                                <button type="button" class="btn btn-link d-flex" onClick={() => handleread(notification.not_id)}>
+                                    <img src={Notificationprofile} style={{ width: '35px', margin: '0 8px' }} />
+                                    <li style={{ fontSize: '14px', color: 'black' }}>{notification.message}</li>
+                                </button>
                             </div>
                         </li>
                     ))}
                 </ul>
-                <button type="button" class="btn btn-primary NOTIFICATIONBTN">SEE ALL NOTIFICATIONS</button>
+                <Link to='/notification'>
+                    <button type="button" class="btn btn-primary NOTIFICATIONBTN">SEE ALL NOTIFICATIONS</button>
+                </Link>
             </div>
         );
     };
 
+    const [count, setCount] = useState(0);
+
+    const handleCount = () => {
+        var token = `Bearer ${localStorage.getItem('token')}`
+
+        axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_URL}/notification/countnotification`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    // console.log("response", response.data?.notification[0].count);
+                    setCount(response.data?.notification[0]?.count)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        handleCount()
+    })
 
     // const NotificationBox = ({ notifications }) => {
 
@@ -555,10 +617,13 @@ const Home = () => {
                         </> */}
                         {/* <IoNotificationsSharp onClick={handleNotification} style={{ color: 'white' }} className='notificationhome' />
                         <NotificationBox notifications={notifications} /> */}
-                        <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white' }} className={notifications.some(notification => !notification.seen) ? 'notificationhome active' : 'notificationhome'} />
+                        <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white' }} className='notificationhome' />
                         {showNotifications && (
                             <NotificationBox notifications={notifications} />
                         )}
+                        <button className={`notification-count ${count > 0 ? 'show' : ''}`}>
+                            {count > 0 && <p>{count}</p>}
+                        </button>
                         {/* <IoNotificationsSharp onClick={handleNotificationClick} style={{ color: 'white' }} className={notifications.some(notification => !notification.seen) ? 'notificationhome active' : 'notificationhome'} />
                         {showNotifications && (
                             <NotificationBox notifications={notifications} />
@@ -704,7 +769,7 @@ const Home = () => {
                     </div>
                     <div className='container'>
                         <div className='row homeiconpart '>
-                            <div className='col col-md-4 px-4'>
+                            <div className='col col-md-3 px-4'>
                                 <Link to='/event'>
                                     <div className='iconhome'>
                                         <img src={event} alt="usersicon" style={{ width: '70px' }} />
@@ -712,7 +777,7 @@ const Home = () => {
                                     <p >Events</p>
                                 </Link>
                             </div>
-                            <div className='col col-md-4 px-4' >
+                            <div className='col col-md-3 px-4' >
                                 <Link to='/bankdetail'>
                                     <div className='iconhome'>
                                         <img src={bank} alt="salaryicon" style={{ width: '75px' }} />
@@ -720,7 +785,7 @@ const Home = () => {
                                     <p >Bank Detail</p>
                                 </Link>
                             </div>
-                            <div className='col col-md-4 px-4' >
+                            <div className='col col-md-3 px-4' >
                                 <Link to='/Leave'>
                                     <div className='iconhome'>
                                         <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
@@ -728,22 +793,15 @@ const Home = () => {
                                     <p >Leave</p>
                                 </Link>
                             </div>
-                            {/* <div className='col col-md-3 px-4' >
-                                <Link to='/user'>
+                            <div className='col col-md-3 px-4' >
+                                <Link to='/notification'>
                                     <div className='iconhome'>
-                                        <img src={users} alt="usersicon" style={{ width: '70px' }} />
+                                        <img src={notification} alt="notificationicon" style={{ width: '70px' }} />
                                     </div>
-                                    <p >Users</p>
+                                    <p >Notification</p>
                                 </Link>
-                            </div> */}
-                            {/* <div className='col col-md-3 px-4'>
-                                <Link to='/event'>
-                                    <div className='iconhome'>
-                                        <img src={event} alt="usersicon" style={{ width: '70px' }} />
-                                    </div>
-                                    <p >Events</p>
-                                </Link>
-                            </div> */}
+                            </div>
+
                         </div>
                     </div>
                 </div>) :

@@ -20,7 +20,8 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-
+import { DiTechcrunch } from "react-icons/di";
+import { BsBuildingCheck } from "react-icons/bs";
 
 const Addtech = () => {
 
@@ -105,7 +106,7 @@ const Addtech = () => {
                                         <h3 className='text-center'>Add Technology</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <DiTechcrunch />
                                             </CInputGroupText>
                                             <CFormInput placeholder="tec_name" autoComplete="tec_name" name="tec_name"
                                                 value={data.tec_name}
@@ -121,7 +122,7 @@ const Addtech = () => {
                                         </CInputGroup> */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsBuildingCheck />
                                             </CInputGroupText>
                                             <select className="form-select" aria-label="Default select example" value={department.dep_id} name="dep_id" onChange={handleChange} >
                                                 <option selected>choose department name</option>

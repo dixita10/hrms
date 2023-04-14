@@ -37,6 +37,8 @@ const User = () => {
       },
     })
       .then((response) => {
+        console.log(response.data.data);
+
         setdata(response.data.data)
       })
   }
@@ -124,7 +126,7 @@ const User = () => {
           <th>action</th>
         </tr>
         {
-          visibleItems.map((data) =>
+          visibleItems.map((data, index) =>
             <tr>
               <td>{data.name}</td>
               <td>{data.email}</td>
@@ -136,7 +138,8 @@ const User = () => {
               <td>{data.gender}</td>
               {/* <td>{data.role_id}</td> */}
               <td>{data.contact}</td>
-              <td>{data.image}</td>
+              {/* <td>{data.image}</td> */}
+              <img src={data.image} />
               <td>{data.city_name}</td>
               <td>{data.role_name}</td>
               <td style={{ fontSize: '24px', textAlign: 'left' }}>

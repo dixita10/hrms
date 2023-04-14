@@ -21,6 +21,8 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
 import { GiWorld } from "react-icons/gi";
+import { TiWorldOutline } from "react-icons/ti";
+import { GiModernCity } from "react-icons/gi";
 
 
 const Addcity = () => {
@@ -110,7 +112,7 @@ const Addcity = () => {
                                         <h3 className='text-center'>Add City</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <GiWorld />
+                                                <GiModernCity />
                                             </CInputGroupText>
                                             <CFormInput placeholder="city_name" autoComplete="city_name" name="city_name"
                                                 value={data.city_name}
@@ -118,7 +120,7 @@ const Addcity = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <GiWorld />
+                                                <TiWorldOutline />
                                             </CInputGroupText>
                                             <select className="form-select" aria-label="Default select example" value={state.state_id} onChange={handleChange} name="state_id">
                                                 <option selected>choose State name</option>

@@ -14,12 +14,9 @@ import {
     CInputGroupText,
     CRow,
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {
-    cilLockLocked, cilUser, cilPhone
-} from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
-import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { TbFileDescription } from "react-icons/tb";
+import { BsBuildingCheck } from "react-icons/bs";
 
 const Adddepartment = () => {
     var history = useHistory();
@@ -78,7 +75,7 @@ const Adddepartment = () => {
                                         <h3 className='text-center'>Add Department</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <BsBuildingCheck />
                                             </CInputGroupText>
                                             <CFormInput placeholder="dep_name" autoComplete="dep_name" name="dep_name"
                                                 value={data.dep_name}
@@ -86,7 +83,7 @@ const Adddepartment = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <BiCommentCheck />
+                                                <TbFileDescription />
                                             </CInputGroupText>
                                             <CFormInput placeholder="description" autoComplete="description" name="description"
                                                 value={data.description}

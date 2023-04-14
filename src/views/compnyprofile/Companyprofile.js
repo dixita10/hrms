@@ -9,7 +9,6 @@ const Companyprofile = () => {
 
     // var role_id = localStorage.getItem("role_id")
 
-
     return (
         <div>
             <div>

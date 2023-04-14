@@ -17,6 +17,7 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-dropdown/style.css';
 import { GiWorld } from "react-icons/gi";
+import { TiWorldOutline } from "react-icons/ti";
 
 
 const Addstate = () => {
@@ -102,7 +103,7 @@ const Addstate = () => {
                     <h3 className='text-center'>Add State</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <TiWorldOutline />
                       </CInputGroupText>
                       <CFormInput placeholder="state_name" autoComplete="state_name" name="state_name"
                         value={data.state_name}

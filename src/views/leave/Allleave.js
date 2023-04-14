@@ -33,7 +33,7 @@ const Allleave = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    console.log("response", response.data.data);
+                    // console.log("response", response.data.data);
                     setData(response.data.data)
                 }
             })

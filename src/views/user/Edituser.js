@@ -195,7 +195,7 @@ const Edituser = () => {
                       <CInputGroupText>
                         <GiWorld />
                       </CInputGroupText>
-                      <CFormInput placeholder="image" autoComplete="image" name="image"
+                      <CFormInput placeholder="image" autoComplete="image" name="image" type='file'
                         value={data.image}
                         onChange={handleChange} />
                     </CInputGroup>

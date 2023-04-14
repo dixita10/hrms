@@ -20,7 +20,11 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-
+import { AiOutlineProject } from "react-icons/ai";
+import { SlCalender } from "react-icons/sl";
+import { GrStatusGood } from "react-icons/gr";
+import { DiTechcrunch } from "react-icons/di";
+import { TbFileDescription } from "react-icons/tb";
 
 const Editproject = () => {
 
@@ -132,7 +136,7 @@ const Editproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <AiOutlineProject />
                       </CInputGroupText>
                       <CFormInput placeholder="pro_name" autoComplete="pro_name" name="pro_name"
                         value={data.pro_name}
@@ -140,7 +144,7 @@ const Editproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='datetime-local' placeholder="start_date" autoComplete="start_date" name="start_date"
                         value={data.start_date}
@@ -148,7 +152,7 @@ const Editproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='datetime-local' placeholder="end_date" autoComplete="end_date" name="end_date"
                         value={data.end_date}
@@ -156,7 +160,7 @@ const Editproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <GrStatusGood />
                       </CInputGroupText>
                       <CFormInput placeholder="status" autoComplete="status" name="status"
                         value={data.status}
@@ -164,7 +168,7 @@ const Editproject = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <DiTechcrunch />
                       </CInputGroupText>
                       <CFormInput placeholder="description" autoComplete="description" name="description"
                         value={data.description}

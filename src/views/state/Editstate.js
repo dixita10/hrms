@@ -20,6 +20,9 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { TiWorldOutline } from "react-icons/ti";
+import { GiWorld } from "react-icons/gi";
+
 
 const Editstate = () => {
 
@@ -111,7 +114,7 @@ const Editstate = () => {
                     <h3 className='text-center'>Edit State</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <TiWorldOutline />
                       </CInputGroupText>
                       <CFormInput placeholder="state_name" autoComplete="state_name" name="state_name"
                         value={data.state_name}
@@ -119,7 +122,7 @@ const Editstate = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <BiCommentCheck />
+                        <GiWorld />
                       </CInputGroupText>
                       <CFormInput placeholder="country_id" autoComplete="country_id" name="country_id"
                         value={data.country_id}

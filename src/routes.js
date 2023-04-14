@@ -24,6 +24,7 @@ const Event = React.lazy(() => import('./views/event/Event'))
 const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 const Leave = React.lazy(() => import('./views/leave/Leave'))
+const Notification = React.lazy(() => import('./views/notification/Notification'))
 
 
 
@@ -134,6 +135,8 @@ const Routes = [
   { path: "/bankdetail", name: 'Bankdetail', component: Bankdetail },
   { path: "/companyprofile", name: 'Companyprofile', component: Companyprofile },
   { path: '/leave', name: 'Leave', component: Leave },
+  { path: '/notification', name: 'Notification', component: Notification },
+
 
 
 
