@@ -37,6 +37,7 @@ const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 const Leave = React.lazy(() => import('./views/leave/Leave'))
 const Notification = React.lazy(() => import('./views/notification/Notification'))
+const Iconpage = React.lazy(() => import('./views/managerside/Iconpage'))
 
 // Pages
 // const Login = React.lazy(() => import('./views/pages/login/Login'))
@@ -136,7 +137,7 @@ class App extends Component {
             <Route exact path="/companyprofile" name="Companyprofile" render={(props) => <Companyprofile {...props} />} />
             <Route exact path="/leave" name="Leave" render={(props) => <Leave {...props} />} />
             <Route exact path="/notification" name="Notification" render={(props) => <Notification {...props} />} />
-
+            <Route exact path="/iconpage" name="Iconpage" render={(props) => <Iconpage {...props} />} />
 
 
 

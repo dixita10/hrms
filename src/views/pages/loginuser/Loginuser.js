@@ -19,7 +19,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import loginimg from '../../../assets/images/login.png'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { MdOutlineAlternateEmail } from "react-icons/md";
 const Loginuser = () => {
 
     var history = useHistory();
@@ -137,7 +137,7 @@ const Loginuser = () => {
                                         <p className="text-medium-emphasis">Sign In to your account</p><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdOutlineAlternateEmail />
                                             </CInputGroupText>
                                             <CFormInput
                                                 type='email'

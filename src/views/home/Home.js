@@ -17,6 +17,7 @@ import compny from '../../assets/images/company.svg'
 import leave from "../../assets/images/leave.svg"
 import notification from "../../assets/images/notification.svg"
 import Notificationprofile from "../../assets/images/notificationprofile.svg"
+import Managerdirectory from "../../assets/images/mangerdirectory.svg"
 
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -39,9 +40,12 @@ import profile1 from './../../assets/images/avatars/profile.png'
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 // import { IoNotificationsSharp } from 'react-icons/io5';
-import { HiOutlineMail, HiOutlineMailOpen } from "react-icons/hi";
+import { HiOutlineMail, HiOutlineMailOpen, HiOutlineMenu } from "react-icons/hi";
 import Profile from "../../assets/images/profile.svg"
 import { useHistory } from 'react-router-dom';
+import { AiOutlineFileAdd } from "react-icons/ai";
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+
 
 const Home = () => {
 
@@ -502,36 +506,37 @@ const Home = () => {
     // </div>
     //     );
     // }
+    const history = useHistory();
+    const [isChecked, setIsChecked] = useState(false);
 
+    const handleSwitchChange = (checked) => {
+        setIsChecked(checked);
+    };
+    // const handleSwitchChange = (checked) => {
+    //     if (role_id === "4" && checked) {
+    //         history.push('/iconpage');
+    //     }
+    // };
 
 
     return (
         <div>
-            <div className='Homeheader'>
-                <div className=' d-md-flex'>
-                    <div className='col-2 homeimg'>
-                        <img src={homeheader} alt="homeheader" style={{ width: '140px', marginLeft: '5%' }} />
+            <div className='Homeheader row'>
+                <div className="d-lg-flex d-sm-block justify-content-center">
+                    <div className='col-lg-2 homeimg text-center'>
+                        <HiOutlineMenu className="togleerhome" />
+                        <img src={homeheader} alt="homeheader" className='homelogoimage' />
                     </div>
-                    <div className='col-2'>
-                        <p style={{ color: 'white', fontSize: '30px', marginTop: '30px' }}>Hi {data1}!</p>
+                    <div className='col-lg-2 text-center'>
+                        <p className="homename" >Hi {data1}!</p>
                     </div>
-                    <div className='col-4 d-flex' style={{ marginTop: '30px', marginLeft: '-30px' }}>
-                        <input type='search' placeholder='Search Employess' style={{
-                            color: 'white',
-                            padding: "10px 15px 10px 15px",
-                            borderTopLeftRadius: "8px",
-                            borderBottomLeftRadius: '8px',
-                            width: "60%",
-                            backgroundColor: "black",
-                            border: "1px solid white",
-                            fontSize: '20px',
-                            height: '46px'
-                        }} onKeyPress={handleSearch} />
+                    <div className='col-lg-3 d-flex justify-content-center' style={{ marginTop: '25px' }}>
+                        <input type='search' placeholder='Search Employess' className="homesearchinp" onKeyPress={handleSearch} />
                         <div className='homesearchbac'>
                             <ImSearch className='homesearch' />
                         </div>
                     </div>
-                    <div className='col-3 clock_out d-flex' style={{ marginLeft: '-30px' }}>
+                    <div className='col-lg-3 clock_out d-flex justify-content-center' >
                         <div className="clock-buttons-container">
                             <p style={{
                                 color: 'white', marginTop: "11px", marginBottom: "6px", fontWeight: 500, fontSize: '14px'
@@ -637,7 +642,7 @@ const Home = () => {
 
                                 {/* <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader> */}
                                 <CDropdownItem href="/login " onClick={handleLogout}>
-                                    <FiUserMinus className="me-2" />
+                                    <AiOutlineFileAdd className="me-2" />
                                     File Manager
                                 </CDropdownItem>
                                 <CDropdownItem href="/login " onClick={handleLogout}>
@@ -651,10 +656,63 @@ const Home = () => {
                                 profile
                             </CDropdownMenu>
                         </CDropdown>
+
+                        {/* {role_id === "4" ? (<BootstrapSwitchButton checked={false} onstyle="dark" style="border" width={70} height={15} offstyle="secondary" />) : ""} */}
+                        <div>
+                            {role_id === "4" ? (
+                                <BootstrapSwitchButton
+                                    checked={isChecked}
+                                    onstyle="dark"
+                                    style="border"
+                                    width={70}
+                                    height={15}
+                                    offstyle="secondary"
+                                    onChange={handleSwitchChange}
+                                />
+                            ) : ""}
+
+                        </div>
+
                     </div>
+
+
+
                 </div>
             </div>
-            {role_id === "3" ? (
+
+            {isChecked && (
+                <div className='container' style={{ marginTop: "6%" }}>
+                    <div className='row homeiconpart'>
+                        <div className='col col-md-4 px-4'>
+                            <Link to='/'>
+                                <div className='iconhome'>
+                                    <img src={Managerdirectory} alt="profileicon" style={{ width: '70px' }} />
+                                </div>
+                                <p>Directory</p>
+                            </Link>
+                        </div>
+                        <div className='col col-md-4 px-4'>
+                            <Link to='/'>
+                                <div className='iconhome'>
+                                    <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
+                                </div>
+                                <p >Attendance</p>
+                            </Link>
+                        </div>
+                        <div className='col col-md-4 px-4'>
+                            <Link to='/'>
+                                <div className='iconhome'>
+                                    <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
+                                </div>
+                                <p >Leave</p>
+                            </Link>
+                        </div>
+
+                    </div>
+                </div>
+            )}
+
+            {!isChecked && (role_id === "3" ? (
                 <div>
                     <div className='container' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
@@ -804,8 +862,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                </div>) :
-                <div>
+                </div>) : (<div>
                     <div className='container' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
@@ -879,8 +936,8 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                </div>))}
+
             <ToastContainer autoClose={2000}
             />
         </div >

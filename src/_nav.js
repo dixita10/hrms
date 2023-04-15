@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaUserAlt, FaCarSide, FaRegCalendarAlt, FaUsers, FaUserCircle, FaRupeeSign, FaBuilding } from 'react-icons/fa'
+import { FaUserAlt, FaCarSide, FaRegCalendarAlt, FaUsers, FaUserCircle, FaRupeeSign, FaBuilding, FaUser } from 'react-icons/fa'
 import { MdDashboard, MdBorderColor, MdPayment, MdEventAvailable } from 'react-icons/md'
 import { CNavGroup, CNavItem, } from '@coreui/react'
 import { RiAdminLine } from "react-icons/ri";
@@ -10,6 +10,8 @@ import { BsBank } from "react-icons/bs";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GiCleaver, GiModernCity } from "react-icons/gi";
 import { TiWorldOutline } from "react-icons/ti";
+import { MdOutlineLocationOn } from "react-icons/md";
+
 
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
@@ -71,6 +73,7 @@ const nav1 = [
   }
 
 ]
+
 const nav = [
   {
     component: CNavItem,
@@ -103,22 +106,29 @@ const nav = [
     icon: <FaBuilding className='nav-icon' />
   },
   {
-    component: CNavItem,
-    name: 'Country',
-    to: '/country',
-    icon: <GiWorld className="nav-icon" />
-  },
-  {
-    component: CNavItem,
-    name: 'State',
-    to: '/state',
-    icon: <TiWorldOutline className="nav-icon" />
-  },
-  {
-    component: CNavItem,
-    name: 'City',
-    to: '/city',
-    icon: <GiModernCity className="nav-icon" />
+    component: CNavGroup,
+    name: 'Location',
+    icon: <MdOutlineLocationOn className="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Country',
+        to: '/country',
+        icon: <GiWorld className="nav-icon" />
+      },
+      {
+        component: CNavItem,
+        name: 'State',
+        to: '/state',
+        icon: <TiWorldOutline className="nav-icon" />
+      },
+      {
+        component: CNavItem,
+        name: 'City',
+        to: '/city',
+        icon: <GiModernCity className="nav-icon" />
+      },
+    ]
   },
   {
     component: CNavItem,
@@ -167,19 +177,34 @@ const nav = [
     name: 'Leave',
     to: '/leave',
     icon: <GiCleaver className="nav-icon" />,
-  }
+  },
 
+]
+
+const nav2 = [
+  {
+    component: CNavItem,
+    name: 'Directory',
+    to: '/',
+    icon: <MdDashboard className='nav-icon' />,
+  },
+  {
+    component: CNavItem,
+    name: 'Attendance',
+    to: '/',
+    icon: <HiOutlineBuildingOffice2 className='nav-icon' />
+  },
+  {
+    component: CNavItem,
+    name: 'Leave',
+    to: '/',
+    icon: <RiAdminLine className='nav-icon' />
+  },
 ]
 
 const _nav = role_id === "3" ? nav : nav1
 
 // console.log(_nav);
-
-
-
-
-
-
 
 
 
@@ -192,24 +217,24 @@ export default _nav
 
 
 // {
-//   //     {
-//   //     component: CNavGroup,
-//   //     name: 'Payment',
-//   //     to: '/payment',
-//   //     icon: <MdPayment className="nav-icon" />,
-//   //     items: [
-//   //       {
-//   //         component: CNavItem,
-//   //         name: 'User Payment',
-//   //         to: '/payment/user-payment',
-//   //       },
-//   //       {
-//   //         component: CNavItem,
-//   //         name: 'Service Provider Payment',
-//   //         to: '/payment/serviceprovider-payment',
-//   //       },
-//   //     ],
-//   //   },
+    //   {
+    //   component: CNavGroup,
+    //   name: 'Payment',
+    //   to: '/payment',
+    //   icon: <MdPayment className="nav-icon" />,
+    //   items: [
+    //     {
+    //       component: CNavItem,
+    //       name: 'User Payment',
+    //       to: '/payment/user-payment',
+    //     },
+    //     {
+    //       component: CNavItem,
+    //       name: 'Service Provider Payment',
+    //       to: '/payment/serviceprovider-payment',
+    //     },
+    //   ],
+    // },
 //   //   {
 //   //     component: CNavItem,
 //   //     name: 'Cars',

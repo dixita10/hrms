@@ -25,6 +25,7 @@ const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 const Leave = React.lazy(() => import('./views/leave/Leave'))
 const Notification = React.lazy(() => import('./views/notification/Notification'))
+const Iconpage = React.lazy(() => import('./views/managerside/Iconpage'))
 
 
 
@@ -136,7 +137,7 @@ const Routes = [
   { path: "/companyprofile", name: 'Companyprofile', component: Companyprofile },
   { path: '/leave', name: 'Leave', component: Leave },
   { path: '/notification', name: 'Notification', component: Notification },
-
+  { path: '/iconpage', name: 'Iconpage', component: Iconpage },
 
 
 
