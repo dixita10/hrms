@@ -18,6 +18,7 @@ import leave from "../../assets/images/leave.svg"
 import notification from "../../assets/images/notification.svg"
 import Notificationprofile from "../../assets/images/notificationprofile.svg"
 import Managerdirectory from "../../assets/images/mangerdirectory.svg"
+import Assignuser from "../../assets/images/assignuser.svg"
 
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -45,7 +46,6 @@ import Profile from "../../assets/images/profile.svg"
 import { useHistory } from 'react-router-dom';
 import { AiOutlineFileAdd } from "react-icons/ai";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-
 
 const Home = () => {
 
@@ -238,14 +238,9 @@ const Home = () => {
             },
         })
             .then((response) => {
+                // console.log("response", response.data.data);
                 if (response.status === 200) {
-                    console.log("response", response.data.notification);
-                    // const updatedNotifications = response.data.data.map(notification => ({
-                    //     ...notification,
-                    //     seen: false,
-                    // }));
-                    setNotifications(response.data.notification)
-                    // localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+                    setNotifications(response.data.data)
                 }
             })
             .catch((error) => {
@@ -379,9 +374,9 @@ const Home = () => {
             },
         })
             .then((response) => {
+                // console.log("response", response?.data.data[0].count);
                 if (response.status === 200) {
-                    // console.log("response", response.data?.notification[0].count);
-                    setCount(response.data?.notification[0]?.count)
+                    setCount(response?.data.data[0].count)
                 }
             })
             .catch((error) => {
@@ -507,16 +502,7 @@ const Home = () => {
     //     );
     // }
     const history = useHistory();
-    const [isChecked, setIsChecked] = useState(false);
 
-    const handleSwitchChange = (checked) => {
-        setIsChecked(checked);
-    };
-    // const handleSwitchChange = (checked) => {
-    //     if (role_id === "4" && checked) {
-    //         history.push('/iconpage');
-    //     }
-    // };
 
 
     return (
@@ -657,21 +643,7 @@ const Home = () => {
                             </CDropdownMenu>
                         </CDropdown>
 
-                        {/* {role_id === "4" ? (<BootstrapSwitchButton checked={false} onstyle="dark" style="border" width={70} height={15} offstyle="secondary" />) : ""} */}
-                        <div>
-                            {role_id === "4" ? (
-                                <BootstrapSwitchButton
-                                    checked={isChecked}
-                                    onstyle="dark"
-                                    style="border"
-                                    width={70}
-                                    height={15}
-                                    offstyle="secondary"
-                                    onChange={handleSwitchChange}
-                                />
-                            ) : ""}
 
-                        </div>
 
                     </div>
 
@@ -680,39 +652,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {isChecked && (
-                <div className='container' style={{ marginTop: "6%" }}>
-                    <div className='row homeiconpart'>
-                        <div className='col col-md-4 px-4'>
-                            <Link to='/'>
-                                <div className='iconhome'>
-                                    <img src={Managerdirectory} alt="profileicon" style={{ width: '70px' }} />
-                                </div>
-                                <p>Directory</p>
-                            </Link>
-                        </div>
-                        <div className='col col-md-4 px-4'>
-                            <Link to='/'>
-                                <div className='iconhome'>
-                                    <img src={attendance} alt="attendanceicon" style={{ width: '70px' }} />
-                                </div>
-                                <p >Attendance</p>
-                            </Link>
-                        </div>
-                        <div className='col col-md-4 px-4'>
-                            <Link to='/'>
-                                <div className='iconhome'>
-                                    <img src={leave} alt="leaveicon" style={{ width: '70px' }} />
-                                </div>
-                                <p >Leave</p>
-                            </Link>
-                        </div>
-
-                    </div>
-                </div>
-            )}
-
-            {!isChecked && (role_id === "3" ? (
+            {role_id === "3" ? (
                 <div>
                     <div className='container' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
@@ -862,6 +802,18 @@ const Home = () => {
 
                         </div>
                     </div>
+                    <div className='container'>
+                        <div className='row homeiconpart '>
+                            <div className='col col-md-12 px-4'>
+                                <Link to='/attendanceuser'>
+                                    <div className='iconhome'>
+                                        <img src={Assignuser} alt="assignusericon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Assign Intern</p>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>) : (<div>
                     <div className='container' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
@@ -936,7 +888,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>))}
+                </div>)}
 
             <ToastContainer autoClose={2000}
             />

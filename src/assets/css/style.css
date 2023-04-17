@@ -20,6 +20,24 @@
         width: 130px;
     }
 }
+@media screen and (max-width:1270px) {
+    .web-clock-in-btn {
+        padding: 8px 8px!important;
+}
+}
+/* .react-switch-bg{
+    background-color: #0093FF!important;
+} */
+.switchmanager{
+    display: flex;
+    justify-content: flex-end;
+}
+.react-switch-handle{
+    height: 25px!important;
+    width: 25px!important;
+    /* margin: 0 0 0 5px; */
+}
+
 .togleerhome{
     color: white;
      font-size: 29px;
@@ -440,6 +458,16 @@ width: 500px;
     z-index: 9999;
 } */
 
+.toggle.ios,
+.toggle-on.ios,
+.toggle-off.ios {
+    border-radius: 20rem;
+}
+
+.toggle.ios .toggle-handle {
+    border-radius: 20rem;
+}
+  
 
 
 

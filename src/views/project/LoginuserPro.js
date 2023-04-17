@@ -21,7 +21,7 @@ const LoginuserPro = () => {
         })
             .then((response) => {
                 console.log("response", response);
-                setdata(response.data.project)
+                setdata(response.data.data)
             })
     }
 

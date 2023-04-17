@@ -10,7 +10,7 @@ import { BsBank } from "react-icons/bs";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GiCleaver, GiModernCity } from "react-icons/gi";
 import { TiWorldOutline } from "react-icons/ti";
-import { MdOutlineLocationOn } from "react-icons/md";
+import { MdOutlineLocationOn, MdOutlineAssignmentInd } from "react-icons/md";
 
 
 var role_id = localStorage.getItem("role_id")
@@ -178,28 +178,13 @@ const nav = [
     to: '/leave',
     icon: <GiCleaver className="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'Assign Intern',
+    to: '/attendanceuser',
+    icon: <MdOutlineAssignmentInd className="nav-icon" />,
+  },
 
-]
-
-const nav2 = [
-  {
-    component: CNavItem,
-    name: 'Directory',
-    to: '/',
-    icon: <MdDashboard className='nav-icon' />,
-  },
-  {
-    component: CNavItem,
-    name: 'Attendance',
-    to: '/',
-    icon: <HiOutlineBuildingOffice2 className='nav-icon' />
-  },
-  {
-    component: CNavItem,
-    name: 'Leave',
-    to: '/',
-    icon: <RiAdminLine className='nav-icon' />
-  },
 ]
 
 const _nav = role_id === "3" ? nav : nav1

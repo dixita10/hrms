@@ -22,7 +22,7 @@ const Loggeduser = () => {
             },
         })
             .then((response) => {
-                // console.log("response", response.data.user.username);
+                console.log("response", response.data);
                 if (response.status === 200) {
                     var username = response.data.user.username
                     localStorage.setItem('username', username)

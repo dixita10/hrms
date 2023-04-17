@@ -31,9 +31,9 @@ const Notification = () => {
             },
         })
             .then((response) => {
+                console.log("response", response.data.data);
                 if (response.status === 200) {
-                    // console.log("response", response.data.data);
-                    setNotifications(response.data.notification)
+                    setNotifications(response.data.data)
                 }
             })
             .catch((error) => {
@@ -166,7 +166,7 @@ const Notification = () => {
     const [selectAll, setSelectAll] = useState(false);
     const [anySelected, setAnySelected] = useState(false);
     const [selectedNotifications, setSelectedNotifications] = useState([]);
-
+    const [allcount, setAllcount] = useState([]);
 
     const handleSelectAll = (event) => {
         const { checked } = event.target;
@@ -196,27 +196,15 @@ const Notification = () => {
             },
         })
             .then((response) => {
-                console.log("response", response.data?.notifications[0]?.count);
+                console.log("response", response.data.data[0].count);
                 if (response.status === 200) {
-                    // setAllcount(response.data?.notifications[0]?.count)
+                    setAllcount(response.data.data[0].count)
                 }
             })
             .catch((error) => {
                 console.log(error);
             })
     };
-
-    // const handleCheckboxChange = (event) => {
-    //     const { checked } = event.target;
-
-    //     // Check if any checkboxes are checked
-    //     const checkboxes = document.querySelectorAll('.notification-checkbox');
-    //     const anyChecked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
-
-    //     // Update "Select All" and "anySelected" checkbox state
-    //     setSelectAll(anyChecked);
-    //     setAnySelected(anyChecked);
-    // }
 
     const [showModal, setShowModal] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false)

@@ -166,8 +166,6 @@ const Allleave = () => {
                             <td>{data.status}</td>
                             <td>{data.name}</td>
                             <td style={{ fontSize: '24px' }}>
-
-
                                 <button
                                     type="button"
                                     className="btn btn-outline-danger"

@@ -22,7 +22,7 @@ const Loginsalary = () => {
             .then((response) => {
                 // console.log("response", response.data.salary);
                 if (response.status === 200) {
-                    setData(response.data.salary)
+                    setData(response.data?.data)
                 }
             })
             .catch((error) => {

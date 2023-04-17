@@ -25,7 +25,6 @@ const Bankdetail = React.lazy(() => import('./views/bankdetails/Bankdetail'))
 const Companyprofile = React.lazy(() => import('./views/compnyprofile/Companyprofile'))
 const Leave = React.lazy(() => import('./views/leave/Leave'))
 const Notification = React.lazy(() => import('./views/notification/Notification'))
-const Iconpage = React.lazy(() => import('./views/managerside/Iconpage'))
 
 
 
@@ -80,6 +79,12 @@ const Editcompanyprofile = React.lazy(() => import('./views/compnyprofile/Editac
 
 const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
 const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
+
+
+// manager side ...
+
+const Attendanceuser = React.lazy(() => import('./views/managerside/Attendanceuser'))
+const Addmanager = React.lazy(() => import('./views/managerside/Addmanager'))
 
 
 
@@ -137,7 +142,6 @@ const Routes = [
   { path: "/companyprofile", name: 'Companyprofile', component: Companyprofile },
   { path: '/leave', name: 'Leave', component: Leave },
   { path: '/notification', name: 'Notification', component: Notification },
-  { path: '/iconpage', name: 'Iconpage', component: Iconpage },
 
 
 
@@ -195,7 +199,14 @@ const Routes = [
 
 
   { path: '/login', name: 'Loginuser', component: Loginuser },
-  { path: '/loggeduser', name: 'Profile', component: Profile }
+  { path: '/loggeduser', name: 'Profile', component: Profile },
+
+  //  manager side ..
+
+  { path: '/attendanceuser', name: 'Attendanceuser', component: Attendanceuser },
+  { path: '/addmanager', name: 'Addmanager', component: Addmanager },
+
+
 
 
 

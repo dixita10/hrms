@@ -37,8 +37,13 @@ const Allproject = () => {
             },
         })
             .then((response) => {
-                console.log("response", response);
-                setdata(response.data.data)
+                console.log("response", response.data.data);
+                if (response.status === 200) {
+                    setdata(response?.data?.data)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
             })
     }
 
