@@ -23,7 +23,7 @@ const Loginleave = () => {
             .then((response) => {
                 // console.log("response", response);
                 if (response.status === 200) {
-                    setData(response.data.leave)
+                    setData(response.data.data)
                 }
             })
             .catch((error) => {
@@ -64,9 +64,9 @@ const Loginleave = () => {
 
     return (
         <div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <Link to={'/addleave'}>
-                    <button type="button" class="btn btn-primary">Apply For Leave </button>
+                    <button type="button" className="btn btn-primary">Apply For Leave </button>
                 </Link>
             </div><br />
             <table className='responstable'>

@@ -14,7 +14,7 @@ const User = () => {
 
   const [data, setdata] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   function handlePageChange(pageNumber) {
@@ -115,14 +115,15 @@ const User = () => {
           <th>username</th>
           {/* <th>city_id</th> */}
           <th>address</th>
-          <th>birth_date</th>
+          <th>birth date</th>
           <th>age</th>
           <th>gender</th>
           {/* <th>role_id</th> */}
           <th>contact</th>
           <th>image</th>
-          <th>city_name</th>
-          <th>role_name</th>
+          <th>city name</th>
+          <th>role name</th>
+          <th>department name</th>
           <th>action</th>
         </tr>
         {
@@ -133,7 +134,7 @@ const User = () => {
               <td>{data.username}</td>
               {/* <td>{data.city_id}</td> */}
               <td>{data.address}</td>
-              <td>{moment(data.birth_date).format("MMMM Do YYYY")}</td>
+              <td>{data.birth_date}</td>
               <td>{data.age}</td>
               <td>{data.gender}</td>
               {/* <td>{data.role_id}</td> */}
@@ -142,6 +143,7 @@ const User = () => {
               <img src={data.image} />
               <td>{data.city_name}</td>
               <td>{data.role_name}</td>
+              <td>{data.dep_name}</td>
               <td style={{ fontSize: '24px', textAlign: 'left' }}>
                 <Link to={`/singleuser/${data.user_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
                 <Link to={`/edituser/${data.user_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>

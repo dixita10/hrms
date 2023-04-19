@@ -22,8 +22,8 @@ const singleuser = () => {
             },
         })
             .then((response) => {
-                console.log("response", response.data);
-                setData(response.data)
+                console.log("response", response.data.data);
+                setData(response.data.data)
             })
     }, [])
 
@@ -41,23 +41,19 @@ const singleuser = () => {
                     <th>gender</th>
                     <th>role_id</th>
                 </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.name}</td>
-                            <td>{data.email}</td>
-                            <td>{data.username}</td>
-                            <td>{data.city_id}</td>
-                            <td>{data.address}</td>
-                            <td>{moment(data.birth_date).format("LLL")}</td>
-                            <td>{data.age}</td>
-                            <td>{data.gender}</td>
-                            <td>{data.role_id}</td>
-                            {/* <td><Link to={`/singleuser/${data.city_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td> */}
+                <tr>
+                    <td>{data.name}</td>
+                    <td>{data.email}</td>
+                    <td>{data.username}</td>
+                    <td>{data.city_id}</td>
+                    <td>{data.address}</td>
+                    <td>{moment(data.birth_date).format("LLL")}</td>
+                    <td>{data.age}</td>
+                    <td>{data.gender}</td>
+                    <td>{data.role_id}</td>
+                    {/* <td><Link to={`/singleuser/${data.city_id}`}><button type="button" className="btn btn-outline-secondary">view</button></Link></td> */}
 
-                        </tr>
-                    )
-                }
+                </tr>
             </table>
         </div>
     )

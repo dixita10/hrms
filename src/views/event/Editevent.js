@@ -20,6 +20,8 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { MdOutlineCelebration } from "react-icons/md";
+import { SlCalender, SlNote } from "react-icons/sl";
 
 const Editevent = () => {
 
@@ -38,12 +40,12 @@ const Editevent = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // console.log("response", response);
-                    setData(response.data[0])
+                    setData(response.data.data)
                 }
             })
-            // .catch((error) => {
-            //     console.log(error);
-            // })
+            .catch((error) => {
+                console.log(error);
+            })
 
     }
 
@@ -90,19 +92,16 @@ const Editevent = () => {
         })
             .then((response) => {
                 console.log(response);
-                // if (response.status === 200) {
-                //     toast.success(response.data.message)
-                //     history.push("/event")
-                // }
+                if (response.status === 200) {
+                    toast.success(response.data.message)
+                    history.push("/event")
+                }
             })
             .catch((error) => {
                 console.log(error);
                 toast.error(error.response.data.message)
             })
     }
-
-
-
 
     return (
         <div>
@@ -118,7 +117,7 @@ const Editevent = () => {
                                         <h3 className='text-center'>Edit Event</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdOutlineCelebration />
                                             </CInputGroupText>
                                             <CFormInput placeholder="event_tittle" autoComplete="event_tittle" name="event_tittle"
                                                 value={data.event_tittle}
@@ -126,7 +125,7 @@ const Editevent = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <BiCommentCheck />
+                                                <SlCalender />
                                             </CInputGroupText>
                                             <CFormInput placeholder="start_date" autoComplete="start_date" name="start_date"
                                                 value={data.start_date}
@@ -134,14 +133,14 @@ const Editevent = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <SlCalender />
                                             </CInputGroupText>
                                             <CFormInput placeholder="end_date" autoComplete="end_date" name="end_date"
                                                 value={data.end_date}
                                                 onChange={handleChange} />
                                         </CInputGroup><CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <SlNote />
                                             </CInputGroupText>
                                             <CFormInput placeholder="description" autoComplete="description" name="description"
                                                 value={data.description}

@@ -20,8 +20,8 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
-
-
+import { MdOutlineCelebration } from "react-icons/md";
+import { SlCalender, SlNote } from "react-icons/sl";
 const Addevent = () => {
 
 
@@ -86,7 +86,7 @@ const Addevent = () => {
                                         <h3 className='text-center'>Add Event</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdOutlineCelebration />
                                             </CInputGroupText>
                                             <CFormInput placeholder="event_tittle" autoComplete="event_tittle" name="event_tittle"
                                                 value={data.event_tittle}
@@ -94,7 +94,7 @@ const Addevent = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <BiCommentCheck />
+                                                <SlCalender />
                                             </CInputGroupText>
                                             <CFormInput type="date" placeholder="start_date" autoComplete="start_date" name="start_date"
                                                 value={data.start_date}
@@ -102,7 +102,7 @@ const Addevent = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <SlCalender />
                                             </CInputGroupText>
                                             <CFormInput type="date" placeholder="end_date" autoComplete="end_date" name="end_date"
                                                 value={data.end_date}
@@ -110,7 +110,7 @@ const Addevent = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <SlNote />
                                             </CInputGroupText>
                                             <CFormInput placeholder="description" autoComplete="description" name="description"
                                                 value={data.description}

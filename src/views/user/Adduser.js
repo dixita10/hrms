@@ -115,7 +115,6 @@ const Adduser = () => {
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
-    // setData1({ ...data, [e.target.name]: e.target.value })
   }
   const [image, setImage] = useState([])
 
@@ -138,21 +137,6 @@ const Adduser = () => {
     formData.append("dep_id", data.dep_id);
     formData.append("contact", data.contact);
     formData.append("image", image);
-
-    // var passData = {
-    //   name: data.name,
-    //   email: data.email,
-    //   username: data.username,
-    //   city_id: data.city_id,
-    //   address: data.address,
-    //   birth_date: data.birth_date,
-    //   age: data.age,
-    //   gender: data.gender,
-    //   role_id: data.role_id,
-    //   contact: data.contact,
-    //   image: image,
-    // }
-
 
     axios({
       method: 'POST',

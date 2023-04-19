@@ -22,7 +22,7 @@ const Singlesalary = () => {
         })
             .then((response) => {
                 // console.log("response", response.data);
-                setData(response.data)
+                setData(response.data.data)
             })
             .catch((error) => {
                 console.log(error);
@@ -40,16 +40,12 @@ const Singlesalary = () => {
                     <th>username</th>
 
                 </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.user_id}</td>
-                            <td>{data.salary}</td>
-                            <td>{data.bank_detail}</td>
-                            <td>{data.username}</td>
-                        </tr>
-                    )
-                }
+                <tr>
+                    <td>{data.user_id}</td>
+                    <td>{data.salary}</td>
+                    <td>{data.bank_detail}</td>
+                    <td>{data.username}</td>
+                </tr>
             </table>
 
         </div>

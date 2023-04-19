@@ -75,9 +75,9 @@ const Event = () => {
 
   return (
     <div>
-      {role_id === "3" ? (<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      {role_id === "3" ? (<div className="d-grid gap-2 d-md-flex justify-content-md-end">
         <Link to={'/addevent'}>
-          <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+          <button className="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
         </Link>
       </div>) : ""}<br />
       {role_id === "3" ? (<div className='table-responsive'>

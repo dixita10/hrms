@@ -39,8 +39,8 @@ const Editcountry = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    // console.log("response", response);
-                    setData(response.data[0])
+                    console.log("response", response);
+                    setData(response.data.data)
                 }
             })
             .catch((error) => {

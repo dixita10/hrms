@@ -23,7 +23,7 @@ const Singletech = () => {
     })
       .then((response) => {
         // console.log("response", response.data);
-        setData(response.data)
+        setData(response.data.data)
       })
       .catch((error) => {
         console.log(error);
@@ -39,14 +39,10 @@ const Singletech = () => {
           <th>tec_name</th>
           <th>dep_id</th>
         </tr>
-        {
-          data.map((data) =>
-            <tr>
-              <td>{data.tec_name}</td>
-              <td>{data.dep_id}</td>
-            </tr>
-          )
-        }
+        <tr>
+          <td>{data.tec_name}</td>
+          <td>{data.dep_id}</td>
+        </tr>
       </table>
     </div>
   )

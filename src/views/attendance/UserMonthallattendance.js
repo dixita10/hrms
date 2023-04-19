@@ -23,32 +23,6 @@ const UserMonthallattendance = () => {
   const endIndex = startIndex + itemsPerPage;
   const visibleItems = data.slice(startIndex, endIndex);
 
-  // useEffect(() => {
-
-  // var user_id = localStorage.getItem("user_id")
-  //   // console.log(user_id);
-  //   var token = `Bearer ${localStorage.getItem('token')}`
-
-  //   axios({
-  //     method: 'GET',
-  //     url: `${process.env.REACT_APP_URL}/attendance/usermonthlyreport/${user_id}?year=2023&month=4`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: token,
-  //       Accept: "application/json",
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log("response", response.data.data.daily_totals);
-  //       if (response.status === 200) {
-  //         setData(response.data.data.daily_totals)
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  // }, [])
-
   const { id } = useParams()
   // console.log(id);
 
@@ -108,7 +82,6 @@ const UserMonthallattendance = () => {
     <div>
       <div className='datedaily'>
         <button className="btn btn-link btndaily" onClick={handlePrevious}>Previous ... </button>
-        {/* <DatePicker selected={selectedDate} onChange={handleDateChange} style={{ padding: '5px' }} className='datepick' /> */}
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}

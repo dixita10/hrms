@@ -20,7 +20,7 @@ const Singleproject = () => {
     })
       .then((response) => {
         // console.log("response", response.data);
-        setData(response.data)
+        setData(response.data.data)
       })
   }, [])
 
@@ -37,19 +37,15 @@ const Singleproject = () => {
           <th>description</th>
           <th>tec_id</th>
         </tr>
-        {
-          data.map((data) =>
-            <tr>
-              <td>{data.user_id}</td>
-              <td>{data.pro_name}</td>
-              <td>{data.start_date}</td>
-              <td>{data.end_date}</td>
-              <td>{data.status}</td>
-              <td>{data.description}</td>
-              <td>{data.tec_id}</td>
-            </tr>
-          )
-        }
+        <tr>
+          <td>{data.user_id}</td>
+          <td>{data.pro_name}</td>
+          <td>{data.start_date}</td>
+          <td>{data.end_date}</td>
+          <td>{data.status}</td>
+          <td>{data.description}</td>
+          <td>{data.tec_id}</td>
+        </tr>
       </table>
     </div>
   )

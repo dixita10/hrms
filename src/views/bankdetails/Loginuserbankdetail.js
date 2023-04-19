@@ -42,7 +42,7 @@ const Loginuserbankdetail = () => {
                     <th>city_id</th>
                     <th>ifsc_code</th>
                     <th>acc_type</th>
-                    <th>Action</th>
+                    {/* <th>Action</th> */}
                 </tr>
                 {
                     data.map((data) =>
@@ -54,10 +54,10 @@ const Loginuserbankdetail = () => {
                             <td>{data.city_name}</td>
                             <td>{data.ifsc_code}</td>
                             <td>{data.acc_type}</td>
-                            <td style={{ fontSize: '24px' }}>
+                            {/* <td style={{ fontSize: '24px' }}>
                                 <Link to={`/editbankdetail/${data.bank_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
-                                {/* <MdDeleteForever onClick={() => handleDelete(data.bank_id)} style={{ color: 'red' }} /> */}
-                            </td>
+                                <MdDeleteForever onClick={() => handleDelete(data.bank_id)} style={{ color: 'red' }} />
+                            </td> */}
                         </tr>
                     )
                 }

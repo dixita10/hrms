@@ -99,11 +99,11 @@ const Country = () => {
 
     return (
         <div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <input type='search' placeholder='Search Country Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '25%' }} onChange={handleSearch} />
 
                 <Link to={'/addcountry'}>
-                    <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+                    <button className="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                 </Link>
             </div><br />
             <div className='table-responsive'>
@@ -117,7 +117,7 @@ const Country = () => {
                             <tr>
                                 <td>{data.country_name}</td>
                                 <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/singlecountry/${data.country_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                                    {/* <Link to={`/singlecountry/${data.country_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
                                     <Link to={`/editcountry/${data.country_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                                     <MdDeleteForever onClick={() => handleDelete(data.country_id)} style={{ color: 'red' }} />
                                     {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}

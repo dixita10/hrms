@@ -101,6 +101,7 @@ const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
 
 const Attendanceuser = React.lazy(() => import('./views/managerside/Attendanceuser'))
 const Addmanager = React.lazy(() => import('./views/managerside/Addmanager'))
+const Editmanager = React.lazy(() => import('./views/managerside/Editmanager'))
 
 
 class App extends Component {
@@ -201,7 +202,10 @@ class App extends Component {
             {/* manager side ... */}
 
             <Route exact path='/attendanceuser' name="Attendanceuser" render={(props) => <Attendanceuser {...props} />} />
+            <Route exact path='/attendanceuser/:assign_id' name="Attendanceuser" render={(props) => <Attendanceuser {...props} />} />
+
             <Route exact path='/addmanager' name="Addmanager" render={(props) => <Addmanager {...props} />} />
+            <Route exact path='/editmanager/:id' name="Editmanager" render={(props) => <Editmanager {...props} />} />
 
 
 

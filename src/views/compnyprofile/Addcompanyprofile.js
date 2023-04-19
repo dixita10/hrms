@@ -57,12 +57,11 @@ const Addcompanyprofile = () => {
     var history = useHistory();
 
     const [data, setData] = useState({
-        compnay_name: '',
+        company_name: '',
         domain_name: '',
         website: '',
         city_id: '',
         address: '',
-        company_policy: '',
         moonlight_policy: '',
         tour_policy: '',
         yearlyleave_policy: '',
@@ -75,24 +74,38 @@ const Addcompanyprofile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+
+        let formData = new FormData();
+
+        formData.append("company_name", data.company_name);
+        formData.append("domain_name", data.domain_name);
+        formData.append("website", data.website);
+        formData.append("city_id", data.city_id);
+        formData.append("address", data.address);
+        formData.append("company_policy", e.target.elements.company_policy.files[0]);
+        formData.append("moonlight_policy", e.target.elements.moonlight_policy.files[0]);
+        formData.append("tour_policy", e.target.elements.tour_policy.files[0]);
+        formData.append("yearlyleave_policy", e.target.elements.yearlyleave_policy.files[0]);
+
         var token = `Bearer ${localStorage.getItem('token')}`
 
-        var passData = {
-            compnay_name: data.compnay_name,
-            domain_name: data.domain_name,
-            website: data.website,
-            city_id: data.city_id,
-            address: data.address,
-            company_policy: data.company_policy,
-            moonlight_policy: data.moonlight_policy,
-            tour_policy: data.tour_policy,
-            yearlyleave_policy: data.yearlyleave_policy,
-        }
+        // var passData = {
+        //     company_name: data.company_name,
+        //     domain_name: data.domain_name,
+        //     website: data.website,
+        //     city_id: data.city_id,
+        //     address: data.address,
+        //     company_policy: data.company_policy,
+        //     moonlight_policy: data.moonlight_policy,
+        //     tour_policy: data.tour_policy,
+        //     yearlyleave_policy: data.yearlyleave_policy,
+        // }
 
         axios({
             method: 'POST',
             url: `${process.env.REACT_APP_URL}/companyprofile/addcompanyprofile`,
-            data: passData,
+            data: formData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -101,9 +114,9 @@ const Addcompanyprofile = () => {
         })
             .then((response) => {
                 if (response.status === 200) {
+                    console.log(response);
                     toast.success(response.data.message)
                     history.push("/companyprofile")
-                    // console.log(response);
                 }
             })
             .catch((error) => {
@@ -129,8 +142,8 @@ const Addcompanyprofile = () => {
                                             <CInputGroupText>
                                                 <BsBuildingCheck />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="compnay_name" autoComplete="compnay_name" name="compnay_name"
-                                                value={data.compnay_name}
+                                            <CFormInput placeholder="company_name" autoComplete="company_name" name="company_name"
+                                                value={data.company_name}
                                                 onChange={handleChange} />
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
@@ -179,33 +192,37 @@ const Addcompanyprofile = () => {
                                             <CInputGroupText>
                                                 <MdOutlinePolicy />
                                             </CInputGroupText>
-                                            <CFormInput placeholder="company_policy" autoComplete="company_policy" name="company_policy"
-                                                value={data.company_policy}
-                                                onChange={handleChange} />
+                                            <CFormInput
+                                                placeholder="company_policy"
+                                                autoComplete="company_policy"
+                                                name="company_policy"
+                                                accept="application/pdf"
+                                                type="file"
+                                            />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <BsCloudMoon />
                                             </CInputGroupText>
                                             <CFormInput placeholder="moonlight_policy" autoComplete="moonlight_policy" name="moonlight_policy"
-                                                value={data.moonlight_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file" />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <MdShareLocation />
                                             </CInputGroupText>
                                             <CFormInput placeholder="tour_policy" autoComplete="tour_policy" name="tour_policy"
-                                                value={data.tour_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file" />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <FaRegCalendarAlt />
                                             </CInputGroupText>
                                             <CFormInput placeholder="yearlyleave_policy" autoComplete="yearlyleave_policy" name="yearlyleave_policy"
-                                                value={data.yearlyleave_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file" />
                                         </CInputGroup>
 
                                         <div className="d-grid">

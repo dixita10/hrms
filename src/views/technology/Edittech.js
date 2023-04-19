@@ -46,7 +46,7 @@ const Edittech = () => {
       .then((response) => {
         // console.log("response", response.data[0]);
         if (response.status === 200) {
-          setData(response.data[0])
+          setData(response.data.data)
         }
       })
       .catch((error) => {

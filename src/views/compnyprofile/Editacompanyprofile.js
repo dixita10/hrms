@@ -42,7 +42,7 @@ const Editcompanyprofile = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // console.log("response", response);
-                    setData(response.data[0])
+                    setData(response.data.data)
                 }
             })
             .catch((error) => {

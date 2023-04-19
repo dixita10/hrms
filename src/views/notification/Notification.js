@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 import Information from "../../assets/images/infonotification.svg"
 
+
 const Notification = () => {
 
     var history = useHistory();
@@ -294,7 +295,7 @@ const Notification = () => {
                             <input type='checkbox' style={{ width: '17px', cursor: 'pointer' }} checked={selectAll} onChange={handleSelectAll} />
                             <h6 style={{ color: '#8D8D8D', margin: '9px 0px 0px 8px' }}>Select All
                             </h6>
-                            <div class="vr" style={{ margin: '7px 0 0 10px', height: '23px' }}></div>
+                            <div className="vr" style={{ margin: '7px 0 0 10px', height: '23px' }}></div>
                         </buttotn>
                         <h6 style={{ color: '#2196F3', margin: '8px 0px 0px -20px' }} className='col-lg-4'>
                             {selectedNotifications.length === 0 ? 'No Notification Selected' : `${selectedNotifications.length} Notifications Selected`}
@@ -310,7 +311,7 @@ const Notification = () => {
                                 <img src={Information} alt='infoimage' style={{ width: "100px" }} className='modelbox' />
                                 <h2 style={{ textAlign: 'center' }}>Oops</h2>
                                 <p style={{ textAlign: 'center', fontSize: "18px", fontWeight: "600" }}>Atleast select one notification to mark as Read</p>
-                                <button onClick={closeModal} type="button" class="btn btn-primary modelbtnn">Ok</button>
+                                <button onClick={closeModal} type="button" className="btn btn-primary modelbtnn">Ok</button>
                             </div>
                         </Modal>
                         <button type='button' onClick={handleAlldeldete} className='btn btn-link col-lg-2'>
@@ -321,7 +322,7 @@ const Notification = () => {
                                 <img src={Information} alt='infoimage' style={{ width: "100px" }} className='modelbox' />
                                 <h2 style={{ textAlign: 'center' }}>Oops</h2>
                                 <p style={{ textAlign: 'center', fontSize: "18px", fontWeight: "600" }}>Atleast select one notification to Delete</p>
-                                <button onClick={closeModal} type="button" class="btn btn-primary modelbtnn">Ok</button>
+                                <button onClick={closeModal} type="button" className="btn btn-primary modelbtnn">Ok</button>
                             </div>
                         </Modal>
                     </div>
@@ -343,7 +344,7 @@ const Notification = () => {
                                     }
                                 }} />
                                 <img src={Notificationprofile} style={{ width: '30px', margin: '0 15px' }} />
-                                <button type="button" class="btn btn-link"
+                                <button type="button" className="btn btn-link"
                                     onClick={() => {
                                         switch (notifications.type) {
                                             case 'leave':

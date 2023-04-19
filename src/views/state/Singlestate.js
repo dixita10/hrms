@@ -23,8 +23,10 @@ const Singlestate = () => {
       },
     })
       .then((response) => {
-        // console.log("response", response.data);
-        setData(response.data)
+        console.log("response", response.data.data);
+        if (response.status === 200) {
+          setData(response.data?.data)
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -38,17 +40,11 @@ const Singlestate = () => {
         <tr>
           <th>state_name</th>
           <th>country_id</th>
-          {/* <th>country_name</th> */}
         </tr>
-        {
-          data.map((data) =>
-            <tr>
-              <td>{data.state_name}</td>
-              <td>{data.country_id}</td>
-              {/* <td>{data.country_name}</td>   */}
-            </tr>
-          )
-        }
+        <tr>
+          <td>{data.state_name}</td>
+          <td>{data.country_id}</td>
+        </tr>
       </table>
     </div>
   )

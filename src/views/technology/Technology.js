@@ -47,7 +47,7 @@ const Technology = () => {
 
   const handleDelete = (tec_id) => {
 
-    
+
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
@@ -119,7 +119,7 @@ const Technology = () => {
               {/* <td>{data.dep_id}</td> */}
               <td>{data.dep_name}</td>
               <td style={{ fontSize: '24px' }}>
-                <Link to={`/singletech/${data.tec_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                {/* <Link to={`/singletech/${data.tec_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
                 <Link to={`/edittech/${data.tec_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                 <MdDeleteForever onClick={() => handleDelete(data.tec_id)} style={{ color: 'red' }} />
                 {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}

@@ -126,7 +126,7 @@ const State = () => {
                                 {/* <td>{data.country_id}</td> */}
                                 <td>{data.country_name}</td>
                                 <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/singlestate/${data.state_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                                    {/* <Link to={`/singlestate/${data.state_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
                                     <Link to={`/editstate/${data.state_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                                     <MdDeleteForever onClick={() => handleDelete(data.state_id)} style={{ color: 'red' }} />
                                     {/* <button className='btn btn-outline-danger mx-2' onClick={() => handleDelete(data.dep_id)}>Delete</button> */}

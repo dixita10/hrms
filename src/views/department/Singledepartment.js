@@ -22,10 +22,12 @@ const Singledepartment = () => {
             },
         })
             .then((response) => {
-                // console.log("response", response.data);
-                setData(response.data)
+                console.log("response", response.data.data);
+                if (response.status === 200) {
+                    setData(response.data?.data)
+                }
             })
-            .catch((error) =>{
+            .catch((error) => {
                 console.log(error);
             })
     }, [])
@@ -34,18 +36,14 @@ const Singledepartment = () => {
         <div>
             <table className='responstable'>
                 <tr>
-                    <th>dep_name</th>
+                    <th>department name</th>
                     <th>description</th>
                 </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.dep_name}</td>
-                            <td>{data.description}</td>
-
-                        </tr>
-                    )
-                }
+                <tr>
+                    <td>{data.dep_name}</td>
+                    <td>{data.description}</td>
+                </tr>
+               
             </table>
         </div>
     )

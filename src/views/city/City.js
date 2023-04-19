@@ -145,7 +145,7 @@ const City = () => {
                                 {/* <td>{data.state_id}</td> */}
                                 <td>{data.state_name}</td>
                                 <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/singlecity/${data.city_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                                    {/* <Link to={`/singlecity/${data.city_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
                                     <Link to={`/editcity/${data.city_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                                     <MdDeleteForever onClick={() => handleDelete(data.city_id)} style={{ color: 'red' }} />
                                 </td>

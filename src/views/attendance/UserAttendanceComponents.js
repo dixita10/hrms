@@ -69,7 +69,7 @@ const UserAttendanceComponents = () => {
     return (
         <div>
             <div>
-                <div class="d-flex justify-content-end">
+                <div className="d-flex justify-content-end">
                     <input type='search' placeholder='Search User Name' style={{ padding: '5px 10px', borderRadius: '5px', width: '35%' }} onChange={handleSearch} />
                 </div><br />
                 <table className='responstable'>
@@ -89,7 +89,7 @@ const UserAttendanceComponents = () => {
                                 <td>{moment(data.outtime).format("LLL")}</td>
                                 <td>
                                     <Link to={`/monthlyattendance/${data.user_id}`}>
-                                        <button type="button" class="btn btn-outline-secondary">View Report</button>
+                                        <button type="button" className="btn btn-outline-secondary">View Report</button>
                                     </Link>
 
                                 </td>

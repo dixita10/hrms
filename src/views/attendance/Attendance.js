@@ -7,11 +7,13 @@ import Monthlycomponent from './Monthlycomponent';
 import UserAttendanceComponents from './UserAttendanceComponents';
 import Switch from "react-switch";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Attendance() {
 
     const [isChecked, setIsChecked] = useState(false)
     const [data, setData] = useState([])
+    // console.log(data.assign_id);
 
     var role_id = localStorage.getItem("role_id")
 
@@ -66,9 +68,7 @@ function Attendance() {
                 <Tab eventKey="Employe Daily Log" title="Employe Daily Log"><br />
                     <UserAttendanceComponents />
                 </Tab>
-                {/* <Tab eventKey="Employe MonthLy Log" title="Employe MonthLy Log"><br />
-                    <UserMonthallattendance />
-                </Tab> */}
+
             </Tabs>) : (<Tabs
                 defaultActiveKey="Daily Log"
                 transition={false}
@@ -92,21 +92,18 @@ function Attendance() {
                     {data.map((data) =>
                         <tr>
                             <td>{data.assign_name}</td>
-                            <td><button type="button" class="btn btn-outline-secondary">
-                                View Attendance
-                            </button></td>
+                            <td>
+                                {/* {data.assign_id} */}
+                                <Link to={`/attendanceuser/${data.assign_id}`}>
+                                    <button type="button" className="btn btn-outline-secondary">
+                                        View Attendance
+                                    </button>
+                                </Link>
+                            </td>
                         </tr>
                     )}
                 </table>
             )}
-
-
-
-
-
-
-
-
 
         </div>
     )

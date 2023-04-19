@@ -39,15 +39,10 @@ const Singlecity = () => {
           <th>city_name</th>
           <th>state_id</th>
         </tr>
-        {
-          data.map((data) =>
-            <tr>
-              <td>{data.city_name}</td>
-              <td>{data.state_id}</td>
-
-            </tr>
-          )
-        }
+        <tr>
+          <td>{data.city_name}</td>
+          <td>{data.state_id}</td>
+        </tr>
       </table>
     </div>
   )

@@ -20,6 +20,11 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { RiBankFill } from "react-icons/ri";
+import { TbNumbers, TbFileTypography } from "react-icons/tb";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { GiModernCity } from "react-icons/gi";
+import { MdOutline123 } from "react-icons/md";
 
 const Editbankdetail = () => {
 
@@ -36,9 +41,9 @@ const Editbankdetail = () => {
             },
         })
             .then((response) => {
+                console.log("response", response);
                 if (response.status === 200) {
-                    // console.log("response", response);
-                    setData(response.data[0])
+                    setData(response.data.data)
                 }
             })
             .catch((error) => {
@@ -133,7 +138,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <BiCommentCheck />
+                                                <RiBankFill />
                                             </CInputGroupText>
                                             <CFormInput placeholder="bank_name" autoComplete="bank_name" name="bank_name"
                                                 value={data.bank_name}
@@ -141,7 +146,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <TbNumbers />
                                             </CInputGroupText>
                                             <CFormInput placeholder="acc_no" autoComplete="acc_no" name="acc_no"
                                                 value={data.acc_no}
@@ -149,7 +154,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <HiOutlineBuildingOffice2 />
                                             </CInputGroupText>
                                             <CFormInput placeholder="branch_name" autoComplete="branch_name" name="branch_name"
                                                 value={data.branch_name}
@@ -157,7 +162,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <GiModernCity />
                                             </CInputGroupText>
                                             <CFormInput placeholder="city_id" autoComplete="city_id" name="city_id"
                                                 value={data.city_id}
@@ -165,7 +170,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <MdOutline123 />
                                             </CInputGroupText>
                                             <CFormInput placeholder="ifsc_code" autoComplete="ifsc_code" name="ifsc_code"
                                                 value={data.ifsc_code}
@@ -173,7 +178,7 @@ const Editbankdetail = () => {
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
-                                                <CIcon icon={cilUser} />
+                                                <TbFileTypography />
                                             </CInputGroupText>
                                             <CFormInput placeholder="acc_type" autoComplete="acc_type" name="acc_type"
                                                 value={data.acc_type}
@@ -183,8 +188,6 @@ const Editbankdetail = () => {
                                         <div className="d-grid">
                                             <CButton color="success" type='submit'>Edit Bank Details</CButton>
                                         </div>
-
-
 
                                     </CForm>
                                 </CCardBody>

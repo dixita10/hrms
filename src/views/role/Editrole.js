@@ -37,7 +37,7 @@ const Editrole = () => {
             .then((response) => {
                 if (response.status === 200) {
                     // console.log("response", response);
-                    setdata(response.data[0])
+                    setdata(response.data.data)
                 }
             })
             .catch((error) => {

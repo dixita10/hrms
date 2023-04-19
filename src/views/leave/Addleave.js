@@ -20,6 +20,9 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiTimeFive, BiCommentCheck } from "react-icons/bi";
+import { MdOutlineSubtitles } from "react-icons/md";
+import { SlCalender } from "react-icons/sl";
+import { TbNumbers } from "react-icons/tb";
 
 const Addleave = () => {
 
@@ -86,7 +89,7 @@ const Addleave = () => {
                     <h3 className='text-center'>Apply Leave</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon icon={cilUser} />
+                        <MdOutlineSubtitles />
                       </CInputGroupText>
                       <CFormInput placeholder="tittle" autoComplete="tittle" name="tittle"
                         value={data.tittle}
@@ -94,7 +97,7 @@ const Addleave = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <BiCommentCheck />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='date' placeholder="start_date" autoComplete="start_date" name="start_date"
                         value={data.start_date}
@@ -102,7 +105,7 @@ const Addleave = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <BiCommentCheck />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type='date' placeholder="end_date" autoComplete="end_date" name="end_date"
                         value={data.end_date}
@@ -110,7 +113,7 @@ const Addleave = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <BiCommentCheck />
+                        <TbNumbers />
                       </CInputGroupText>
                       <CFormInput placeholder="days" autoComplete="days" name="days"
                         value={data.days}

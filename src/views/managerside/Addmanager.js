@@ -20,9 +20,8 @@ import {
 } from '@coreui/icons'
 import { toast, ToastContainer } from 'react-toastify';
 import { BiUserPlus } from "react-icons/bi";
-
+import { FaRegUserCircle } from "react-icons/fa";
 const Addmanager = () => {
-
 
     const [user, setUser] = useState([])
 
@@ -77,16 +76,14 @@ const Addmanager = () => {
         assignuser();
     }, [])
 
-
-
     var history = useHistory();
 
     const [data, setData] = useState([])
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
-
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         var token = `Bearer ${localStorage.getItem('token')}`
@@ -95,6 +92,7 @@ const Addmanager = () => {
             user_id: data.user_id,
             assign_id: data.assign_id,
         }
+
         console.log(passData);
         axios({
             method: 'POST',
@@ -118,7 +116,6 @@ const Addmanager = () => {
             })
     }
 
-
     return (
         <div>
             <div className="bg-light d-flex flex-row align-items-center">
@@ -132,7 +129,7 @@ const Addmanager = () => {
                                         <h3 className='text-center'>Add Manager</h3><br />
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
-                                                <BiUserPlus />
+                                                <FaRegUserCircle />
                                             </CInputGroupText>
                                             <select className="form-select" aria-label="Default select example" value={user.user_id} onChange={handleChange} name="user_id">
                                                 <option selected>choose Manager name</option>
@@ -161,8 +158,6 @@ const Addmanager = () => {
                                         <div className="d-grid">
                                             <CButton color="success" type='submit'>Add Manager</CButton>
                                         </div>
-
-
 
                                     </CForm>
                                 </CCardBody>

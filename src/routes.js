@@ -85,6 +85,7 @@ const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
 
 const Attendanceuser = React.lazy(() => import('./views/managerside/Attendanceuser'))
 const Addmanager = React.lazy(() => import('./views/managerside/Addmanager'))
+const Editmanager = React.lazy(() => import('./views/managerside/Editmanager'))
 
 
 
@@ -197,14 +198,17 @@ const Routes = [
 
   // user side ...
 
-
   { path: '/login', name: 'Loginuser', component: Loginuser },
   { path: '/loggeduser', name: 'Profile', component: Profile },
 
   //  manager side ..
 
   { path: '/attendanceuser', name: 'Attendanceuser', component: Attendanceuser },
+  { path: '/attendanceuser/:assign_id', name: 'Attendanceuser', component: Attendanceuser },
+
   { path: '/addmanager', name: 'Addmanager', component: Addmanager },
+  { path: '/editmanager/:id', name: 'Editmanager', component: Editmanager },
+
 
 
 

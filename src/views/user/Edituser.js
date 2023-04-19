@@ -20,10 +20,23 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GiWorld } from "react-icons/gi";
+import { MdDriveFileRenameOutline, MdOutlineAlternateEmail, MdPassword, MdOutlinePhoneInTalk } from "react-icons/md";
+import { BiUser } from "react-icons/bi";
+import { SlCalender } from "react-icons/sl";
+import { FaRegAddressCard } from "react-icons/fa";
+import { AiOutlineFileImage } from "react-icons/ai";
+import { GrUserManager } from "react-icons/gr";
+import { BsPersonBoundingBox, BsBuildingGear } from "react-icons/bs";
 
 
 const Edituser = () => {
 
+  const { id } = useParams()
+  // console.log(id)
+
+  var history = useHistory()
+
+  const [data, setdata] = useState([])
 
   const getUser = () => {
 
@@ -38,29 +51,20 @@ const Edituser = () => {
       },
     })
       .then((response) => {
+        // console.log("response", response.data.data);
         if (response.status === 200) {
-          // console.log("response", response);
-          setdata(response.data[0])
+          setdata(response.data.data)
         }
       })
       .catch((error) => {
         console.log(error);
       })
-
   }
 
   useEffect(() => {
     getUser()
   }, [])
 
-
-
-  var history = useHistory()
-
-  const { id } = useParams()
-  // console.log(id)
-
-  const [data, setdata] = useState([])
 
   const handleChange = (e) => {
     setdata({ ...data, [e.target.name]: e.target.value })
@@ -70,25 +74,24 @@ const Edituser = () => {
     e.preventDefault()
     var token = `Bearer ${localStorage.getItem('token')}`
 
-    var passData = {
-      name: data.name,
-      email: data.email,
-      username: data.username,
-      // password: data.password,
-      city_id: data.city_id,
-      address: data.address,
-      birth_date: data.birth_date,
-      age: data.age,
-      gender: data.gender,
-      role_id: data.role_id,
-      contact: data.contact,
-      image: data.image,
-    }
+    var formData = new FormData()
+    formData.append('name', data.name)
+    formData.append('email', data.email)
+    formData.append('username', data.username)
+    formData.append('city_id', data.city_id)
+    formData.append('address', data.address)
+    formData.append('birth_date', data.birth_date)
+    formData.append('age', data.age)
+    formData.append('gender', data.gender)
+    formData.append('role_id', data.role_id)
+    formData.append('dep_id', data.dep_id)
+    formData.append('contact', data.contact)
+    formData.append('image', e.target.elements.image.files[0])
 
     axios({
       method: 'POST',
       url: `${process.env.REACT_APP_URL}/user/updateuser/${id}`,
-      data: passData,
+      data: formData,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -96,25 +99,16 @@ const Edituser = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           toast.success(response.data.message)
           history.push("/user")
-          // console.log(response);
         }
       })
       .catch((error) => {
-        // console.log(error);
-        // if (error.response.status === false) {
-        //     toast.error(error.response.data.message.email);
-        // }
-        // if (error.response.status === false) {
-        //     toast.error(error.response.data.message.contact);
-        // }
         toast.error(error.response.data.message)
       })
   }
-
-
 
   return (
     <div>
@@ -129,7 +123,7 @@ const Edituser = () => {
                     <h3 className='text-center'>Edit User</h3><br />
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdDriveFileRenameOutline />
                       </CInputGroupText>
                       <CFormInput placeholder="name" autoComplete="name" name="name"
                         value={data.name}
@@ -137,7 +131,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdOutlineAlternateEmail />
                       </CInputGroupText>
                       <CFormInput placeholder="email" autoComplete="email" name="email"
                         value={data.email}
@@ -145,7 +139,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <BiUser />
                       </CInputGroupText>
                       <CFormInput placeholder="username" autoComplete="username" name="username"
                         value={data.username}
@@ -153,7 +147,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <FaRegAddressCard />
                       </CInputGroupText>
                       <CFormInput placeholder="address" autoComplete="address" name="address"
                         value={data.address}
@@ -161,7 +155,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <SlCalender />
                       </CInputGroupText>
                       <CFormInput type="date" placeholder="birth_date" autoComplete="birth_date" name="birth_date"
                         value={data.birth_date}
@@ -169,7 +163,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <GrUserManager />
                       </CInputGroupText>
                       <CFormInput placeholder="age" autoComplete="age" name="age"
                         value={data.age}
@@ -177,7 +171,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <BsPersonBoundingBox />
                       </CInputGroupText>
                       <CFormInput placeholder="gender" autoComplete="gender" name="gender"
                         value={data.gender}
@@ -185,7 +179,7 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <MdOutlinePhoneInTalk />
                       </CInputGroupText>
                       <CFormInput placeholder="contact" autoComplete="contact" name="contact"
                         value={data.contact}
@@ -193,25 +187,20 @@ const Edituser = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <GiWorld />
+                        <AiOutlineFileImage />
                       </CInputGroupText>
                       <CFormInput placeholder="image" autoComplete="image" name="image" type='file'
-                        value={data.image}
-                        onChange={handleChange} />
+                      />
                     </CInputGroup>
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Edit User</CButton>
                     </div>
 
-
-
                   </CForm>
                 </CCardBody>
-
               </CCard>
             </CCol>
           </CRow>
-
           <ToastContainer autoClose={2000} />
         </CContainer>
 

@@ -57,7 +57,7 @@ const Overview = () => {
         // }
 
         axios({
-            method: 'DElETE',
+            method: 'POST',
             url: `${process.env.REACT_APP_URL}/companyprofile/deletecompnayprofile/${company_id}`,
             headers: {
                 "Content-Type": "application/json",
@@ -87,9 +87,9 @@ const Overview = () => {
                 </Link>
             </div><br /> */}
             {role_id === "3" ? (
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <Link to={'/addcompanyprofile'}>
-                        <button class="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
+                        <button className="btn btn-outline-success" type="button">Add<HiPlusSm className='HiPlusSm' /></button>
                     </Link>
                 </div>
             ) : null}<br />
