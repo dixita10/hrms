@@ -467,7 +467,17 @@ width: 500px;
 .toggle.ios .toggle-handle {
     border-radius: 20rem;
 }
-  
+.forgotpswd{
+    display: flex;
+    justify-content: end;
+    font-size: 20px;
+    margin: 20px 15px;
+}
+.forgotnext{
+    margin: 3px 0 0 1px;
+    font-size: 28px;
+    cursor: pointer;
+}
 
 
 

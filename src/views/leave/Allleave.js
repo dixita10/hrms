@@ -188,8 +188,6 @@ const Allleave = () => {
                                 >
                                     Delete
                                 </button>
-
-
                             </td>
                             {/* <td style={{ fontSize: '24px' }}>
                                 {data.status === "pending" ? (

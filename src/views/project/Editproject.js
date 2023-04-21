@@ -42,9 +42,9 @@ const Editproject = () => {
       },
     })
       .then((response) => {
+        console.log("response", response);
         if (response.status === 200) {
-          // console.log("response", response);
-          setData(response.data.data)
+          setData(response.data.data[0])
         }
       })
       .catch((error) => {
@@ -63,13 +63,13 @@ const Editproject = () => {
   var history = useHistory();
 
   const [data, setData] = useState({
-    user_id: '',
-    pro_name: '',
+    // user_id: '',
+    // pro_name: '',
     start_date: '',
-    end_date: '',
+    project_end_date: '',
     status: '',
-    description: '',
-    tec_id: '',
+    // description: '',
+    // tec_id: '',
   })
 
   const handleChange = (e) => {
@@ -81,13 +81,13 @@ const Editproject = () => {
     var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
-      user_id: data.user_id,
-      pro_name: data.pro_name,
-      start_date: data.start_date,
-      end_date: data.end_date,
+      // user_id: data.user_id,
+      // pro_name: data.pro_name,
       status: data.status,
-      description: data.description,
-      tec_id: data.tec_id,
+      start_date: data.start_date,
+      project_end_date: data.project_end_date,
+      // description: data.description,
+      // tec_id: data.tec_id,
     }
     axios({
       method: 'POST',
@@ -126,38 +126,23 @@ const Editproject = () => {
                   <CForm onSubmit={handleSubmit} >
                     <h3 className='text-center'>Edit Project</h3><br />
                     {/* <Datetime /> */}
-                    <CInputGroup className="mb-3">
+                    {/* <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput placeholder="user_id" autoComplete="user_id" name="user_id"
                         value={data.user_id}
                         onChange={handleChange} />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
+                    </CInputGroup> */}
+                    {/* <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <AiOutlineProject />
                       </CInputGroupText>
                       <CFormInput placeholder="pro_name" autoComplete="pro_name" name="pro_name"
                         value={data.pro_name}
                         onChange={handleChange} />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <SlCalender />
-                      </CInputGroupText>
-                      <CFormInput type='datetime-local' placeholder="start_date" autoComplete="start_date" name="start_date"
-                        value={data.start_date}
-                        onChange={handleChange} />
-                    </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <SlCalender />
-                      </CInputGroupText>
-                      <CFormInput type='datetime-local' placeholder="end_date" autoComplete="end_date" name="end_date"
-                        value={data.end_date}
-                        onChange={handleChange} />
-                    </CInputGroup>
+                    </CInputGroup> */}
+
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <GrStatusGood />
@@ -167,6 +152,23 @@ const Editproject = () => {
                         onChange={handleChange} />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <SlCalender />
+                      </CInputGroupText>
+                      <CFormInput type='date' placeholder="start_date" autoComplete="start_date" name="start_date"
+                        value={data.start_date}
+                        onChange={handleChange} readOnly />
+                    </CInputGroup>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <SlCalender />
+                      </CInputGroupText>
+                      <CFormInput type='date' placeholder="project_end_date" autoComplete="project_end_date" name="project_end_date"
+                        value={data.project_end_date}
+                        onChange={handleChange} />
+                    </CInputGroup>
+
+                    {/* <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <DiTechcrunch />
                       </CInputGroupText>
@@ -181,7 +183,7 @@ const Editproject = () => {
                       <CFormInput placeholder="tec_id" autoComplete="tec_id" name="tec_id"
                         value={data.tec_id}
                         onChange={handleChange} />
-                    </CInputGroup>
+                    </CInputGroup> */}
 
                     <div className="d-grid">
                       <CButton color="success" type='submit'>Edit Project</CButton>

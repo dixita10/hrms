@@ -20,6 +20,7 @@ import loginimg from '../../../assets/images/login.png'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdOutlineAlternateEmail } from "react-icons/md";
+
 const Loginuser = () => {
 
     var history = useHistory();
@@ -63,7 +64,7 @@ const Loginuser = () => {
                 var role_id = response.data.roleResults[0].role_id
 
                 if (response.status === 200) {
-                    // console.log(response.data.roleResults[0].role_id);
+                    console.log(response);
                     toast.success(response.data.message)
                     localStorage.setItem('token', token)
 
@@ -79,6 +80,7 @@ const Loginuser = () => {
                         },
                     })
                         .then((response) => {
+                            console.log(response);
                             var username = response.data.user.username
                             var user_id = response.data.user.user_id
                             // console.log();
@@ -108,15 +110,19 @@ const Loginuser = () => {
                 // }
             })
 
+        const MIN_PASSWORD_LENGTH = 6;
+        const MAX_PASSWORD_LENGTH = 20;
+
         const newErrors = {};
         if (!data.email) {
             newErrors.email = 'Email is required';
         }
         if (!data.password) {
             newErrors.password = 'Password is required';
+        } else if (data.password.length < MIN_PASSWORD_LENGTH || data.password.length > MAX_PASSWORD_LENGTH) {
+            newErrors.passwordLength = `Password must be between ${MIN_PASSWORD_LENGTH} and ${MAX_PASSWORD_LENGTH} characters .`;
         }
         setErrors(newErrors);
-        // submit data if there are no errors
         if (Object.keys(newErrors).length === 0) {
             // submit data to server or perform any other action
         }
@@ -155,7 +161,6 @@ const Loginuser = () => {
                                                     <CIcon icon={cilLockLocked} />
                                                 </CInputGroupText>
                                                 <CFormInput
-                                                    // type={isRevealPwd ? "text" : "password"}
                                                     type='password'
                                                     placeholder="enter password"
                                                     name='password'
@@ -164,7 +169,9 @@ const Loginuser = () => {
                                                 />
                                             </CInputGroup>
                                             {errors.password && <div className="error">{errors.password}</div>}
+                                            {errors.passwordLength && <div className="error">{errors.passwordLength}</div>}
                                         </div> <br />
+                                        <a href={"/forgotpassword"} className='forgotpswd'>Forgot Password ?</a>
                                         <CRow>
                                             <CCol xs={12} >
                                                 <CButton style={{ background: '#3C4B64' }} className="px-4" type='submit'  >

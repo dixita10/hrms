@@ -23,6 +23,7 @@ import {
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import profile from './../../assets/images/avatars/profile.png'
+import { AiOutlineFileAdd } from "react-icons/ai";
 
 
 const AppHeaderDropdown = () => {
@@ -42,11 +43,15 @@ const AppHeaderDropdown = () => {
           <CIcon icon={cilUser} className="me-2" />
           Profile
         </CDropdownItem> */}
+        <CDropdownItem href="/filemanager ">
+          <AiOutlineFileAdd className="me-2" />
+          File Manager
+        </CDropdownItem>
         <CDropdownItem href="/login " onClick={handleLogout}>
           <FiUserMinus className="me-2" />
           Logout
         </CDropdownItem>
-        <CDropdownItem href="/resetpswd " onClick={handleLogout}>
+        <CDropdownItem href="/resetpswd ">
           <FiLock className="me-2" />
           Reset Password
         </CDropdownItem>

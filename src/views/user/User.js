@@ -9,27 +9,19 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 import { HiPlusSm } from "react-icons/hi";
 import Pagination from '../attendance/Pagination';
 
-
 const User = () => {
 
-  const [data, setdata] = useState([])
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
-
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  function handlePageChange(pageNumber) {
-    setCurrentPage(pageNumber);
-  }
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visibleItems = data.slice(startIndex, endIndex);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
 
   const getUser = () => {
-    var token = `Bearer ${localStorage.getItem('token')}`
+    var token = `Bearer ${localStorage.getItem('token')}`;
 
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_URL}/user/findalluser`,
+      url: `${process.env.REACT_APP_URL}/user/findalluser?page=${currentPage}&limit=${itemsPerPage}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -38,14 +30,27 @@ const User = () => {
     })
       .then((response) => {
         console.log(response.data.data);
-
-        setdata(response.data.data)
+        if (response.status === 200) {
+          setData(response.data.data)
+          setTotalItems(response.headers["x-total-count"]);
+        }
       })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (itemsPerPage) => {
+    setItemsPerPage(itemsPerPage);
+  };
 
   useEffect(() => {
     getUser()
-  }, [])
+  }, [currentPage, itemsPerPage]);
 
   const handleDelete = (user_id) => {
 
@@ -127,8 +132,8 @@ const User = () => {
           <th>action</th>
         </tr>
         {
-          visibleItems.map((data, index) =>
-            <tr>
+          data.map((data, index) =>
+            <tr key={index}>
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.username}</td>
@@ -159,8 +164,10 @@ const User = () => {
       </table>
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
         onPageChange={handlePageChange}
+        onItemsPerPageChange={handleItemsPerPageChange}
       />
       <ToastContainer autoClose={2000} />
     </div>

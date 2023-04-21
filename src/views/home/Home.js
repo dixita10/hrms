@@ -608,7 +608,7 @@ const Home = () => {
                         </> */}
                         {/* <IoNotificationsSharp onClick={handleNotification} style={{ color: 'white' }} className='notificationhome' />
                         <NotificationBox notifications={notifications} /> */}
-                        <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white' }} className='notificationhome' />
+                        <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white', cursor: 'pointer' }} className='notificationhome' />
                         {showNotifications && (
                             <NotificationBox notifications={notifications} />
                         )}
@@ -627,7 +627,7 @@ const Home = () => {
                             <CDropdownMenu className="pt-0" placement="bottom-end">
 
                                 {/* <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader> */}
-                                <CDropdownItem href="/login " onClick={handleLogout}>
+                                <CDropdownItem href="/filemanager ">
                                     <AiOutlineFileAdd className="me-2" />
                                     File Manager
                                 </CDropdownItem>
@@ -635,7 +635,7 @@ const Home = () => {
                                     <FiUserMinus className="me-2" />
                                     Logout
                                 </CDropdownItem>
-                                <CDropdownItem href="/resetpswd " onClick={handleLogout}>
+                                <CDropdownItem href="/resetpswd ">
                                     <FiLock className="me-2" />
                                     Reset Password
                                 </CDropdownItem>
@@ -643,12 +643,7 @@ const Home = () => {
                             </CDropdownMenu>
                         </CDropdown>
 
-
-
                     </div>
-
-
-
                 </div>
             </div>
 

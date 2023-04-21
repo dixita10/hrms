@@ -19,6 +19,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import loginimg from '../../../assets/images/login.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { MdOutlinePassword } from "react-icons/md";
 
 function resetpswd() {
 
@@ -30,13 +31,17 @@ function resetpswd() {
     confirmpassword: '',
   })
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
     // const [isRevealPwd, setIsRevealPwd] = useState(false);
-
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    var token = `Bearer ${localStorage.getItem('token')}`
 
     var passData = {
       email: data.email,
@@ -45,25 +50,47 @@ function resetpswd() {
       // login_as: "admin"
     }
 
-
     axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_URL}/userlogin/userresetpassword`,
+      url: `${process.env.REACT_APP_URL}/userlogin/resetpasswordemail`,
       data: passData,
       headers: {
         "Content-Type": "application/json",
+        Authorization: token,
         Accept: "application/json",
       },
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
-          // toast.success(response.data.message)
-          history.push("/dashboard");
+          toast.success(response.data.message)
+          history.push("/login");
         }
       })
       .catch((error) => {
         console.log(error);
       })
+
+    // Validate the form data
+    const newErrors = {};
+
+    if (!data.email) {
+      newErrors.email = 'Email is required';
+    }
+
+    if (!data.password) {
+      newErrors.password = 'Password is required';
+    }
+
+    if (data.password !== data.confirmpassword) {
+      newErrors.confirmpassword = 'Passwords do not match';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      // Submit the form
+    }
   }
 
 
@@ -86,19 +113,18 @@ function resetpswd() {
                       <CFormInput
                         type='email'
                         placeholder="enter email"
-                        // autoComplete="id"
                         name='email'
                         value={data.email}
                         onChange={handleChange}
                       />
                     </CInputGroup>
+                    {errors.email && <div className="error">{errors.email}</div>}
                     <div className="pwdcontainer">
                       <CInputGroup className="mb-3">
                         <CInputGroupText>
-                          <CIcon icon={cilLockLocked} />
+                          <MdOutlinePassword />
                         </CInputGroupText>
                         <CFormInput
-                          // type={isRevealPwd ? "text" : "password"}
                           type='password'
                           placeholder="enter password"
                           name='password'
@@ -106,13 +132,13 @@ function resetpswd() {
                           onChange={handleChange}
                         />
                       </CInputGroup>
+                      {errors.password && <div className="error">{errors.password}</div>}
 
                       <CInputGroup className="mb-4">
                         <CInputGroupText>
                           <CIcon icon={cilLockLocked} />
                         </CInputGroupText>
                         <CFormInput
-                          // type={isRevealPwd ? "text" : "password"}
                           type='password'
                           placeholder="enter confirmpassword"
                           name='confirmpassword'
@@ -120,20 +146,15 @@ function resetpswd() {
                           onChange={handleChange}
                         />
                       </CInputGroup>
+                      {errors.confirmpassword && <div className="error">{errors.confirmpassword}</div>}
                     </div>
-
+                    <br />
                     <CRow>
                       <CCol xs={6}>
                         <CButton style={{ background: '#3C4B64' }} className="px-4" onClick={handleSubmit}>
                           Login
                         </CButton>
                       </CCol>
-
-                      {/* <CCol xs={6} className="text-right">
-                        <CButton color="link" className="px-0">
-                          Forgot password?
-                        </CButton>
-                      </CCol> */}
                     </CRow>
                   </CForm>
                 </CCardBody>

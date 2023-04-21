@@ -322,7 +322,7 @@ const Notification = () => {
                                 <img src={Information} alt='infoimage' style={{ width: "100px" }} className='modelbox' />
                                 <h2 style={{ textAlign: 'center' }}>Oops</h2>
                                 <p style={{ textAlign: 'center', fontSize: "18px", fontWeight: "600" }}>Atleast select one notification to Delete</p>
-                                <button onClick={closeModal} type="button" className="btn btn-primary modelbtnn">Ok</button>
+                                <button onClick={deletemodel} type="button" className="btn btn-primary modelbtnn">Ok</button>
                             </div>
                         </Modal>
                     </div>

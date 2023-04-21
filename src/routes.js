@@ -78,6 +78,9 @@ const Editcompanyprofile = React.lazy(() => import('./views/compnyprofile/Editac
 // userlogin side ...
 
 const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
+const Forgotpassword = React.lazy(() => import('./views/pages/forgot password/Forgotpassword'))
+const Passwordreset = React.lazy(() => import('./views/pages/simpleresetpassword/Passwordreset')) //simpleresetpassword
+
 const Profile = React.lazy(() => import('./userside/userlogin/Profile'))
 
 
@@ -200,6 +203,12 @@ const Routes = [
 
   { path: '/login', name: 'Loginuser', component: Loginuser },
   { path: '/loggeduser', name: 'Profile', component: Profile },
+
+
+  { path: '/forgotpassword', name: 'Forgotpassword', component: Forgotpassword },
+  { path: '/passwordreset', name: 'Passwordreset', component: Passwordreset }, // simpleresetpassword
+
+
 
   //  manager side ..
 

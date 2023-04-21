@@ -45,6 +45,8 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Resetpswd = React.lazy(() => import('./views/pages/resetpswd/Resetpswd'))
 const Loginuser = React.lazy(() => import('./views/pages/loginuser/Loginuser'))
+const Forgotpassword = React.lazy(() => import('./views/pages/forgot password/Forgotpassword'))
+const Passwordreset = React.lazy(() => import('./views/pages/simpleresetpassword/Passwordreset')) // simpleresetpassword
 
 
 const Singleadmin = React.lazy(() => import('./views/sidebar/singleadmin'))
@@ -121,6 +123,12 @@ class App extends Component {
             <Route exact path="/home" name="Home" render={(props) => <Home {...props} />} />
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
             <Route exact path='/login' name="Loginuser" render={(props) => <Loginuser {...props} />} />
+            <Route exact path='/forgotpassword' name="Forgotpassword" render={(props) => <Forgotpassword {...props} />} />
+
+            {/* simpleresetpassword */}
+            <Route exact path='/passwordreset' name="Passwordreset" render={(props) => <Passwordreset {...props} />} />
+
+
 
             <Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
             <Route exact path="/resetpswd" name="Reset Password" render={(props) => <Resetpswd {...props} />} />
