@@ -35,24 +35,30 @@ const Policies = () => {
 
     return (
         <div>
-            <table className='responstable'>
-                <tr>
-                    <th>company_policy</th>
-                    <th>moonlight_policy</th>
-                    <th>tour_policy</th>
-                    <th>yearlyleave_policy</th>
-                </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.company_policy}</td>
-                            <td>{data.moonlight_policy}</td>
-                            <td>{data.tour_policy}</td>
-                            <td>{data.yearlyleave_policy}</td>
-                        </tr>
-                    )
-                }
-            </table>
+            <div >
+                <div className='myprofile p-1'>
+                    <h6 style={{ paddingTop: '15px', paddingLeft: '20px' }}>policy</h6>
+                    <hr />
+                    <div className='row m-4'>
+                        <div className='col-md-12'>
+                            <h6>company_policy</h6>
+                            {data.company_policy}
+                        </div>
+                        <div className='col-md-12'>
+                            <h6>moonlight_policy </h6>
+                            {data.moonlight_policy}
+                        </div>
+                        <div className='col-md-12'>
+                            <h6>tour_policy</h6>
+                            {data.tour_policy}
+                        </div>
+                        <div className='col-md-12'>
+                            <h6>yearlyleave_policy </h6>
+                            {data.yearlyleave_policy}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

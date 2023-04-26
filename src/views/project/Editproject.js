@@ -42,7 +42,7 @@ const Editproject = () => {
       },
     })
       .then((response) => {
-        console.log("response", response);
+        // console.log("response", response);
         if (response.status === 200) {
           setData(response.data.data[0])
         }
@@ -101,9 +101,9 @@ const Editproject = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          console.log(response);
           toast.success(response.data.message)
           history.push("/project")
-          // console.log(response);
         }
       })
       .catch((error) => {
@@ -155,15 +155,15 @@ const Editproject = () => {
                       <CInputGroupText>
                         <SlCalender />
                       </CInputGroupText>
-                      <CFormInput type='date' placeholder="start_date" autoComplete="start_date" name="start_date"
+                      <CFormInput type='text' placeholder="start_date" autoComplete="start_date" name="start_date"
                         value={data.start_date}
-                        onChange={handleChange} readOnly />
+                        onChange={handleChange} />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <SlCalender />
                       </CInputGroupText>
-                      <CFormInput type='date' placeholder="project_end_date" autoComplete="project_end_date" name="project_end_date"
+                      <CFormInput type='text' placeholder="project_end_date" autoComplete="project_end_date" name="project_end_date"
                         value={data.project_end_date}
                         onChange={handleChange} />
                     </CInputGroup>

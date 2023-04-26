@@ -93,32 +93,56 @@ const Overview = () => {
                     </Link>
                 </div>
             ) : null}<br />
-            <table className='responstable'>
-                <tr>
-                    <th>company_name</th>
-                    <th>domain_name</th>
-                    <th>website</th>
-                    {role_id === "3" ? (
-                        <th>action</th>
-                    ) : null}
-                </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.company_name}</td>
-                            <td>{data.domain_name}</td>
-                            <td>{data.website}</td>
-                            {role_id === "3" ? (
-                                <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/editcompanyprofile/${data.company_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
-                                    <MdDeleteForever onClick={() => handleDelete(data.company_id)} style={{ color: 'red' }} />
-                                </td>
-                            ) : null}
 
-                        </tr>
-                    )
-                }
-            </table>
+            {/* {role_id === "3" ? (
+                <th>action</th>
+            ) : null} */}
+            <div >
+                <div className='myprofile p-1'>
+                    <div className='row'>
+                        <div className='col-md-11'>
+                            <h6 style={{ paddingTop: '15px', paddingLeft: '20px' }}>OVERVIEW</h6>
+                        </div>
+                        {role_id === "3" ? (<div className='col-md-1' style={{ marginTop: "5px" }} >
+                            <Link to={`/editcompanyprofile/${data.company_id}`}><MdEdit style={{ fontSize: "20px" }} /></Link>
+                            <MdDeleteForever onClick={() => handleDelete(data.company_id)} style={{ color: 'red', cursor: 'pointer', fontSize: "20px", marginLeft: "10px" }} />
+                        </div>) : ""}
+                    </div>
+                    <hr />
+                    <div className='row m-4'>
+                        <div className='col-md-4'>
+                            <h6>company_name</h6>
+                            {data.company_name}
+                        </div>
+                        <div className='col-md-4'>
+                            <h6>domain_name</h6>
+                            {data.domain_name}
+                        </div>
+
+                    </div>
+                    <div className='row m-4'>
+                        <div className='col-md-4'>
+                            <div>
+                                <h6>website</h6>
+                                {data.website}
+                            </div>
+                        </div>
+
+                    </div>
+                </div><br />
+            </div>
+            {/* <tr>
+                        <td>{data.company_name}</td>
+                       <td>{data.domain_name}</td>
+                         <td>{data.website}</td>
+                      {role_id === "3" ? (
+                            <td style={{ fontSize: '24px' }}>
+                                <Link to={`/editcompanyprofile/${data.company_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
+                                <MdDeleteForever onClick={() => handleDelete(data.company_id)} style={{ color: 'red', cursor: 'pointer' }} />
+                            </td>
+                        ) : null}
+
+                    </tr> */}
             <ToastContainer autoClose={2000} />
         </div>
     )

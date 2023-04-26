@@ -229,7 +229,7 @@ const Notification = () => {
 
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_URL}/notification/readallnotification`,
+            url: `${process.env.REACT_APP_URL}/notification/updateallnotification`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

@@ -81,6 +81,7 @@ const Leave = () => {
                         <th>start date</th>
                         <th>end date</th>
                         <th>days</th>
+                        <th>name</th>
                         <th>status</th>
                     </tr>
                     {data.map((data) =>
@@ -89,6 +90,7 @@ const Leave = () => {
                             <td>{data.start_date}</td>
                             <td>{data.end_date}</td>
                             <td>{data.days}</td>
+                            <td>{data.name}</td>
                             <td>{data.status}</td>
 
                         </tr>

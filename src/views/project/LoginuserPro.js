@@ -43,6 +43,7 @@ const LoginuserPro = () => {
                         {/* <th>tec_id</th> */}
                         <th>user name</th>
                         <th>tec_name</th>
+                        <th>action</th>
                     </tr>
                     {
                         data.map((data) =>
@@ -56,11 +57,11 @@ const LoginuserPro = () => {
                                 {/* <td>{data.tec_id}</td> */}
                                 <td>{data.name}</td>
                                 <td>{data.tec_name}</td>
-                                {/* <td style={{ fontSize: '24px' }}>
-                                    <Link to={`/singleproject/${data.pro_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link>
+                                <td style={{ fontSize: '24px' }}>
+                                    {/* <Link to={`/singleproject/${data.pro_id}`}><FaEye style={{ marginRight: '25px', color: 'gray' }} /></Link> */}
                                     <Link to={`/editproject/${data.pro_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
-                                    <MdDeleteForever onClick={() => handleDelete(data.pro_id)} style={{ color: 'red' }} />
-                                </td> */}
+                                    {/* <MdDeleteForever onClick={() => handleDelete(data.pro_id)} style={{ color: 'red' }} /> */}
+                                </td>
                             </tr>
                         )
                     }

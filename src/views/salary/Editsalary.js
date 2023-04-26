@@ -98,8 +98,6 @@ const Editsalary = () => {
             })
     }
 
-
-
     return (
         <div>
             <div className="bg-light d-flex flex-row align-items-center">

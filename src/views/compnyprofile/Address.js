@@ -35,21 +35,23 @@ const Address = () => {
 
 
     return (
-        <div>
-            <table className='responstable'>
-                <tr>
-                    <th>address</th>
-                    <th>City Name</th>
-                </tr>
-                {
-                    data.map((data) =>
-                        <tr>
-                            <td>{data.address}</td>
-                            <td>{data.city_name}</td>
-                        </tr>
-                    )
-                }
-            </table>
+        <div >
+            <div className='myprofile p-1'>
+                <div className='col-md-11'>
+                    <h6 style={{ paddingTop: '15px', paddingLeft: '20px' }}>ADDRESS</h6>
+                </div>
+                <hr />
+                <div className='row m-4'>
+                    <div className='col-md-6'>
+                        <h6>address</h6>
+                        {data.address}
+                    </div>
+                    <div className='col-md-6'>
+                        <h6>City Name</h6>
+                        {data.city_name}
+                    </div>
+                </div>
+            </div><br />
         </div>
     )
 }

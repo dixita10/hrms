@@ -42,7 +42,7 @@ const Loggeduser = () => {
     return (
         <div style={{ display: 'flex' }}>
             <div style={{ marginRight: '50px', marginTop: '20px' }}>
-                <img src={profile} style={{ width: '150px', marginLeft: '48px' }} />
+                <img src={`http://localhost:1010/uploads/${data.image}`} alt="My image" style={{ width: '200px' }} />
                 <h6 style={{ marginTop: '15px', textAlign: 'center' }}>{data.dep_name}</h6>
                 <div style={{ marginTop: '15px', textAlign: 'center' }}><img src={phoneicon} style={{ width: '15px', marginRight: '5px' }} />{data.contact}</div>
                 <div style={{ marginTop: '5px', textAlign: 'center' }}><img src={emailicon} style={{ width: '19px', marginRight: '5px' }} />{data.email}</div>

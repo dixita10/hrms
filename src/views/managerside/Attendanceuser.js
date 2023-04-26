@@ -51,6 +51,9 @@ const Attendanceuser = () => {
                     setdata(response.data.data)
                 }
             })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     useEffect(() => {
@@ -129,15 +132,15 @@ const Attendanceuser = () => {
                 <div className='table-responsive'>
                     <table className='responstable'>
                         <tr>
-                            <th>User Name</th>
                             <th>Assign Name</th>
+                            <th>User Name</th>
                             <th>Action</th>
                         </tr>
                         {
                             visibleItems.map((data) =>
                                 <tr>
-                                    <td>{data.user_id}</td>
-                                    <td>{data.assign_id}</td>
+                                    <td>{data.assign_name}</td>
+                                    <td>{data.user_name}</td>
                                     <td style={{ fontSize: '24px' }}>
                                         <Link to={`/editmanager/${data.repo_id}`}><MdEdit style={{ marginRight: '20px' }} /></Link>
                                         <MdDeleteForever onClick={() => handleDelete(data.repo_id)} style={{ color: 'red' }} />

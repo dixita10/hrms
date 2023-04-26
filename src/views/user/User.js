@@ -11,6 +11,18 @@ import Pagination from '../attendance/Pagination';
 
 const User = () => {
 
+  // const express = require('express');
+  // const app = express();
+  // const path = require('path');
+
+  // // Serve static files
+  // app.use(express.static(path.join(__dirname, 'public')));
+
+  // app.listen(3000, () => {
+  //   console.log('Server running on port 3000');
+  // });
+
+
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -145,7 +157,7 @@ const User = () => {
               {/* <td>{data.role_id}</td> */}
               <td>{data.contact}</td>
               {/* <td>{data.image}</td> */}
-              <img src={data.image} />
+              <img src={`http://localhost:1010/uploads/${data.image}`} alt="My image" style={{ width: '120px', height: '95px', margin: '20px' }} />
               <td>{data.city_name}</td>
               <td>{data.role_name}</td>
               <td>{data.dep_name}</td>

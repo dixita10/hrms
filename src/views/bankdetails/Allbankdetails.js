@@ -88,12 +88,12 @@ const Allbankdetails = () => {
                     <table className='responstable'>
                         <tr>
                             <th>name</th>
-                            <th>bank_name</th>
-                            <th>acc_no</th>
-                            <th>branch_name</th>
-                            <th>city_id</th>
-                            <th>ifsc_code</th>
-                            <th>acc_type</th>
+                            <th>bank name</th>
+                            <th>account no</th>
+                            <th>branch name</th>
+                            <th>city name</th>
+                            <th>ifsc code</th>
+                            <th>account type</th>
                             <th>Action</th>
                         </tr>
                         {

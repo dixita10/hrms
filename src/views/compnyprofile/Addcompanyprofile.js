@@ -27,8 +27,6 @@ import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 const Addcompanyprofile = () => {
 
-
-
     const [city, setCity] = useState([])
 
     const City = () => {
@@ -69,12 +67,10 @@ const Addcompanyprofile = () => {
     })
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
-
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
 
         let formData = new FormData();
 
@@ -83,7 +79,7 @@ const Addcompanyprofile = () => {
         formData.append("website", data.website);
         formData.append("city_id", data.city_id);
         formData.append("address", data.address);
-        formData.append("company_policy", e.target.elements.company_policy.files[0]);
+        formData.append("company_policy", e.target.elements.company_policy.files[0]); 
         formData.append("moonlight_policy", e.target.elements.moonlight_policy.files[0]);
         formData.append("tour_policy", e.target.elements.tour_policy.files[0]);
         formData.append("yearlyleave_policy", e.target.elements.yearlyleave_policy.files[0]);
@@ -124,8 +120,6 @@ const Addcompanyprofile = () => {
                 toast.error(error.response.data.message)
             })
     }
-
-
 
     return (
         <div>
@@ -229,15 +223,11 @@ const Addcompanyprofile = () => {
                                             <CButton color="success" type='submit'>Add Company Profile</CButton>
                                         </div>
 
-
-
                                     </CForm>
                                 </CCardBody>
-
                             </CCard>
                         </CCol>
                     </CRow>
-
                     <ToastContainer autoClose={2000} />
                 </CContainer>
 

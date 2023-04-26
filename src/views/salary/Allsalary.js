@@ -36,19 +36,18 @@ const Allsalary = () => {
         })
             .then((response) => {
                 // console.log("response", response);
-                setdata(response.data.data)
+                if (response.status === 200) {
+                    setdata(response.data.data)
+                }
             })
-
     }
 
     useEffect(() => {
         getSalary()
     }, [])
 
-
     const handleDelete = (salary_id) => {
 
-       
         var token = `Bearer ${localStorage.getItem('token')}`
         axios({
             method: 'DElETE',
@@ -73,7 +72,6 @@ const Allsalary = () => {
             })
     }
 
-
     const handleSearch = (e) => {
 
         var token = `Bearer ${localStorage.getItem('token')}`
@@ -95,10 +93,7 @@ const Allsalary = () => {
             .catch((error) => {
                 console.log(error);
             })
-
     }
-
-
 
     return (
         <div>

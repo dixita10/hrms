@@ -71,7 +71,6 @@ const Editcompanyprofile = () => {
         moonlight_policy: '',
         tour_policy: '',
         yearlyleave_policy: '',
-
     })
 
     const handleChange = (e) => {
@@ -81,23 +80,22 @@ const Editcompanyprofile = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         var token = `Bearer ${localStorage.getItem('token')}`
+        let formData = new FormData();
 
-        var passData = {
-            company_name: data.company_name,
-            domain_name: data.domain_name,
-            website: data.website,
-            city_id: data.city_id,
-            address: data.address,
-            company_policy: data.company_policy,
-            moonlight_policy: data.moonlight_policy,
-            tour_policy: data.tour_policy,
-            yearlyleave_policy: data.yearlyleave_policy,
-        }
+        formData.append("company_name", data.company_name);
+        formData.append("domain_name", data.domain_name);
+        formData.append("website", data.website);
+        formData.append("city_id", data.city_id);
+        formData.append("address", data.address);
+        formData.append("company_policy", e.target.elements.company_policy.files[0]);
+        formData.append("moonlight_policy", e.target.elements.moonlight_policy.files[0]);
+        formData.append("tour_policy", e.target.elements.tour_policy.files[0]);
+        formData.append("yearlyleave_policy", e.target.elements.yearlyleave_policy.files[0]);
 
         axios({
             method: 'POST',
             url: `${process.env.REACT_APP_URL}/companyprofile/updatecompanyprofile/${id}`,
-            data: passData,
+            data: formData,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -175,32 +173,36 @@ const Editcompanyprofile = () => {
                                                 <MdOutlinePolicy />
                                             </CInputGroupText>
                                             <CFormInput placeholder="company_policy" autoComplete="company_policy" name="company_policy"
-                                                value={data.company_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file"
+                                            />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <BsCloudMoon />
                                             </CInputGroupText>
                                             <CFormInput placeholder="moonlight_policy" autoComplete="moonlight_policy" name="moonlight_policy"
-                                                value={data.moonlight_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file"
+                                            />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <MdShareLocation />
                                             </CInputGroupText>
                                             <CFormInput placeholder="tour_policy" autoComplete="tour_policy" name="tour_policy"
-                                                value={data.tour_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file"
+                                            />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <FaRegCalendarAlt />
                                             </CInputGroupText>
                                             <CFormInput placeholder="yearlyleave_policy" autoComplete="yearlyleave_policy" name="yearlyleave_policy"
-                                                value={data.yearlyleave_policy}
-                                                onChange={handleChange} />
+                                                accept="application/pdf"
+                                                type="file"
+                                            />
                                         </CInputGroup>
 
                                         <div className="d-grid">

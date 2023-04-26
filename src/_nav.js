@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaUserAlt, FaCarSide, FaRegCalendarAlt, FaUsers, FaUserCircle, FaRupeeSign, FaBuilding, FaUser } from 'react-icons/fa'
 import { MdDashboard, MdBorderColor, MdPayment, MdEventAvailable } from 'react-icons/md'
 import { CNavGroup, CNavItem, } from '@coreui/react'
@@ -12,9 +12,11 @@ import { GiCleaver, GiModernCity } from "react-icons/gi";
 import { TiWorldOutline } from "react-icons/ti";
 import { MdOutlineLocationOn, MdOutlineAssignmentInd } from "react-icons/md";
 
-
 var role_id = localStorage.getItem("role_id")
 // console.log(role_id);
+
+
+
 
 const nav1 = [
   {
@@ -188,6 +190,8 @@ const nav = [
 ]
 
 const _nav = role_id === "3" ? nav : nav1
+
+
 
 // console.log(_nav);
 
