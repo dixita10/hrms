@@ -5,6 +5,8 @@ import Overview from './Overview';
 import Address from './Address';
 import Policies from './Policies';
 import companylogo from '../../assets/images/companylogo.png'
+import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
+import { BsFacebook, BsLinkedin } from "react-icons/bs";
 
 const Companyprofile = () => {
 
@@ -14,9 +16,21 @@ const Companyprofile = () => {
         <div>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-lg-2'>
+                    <div className='col-lg-2 '>
                         <img src={companylogo} style={{ width: '150px' }} />
                         <p style={{ fontSize: '1.25rem', fontWeight: "600" }}>Adsum Originator</p>
+                        <p className='compnyicon'>
+                            <a href='https://www.linkedin.com/company/adsum-originator' target="_blank">
+                                <span style={{ fontSize: "26px", color: "#0082CA", borderRadius: "50%" }}><BsLinkedin /></span>
+                            </a>
+                            <a href='https://www.facebook.com/AdsumOriginatorLLP/' target="_blank">
+                                <span style={{ fontSize: "30px", color: "#3B5998" }}><AiFillFacebook /></span>
+                            </a>
+                            <a href='https://twitter.com/navneetboghani' target="_blank">
+                                <span style={{ fontSize: "30px", color: "#0082CA" }}><AiFillTwitterSquare /></span>
+                            </a>
+                        </p>
+
                     </div>
                     <div className='col-lg-10'>
                         <Tabs

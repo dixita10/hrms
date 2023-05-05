@@ -73,7 +73,6 @@ function Department() {
         handleClick()
     }, [])
 
-
     const handleSearch = (e) => {
 
         var token = `Bearer ${localStorage.getItem('token')}`

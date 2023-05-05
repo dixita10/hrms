@@ -5,6 +5,8 @@ import { HiPlusSm } from "react-icons/hi";
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
+import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
+import { BsFacebook, BsLinkedin } from "react-icons/bs";
 
 const Overview = () => {
 
@@ -129,6 +131,27 @@ const Overview = () => {
                         </div>
 
                     </div>
+                </div><br />
+            </div>
+            <div >
+                <div className='myprofile p-1'>
+                    <div className='row'>
+                        <div className='col-md-11'>
+                            <h6 style={{ paddingTop: '15px', paddingLeft: '20px' }}>SOCOAL PROFILE</h6>
+                        </div>
+                    </div>
+                    <hr />
+                    <p className='compnyicon'>
+                        <a href='https://www.linkedin.com/company/adsum-originator' target="_blank">
+                            <span style={{ fontSize: "26px", color: "#0082CA", borderRadius: "50%", margin: "0 10px 0 15px" }}><BsLinkedin /></span>
+                        </a>
+                        <a href='https://www.facebook.com/AdsumOriginatorLLP/' target="_blank">
+                            <span style={{ fontSize: "30px", color: "#3B5998", margin: "0 5px" }}><AiFillFacebook /></span>
+                        </a>
+                        <a href='https://twitter.com/navneetboghani' target="_blank">
+                            <span style={{ fontSize: "30px", color: "#0082CA", margin: "0 5px" }}><AiFillTwitterSquare /></span>
+                        </a>
+                    </p>
                 </div><br />
             </div>
             {/* <tr>

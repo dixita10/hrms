@@ -79,7 +79,7 @@ const Addcompanyprofile = () => {
         formData.append("website", data.website);
         formData.append("city_id", data.city_id);
         formData.append("address", data.address);
-        formData.append("company_policy", e.target.elements.company_policy.files[0]); 
+        formData.append("company_policy", e.target.elements.company_policy.files[0]);
         formData.append("moonlight_policy", e.target.elements.moonlight_policy.files[0]);
         formData.append("tour_policy", e.target.elements.tour_policy.files[0]);
         formData.append("yearlyleave_policy", e.target.elements.yearlyleave_policy.files[0]);

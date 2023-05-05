@@ -163,7 +163,7 @@ const Editproject = () => {
                       <CInputGroupText>
                         <SlCalender />
                       </CInputGroupText>
-                      <CFormInput type='text' placeholder="project_end_date" autoComplete="project_end_date" name="project_end_date"
+                      <CFormInput type='date' placeholder="project_end_date" autoComplete="project_end_date" name="project_end_date"
                         value={data.project_end_date}
                         onChange={handleChange} />
                     </CInputGroup>

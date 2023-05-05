@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import Pagination from './Pagination'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { toast, ToastContainer } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 
 const Monthlycomponent = () => {
 
     const [data, setData] = useState([])
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // number of items to display per page
 
@@ -17,15 +23,17 @@ const Monthlycomponent = () => {
     const endIndex = startIndex + itemsPerPage;
     const visibleItems = data.slice(startIndex, endIndex);
 
-    useEffect(() => {
-
+    const handlemonthsearch = () => {
         var user_id = localStorage.getItem("user_id")
         // console.log(user_id);
         var token = `Bearer ${localStorage.getItem('token')}`
 
+        var year = selectedDate.getFullYear();
+        var month = selectedDate.getMonth() + 1;
+
         axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_URL}/attendance/usermonthlyreport/${user_id}?year=2023&month=4`,
+            url: `${process.env.REACT_APP_URL}/attendance/usermonthlyreport/${user_id}?year=${year}&month=${month}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -41,10 +49,42 @@ const Monthlycomponent = () => {
             .catch((error) => {
                 console.log(error);
             })
-    }, [])
+    }
+
+    useEffect(() => {
+        handlemonthsearch()
+    }, [selectedDate])
+
+    const handlePrevious = () => {
+        const previousDate = new Date(selectedDate);
+        previousDate.setMonth(selectedDate.getMonth() - 1);
+        setSelectedDate(previousDate);
+    };
+
+    const handleNext = () => {
+        const nextDate = new Date(selectedDate);
+        nextDate.setMonth(selectedDate.getMonth() + 1);
+        setSelectedDate(nextDate);
+    };
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    }
+
 
     return (
         <div>
+            <div className='datedaily'>
+                <button className="btn btn-link btndaily" onClick={handlePrevious}>Previous ... </button>
+                <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    dateFormat="MM/yyyy"
+                    showMonthYearPicker
+                    className='datepick'
+                />
+                <button className="btn btn-link btndaily" onClick={handleNext}>... Next</button>
+            </div><br />
             <table className='responstable'>
                 <tr>
                     <th>date</th>
@@ -70,6 +110,7 @@ const Monthlycomponent = () => {
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
             />
+            <ToastContainer autoClose={2000} />
         </div>
     )
 }

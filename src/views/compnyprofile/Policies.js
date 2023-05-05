@@ -43,6 +43,7 @@ const Policies = () => {
                         <div className='col-md-12'>
                             <h6>company_policy</h6>
                             {data.company_policy}
+                            <button className='btn btn-outline-info'>download pdf</button>
                         </div>
                         <div className='col-md-12'>
                             <h6>moonlight_policy </h6>

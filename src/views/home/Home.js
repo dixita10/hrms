@@ -527,41 +527,7 @@ const Home = () => {
                             <p style={{
                                 color: 'white', marginTop: "11px", marginBottom: "6px", fontWeight: 500, fontSize: '14px'
                             }}>{currentDate}</p>
-                            {/* <button
-                                className={isClockedIn ? "clock-in-btn" : "web-clock-in-btn"}
-                                onClick={startStopTimer}
-                                onMouseOver={handleMouseOver}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                <span className={isClockedIn ? "Clock-in-text" : ""}>
-                                    {isClockedIn ? "CLOCKED IN" : "WEB CLOCK-IN"}
-                                </span>
-                                <br />
-                                {isClockedIn ? ` ${formatTime(elapsedTime)}` : ""}
-                                {isHovering && isClockedIn && (
-                                    <button className="web-clock-out-btn" onClick={startStopTimer}>
-                                        WEB CLOCK-OUT
-                                    </button>
-                                )}
-                            </button> */}
-                            {/* <div>
-                                <button
-                                    className={startTime === null ? "web-clock-in-btn" : "clock-in-btn"}
-                                    onClick={startStopTimer}
-                                    onMouseOver={handleMouseOver}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <span className={startTime === null ? "" : "Clock-in-text"}>
-                                        {startTime === null ? "WEB CLOCK-IN" : isCheckedIn ? "CLOCKED IN" : "CLOCKED OUT"}
-                                    </span>
-                                    <br /> {startTime === null ? "" : ` ${formatTime(elapsedTime)}`}
-                                </button>
-                                {isHovering && isCheckedIn && (
-                                    <button className="web-clock-out-btn" onClick={startStopTimer}>
-                                        WEB CLOCK-OUT
-                                    </button>
-                                )}
-                            </div> */}
+
                             <button onClick={startStopTimer} className={startTime === null ? "web-clock-in-btn" : "clock-in-btn"}>
                                 <span className={startTime === null ? "" : "Clock-in-text"}>
                                     {startTime === null ? "Web clock-in" : "Clock in"}
@@ -570,44 +536,6 @@ const Home = () => {
                             </button>
 
                         </div>
-                        {/* <>
-                            <IoNotificationsSharp
-                                onClick={() => setShowNotifications(!showNotifications)}
-                                style={{ color: 'white' }}
-                                className={notifications.some((notification) => !notification.seen) ? 'notificationhome active' : 'notificationhome'}
-                            />
-                            {showNotifications && (
-                                <div className="notificationBox">
-                                    <ul>
-                                        <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
-                                        {notifications.map((notification) => (
-                                            <li
-                                                key={notification.not_id}
-                                                style={{
-                                                    color: notification.seen ? 'red' : 'blue',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    marginBottom: '8px',
-                                                    cursor: 'pointer',
-                                                }}
-                                                onClick={() => handleNotificationClick(notification.not_id)}
-                                            >
-                                                <div style={{ display: 'flex' }}>
-                                                    {notification.seen ? (
-                                                        <HiOutlineMailOpen style={{ marginRight: '8px' }} />
-                                                    ) : (
-                                                        <HiOutlineMail style={{ marginRight: '8px' }} />
-                                                    )}
-                                                    <span style={{ fontSize: '13px' }}>{notification.message}</span>
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </> */}
-                        {/* <IoNotificationsSharp onClick={handleNotification} style={{ color: 'white' }} className='notificationhome' />
-                        <NotificationBox notifications={notifications} /> */}
                         <IoNotificationsSharp onClick={() => setShowNotifications(!showNotifications)} style={{ color: 'white', cursor: 'pointer' }} className='notificationhome' />
                         {showNotifications && (
                             <NotificationBox notifications={notifications} />
@@ -615,10 +543,7 @@ const Home = () => {
                         <button className={`notification-count ${count > 0 ? 'show' : ''}`}>
                             {count > 0 && <p>{count}</p>}
                         </button>
-                        {/* <IoNotificationsSharp onClick={handleNotificationClick} style={{ color: 'white' }} className={notifications.some(notification => !notification.seen) ? 'notificationhome active' : 'notificationhome'} />
-                        {showNotifications && (
-                            <NotificationBox notifications={notifications} />
-                        )} */}
+
 
                         <CDropdown variant="nav-item" className='settinghome'>
                             <CDropdownToggle placement="bottom-end" className="py-0" caret={false} style={{ color: 'white', fontSize: '30px' }}>
@@ -626,7 +551,6 @@ const Home = () => {
                             </CDropdownToggle>
                             <CDropdownMenu className="pt-0" placement="bottom-end">
 
-                                {/* <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader> */}
                                 <CDropdownItem href="/filemanager ">
                                     <AiOutlineFileAdd className="me-2" />
                                     File Manager
@@ -649,7 +573,7 @@ const Home = () => {
 
             {role_id === "3" ? (
                 <div>
-                    <div className='container' style={{ marginTop: "6%" }}>
+                    <div className='container1' style={{ marginTop: "3%" }}>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/companyprofile'>
@@ -686,7 +610,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className='container'>
+                    <div className='container1'>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/country'>
@@ -723,7 +647,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className='container'>
+                    <div className='container1'>
                         <div className='row homeiconpart '>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/role'>
@@ -760,7 +684,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className='container'>
+                    <div className='container1'>
                         <div className='row homeiconpart '>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/event'>
@@ -797,7 +721,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className='container'>
+                    <div className='container1'>
                         <div className='row homeiconpart '>
                             <div className='col col-md-12 px-4'>
                                 <Link to='/attendanceuser'>
@@ -810,7 +734,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>) : (<div>
-                    <div className='container' style={{ marginTop: "6%" }}>
+                    <div className='container1' style={{ marginTop: "6%" }}>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/companyprofile'>
@@ -846,7 +770,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='container'>
+                    <div className='container1'>
                         <div className='row homeiconpart '>
 
                             <div className='col col-md-3 px-4' >

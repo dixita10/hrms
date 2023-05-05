@@ -48,7 +48,7 @@ const Role = () => {
 
   const handleDelete = (role_id) => {
 
-    
+
     var token = `Bearer ${localStorage.getItem('token')}`
     axios({
       method: 'DElETE',
@@ -96,8 +96,6 @@ const Role = () => {
       })
 
   }
-
-
 
   // console.log(data);
   return (
