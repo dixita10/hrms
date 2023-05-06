@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
+
 import CIcon from '@coreui/icons-react'
 
 import { AppSidebarNav } from './AppSidebarNav'
@@ -13,6 +14,7 @@ import logo from '../assets/images/HRMS-Logo.webp'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 import { Link } from 'react-router-dom'
+import { MdNavigateBefore } from "react-icons/md";
 
 // sidebar nav config
 import navigation from '../_nav'
@@ -31,11 +33,11 @@ const AppSidebar = () => {
         dispatch({ type: 'set', sidebarShow: visible })
       }}
     >
-      <CSidebarBrand className="d-none d-md-flex" to="/">
+      <CSidebarBrand className="d-none d-md-flex" to="/" style={{ backgroundColor: "white" }}>
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} /> */}
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
         <Link to='/home'>
-          <img src={logo} className='logo-img' alt='logo' style={{ height: '45px' }} />
+          <img src={logo} className='logo-img' alt='logo' style={{ height: '45px', backgroundColor: "black" }} />
         </Link>
 
 
@@ -45,9 +47,10 @@ const AppSidebar = () => {
           <AppSidebarNav items={navigation} />
         </SimpleBar>
       </CSidebarNav>
-      <CSidebarToggler
+      <MdNavigateBefore
         className="d-none d-lg-flex"
         onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
+        style={{ color: 'black', fontSize: "30px" }}
       />
     </CSidebar>
   )

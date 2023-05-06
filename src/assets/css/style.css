@@ -1532,3 +1532,44 @@ display: flex;
     justify-content: space-between;
     color:#5d679d;
 }
+
+.sidebar-nav .nav-link{
+    background-color: white;
+    color: black;
+}
+.sidebar-nav .nav-link:hover {
+    color: black;
+}
+.sidebar-nav .nav-icon:first-child{
+color: black;
+}
+.sidebar-nav .nav-link.active{
+    border-radius: 30px;
+    background-color: #CFE9FF;
+    color: black;
+    width: 95%;
+}
+.simplebar-content-wrapper{
+background-color: white;
+}
+.sidebar-nav .nav-group.show .nav-group-toggle{
+    color: black;
+}
+
+.sidebar-nav .nav-group.show>.nav-group-toggle::after{
+    background-color: black;
+}
+
+.sidebar-nav .nav-link.active .nav-icon{
+    color: black;
+}
+.sidebar-nav .nav-link .nav-icon:hover {
+    color: black;
+}
+.sidebar-nav,
+.sidebar:not(.sidebar-end) {
+background-color: white;
+}
+.sidebar-nav .nav-group-items {
+    background-color: white;
+}
