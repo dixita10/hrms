@@ -1537,9 +1537,10 @@ display: flex;
     background-color: white;
     color: black;
 }
-.sidebar-nav .nav-link:hover {
-    color: black;
+.sidebar-nav .nav-link:hover{
+    color: black!important;
 }
+
 .sidebar-nav .nav-icon:first-child{
 color: black;
 }
@@ -1563,7 +1564,10 @@ background-color: white;
 .sidebar-nav .nav-link.active .nav-icon{
     color: black;
 }
-.sidebar-nav .nav-link .nav-icon:hover {
+.sidebar-nav .nav-link:hover .nav-icon {
+    color: black;
+}
+.sidebar-nav .nav-icon:hover {
     color: black;
 }
 .sidebar-nav,

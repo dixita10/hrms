@@ -29,7 +29,7 @@ const Forgotpassword = () => {
     var history = useHistory();
 
     const [data, setData] = useState({
-        email: '',
+        official_email: '',
     })
 
     const [errors, setErrors] = useState({});
@@ -42,15 +42,15 @@ const Forgotpassword = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!data.email) {
-            setErrors({ email: 'Email is required' });
+        if (!data.official_email) {
+            setErrors({ official_email: 'Email is required' });
             return;
         }
 
         var token = `Bearer ${localStorage.getItem('token')}`
 
         var passData = {
-            email: data.email,
+            official_email: data.official_email,
         }
 
         axios({
@@ -94,13 +94,13 @@ const Forgotpassword = () => {
                                             </CInputGroupText>
                                             <CFormInput
                                                 type='email'
-                                                placeholder="enter email"
-                                                name='email'
-                                                value={data.email}
+                                                placeholder="enter official_email"
+                                                name='official_email'
+                                                value={data.official_email}
                                                 onChange={handleChange}
                                             />
                                         </CInputGroup>
-                                        {errors.email && <div className="error">{errors.email}</div>}
+                                        {errors.official_email && <div className="error">{errors.official_email}</div>}
                                         <br />
                                         <CRow>
                                             <CCol style={{ display: "flex", justifyContent: 'end' }}>

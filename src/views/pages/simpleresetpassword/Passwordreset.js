@@ -26,7 +26,7 @@ const Passwordreset = () => {
     var history = useHistory();
 
     const [data, setData] = useState({
-        email: '',
+        official_email: '',
         password: '',
         confirmpassword: '',
     })
@@ -43,7 +43,7 @@ const Passwordreset = () => {
 
 
         var passData = {
-            email: data.email,
+            official_email: data.official_email,
             password: data.password,
             confirmpassword: data.confirmpassword,
         }
@@ -71,8 +71,8 @@ const Passwordreset = () => {
         // Validate the form data
         const newErrors = {};
 
-        if (!data.email) {
-            newErrors.email = 'Email is required';
+        if (!data.official_email) {
+            newErrors.official_email = 'Email is required';
         }
 
         if (!data.password) {
@@ -108,13 +108,13 @@ const Passwordreset = () => {
                                                 </CInputGroupText>
                                                 <CFormInput
                                                     type='email'
-                                                    placeholder="enter email"
-                                                    name='email'
-                                                    value={data.email}
+                                                    placeholder="enter official_email"
+                                                    name='official_email'
+                                                    value={data.official_email}
                                                     onChange={handleChange}
                                                 />
                                             </CInputGroup>
-                                            {errors.email && <div className="error">{errors.email}</div>}
+                                            {errors.official_email && <div className="error">{errors.official_email}</div>}
                                             <div className="pwdcontainer">
                                                 <CInputGroup className="mb-3">
                                                     <CInputGroupText>

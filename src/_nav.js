@@ -107,31 +107,31 @@ const nav = [
     to: '/department',
     icon: <FaBuilding className='nav-icon' />
   },
-  {
-    component: CNavGroup,
-    name: 'Location',
-    icon: <MdOutlineLocationOn className="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Country',
-        to: '/country',
-        icon: <GiWorld className="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: 'State',
-        to: '/state',
-        icon: <TiWorldOutline className="nav-icon" />
-      },
-      {
-        component: CNavItem,
-        name: 'City',
-        to: '/city',
-        icon: <GiModernCity className="nav-icon" />
-      },
-    ]
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: 'Location',
+  //   icon: <MdOutlineLocationOn className="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: 'Country',
+  //       to: '/country',
+  //       icon: <GiWorld className="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'State',
+  //       to: '/state',
+  //       icon: <TiWorldOutline className="nav-icon" />
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'City',
+  //       to: '/city',
+  //       icon: <GiModernCity className="nav-icon" />
+  //     },
+  //   ]
+  // },
   {
     component: CNavItem,
     name: 'Project',
@@ -158,7 +158,7 @@ const nav = [
   },
   {
     component: CNavItem,
-    name: 'User',
+    name: 'Directory',
     to: '/user',
     icon: <FaUsers className="nav-icon" />,
   },

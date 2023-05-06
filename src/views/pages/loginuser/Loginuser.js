@@ -28,12 +28,12 @@ const Loginuser = () => {
     const [user, setUser] = useState([])
 
     const [data, setData] = useState({
-        email: '',
+        official_email: '',
         password: ''
     })
 
     const [errors, setErrors] = useState({
-        email: '',
+        official_email: '',
         password: '',
     });
 
@@ -45,7 +45,7 @@ const Loginuser = () => {
         e.preventDefault();
 
         var passData = {
-            email: data.email,
+            official_email: data.official_email,
             password: data.password,
             // login_as: "admin"
         }
@@ -103,7 +103,7 @@ const Loginuser = () => {
                 //   toast.error(error.response.data.message.contact)
                 // }
                 // if (error.response.status === false) {
-                //   toast.error(error.response.data.message.email)
+                //   toast.error(error.response.data.message.official_email)
                 // }
                 // if (error.response.data.status === 500) {
                 //   toast.error("phone no dublicated")
@@ -114,8 +114,8 @@ const Loginuser = () => {
         const MAX_PASSWORD_LENGTH = 20;
 
         const newErrors = {};
-        if (!data.email) {
-            newErrors.email = 'Email is required';
+        if (!data.official_email) {
+            newErrors.official_email = 'Email is required';
         }
         if (!data.password) {
             newErrors.password = 'Password is required';
@@ -147,14 +147,14 @@ const Loginuser = () => {
                                             </CInputGroupText>
                                             <CFormInput
                                                 type='email'
-                                                placeholder="enter email"
+                                                placeholder="enter official_email"
                                                 // autoComplete="id"
-                                                name='email'
-                                                value={data.email}
+                                                name='official_email'
+                                                value={data.official_email}
                                                 onChange={handleChange}
                                             />
                                         </CInputGroup>
-                                        {errors.email && <div className="error">{errors.email}</div>}<br />
+                                        {errors.official_email && <div className="error">{errors.official_email}</div>}<br />
                                         <div className="pwdcontainer">
                                             <CInputGroup className="mb-4">
                                                 <CInputGroupText>

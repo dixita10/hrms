@@ -610,7 +610,7 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className='container1'>
+                    {/* <div className='container1'>
                         <div className='row homeiconpart'>
                             <div className='col col-md-3 px-4'>
                                 <Link to='/country'>
@@ -646,7 +646,7 @@ const Home = () => {
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
                     <div className='container1'>
                         <div className='row homeiconpart '>
                             <div className='col col-md-3 px-4'>
@@ -678,7 +678,7 @@ const Home = () => {
                                     <div className='iconhome'>
                                         <img src={users} alt="usersicon" style={{ width: '70px' }} />
                                     </div>
-                                    <p >Users</p>
+                                    <p >Directory</p>
                                 </Link>
                             </div>
 
@@ -723,12 +723,20 @@ const Home = () => {
                     </div>
                     <div className='container1'>
                         <div className='row homeiconpart '>
-                            <div className='col col-md-12 px-4'>
+                            <div className='col col-md-6 px-4'>
                                 <Link to='/attendanceuser'>
                                     <div className='iconhome'>
                                         <img src={Assignuser} alt="assignusericon" style={{ width: '70px' }} />
                                     </div>
                                     <p >Assign Intern</p>
+                                </Link>
+                            </div>
+                            <div className='col col-md-6 px-4'>
+                                <Link to='/project'>
+                                    <div className='iconhome'>
+                                        <img src={project} alt="projecticon" style={{ width: '70px' }} />
+                                    </div>
+                                    <p >Project</p>
                                 </Link>
                             </div>
                         </div>
