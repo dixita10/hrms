@@ -39,7 +39,6 @@ const Loginuser = () => {
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
-
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -100,7 +99,7 @@ const Loginuser = () => {
                     toast.error(error.response.data.message);
                 }
                 // if (error.response.status === false) {
-                //   toast.error(error.response.data.message.contact)
+                //   toast.error(error.response.data.message.contact) 
                 // }
                 // if (error.response.status === false) {
                 //   toast.error(error.response.data.message.official_email)

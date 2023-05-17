@@ -37,7 +37,7 @@ const AppSidebar = () => {
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} /> */}
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
         <Link to='/home'>
-          <img src={logo} className='logo-img' alt='logo' style={{ height: '45px', backgroundColor: "black" }} />
+          <img src={logo} className='logo-img' alt='logo' style={{ height: '45px', backgroundColor: "whitesmoke" }} />
         </Link>
 
 

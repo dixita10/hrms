@@ -150,6 +150,10 @@ const Home = () => {
         return `${hours}:${minutes}:${seconds}`;
     };
 
+
+
+    
+
     const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
     const currentDate = new Date().toLocaleDateString('en-US', options).toUpperCase();
 
@@ -248,40 +252,9 @@ const Home = () => {
             })
     };
 
-
-    // const handleNotificationClick = (not_id) => {
-    //     const updatedNotifications = notifications.map((notification) => {
-    //         if (notification.not_id === not_id) {
-    //             return {
-    //                 ...notification,
-    //                 seen: true,
-    //             };
-    //         }
-    //         return notification;
-    //     });
-    //     setShowNotifications(!showNotifications);
-    //     localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
-
-    //     // Remove the clicked notification from local storage
-    //     const storedNotifications = JSON.parse(localStorage.getItem('notifications'));
-    //     const filteredNotifications = storedNotifications.filter((notification) => notification.not_id !== not_id);
-    //     localStorage.setItem('notifications', JSON.stringify(filteredNotifications));
-
-    //     setNotifications(updatedNotifications);
-    // };
-
-    // const deleteNotification = (not_id) => {
-    //     const updatedNotifications = notifications.filter((notification) => notification.not_id !== not_id);
-    //     setNotifications(updatedNotifications);
-
-    //     // Update the notifications in local storage
-    //     localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
-    // };
-
     useEffect(() => {
         handleNotification()
     }, [])
-
 
     const handleread = (not_id) => {
         // console.log(not_id);
@@ -388,135 +361,20 @@ const Home = () => {
         handleCount()
     })
 
-    // const NotificationBox = ({ notifications }) => {
-
-    //     const history = useHistory();
-
-    //     const handleNotificationClick = (notifications) => {
-    //         if (notifications.type === 'leave') {
-    //             history.push('/leave');
-    //         } else {
-    //             history.push('/project');
-    //         }
-    //     };
-
-
-
-    //     return (
-    //         <div className='notificationBox'>
-    //             <ul>
-    //                 <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
-    //                 {notifications.map((notification) => (
-    //                     <li key={notification.not_id} onClick={() => handleNotificationClick(notification)}
-    //                         style={{
-    //                             cursor: 'pointer',
-    //                         }}>
-    //                         <li>{notification.type}</li>
-    //                         <div className='d-flex'>
-    //                             <img src={Profile} style={{ width: '20px', margin: "0 8px" }} />
-    //                             <li style={{ fontSize: '13px' }}> {notification.message}</li>
-    //                         </div>
-    //                     </li>
-    //                 ))}
-    //             </ul>
-    //         </div>
-    //     );
-    // };
-
-
-    // function NotificationBox() {
-    //     // Retrieve the notifications from local storage when the component mounts
-    //     const [notifications, setNotifications] = useState(
-    //         JSON.parse(localStorage.getItem('notifications')) || []
-    //     );
-
-    //     return (
-    //         <div className="notificationBox">
-    //             <ul>
-    //                 <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
-    //                 {notifications.map((notification) => (
-    //                     <li
-    //                         key={notification.not_id}
-    // style={{
-    //     color: notification.seen ? 'red' : 'blue',
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     marginBottom: '8px',
-    //     cursor: 'pointer',
-    // }}
-    //                         onClick={() => handleNotificationClick(notification.not_id)}
-    //                     >
-    //                         <div style={{ display: 'flex' }}>
-    //                             {notification.seen ? <HiOutlineMailOpen style={{ marginRight: '8px' }} /> : <HiOutlineMail style={{ marginRight: '8px' }} />}
-    //                             {/* <span style={{ fontSize: '12px' }}>{notification.type}</span><br /> */}
-    //                             <span style={{ fontSize: '13px' }}>{notification.message}</span>
-    //                         </div>
-    //                     </li>
-    //                 ))}
-    //             </ul>
-    //         </div>
-    //     );
-    // }
-
-
-    // const handleNotificationClick = (not_id) => {
-    //     const updatedNotifications = notifications.map(notification => {
-    //         if (notification.not_id === not_id) {
-    //             return {
-    //                 ...notification,
-    //                 seen: true,
-    //             };
-    //         }
-    //         return notification;
-    //     });
-    //     setNotifications(updatedNotifications);
-    //     setShowNotifications(!showNotifications);
-
-    //     // deleteNotification(not_id);
-    // };
-
-    // const deleteNotification = (not_id) => {
-    //     const updatedNotifications = notifications.filter(notification => notification.not_id !== not_id);
-    //     setNotifications(updatedNotifications);
-    // };
-
-
-    // function NotificationBox({ notifications }) {
-    //     return (
-    // <div className='notificationBox'>
-    //     <ul>
-    //         <p style={{ fontSize: '14px', fontWeight: 600 }}>Notifications</p>
-    //         {notifications.map((notification) => (
-    //             <li key={notification.not_id} style={{
-    //                 color: notification.seen ? 'red' : 'blue',
-    //             }} onClick={() => handleNotificationClick(notification.not_id)}>
-    //                 <li>{notification.type}</li>
-    //                 <div className='d-flex'>
-    //                     <img src={Profile} style={{ width: '20px', margin: "0 8px" }} />
-    //                     <li style={{ fontSize: '13px' }}> {notification.message}</li>
-    //                 </div>
-    //             </li>
-    //         ))}
-    //     </ul>
-    // </div>
-    //     );
-    // }
     const history = useHistory();
-
-
 
     return (
         <div>
-            <div className='Homeheader row'>
+            <div className='nav-wrapper row'>
                 <div className="d-lg-flex d-sm-block justify-content-center">
-                    <div className='col-lg-2 homeimg text-center'>
-                        <HiOutlineMenu className="togleerhome" />
+                    <div className='col-lg-3 homeimg text-center'>
+                        {/* <HiOutlineMenu className="togleerhome" /> */}
                         <img src={homeheader} alt="homeheader" className='homelogoimage' />
                     </div>
                     <div className='col-lg-2 text-center'>
                         <p className="homename" >Hi {data1}!</p>
                     </div>
-                    <div className='col-lg-3 d-flex justify-content-center' style={{ marginTop: '25px' }}>
+                    <div className='col-lg-4 d-flex justify-content-center' style={{ marginTop: '25px' }}>
                         <input type='search' placeholder='Search Employess' className="homesearchinp" onKeyPress={handleSearch} />
                         <div className='homesearchbac'>
                             <ImSearch className='homesearch' />
@@ -570,6 +428,32 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+            {/* <header>
+                <div class="nav-wrapper">
+                    <div class="logo-container">
+                        <img class="logo" src="https://i.imgur.com/gea725J.png" alt="Logo" />
+                    </div>
+                    <nav>
+                        <input class="hidden" type="checkbox" id="menuToggle" />
+                        <label class="menu-btn" for="menuToggle">
+                            <div class="menu"></div>
+                            <div class="menu"></div>
+                            <div class="menu"></div>
+                        </label>
+                        <div class="nav-container">
+                            <ul class="nav-tabs">
+                                <li class="nav-tab">Home</li>
+                                <li class="nav-tab">Products</li>
+                                <li class="nav-tab">Services</li>
+                                <li class="nav-tab">FAQ</li>
+                                <li class="nav-tab">Contact</li>
+                                <li class="nav-tab">Careers</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header> */}
 
             {role_id === "3" ? (
                 <div>
